@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to places_url, notice: 'Le lieu a été supprimé.' }
       format.json { head :no_content }
-      redirect_to new_place_path
+
     end
   end
 
