@@ -1,6 +1,10 @@
 <div class="jumbotron">
   <div class="container">
 
+    <%if @trip.trip_picture.attached?%>
+      <%= image_tag @trip.trip_picture, alt: 'Image du voyage' %>
+    <% end %>
+
     <h1 class="trip-title-show"><%= @trip.title %></h1>
     <p class="strong-text"><%= @trip.category.name %></p>
     <p><%= @trip.description %></p>

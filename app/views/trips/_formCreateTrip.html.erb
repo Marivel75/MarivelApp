@@ -1,4 +1,4 @@
-<%= form_with(model: trip, local: true) do |form| %>
+<%= form_with(model: trip, local: true, multipart: true) do |form| %>
   <% if trip.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
@@ -28,6 +28,13 @@
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, class:"u-full-width" %>
+  </div>
+  <br>
+  <br>
+
+  <div class="flex-container">
+    <p>Vous pouvez ajouter une photo à votre itinéraire :</p>
+    <%= form.file_field :trip_picture %>
   </div>
   <br>
   <br>
