@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="allTrips-container">
+
+
+    <% Trip.where(category_id: @category.id).each do |trip| %>
+        <div class="card-trip">
+
+          <div class="card-image">
+            <img src="">
+          </div>
+          <div class="card-content">
+            <div class="trip-title">
+              <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"" %>
+            </div>
+            <div class="card-desc">
+              <%= trip.description %>
+            </div>
+            <%= link_to "Explorer", trip_path(trip[:id]), class:"button" %>
+          </div>
+
+        </div>
+    <% end %>
+
+  </div>
+</div>

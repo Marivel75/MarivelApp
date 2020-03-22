@@ -1,0 +1,88 @@
+<div class="container">
+  <%= simple_form_for @trip do |f| %>
+
+    <div class="row">
+      <%= f.input :description, label: 'Description du trip', placeholder:"Écrivez une courte description de votre itinéraire.", error: "Entrez une description s'il vous plait", :input_html => { :style => 'width: 100%'}  %>
+    </div>
+    <br>
+
+    <div class="">
+      <%= f.submit "Enregistrer", class:"button-primary" %>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="container">
+
+  <h3>Ajouter des lieus</h3>
+
+  <%= form_with model: place, local: true do |form| %>
+    <% if place.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+        <ul>
+        <% place.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address %>
+      <%= form.text_area :address, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :subtitle %>
+      <%= form.text_field :subtitle, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :website %>
+      <%= form.text_field :website, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price_2 %>
+      <%= form.text_field :price_2, class:"u-full-width" %>
+    </div>
+    <br>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+
+<hr />
+
+<div class="container">
+  <%= link_to "Retour à l'accueil", trips_path, class:"button btn-margin" %>
+  <%= link_to "Supprimer le trip", trip_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce trip ?"}, class:"button btn-margin" %>
+<br>
+<br>
+<br>
+</div>

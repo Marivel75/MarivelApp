@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%= @user.first_name %> et bienvenue.</h1>
+    <p>
+      L'équipe de Marivel est ravie de vous compter parmi ses utilisateurs. Vous allez pouvoir accéder à nos itinéraires de voyage et créer les vôtres.
+    </p>
+    <p>
+      Vous pouvez accéder à votre compte en utilisant votre email : <%= @user.email %>, ou votre prénom : <%= @user.first_name %> .
+    </p>
+    <p>
+      Pour vous connecter, voici le lien : <%= @url %>.
+    </p>
+    <p>
+      À bientôt sur Marivel!
+    </p>
+  </body>
+</html>

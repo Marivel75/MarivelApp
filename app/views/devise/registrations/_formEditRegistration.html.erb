@@ -1,0 +1,46 @@
+<div class="container">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+
+      <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "new-password", style: 'width: 100%' } %>
+      <br>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <%= f.input :first_name,
+                  required: false,
+                  input_html: { autocomplete: "first_name", style: 'width: 100%' } %>
+      <br>
+
+      <%= f.input :password,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "new-password", style: 'width: 100%' } %>
+      <br>
+
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password", style: 'width: 100%' } %>
+      <br>
+
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password", style: 'width: 100%' } %>
+    </div>
+    <br>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Enregistrer", html: { class:'button-primary' } %>
+    </div>
+  <% end %>
+
+  <h3>Suppression du compte</h3>
+
+  <p>Vous souhaitez supprimer vos données ?</p>
+  <p> <%= link_to "Suppression", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'warning-text' %></p>
+</div>

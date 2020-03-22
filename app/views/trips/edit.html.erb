@@ -1,0 +1,10 @@
+<div class="container">
+
+  <h1 class="trip-title"><%= @trip.title %></h1>
+  <p><%= @trip.category.name %></p>
+  <p><%= @trip.description %></p>
+
+  <h2> Éditez votre trip </h2>
+</div>
+
+<%= render 'formEditTrip', trip: @trip %>

@@ -1,0 +1,60 @@
+<div class="container">
+    <h2> Éditez la description du lieu </h2>
+  <br>
+  <br>
+
+  <%= form_with model: place, local: true do |form| %>
+    <% if place.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+        <ul>
+        <% place.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :address %>
+      <%= form.text_area :address, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :subtitle %>
+      <%= form.text_field :subtitle, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :website %>
+      <%= form.text_field :website, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class:"u-full-width" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price_2 %>
+      <%= form.text_field :price_2, class:"u-full-width" %>
+    </div>
+    <br>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+</div>

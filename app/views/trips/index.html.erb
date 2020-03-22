@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= render 'shared/headerBanner' %>
+
+<% if user_signed_in? %>
+  <%= render 'createNewTrip' %>
+<% end %>
+
+<div class="container">
+  <% if user_signed_in? && current_user.role === 'admin' %>
+    <%= link_to "Interface d'admin des itinéraires", admin_trips_path %>
+  <% end %>
+</div>
+
+
+
+<%= render 'shared/navbar' %>
+
+<%= render 'indexAllTrips' %>

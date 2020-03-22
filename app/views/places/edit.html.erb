@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="poi-name"><%= @place.name %></h1>
+
+  <p class="strong-text">Adresse </p>
+  <div class="container-sm">
+    <p> <%= @place.address %> </p>
+  </div>
+  <p class="strong-text">Coordonnées géographiques </p>
+  <div class="container-sm">
+    <p> Latitude : <%= @place.latitude %></p>
+    <p> Longitude : <%= @place.longitude %></p>
+  </div>
+<hr />
+</div>
+
+<%= render 'formEditPlace', place: @place %>
+
+<div class="container">
+  <%= link_to "Retour à l'accueil", trips_path, class:"button btn-margin" %>
+  <%= link_to "Supprimer le lieu", place_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce lieu ?"}, class:"button btn-margin" %>
+</div>
+<br>
+<br>
+<br>

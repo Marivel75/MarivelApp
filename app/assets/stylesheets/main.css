@@ -1,0 +1,145 @@
+.jumbotron {
+    padding-top: 10%;
+}
+
+.container-sm {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box; }
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.flex-container-center {
+  display: flex;
+  flex-direction: row;
+  justify-content : center;
+}
+
+.flex-container-between {
+  display: flex;
+  flex-direction: row;
+  justify-content : space-between;
+}
+
+
+.footer-container {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  background-color: #1EAEDB;
+  color: white;
+  padding: 100px;
+}
+
+.btn-margin {
+  margin-right: 50px;
+  margin-top: 25px;
+}
+
+.input-margin {
+  margin-right: 50px;
+  margin-top: 25px;
+}
+
+#btn-go {
+  color: black;
+}
+
+.allTrips-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.navbar {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.navbar-item {
+  margin-right: 25px;
+}
+
+.navbar-link {
+  font-family: "Raleway";
+  font-size: 1em;
+  color: #1EAEDB;
+  text-decoration: none;
+}
+
+.brand {
+  font-family: "Raleway";
+  font-size: 5em;
+  font-weight: bold;
+  color: #1EAEDB;
+  text-decoration: none;
+}
+
+.trip-title {
+  font-family: "Raleway";
+  font-size: 2em;
+  color: #1EAEDB;
+  text-decoration: none;
+}
+
+.trip-title-show {
+  font-family: "Raleway";
+  font-size: 4em;
+  color: #1EAEDB;
+  text-decoration: none;
+}
+
+.poi-name {
+  font-family: "Raleway";
+  font-size: 2em;
+  color: #1EAEDB;
+  text-decoration: none;
+}
+
+.poi-name-show {
+  font-family: "Raleway";
+  font-size: 4em;
+  color: #1EAEDB;
+}
+
+.strong-text {
+  font-weight: bold;
+}
+
+.card-trip {
+  width: 44%;
+  height: auto;
+  margin-bottom: 50px;
+  margin-right: 25px;
+}
+
+.warning-text {
+  color: #800000;
+  font-weight: bold;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+.welcome-text {
+  color: #100000;
+  font-weight: bold;
+  font-size: 2em;
+}

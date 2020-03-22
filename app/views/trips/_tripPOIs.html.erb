@@ -1,0 +1,10 @@
+<div class="container">
+
+  <% @trip.places.each do |p| %>
+
+      <p> <%= link_to "#{p.name}", place_path(p[:id]), class:"poi-name" %> </p>
+      <p><%= p.description %><p>
+
+  <% end %>
+
+</div>

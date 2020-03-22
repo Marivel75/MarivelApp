@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h2>Log in</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="six-columns">
+        <%= f.input :login,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", style: 'width: 100%' } %>
+      </div>
+      <br>
+
+      <div class="six-columns">
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password", style: 'width: 100%' } %>
+      </div>
+    </div>
+    <br>
+
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <br>
+      <br>
+
+      <%= f.button :submit, "Log in", class:'button-primary' %>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+  <br>
+  <br>
+  <br>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+  <h1 class="poi-name"><%= @place.name %></h1>
+
+  <p class="strong-text">Adresse </p>
+  <div class="container-sm">
+    <p> <%= @place.address %> </p>
+  </div>
+  <p class="strong-text">Coordonnées géographiques </p>
+  <div class="container-sm">
+    <p> Latitude : <%= @place.latitude %></p>
+    <p> Longitude : <%= @place.longitude %></p>
+  </div>
+
+
+
+  <p class="strong-text"> Informations sur le lieu </p>
+  <div class="contaienr-sm">
+    <p class="strong-text">
+      <%= @place.subtitle %>
+    </p>
+
+    <p>
+      <%= @place.description %>
+    </p>
+
+    <p>
+      <%= @place.price %>
+    </p>
+
+    <p>
+      <%= @place.price_2 %>
+    </p>
+
+    <p>
+      <%= @place.phone %>
+    </p>
+
+    <p>
+      <%= link_to @place.website, "http://#{@place.website}" %>
+    </p>
+
+  </div>
+
+</div>
