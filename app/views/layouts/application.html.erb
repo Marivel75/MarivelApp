@@ -39,17 +39,18 @@
 
   <body>
 
-    <% flash.each do |type, msg| %>
-      <div class="">
-        <%= msg %>
-      </div>
+    <% if flash[:notice] %>
+      <% flash.each do |type, msg| %>
+        <div class="container notice-message" >
+          <%= msg %>
+        </div>
+      <% end %>
     <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
 
     <%= yield %>
+
 
     <footer>
       <%= render 'layouts/footer' %>

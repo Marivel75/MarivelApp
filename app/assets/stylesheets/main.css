@@ -143,3 +143,9 @@
   font-weight: bold;
   font-size: 2em;
 }
+
+.notice-message {
+  background-color: #1EAEDB;
+  color: white;
+  text-decoration: none;
+}

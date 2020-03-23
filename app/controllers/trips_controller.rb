@@ -45,7 +45,7 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1.json
   def update
     @trip.update(trip_params)
-    redirect_to trip_path(@trip[:id]), flash: {notice: "Le trip a été modifié."}
+    redirect_to trip_path(@trip[:id]), notice: "Le trip a été modifié."
 
     # @trip.category_id = params[:category_id]
     # respond_to do |format|
