@@ -8,3 +8,108 @@
   <% end %>
 
 </div>
+
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<script>
+
+var coords = []
+  gon.places.forEach(function(place) {
+    var new_array = [place.longitude, place.latitude];
+    coords.push(new_array)
+    
+  });
+
+
+
+var geojson = {type: 'FeatureCollection', features: []}
+ gon.places.forEach(function(place) {
+    var new_feature = {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [place.longitude, place.latitude]
+    },
+    properties: {
+      name: place.name,
+      description: place.description,
+      subtitle: place.subtitle,
+      price: place.price_2,
+      website: place.website,
+      phone: place.phone,
+      address: place.address
+    }
+  };
+  geojson.features.push(new_feature)
+    
+  });
+
+// RAJOUTER LA CLÉ EN DESSOUS
+var accessToken = 'pk.eyJ1Ijoicm9jcGVsaWNhbiIsImEiOiJjanN3N3lzZXQwN3BqNDNvZmYwM2hybWd6In0.flGOgYQ1ae6VnI00gUoL5A';
+
+///////////////////
+
+mapboxgl.accessToken = accessToken;
+//on initialise notre map sur le div #map
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [<%= @trip.places.first.longitude%>, <%= @trip.places.first.latitude%>], //un centre initial [longitude, latitude] (facultatif)
+    zoom: 13 //un zoom initial (facultatif)
+});
+
+// add markers to map (les variables geojson et coords sont definies dans asset/javascript/places.js)
+geojson.features.forEach(function(marker) {
+  
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+ 
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.name + '</h3><p>' + marker.properties.address + '<hr><br>' + marker.properties.price + '$  |  ' + marker.properties.phone + '<hr><br>' +  marker.properties.website + '</p>'))
+    .addTo(map);
+});
+
+map.on('load', function () {
+    fitMap(map, coords);
+    //on affiche le tracé reliant nos différents points GPS
+    displayJourney(map, coords);
+
+});
+
+function fitMap(map, coords) {
+    var bounds = coords.reduce(function (bounds, coord) {
+        return bounds.extend(coord);
+    }, new mapboxgl.LngLatBounds(coords[0], coords[0]));
+    map.fitBounds(bounds, {
+        padding: 30 //marge autour des points
+    });
+}
+
+function displayJourney(map, coords) {
+    map.addLayer({
+        "id": "journey", //identifiant unique de l'objet
+        "type": "line",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": coords
+                }
+            }
+        },
+        "paint": {
+            "line-color": "rgb(20, 82, 153)", //couleur de la ligne
+            "line-width": 2 //epaisseur de la ligne
+        }
+    });
+}
+
+
+</script>

@@ -14,3 +14,16 @@
  *= require skeleton
  *= require normalize
  */
+
+ .marker {background: rgb(20, 82, 153);width: 22px;height: 22px;border-radius: 50%;text-align: center;color:#fff;}
+.marker:hover{background: rgb(5, 35, 63);color:#000;}
+
+.mapboxgl-popup {
+  overflow-y: scroll;
+  overflow-x: scroll;
+  width: 200px;
+  height: 300px;
+  font: 12px/20px 'Open Sans', sans-serif;
+  border-radius: 5px;
+  
+  }
