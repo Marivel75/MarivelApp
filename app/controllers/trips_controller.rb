@@ -21,6 +21,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
+    @new_place = Place.new()
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 

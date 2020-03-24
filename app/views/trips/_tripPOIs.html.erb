@@ -2,14 +2,15 @@
 
   <% @trip.places.each do |p| %>
 
-      <p> <%= link_to "#{p.name}", place_path(p[:id]), class:"poi-name" %> </p>
+      <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
       <p><%= p.description %><p>
 
   <% end %>
 
+  <div id="map" style="width: 100%; height: 600px;"></div>
 </div>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
+
 
 <script>
 
@@ -63,7 +64,7 @@ geojson.features.forEach(function(marker) {
   
   // create a HTML element for each feature
   var el = document.createElement('div');
-  el.className = ' fas fa-map-marker-alt fa-3x text-primary';
+  el.className = ' fas fa-map-marker-alt fa-3x ';
  
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el)
@@ -75,9 +76,6 @@ geojson.features.forEach(function(marker) {
 
 map.on('load', function () {
     fitMap(map, coords);
-    //on affiche le tracé reliant nos différents points GPS
-    displayJourney(map, coords);
-
 });
 
 function fitMap(map, coords) {
@@ -89,27 +87,7 @@ function fitMap(map, coords) {
     });
 }
 
-function displayJourney(map, coords) {
-    map.addLayer({
-        "id": "journey", //identifiant unique de l'objet
-        "type": "line",
-        "source": {
-            "type": "geojson",
-            "data": {
-                "type": "Feature",
-                "properties": {},
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": coords
-                }
-            }
-        },
-        "paint": {
-            "line-color": "rgb(20, 82, 153)", //couleur de la ligne
-            "line-width": 2 //epaisseur de la ligne
-        }
-    });
-}
+
 
 
 </script>

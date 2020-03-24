@@ -16,8 +16,8 @@
 <%= render 'formEditPlace', place: @place %>
 
 <div class="container">
-  <%= link_to "Retour à l'accueil", trips_path, class:"button btn-margin" %>
-  <%= link_to "Supprimer le lieu", place_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce lieu ?"}, class:"button btn-margin" %>
+  <%= link_to "Revenir au trip", trip_path(@trip), class:"button btn-margin" %>
+  <%= link_to "Supprimer le lieu", trip_place_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce lieu ?"}, class:"button btn-margin" %>
 </div>
 <br>
 <br>

@@ -1,17 +1,30 @@
 <div class="container">
-  <%= form_with(model: trip, local: true, multipart: true) do |form| %>
-    <% if trip.errors.any? %>
+  <%= simple_form_for @trip do |f| %>
+    <div class="row">
+      <%= f.input :description, label: 'Description du trip', placeholder:"Écrivez une courte description de votre itinéraire.", error: "Entrez une description s'il vous plait", :input_html => { :style => 'width: 100%'}  %>
+    </div>
+    <br>
+    <div class="">
+      <%= f.submit "Enregistrer", class:"button-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+
+  <h3>Ajouter des lieus</h3>
+
+  <%= form_with model: [@trip, @new_place], local: true do |form| %>
+    <% if @new_place.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
-
         <ul>
-        <% trip.errors.full_messages.each do |message| %>
+        <% @new_place.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
-
 
     <div class="field">
       <%= form.label :title %>
@@ -23,22 +36,21 @@
       <%= form.label :category %>
       <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionnez une catégorie de trip.", class:"u-full-width" %>
     </div>
-
   <br>
 
     <div class="field">
       <%= form.label :description %>
       <%= form.text_area :description, class:"u-full-width" %>
     </div>
-    <br>
-    <br>
+  <br>
+  <br>
 
     <div class="flex-container">
       <p>Vous pouvez ajouter une photo à votre itinéraire, ou la modifier :</p>
       <%= form.file_field :trip_picture %>
     </div>
-    <br>
-    <br>
+  <br>
+  <br>
 
     <div class="actions">
       <%= form.submit "Enregistrer"%>
@@ -46,12 +58,10 @@
 
   <hr />
 
-  <div class="container">
-    <%= link_to "Retour à l'accueil", trips_path, class:"button btn-margin" %>
-    <%= link_to "Supprimer le trip", trip_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce trip ?"}, class:"button btn-margin" %>
+    <div class="container">
+      <%= link_to "Revenir au trip", trip_path(@trip), class:"button btn-margin" %>
+      <%= link_to "Supprimer le trip", trip_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce trip ?"}, class:"button btn-margin" %>
+    </div>
   <br>
   <br>
   <br>
-  </div>
-  <% end %>
-</div>

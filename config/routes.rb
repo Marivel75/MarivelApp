@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  
+
   resources :partners
   resources :travelers
   devise_for :users
-  resources :places
   resources :categories
   resources :trips do
+    resources :places
     resources :trip_pictures, only: [:create]
-  end
+  end 
+
+
+
 
   root to: "trips#index"
 

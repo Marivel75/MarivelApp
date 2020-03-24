@@ -25,10 +25,11 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(place_params)
-
+    @trip = Trip.find(params[:trip_id])
+    @place.trips << @trip
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Le lieu a été crée.' }
+        format.html { redirect_to [@trip], notice: 'Le lieu a été crée.' }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
@@ -40,9 +41,10 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
+    puts place_params
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: 'Les modifications ont été enregistrées.' }
+        format.html { redirect_to [@trip, @place], notice: 'Les modifications ont été enregistrées.' }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
@@ -65,11 +67,12 @@ class PlacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
+      @trip = Trip.find(params[:trip_id])
       @place = Place.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def place_params
-      params.require(:place).permit(:name, :address, :description, :subtitle)
+      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2)
     end
 end
