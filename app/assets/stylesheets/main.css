@@ -1,5 +1,37 @@
+body {
+background-color: #d4d1c8;
+
+}
 .jumbotron {
     padding-top: 10%;
+}
+.homepage {
+  background: url('https://images.unsplash.com/photo-1534540378968-85a7b8fde19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60');
+  color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.devise-background {
+  background: url('https://images.unsplash.com/photo-1499988921418-b7df40ff03f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+  color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 20%;
+
+}
+
+.roadtrip-cat {
+  background: url('https://images.unsplash.com/photo-1534540378968-85a7b8fde19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60');
+  color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .container-sm {
@@ -44,6 +76,11 @@
   padding: 100px;
 }
 
+.security-zone {
+  background-color: black;
+  padding-top: 5%;
+}
+
 .btn-margin {
   margin-right: 50px;
   margin-top: 25px;
@@ -61,6 +98,7 @@
 .allTrips-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -89,7 +127,7 @@
   font-family: "Raleway";
   font-size: 5em;
   font-weight: bold;
-  color: #1EAEDB;
+  color: #100000;
   text-decoration: none;
 }
 
@@ -124,17 +162,28 @@
   font-weight: bold;
 }
 
+.cat-name-show {
+  color: black;
+  font-size: 5em;
+}
+
+.header.title {
+  color: black;
+}
+
 .card-trip {
-  width: 44%;
+  width: 45%;
   height: auto;
   margin-bottom: 50px;
   margin-right: 25px;
+  padding-left: 12px;
+  box-shadow: 2px 5px 5px 3px #c4c4c4;
 }
 
 .warning-text {
-  color: #800000;
+  color: white;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 3em;
   text-decoration: none;
 }
 

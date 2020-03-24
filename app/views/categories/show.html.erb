@@ -1,11 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<%= render 'categoryBanner' %>
-
-<%= render 'shared/navbar' %>
-
-<%= render 'indexTripByCategory' %>
-<br>
-<div class="container">
-  <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
+<div class="jumbotron roadtrip-cat">
+  <div class="container">
+    <%= render 'categoryBanner' %>
+  </div>
 </div>
+<br>
+<br>
+
+  <div class="container">
+    <%= render 'shared/navbar' %>
+  </div>
+
+  <div class="container">
+    <%= render 'indexTripByCategory' %>
+  </div>
+<br>
+
+  <div class="container">
+    <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
+  </div>
