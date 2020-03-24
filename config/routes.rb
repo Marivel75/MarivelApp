@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   resources :partners
   resources :travelers
   devise_for :users
-  resources :places
   resources :categories
-  resources :trips
+  resources :trips do
+    resources :places
+  end
 
 
   root to: "trips#index"

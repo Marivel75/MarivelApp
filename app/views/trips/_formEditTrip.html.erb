@@ -17,13 +17,13 @@
 
   <h3>Ajouter des lieus</h3>
 
-  <%= form_with model: place, local: true do |form| %>
-    <% if place.errors.any? %>
+  <%= form_with model: [@trip, @new_place], local: true do |form| %>
+    <% if @new_place.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
 
         <ul>
-        <% place.errors.full_messages.each do |message| %>
+        <% @new_place.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
