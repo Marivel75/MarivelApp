@@ -73,6 +73,7 @@ class TripsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
+      gon.places = @trip.places.all
     end
 
     # Only allow a list of trusted parameters through.
