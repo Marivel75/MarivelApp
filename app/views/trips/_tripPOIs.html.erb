@@ -76,9 +76,6 @@ geojson.features.forEach(function(marker) {
 
 map.on('load', function () {
     fitMap(map, coords);
-    //on affiche le tracé reliant nos différents points GPS
-    displayJourney(map, coords);
-
 });
 
 function fitMap(map, coords) {
@@ -90,27 +87,7 @@ function fitMap(map, coords) {
     });
 }
 
-function displayJourney(map, coords) {
-    map.addLayer({
-        "id": "journey", //identifiant unique de l'objet
-        "type": "line",
-        "source": {
-            "type": "geojson",
-            "data": {
-                "type": "Feature",
-                "properties": {},
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": coords
-                }
-            }
-        },
-        "paint": {
-            "line-color": "rgb(20, 82, 153)", //couleur de la ligne
-            "line-width": 2 //epaisseur de la ligne
-        }
-    });
-}
+
 
 
 </script>
