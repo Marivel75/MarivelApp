@@ -80,7 +80,7 @@
 <hr />
 
 <div class="container">
-  <%= link_to "Retour à l'accueil", trips_path, class:"button btn-margin" %>
+    <%= link_to "Revenir au trip", trip_path(@trip), class:"button btn-margin" %>
   <%= link_to "Supprimer le trip", trip_path, method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce trip ?"}, class:"button btn-margin" %>
 <br>
 <br>
