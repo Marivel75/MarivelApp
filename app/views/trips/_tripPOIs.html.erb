@@ -1,5 +1,5 @@
 <div class="container">
-
+  <p style = "text-align: right">Créé par : <%= @trip.author.email%></p>
   <% @trip.places.each do |p| %>
 
       <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
