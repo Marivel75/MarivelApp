@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= render 'shared/headerBanner' %>
+
 
 <% if user_signed_in? %>
   <%= render 'createNewTrip' %>
@@ -14,7 +14,6 @@
 </div>
 
 
-
-<%= render 'shared/navbar' %>
-
+<%= render 'shared/jumbotron' %>
+<br><br>
 <%= render 'indexAllTrips' %>
