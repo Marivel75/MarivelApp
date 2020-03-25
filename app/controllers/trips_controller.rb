@@ -28,9 +28,10 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
     @trip = Trip.new(trip_params)
     @trip.category_id = params[:category_id]
-
+    @trip.author = current_user
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
