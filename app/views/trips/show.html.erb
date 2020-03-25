@@ -1,10 +1,5 @@
 <%= render 'tripBanner' %>
-<% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
-<% if pre_saved_trip %>
-  <%= link_to '<i class="fas fa-bookmark"></i>'.html_safe, trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete %>
-<% else %>
-  <%= button_to 'Sauvegarder le trip', trip_saved_trips_path(@trip), method: :post %>
-<% end %>
+
 <% if !@trip.places.empty? %>
   <%= render 'tripPOIs' %>
 <% end %>
