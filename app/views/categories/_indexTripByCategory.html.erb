@@ -8,12 +8,13 @@
           <img src="">
         </div>
         <div class="card-content">
-          <div class="trip-title">
-            <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"" %>
+          <div class="card-title">
+            <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"trip-title" %>
           </div>
           <div class="card-desc">
             <%= trip.description %>
           </div>
+          <br>
           <%= link_to "Explorer", trip_path(trip[:id]), class:"button" %>
         </div>
 
