@@ -1,20 +1,26 @@
-<div class="jumbotron roadtrip-cat">
-  <div class="container">
-    <%= render 'categoryBanner' %>
+<div class="">
+  <div class="jumbotron roadtrip-cat">
+    <div class="container">
+      <%= render 'categoryBanner' %>
+    </div>
   </div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 
   <div class="container">
     <%= render 'shared/navbar' %>
-  </div>
 
-  <div class="container">
+
+
     <%= render 'indexTripByCategory' %>
   </div>
-<br>
+  <br>
+
+
 
   <div class="container">
     <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
   </div>
+  <br>
+
+</div>

@@ -22,16 +22,21 @@ background-color: #d4d1c8;
   -o-background-size: cover;
   background-size: cover;
   padding-top: 20%;
-
 }
 
 .roadtrip-cat {
-  background: url('https://images.unsplash.com/photo-1534540378968-85a7b8fde19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60');
-  color: black;
+  background: url('catBannerPicture');
+  color: white;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.nav-trip-cat {
+  background-color: #d4d1c8;
+  opacity: 0.9;
+
 }
 
 .container-sm {
@@ -110,6 +115,9 @@ background-color: #d4d1c8;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .navbar-item {
@@ -126,6 +134,14 @@ background-color: #d4d1c8;
 .brand {
   font-family: "Raleway";
   font-size: 5em;
+  font-weight: bold;
+  color: #100000;
+  text-decoration: none;
+}
+
+.brand-small {
+  font-family: "Raleway";
+  font-size: 3em;
   font-weight: bold;
   color: #100000;
   text-decoration: none;
@@ -162,9 +178,16 @@ background-color: #d4d1c8;
   font-weight: bold;
 }
 
-.cat-name-show {
+.cat-name-show-white {
+  color: white;
+  font-size: 5em;
+  margin-bottom: 20%;
+}
+
+.cat-name-show-black {
   color: black;
   font-size: 5em;
+  margin-bottom: 20%;
 }
 
 .header.title {
