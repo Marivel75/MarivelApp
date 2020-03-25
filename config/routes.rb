@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
   resources :trips do
+    resources :saved_trips
     resources :places
   end
 
