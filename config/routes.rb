@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   root to: "trips#index"
 
+  resources :users do
+    resources :trips
+  end
   namespace :admin do
     resources :users
     resources :trips

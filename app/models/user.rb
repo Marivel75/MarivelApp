@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  has_many :created_trips, class_name: "Trip", foreign_key: "id"
   after_create :welcome_send
 
   attr_accessor :login

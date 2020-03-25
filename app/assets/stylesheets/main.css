@@ -238,3 +238,6 @@
   font: 12px/20px 'Open Sans', sans-serif;
   border-radius: 5px;
   }
+.text-center {
+  text-align: center;
+}
