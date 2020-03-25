@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_current_user?, only: [:create, :new]
   # GET /trips
   # GET /trips.json
   def index
@@ -80,5 +80,9 @@ class TripsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def trip_params
       params.require(:trip).permit(:title, :description, :category_id)
+    end
+
+    def is_current_user?
+      redirect_to new_user_session_path if !current_user
     end
 end
