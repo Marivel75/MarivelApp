@@ -4,6 +4,7 @@
     <h1 class="trip-title-show"><%= @trip.title %></h1>
     <p class="strong-text"><%= @trip.category.name %></p>
     <p><%= @trip.description %></p>
+      <p style = "text-align: right">Créé par : <%= link_to "#{@trip.author.email}", user_path(@trip.author.id) %></p>
   <hr />
 
   

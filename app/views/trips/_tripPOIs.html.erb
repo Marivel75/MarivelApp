@@ -1,5 +1,4 @@
 <div class="container">
-  <p style = "text-align: right">Créé par : <%= link_to "#{@trip.author.email}", user_path(@trip.author.id) %></p>
   <% @trip.places.each do |p| %>
 
       <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
