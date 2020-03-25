@@ -1,12 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-
-
-<% if user_signed_in? %>
-  <%= render 'createNewTrip' %>
-<% end %>
-
 <div class="container">
   <% if user_signed_in? && current_user.role === 'admin' %>
     <%= link_to "Interface d'admin des itinéraires", admin_trips_path %>
@@ -16,4 +9,13 @@
 
 <%= render 'shared/jumbotron' %>
 <br><br>
+<div class = "container">
+<% if user_signed_in? %>
+  <%= render 'createNewTrip' %>
+<% end %>
+  <div class="section">
+    <h2 class="center-align">Explorez les trips</h2>
+  </div>
+  <%= render 'shared/navbar' %>
+  </div>
 <%= render 'indexAllTrips' %>

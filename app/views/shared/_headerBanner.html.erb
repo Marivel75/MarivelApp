@@ -4,13 +4,12 @@
   </div>
   
     <% if user_signed_in? %>
-
-    <div class="center">
-      <p class='welcome-text'> Bienvenue <%= current_user.first_name%> </p>
-    </div>
     <div class="flex-container">
       <div class="navbar-item">
-        <%= link_to 'Editez votre compte',edit_user_registration_path, class:'navbar-link' %>
+        <%= link_to "Créer un trip", new_trip_path, id:"btn-go", class:"button" %>
+      </div>
+      <div class="navbar-item">
+            <%= link_to "Voir le profil", user_path(current_user.id), class:"button button-primary" %>
       </div>
       <div class="navbar-item">
           <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
