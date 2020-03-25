@@ -1,35 +1,26 @@
-<div style = "display: flex; justify-content: space-between; margin-top: 10px; margin-left: 10px" >
-  <div  style= "margin-top: -30px">
-    <%=link_to 'MARIVEL', trips_path, class:"brand" %>
-  </div>
+<div class = "navbar-top-screen">
   
+  <div  class = "brand-nav-container">
+    <%=link_to 'MARIVEL', trips_path, class:"brand-small" %>
+  </div>
+
     <% if user_signed_in? %>
-    <div class="flex-container">
-      <div class="navbar-item">
-        <%= link_to "Créer un trip", new_trip_path, id:"btn-go", class:"button" %>
-      </div>
-      <div class="navbar-item">
-            <%= link_to "Voir le profil", user_path(current_user.id), class:"button button-primary" %>
-      </div>
-      <div class="navbar-item">
+
+      <div style="margin:1%">
           <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
       </div>
-    </div>
 
-    <% else %>
-      <div class="center">
-        <div class="flex-container">
-          <div class="navbar-item">
-            <%= link_to "Se connecter", new_user_session_path, class:"button" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "S'inscrire", new_user_registration_path, class:"button button-primary" %>
-          </div>
+
+  <% else %>
+      <div class="flex-container">
+        <div class="navbar-item">
+          <%= link_to "Se connecter", new_user_session_path, class:"navbar-link" %>
+        </div>
+        <div class="navbar-item">
+          <%= link_to "S'inscrire", new_user_registration_path, class:"navbar-link" %>
         </div>
       </div>
-    <% end %>
-  </div>
+  <% end %>
+</div>
   <br>
   <br>
-</div>
-</div>

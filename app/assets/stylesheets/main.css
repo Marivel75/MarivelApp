@@ -29,6 +29,16 @@
   background-size: cover;
 }
 
+.profilBanner {
+  background-image: url('PhotoBannerRoadTrip.png');
+  color: white;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 20%;
+}
+
 .nav-trip-cat {
   background-color: #d4d1c8;
   opacity: 0.9;
@@ -41,12 +51,19 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 15px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
+
+.brand-nav-container {
+  padding-bottom: 5%;
+}
 
 
 .flex-container {
   display: flex;
   flex-direction: row;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .flex-container-right {
@@ -67,11 +84,17 @@
   justify-content : space-between;
 }
 
+.flex-container-around {
+  display: flex;
+  flex-direction: row;
+  justify-content : space-around;
+}
+
 .footer-container {
   position: relative;
   left: 0;
   bottom: 0;
-  background-color: #1EAEDB;
+  background-color: #1A1A1A;
   color: white;
   padding: 100px;
 }
@@ -113,6 +136,18 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+.navbar-top-screen {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .navbar-item {
@@ -173,8 +208,14 @@
   font-weight: bold;
 }
 
+.profil-title {
+  color: white;
+  font-size: 5em;
+}
+
 .cat-name-show-white {
   color: white;
+  font-weight: bold;
   font-size: 5em;
   margin-bottom: 20%;
 }
@@ -220,7 +261,7 @@
 .fas {
   color: #33C3F0;
  }
- 
+
 .mapboxgl-popup {
   overflow-y: scroll;
   overflow-x: scroll;

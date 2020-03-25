@@ -19,9 +19,6 @@
           <%= link_to "Voir le profil", user_path(current_user.id), class:"button button-primary" %>
         </div>
         <div class="navbar-item">
-          <%= link_to 'Editez votre compte',edit_user_registration_path, class:'navbar-link' %>
-        </div>
-        <div class="navbar-item">
             <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
         </div>
       </div>

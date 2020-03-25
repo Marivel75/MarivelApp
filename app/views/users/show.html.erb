@@ -1,37 +1,28 @@
-<div class = "container text-center">
-  <h3>Profil</h3>
-   <p> Utilisateur : <%= @user.first_name%> <%= @user.last_name %></p><br>
-  <p> Description : <%= @user.description%></p> 
-  <% if @user == current_user%>
-    <p>Email : <%= @user.email%>
-  <% end %>
-  <h3>Trips publiés</h3>
-  <% if @user.created_trips.length > 0 %>
-   <% @user.created_trips.each do |trip| %>
-     <div class="card-trip">
-          <div class="card-image">
-            <img src="">
-          </div>
-          <div class="card-content">
-            <div class="card-title">
-              <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"trip-title" %>
-            </div>
-            <div class="">
-              <p class="strong-text"><%= trip.category.name %></p>
-              <p><%= trip.description %></p>
-              <%= link_to "Explorer", trip_path(trip[:id]), class:"button" %>
-            </div>
-          </div>
-        </div>
-   <%end%>
-  <% elsif @user == current_user %>
-    <p>Vous n'avez publiés aucun trip, c'est le moment de commencer !</p>
-  <% else %>
-    <p><%= @user.first_name%> n'a publié aucun trip pour le moment !</p>
-  <% end %>
+<%= render 'shared/headerBanner' %>
 
-  <% if @user == current_user %>
-   <%= link_to "Créer un trip", new_trip_path, id:"btn-go", class:"button" %>
-  <%= link_to 'Editez votre compte',edit_user_registration_path, class:'button button-primary' %>
-<%end%>
+<div class="profilBanner text-center">
+  <p class="profil-title"> Bienvenue <%= @user.first_name%> </p>
+  <br>
+</div>
+<br>
+
+<div class="container">
+  <div class = "flex-container-around">
+    <% if @user == current_user %>
+     <%= link_to 'Éditez votre compte',edit_user_registration_path, class:'button' %>
+     <%= link_to "Créez un trip", new_trip_path, class:"button button-primary" %>
+    <%end%>
+  </div>
+  <hr>
+</div>
+
+<%= render 'showUserTrips' %>
+
+
+<div class="container">
+  <div class = "flex-container-center">
+    <% if @user == current_user %>
+     <%= link_to "Créez un trip", new_trip_path, class:"button" %>
+    <%end%>
+  </div>
 </div>
