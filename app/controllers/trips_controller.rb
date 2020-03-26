@@ -32,9 +32,6 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.category_id = params[:category_id]
     @trip.author = current_user
-    puts "@@@@@@@@@@@@@@@@@"
-    puts params[:trip_picture]
-    puts @trip.trip_picture.attached?
     @categories = Category.all.map{|c| [ c.name, c.id ] }
 
     respond_to do |format|

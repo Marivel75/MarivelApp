@@ -15,7 +15,7 @@ class Place < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
   has_and_belongs_to_many :trips
-
+  has_one_attached :place_picture
   
   def found_address_presence
     if latitude.blank? || longitude.blank?

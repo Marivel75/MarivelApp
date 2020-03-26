@@ -17,28 +17,3 @@
 </div>
 </div>
 <% end %>
-
-<!--
-<div class="jumbotron">
-  <div class="container">
-
-    <%if @trip.trip_picture.attached?%>
-      <%= image_tag @trip.trip_picture, alt: 'Image du voyage' %>
-    <%else%>
-      <p>Pas d'images</p>
-    <% end %>
-
-    <h1 class="trip-title-show"><%= @trip.title %></h1>
-    <p class="strong-text"><%= @trip.category.name %></p>
-    <p><%= @trip.description %></p>
-  <hr />
-  <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
-<% if pre_saved_trip %>
-  <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete%>
-<% else %>
-  <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
-<% end %>
-
-  </div>
-</div>
--->
