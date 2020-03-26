@@ -3,17 +3,13 @@
   <div class = "jumbotron_trip_text" style= "color:white">
     <h1 class="trip-title-show" style = "color: white"><i class="fas fa-quote-left fa-xs" style= "color:white"></i>  <%= @trip.title %>  <i class="fas fa-quote-right fa-xs" style= "color:white"></i></h1>
     <p>Un trip de <%= link_to "#{@trip.author.first_name}", user_path(@trip.author.id) %></p>
-    </div>
   </div>
-</div>
 </div>
 <% else %>
 <div class = "jumbotron trip_banner" style =  "background-image: url(<%= rails_blob_url(@trip.trip_picture)%>)">
   <div class = "jumbotron_trip_text" style= "color:white">
     <h1 class="trip-title-show" style = "color: white"><i class="fas fa-quote-left fa-xs" style= "color:white"></i>  <%= @trip.title %>  <i class="fas fa-quote-right fa-xs" style= "color:white"></i></h1>
     <p>Un trip de <%= link_to "#{@trip.author.first_name}", user_path(@trip.author.id) %></p>
-    </div>
   </div>
-</div>
 </div>
 <% end %>
