@@ -11,7 +11,9 @@
     <div class="five columns"> 
       <div class = "place_card">
         <h1 class="poi-name"><%= @place.name %></h1>
-        <p>Par : Auteur <p> 
+        <%if @place.author%>
+        <p>Par :  <%= link_to "#{@trip.author.first_name} #{@trip.author.last_name}", user_path(@place.author) %></p> 
+        <% end %>
         <p>Adresse : <%= @place.address %></p>
         <p>Prix : <%= @place.price %></p>
         <p>Contact : <%= @place.phone %></p>
@@ -23,7 +25,9 @@
       <div id="map" style="width: 100%; height: 240px"></div>
       <br>
       <div>
+      <%if current_user = @place.author%>
       <%= link_to "Éditer le lieu", edit_trip_place_path(@trip.id, @place[:id]), class:"button button-primary", style: "width: 100%" %>
+      <% end %>
       <%= link_to "Revenir au trip", trip_path(@trip), class:"button text-center", style: "width: 100%"  %>
       </div>
     </div>
