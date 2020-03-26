@@ -1,6 +1,10 @@
 <div class="container">
   <%= simple_form_for @trip do |f| %>
     <div class="row">
+      <%= f.input :title, label: 'Nom du trip', placeholder:"Nommez votre trip", error: "Entrez une description s'il vous plait", :input_html => { :style => 'width: 100%'}  %>
+    </div>
+    <br>
+    <div class="row">
       <%= f.input :description, label: 'Description du trip', placeholder:"Écrivez une courte description de votre itinéraire.", error: "Entrez une description s'il vous plait", :input_html => { :style => 'width: 100%'}  %>
     </div>
     <br>
@@ -9,7 +13,39 @@
     </div>
   <% end %>
 </div>
-
+<div class = "container">
+<h3>Etapes du trip</h3>
+<% if @trip.places.length > 0%>
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trip.places.each do |place|%>
+      <tr>
+        <% if place.place_picture.attached? %>
+          <td><img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px"></td>
+        <% else %>
+          <td> <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px"></td>
+        <% end %>
+        <td><%= link_to "#{place.name}", trip_place_path(@trip.id, place[:id])%> </td>
+        <td><%= place.address%></td>
+        <td><%= link_to "Éditer", edit_trip_place_path(@trip.id, place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
+        <td><%= link_to "Supprimer", trip_place_path(@trip, place), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce lieu ?"}, class:"button", style: "margin-top: 10px" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% else %>
+  <p>Aucune étape n'a encore été ajoutée, faites le dès maintenant !</p>
+<% end %>
+</div>
 <div class="container">
 
   <h3>Ajouter des lieux</h3>
