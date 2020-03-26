@@ -54,7 +54,7 @@
 <br>
 
   <div class ="flex-container-around">
-
+  <%if current_user%>
     <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
       <% if pre_saved_trip %>
         <div class="">
@@ -65,7 +65,7 @@
           <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
         </div>
       <% end %>
-
+  <%end%>
       <% if @trip.author == current_user%>
         <div class="navbar-item">
           <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>

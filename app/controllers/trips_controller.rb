@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
-  before_action :is_current_user?, only: [:create, :new]
+  before_action :is_current_user?, only: [:create, :new, :edit, :update]
 
   # GET /trips
   # GET /trips.json
@@ -22,6 +22,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
+    puts "@@@@@@@@@"
     @new_place = Place.new()
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
@@ -86,6 +87,8 @@ class TripsController < ApplicationController
     end
 
     def is_current_user?
-      redirect_to new_user_session_path if !current_user
+      if !current_user || @trip.author != current_user
+        redirect_to new_user_session_path
+      end
     end
 end
