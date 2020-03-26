@@ -1,4 +1,81 @@
 <div class="container">
+  <div class="row">
+    <div class= "seven columns">
+    <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
+    <hr>
+    <hr>
+    <span class ="place_card twelve columns" style = "min-height: 50px">
+      <p> <%= @place.description%></p>
+    </span>
+    </div>
+    <div class="five columns"> 
+      <div class = "place_card">
+        <h1 class="poi-name"><%= @place.name %></h1>
+        <p>Par : Auteur <p> 
+        <p>Adresse : <%= @place.address %></p>
+        <p>Prix : <%= @place.price %></p>
+        <p>Contact : <%= @place.phone %></p>
+        <% if @place.website != "" %>
+          <p>Site web : <%= link_to @place.website, "http://#{@place.website}" %></p>
+        <% end %>
+      </div>
+      <br>
+      <div id="map" style="width: 100%; height: 240px"></div>
+      <br>
+      <div>
+      <%= link_to "Éditer le lieu", edit_trip_place_path(@trip.id, @place[:id]), class:"button button-primary", style: "width: 100%" %>
+      <%= link_to "Revenir au trip", trip_path(@trip), class:"button text-center", style: "width: 100%"  %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+  var place = gon.place
+  var geojson = {type: 'FeatureCollection', features: [
+     {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [place.longitude, place.latitude]
+    },
+    properties: {
+      name: place.name,
+      description: place.description,
+      subtitle: place.subtitle,
+      price: place.price_2,
+      website: place.website,
+      phone: place.phone,
+      address: place.address
+    }
+  }
+  ]}
+var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
+
+mapboxgl.accessToken = accessToken;
+//on initialise notre map sur le div #map
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [place.longitude,place.latitude], //un centre initial [longitude, latitude] (facultatif)
+    zoom: 8 //un zoom initial (facultatif)
+});
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = ' fas fa-map-marker-alt fa-3x ';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.name + '</h3><p>' + marker.properties.address + '<hr><br>' + marker.properties.price + '$  |  ' + marker.properties.phone + '<hr><br>' +  marker.properties.website + '</p>'))
+    .addTo(map);
+});
+</script>
+<!--
+<div class="container">
   <h1 class="poi-name"><%= @place.name %></h1>
 
   <p class="strong-text">Adresse </p>
@@ -12,9 +89,9 @@
   </div>
 
 
-
+<div>
   <p class="strong-text"> Informations sur le lieu </p>
-  <div class="contaienr-sm">
+  <div class="container-sm">
     <p class="strong-text">
       <%= @place.subtitle %>
     </p>
@@ -42,3 +119,4 @@
   </div>
 
 </div>
+-->
