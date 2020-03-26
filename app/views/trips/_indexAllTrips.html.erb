@@ -9,9 +9,13 @@
     <div class="allTrips-container">
 
       <% @trips.each do |trip| %>
-        <div class="card-trip">
-          <div class="card-image">
-            <img src="">
+        <div class="card-trip text-center">
+          <div class="card-image twelve columns">
+          <% if trip.trip_picture.attached? %>
+             <img src = "<%= rails_blob_url(trip.trip_picture)%>"  style = "margin-bottom: 10px, width: 100%; max-height: 200px">
+          <% else %>
+            <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" style = "margin-bottom: 10px, width: 100%; max-height: 200px">
+          <% end %>
           </div>
           <div class="card-content">
             <div class="card-title">
