@@ -209,6 +209,13 @@
   text-decoration: none;
 }
 
+.trip-title-card {
+  font-family: "Raleway";
+  font-size: 1.5em;
+  color: #1EAEDB;
+  text-decoration: none;
+}
+
 .trip-title-show {
   font-family: "Raleway";
   font-size: 4em;
