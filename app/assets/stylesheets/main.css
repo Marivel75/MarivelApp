@@ -330,3 +330,9 @@
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+
+.button-danger {
+  color: red;
+  border-color: red;
+  background-color: red;
+}

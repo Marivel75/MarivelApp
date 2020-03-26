@@ -60,7 +60,7 @@ class PlacesController < ApplicationController
   def destroy
     @place.destroy
     respond_to do |format|
-      format.html { redirect_to places_url, notice: 'Le lieu a été supprimé.' }
+      format.html { redirect_to @trip, notice: 'Le lieu a été supprimé.' }
       format.json { head :no_content }
 
     end
