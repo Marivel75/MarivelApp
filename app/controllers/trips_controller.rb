@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :is_current_user?, only: [:create, :new]
 
   # GET /trips
   # GET /trips.json
@@ -30,6 +31,8 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.category_id = params[:category_id]
+    @trip.author = current_user
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
 
     respond_to do |format|
       if @trip.save
@@ -80,5 +83,9 @@ class TripsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def trip_params
       params.require(:trip).permit(:title, :description, :category_id)
+    end
+
+    def is_current_user?
+      redirect_to new_user_session_path if !current_user
     end
 end

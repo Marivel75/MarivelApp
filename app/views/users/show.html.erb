@@ -1,0 +1,28 @@
+<%= render 'shared/headerBanner' %>
+
+<div class="profilBanner text-center">
+  <p class="profil-title"> Bienvenue <%= @user.first_name%> </p>
+  <br>
+</div>
+<br>
+
+<div class="container">
+  <div class = "flex-container-around">
+    <% if @user == current_user %>
+     <%= link_to 'Éditez votre compte',edit_user_registration_path, class:'button' %>
+     <%= link_to "Créez un trip", new_trip_path, class:"button button-primary" %>
+    <%end%>
+  </div>
+  <hr>
+</div>
+
+<%= render 'showUserTrips' %>
+
+
+<div class="container">
+  <div class = "flex-container-center">
+    <% if @user == current_user %>
+     <%= link_to "Créez un trip", new_trip_path, class:"button" %>
+    <%end%>
+  </div>
+</div>

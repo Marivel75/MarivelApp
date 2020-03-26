@@ -1,5 +1,11 @@
 <div class="container">
 
+  <% if @trip.author %>
+    <p style = "text-align: right">
+      Créé par : <%= link_to "#{@trip.author.first_name}", user_path(@trip.author.id) %>
+    </p>
+  <% end %>
+
   <% @trip.places.each do |p| %>
 
       <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
@@ -18,7 +24,7 @@ var coords = []
   gon.places.forEach(function(place) {
     var new_array = [place.longitude, place.latitude];
     coords.push(new_array)
-    
+
   });
 
 
@@ -42,7 +48,7 @@ var geojson = {type: 'FeatureCollection', features: []}
     }
   };
   geojson.features.push(new_feature)
-    
+
   });
 
 // RAJOUTER LA CLÉ EN DESSOUS
@@ -56,16 +62,16 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [<%= @trip.places.first.longitude%>, <%= @trip.places.first.latitude%>], //un centre initial [longitude, latitude] (facultatif)
-    zoom: 13 //un zoom initial (facultatif)
+    zoom: 11 //un zoom initial (facultatif)
 });
 
 // add markers to map (les variables geojson et coords sont definies dans asset/javascript/places.js)
 geojson.features.forEach(function(marker) {
-  
+
   // create a HTML element for each feature
   var el = document.createElement('div');
   el.className = ' fas fa-map-marker-alt fa-3x ';
- 
+
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el)
     .setLngLat(marker.geometry.coordinates)

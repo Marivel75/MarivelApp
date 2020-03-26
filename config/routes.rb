@@ -9,11 +9,13 @@ Rails.application.routes.draw do
     resources :trip_pictures, only: [:create]
   end
 
-
-  resources :place
+  resources :places
 
   root to: "trips#index"
 
+  resources :users do
+    resources :trips
+  end
   namespace :admin do
     resources :users
     resources :trips

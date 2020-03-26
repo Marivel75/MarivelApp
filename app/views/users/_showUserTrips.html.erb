@@ -1,0 +1,30 @@
+<div class="container">
+  <h3>Trips publiés</h3>
+
+  <div class="allTrips-container">
+  <% if @user.created_trips.length > 0 %>
+   <% @user.created_trips.each do |trip| %>
+
+     <div class="card-trip">
+        <div class="card-image">
+          <img src="">
+        </div>
+        <div class="card-content">
+          <div class="card-title">
+            <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"trip-title" %>
+          </div>
+          <div class="">
+            <p class="strong-text"><%= trip.category.name %></p>
+            <p><%= trip.description %></p>
+            <%= link_to "Explorer", trip_path(trip[:id]), class:"button" %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <% elsif @user == current_user %>
+    <p>Vous n'avez publiés aucun trip, c'est le moment de commencer !</p>
+  <% else %>
+    <p><%= @user.first_name%> n'a publié aucun trip pour le moment !</p>
+  <% end %>
+  </div>
+</div>

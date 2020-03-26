@@ -9,12 +9,16 @@
 
 <div class="container">
   <div class="flex-container">
-    <div class="navbar-item">
-      <%= link_to "Éditez le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to "Revenir aux trips", trips_path, class:"button" %>
-    </div>
+    <% if @trip.author == current_user%>
+
+      <div class="navbar-item">
+        <%= link_to "Éditez le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
+      </div>
+
+    <% end%>
+  <div class="navbar-item">
+    <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+  </div>
   </div>
 </div>
 <br>

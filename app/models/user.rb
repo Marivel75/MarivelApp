@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :created_trips, foreign_key: "author_id", class_name: "Trip"
 
   after_create :welcome_send
 
