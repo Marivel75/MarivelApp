@@ -1,15 +1,19 @@
-<div class="jumbotron">
-  <div class="container">
-
-    <%if @trip.trip_picture.attached?%>
-      <%= image_tag @trip.trip_picture, alt: 'Image du voyage' %>
-    <% end %>
-
-    <h1 class="trip-title-show"><%= @trip.title %></h1>
-    <p class="strong-text"><%= @trip.category.name %></p>
-    <p><%= @trip.description %></p>
-  <hr />
-
-  
+<% if !@trip.trip_picture.attached?%>
+<div class = "jumbotron trip_banner" style =  "background-image: url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')">
+  <div class = "jumbotron_trip_text" style= "color:white">
+    <h1 class="trip-title-show" style = "color: white"><i class="fas fa-quote-left fa-xs" style= "color:white"></i>  <%= @trip.title %>  <i class="fas fa-quote-right fa-xs" style= "color:white"></i></h1>
+    <p>Un trip de <%= link_to "#{@trip.author.first_name}", user_path(@trip.author.id) %></p>
+    </div>
   </div>
 </div>
+</div>
+<% else %>
+<div class = "jumbotron trip_banner" style =  "background-image: url(<%= rails_blob_url(@trip.trip_picture)%>)">
+  <div class = "jumbotron_trip_text" style= "color:white">
+    <h1 class="trip-title-show" style = "color: white"><i class="fas fa-quote-left fa-xs" style= "color:white"></i>  <%= @trip.title %>  <i class="fas fa-quote-right fa-xs" style= "color:white"></i></h1>
+    <p>Un trip de <%= link_to "#{@trip.author.first_name}", user_path(@trip.author.id) %></p>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>

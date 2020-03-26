@@ -10,6 +10,7 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
+    gon.place = @place
   end
 
   # GET /places/new
@@ -26,7 +27,8 @@ class PlacesController < ApplicationController
   def create
     @place = Place.new(place_params)
     @trip = Trip.find(params[:trip_id])
-    @place.trips << @trip
+    @place.trips << @trip 
+    @place.author = current_user
     respond_to do |format|
       if @place.save
         format.html { redirect_to [@trip], notice: 'Le lieu a été crée.' }
@@ -73,6 +75,6 @@ class PlacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def place_params
-      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2)
+      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture)
     end
 end

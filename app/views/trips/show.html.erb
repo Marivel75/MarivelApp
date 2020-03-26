@@ -2,24 +2,23 @@
 
 <% if !@trip.places.empty? %>
   <%= render 'tripPOIs' %>
+<% elsif current_user == @trip.author%>
+  <div class = "container">
+  <p>Votres trip ne comporte pas encore d'étapes, c'est le moment d'en rajouter !</p> 
+   <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
+    <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+  </div>
+<% else %>
+<div class = "container">
+  <p>Le trip ne comporte pas encore d'étapes, patience !</p> 
+   <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+</div>
 <% end %>
 
 
-<p id="notice"><%= notice %></p>
 
-<div class="container">
-  <div class="flex-container">
-    <% if @trip.author == current_user%>
 
-      <div class="navbar-item">
-        <%= link_to "Éditez le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
-      </div>
 
-    <% end%>
-  <div class="navbar-item">
-    <%= link_to "Revenir aux trips", trips_path, class:"button" %>
-  </div>
-  </div>
-</div>
+
 <br>
 <br>

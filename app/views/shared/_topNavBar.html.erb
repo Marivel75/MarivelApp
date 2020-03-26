@@ -1,0 +1,34 @@
+<div class = "navbar-top-screen">
+
+  <div  class = "">
+    <%=link_to 'MARIVEL', trips_path, class:"brand-small" %>
+  </div>
+
+  <% if user_signed_in? %>
+  <div class="">
+    <div class="flex-container">
+      <div class="navbar-item">
+        <%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, user_path(current_user.id) %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'button' %>
+      </div>
+    </div>
+  </div>
+
+  <% else %>
+    <div class="">
+      <div class="flex-container">
+        <div class="navbar-item">
+          <%= link_to "Se connecter", new_user_session_path, class:"button" %>
+        </div>
+        <div class="navbar-item">
+          <%= link_to "S'inscrire", new_user_registration_path, class:"button button-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+  <br>
+  <br>

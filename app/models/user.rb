@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_many :created_trips, foreign_key: "author_id", class_name: "Trip"
+  has_many :created_places, foreign_key: "author_id", class_name: "Place"
 
   after_create :welcome_send
+  has_many :saved_trips, dependent: :destroy
 
   attr_accessor :login
 

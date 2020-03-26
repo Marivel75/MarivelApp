@@ -67,7 +67,10 @@
       <%= form.label :phone %>
       <%= form.text_field :phone, class:"u-full-width" %>
     </div>
-
+      <div class="flex-container">
+    <p>Vous pouvez ajouter une photo à votre lieu :</p>
+    <%= form.file_field :place_picture %>
+    </div>
     <div class="actions">
       <%= form.submit %>
     </div>

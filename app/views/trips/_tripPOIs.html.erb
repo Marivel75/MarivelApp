@@ -1,21 +1,63 @@
+<br>
+<br>
 <div class="container">
+  <div class = "row">
+  <div class = "twelve columns place_card">
+      <h5 class ="trip-title-show text-center"><%= @trip.title%></h5>
+  </div>
+  </div>
+  <div class = "row">
+    <div class = "four columns trip_card", style= "max-height: 600px">
+      <h5>Description du trip</h5>
+      <p><%= @trip.description%></p>
+      <h5>Etapes</h5>
+      <p><%= @trip.title%> est un trip en <%= @trip.places.length%> étape(s)</p>
+      <% @trip.places.each do |p| %>
+        <div class = "row">
+        <div class = "three columns">
+          <% if p.place_picture.attached? %>
+             <img src = "<%= rails_blob_url(p.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
+          <% else %>
+            <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
+          <% end %>
+        </div>
+        <div class = "nine columns">
+        <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
+        <p><%= p.description %><p>
+        </div>
+        </div>
+    <% end %>
+    </div>
+    <div class = "eight columns">
+    <div id="map" style="width: 100%; height: 600px;"></div>
+    </div>
+  <div class ="row">
+    <div class = "four columns">
+       <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
+      <% if pre_saved_trip %>
+        <%= button_to 'Ajouté aux favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, style: "color: green", class: "twelve columns"%>
+      <% else %>
+        <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
+      <% end %>
+    </div>
+    <div class = "four columns">
+        <div class="flex-container">
+    <% if @trip.author == current_user%>
+      <div class="navbar-item">
+        <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
+      </div>
+    <% end%>
+  <div class="navbar-item">
+    <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+  </div>
+  </div>
+    </div>
+  </div>
+  </div>
 
-  <% if @trip.author %>
-    <p style = "text-align: right">
-      Créé par : <%= link_to "#{@trip.author.first_name}", user_path(@trip.author.id) %>
-    </p>
-  <% end %>
-
-  <% @trip.places.each do |p| %>
-
-      <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
-      <p><%= p.description %><p>
-
-  <% end %>
-
-  <div id="map" style="width: 100%; height: 600px;"></div>
 </div>
 
+<p id="notice"><%= notice %></p>
 
 
 <script>

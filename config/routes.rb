@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
   resources :trips do
+    resources :saved_trips
     resources :places
     resources :trip_pictures, only: [:create]
   end
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :trips
   end
+
   namespace :admin do
     resources :users
     resources :trips

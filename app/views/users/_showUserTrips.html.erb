@@ -1,10 +1,11 @@
 <div class="container">
+
   <h3>Trips publiés</h3>
 
   <div class="allTrips-container">
   <% if @user.created_trips.length > 0 %>
-   <% @user.created_trips.each do |trip| %>
 
+   <% @user.created_trips.each do |trip| %>
      <div class="card-trip">
         <div class="card-image">
           <img src="">
@@ -21,10 +22,13 @@
         </div>
       </div>
     <%end%>
+
   <% elsif @user == current_user %>
     <p>Vous n'avez publiés aucun trip, c'est le moment de commencer !</p>
   <% else %>
     <p><%= @user.first_name%> n'a publié aucun trip pour le moment !</p>
   <% end %>
+
   </div>
+
 </div>

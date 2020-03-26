@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_092339) do
+ActiveRecord::Schema.define(version: 2020_03_26_135240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_092339) do
     t.float "price_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_places_on_author_id"
   end
 
   create_table "places_trips", id: false, force: :cascade do |t|
@@ -68,6 +70,15 @@ ActiveRecord::Schema.define(version: 2020_03_25_092339) do
     t.bigint "trip_id", null: false
     t.index ["place_id", "trip_id"], name: "index_places_trips_on_place_id_and_trip_id"
     t.index ["trip_id", "place_id"], name: "index_places_trips_on_trip_id_and_place_id"
+  end
+
+  create_table "saved_trips", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_saved_trips_on_trip_id"
+    t.index ["user_id"], name: "index_saved_trips_on_user_id"
   end
 
   create_table "travelers", force: :cascade do |t|
@@ -106,9 +117,9 @@ ActiveRecord::Schema.define(version: 2020_03_25_092339) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-
+  add_foreign_key "places", "users", column: "author_id"
+  add_foreign_key "saved_trips", "trips"
+  add_foreign_key "saved_trips", "users"
   add_foreign_key "trips", "users", column: "author_id"
-
 end

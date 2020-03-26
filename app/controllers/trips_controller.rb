@@ -82,7 +82,7 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:title, :description, :category_id)
+      params.require(:trip).permit(:title, :description, :category_id, :trip_picture)
     end
 
     def is_current_user?
