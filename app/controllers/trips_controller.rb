@@ -32,6 +32,9 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.category_id = params[:category_id]
     @trip.author = current_user
+    puts "@@@@@@@@@@@@@@@@@"
+    puts params[:trip_picture]
+    puts @trip.trip_picture.attached?
     @categories = Category.all.map{|c| [ c.name, c.id ] }
 
     respond_to do |format|
@@ -82,7 +85,7 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:title, :description, :category_id)
+      params.require(:trip).permit(:title, :description, :category_id, :trip_picture)
     end
 
     def is_current_user?
