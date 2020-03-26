@@ -76,7 +76,7 @@ geojson.features.forEach(function(marker) {
   new mapboxgl.Marker(el)
     .setLngLat(marker.geometry.coordinates)
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML('<h3>' + marker.properties.name + '</h3><p>' + marker.properties.address + '<hr><br>' + marker.properties.price + '$  |  ' + marker.properties.phone + '<hr><br>' +  marker.properties.website + '</p>'))
+    .setHTML('<h5>' + marker.properties.name + '</h5><p> Adresse : ' + marker.properties.address + '<hr><br>Prix : ' + marker.properties.price + '$  |  Contact : ' + marker.properties.phone + '<hr><br> Site web : ' +  marker.properties.website + '</p>'))
     .addTo(map);
 });
 
