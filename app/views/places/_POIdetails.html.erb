@@ -35,7 +35,7 @@
         <% end %>
 
         <% if @place.website != "" %>
-          <p>Site web : <%= link_to @place.website, "http://#{@place.website}" %></p>
+          <p>Site web : <%= link_to @place.website, "#{@place.website}" %></p>
         <% end %>
 
       </div>

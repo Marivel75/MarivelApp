@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2020_03_26_135240) do
     t.float "longitude"
     t.text "description"
     t.string "subtitle"
-    t.float "price"
+    t.string "price"
     t.string "website"
     t.string "phone"
-    t.float "price_2"
+    t.string "price_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id"

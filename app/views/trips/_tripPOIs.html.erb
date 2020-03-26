@@ -28,7 +28,7 @@
     </div>
 
     <div class = "eight columns">
-      <div id="map" style="width: 80%; height: 350px;"></div>
+      <div id="map" style="width: 100%; height: 400px;"></div>
     </div>
 
   </div>
@@ -58,7 +58,7 @@
     <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
       <% if pre_saved_trip %>
         <div class="">
-          <%= button_to 'Ajouté aux favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, style: "color: green", class: "twelve columns"%>
+          <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, class: "twelve columns"%>
         </div>
       <% else %>
         <div class="">

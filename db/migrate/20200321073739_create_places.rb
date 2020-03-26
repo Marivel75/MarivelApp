@@ -7,10 +7,10 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.float :longitude
       t.text :description
       t.string :subtitle
-      t.float :price
+      t.string :price
       t.string :website
       t.string :phone
-      t.float :price_2
+      t.string :price_2
 
       t.timestamps
     end
