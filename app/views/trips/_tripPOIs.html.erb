@@ -13,8 +13,15 @@
       <h5>Etapes</h5>
       <p><%= @trip.title%> est un trip en <%= @trip.places.length%> étape(s)</p>
       <% @trip.places.each do |p| %>
+        <div class = "row">
+        <div class = "three columns">
+           <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
+        </div>
+        <div class = "nine columns">
         <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
         <p><%= p.description %><p>
+        </div>
+        </div>
     <% end %>
     </div>
     <div class = "eight columns">
