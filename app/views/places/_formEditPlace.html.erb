@@ -51,6 +51,10 @@
       <%= form.text_field :price_2, class:"u-full-width" %>
     </div>
     <br>
+    <div class="flex-container">
+    <p>VVous pouvez modifier la photo associée à ce lieu : </p>
+    <%= form.file_field :place_picture %>
+    </div>
 
     <div class="actions">
       <%= form.submit %>
