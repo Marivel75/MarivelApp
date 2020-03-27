@@ -57,8 +57,18 @@
     <%= render 'shared/topNavBar' %>
 
     <% if flash[:notice] %>
+    <br>
+    <br>
       <% flash.each do |type, msg| %>
-        <div class="container notice-message" >
+        <div class="notice-message text-center" >
+          <%= msg %>
+        </div>
+      <% end %>
+    <% elsif flash[:alert]%>
+    <br>
+    <br>
+      <% flash.each do |type, msg| %>
+        <div class=" alert-message text-center" >
           <%= msg %>
         </div>
       <% end %>
