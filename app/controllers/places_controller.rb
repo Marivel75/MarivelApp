@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :set_place, only: [:show, :new,:edit, :update, :destroy]
   before_action :is_current_user?, only: [:create, :new, :edit, :update]
 
   # GET /places

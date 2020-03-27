@@ -1,4 +1,4 @@
-  <%= form_with model: place, local: true do |form| %>
+  <%= form_with model: [@trip, place], local: true do |form| %>
     <% if place.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -51,7 +51,10 @@
       <%= form.label :phone %>
       <%= form.text_field :phone, class:"u-full-width" %>
     </div>
-
+    <div class="flex-container">
+    <p>Vous pouvez ajouter une photo à votre lieu :</p>
+    <%= form.file_field :place_picture %>
+    </div>
     <div class="actions">
       <%= form.submit %>
     </div>
