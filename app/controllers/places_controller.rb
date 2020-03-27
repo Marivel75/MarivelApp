@@ -81,8 +81,12 @@ class PlacesController < ApplicationController
 
     def is_current_user?
       set_place
-       if !current_user || @place.author != current_user
+       if !current_user 
+        flash.alert = "Veuillez vous connecter"
         redirect_to new_user_session_path
+        elsif @place.author != current_user
+          flash.alert = "Vous n'avez pas les droits nécessaires"
+          redirect_to trip_place_path(@trip, @place)
        end
     end
 

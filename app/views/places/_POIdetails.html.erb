@@ -46,7 +46,7 @@
       <br>
 
       <div>
-        <%if current_user = @place.author%>
+        <%if current_user && current_user == @place.author%>
         <%= link_to "Éditer le lieu", edit_trip_place_path(@trip.id, @place[:id]), class:"button button-primary", style: "width: 100%" %>
         <% end %>
         <%= link_to "Revenir au trip", trip_path(@trip), class:"button text-center", style: "width: 100%"  %>

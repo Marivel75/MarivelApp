@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :trip_pictures, only: [:create]
   end
 
-  resources :places
 
   root to: "trips#index"
 

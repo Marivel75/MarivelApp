@@ -297,11 +297,16 @@
 }
 
 .notice-message {
-  background-color: #deecfa ;
+  background-color: #6c8baa ;
   color: white;
   text-decoration: none;
 }
 
+.alert-message {
+  background-color: #e04b4b ;
+  color: white;
+  text-decoration: none;
+}
 .fas, .far {
   color: #33C3F0;
  }
