@@ -87,5 +87,5 @@ class PlacesController < ApplicationController
          redirect_to trip_place_path(@trip, @place)
       end
     end
-    
+
 end
