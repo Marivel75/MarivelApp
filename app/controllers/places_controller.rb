@@ -71,7 +71,7 @@ class PlacesController < ApplicationController
 
     def set_place
       @trip = Trip.find(params[:trip_id])
-      @place = Place.find(params[:id])
+      @place = Place.find(params[:id]) if params[:id]
     end
 
     def place_params
@@ -83,7 +83,7 @@ class PlacesController < ApplicationController
       if !current_user
        flash.alert = "Veuillez vous connecter"
        redirect_to new_user_session_path
-       elsif @place.author != current_user
+       elsif @place && @place.author != current_user
          flash.alert = "Vous n'avez pas les droits nécessaires"
          redirect_to trip_place_path(@trip, @place)
       end
