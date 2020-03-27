@@ -8,7 +8,7 @@
   <div class="allTrips-container">
 
     <% @trips.each do |trip| %>
-
+      <% if trip.places.length > 0%>
       <div class="card-trip">
 
         <div class="card-image">
@@ -29,6 +29,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     <% end %>
 
   </div>

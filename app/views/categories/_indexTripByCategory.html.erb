@@ -2,7 +2,7 @@
 
 
   <% Trip.where(category_id: @category.id).each do |trip| %>
-
+  <%if trip.places.length > 0%>
   <div class="card-trip">
 
       <div class="card-image">
@@ -23,6 +23,7 @@
         </div>
       </div>
   </div>
+  <% end %>
   <% end %>
 
 </div>
