@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :is_current_user?, only: [:create, :new, :edit, :update]
 
   # GET /places
   # GET /places.json
@@ -76,6 +77,13 @@ class PlacesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def place_params
       params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture)
+    end
+
+    def is_current_user?
+      set_place
+       if !current_user || @place.author != current_user
+        redirect_to new_user_session_path
+       end
     end
 
 end

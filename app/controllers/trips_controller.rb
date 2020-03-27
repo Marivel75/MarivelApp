@@ -86,6 +86,9 @@ class TripsController < ApplicationController
     end
 
     def is_current_user?
-        redirect_to new_user_session_path if !current_user
+      set_trip
+       if !current_user || @trip.author != current_user
+        redirect_to new_user_session_path
+       end
     end
 end
