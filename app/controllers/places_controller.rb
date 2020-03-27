@@ -1,6 +1,5 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  before_action :is_current_user?, only: [:edit, :update, :new, :create]
 
   # GET /places
   # GET /places.json
@@ -28,7 +27,7 @@ class PlacesController < ApplicationController
   def create
     @place = Place.new(place_params)
     @trip = Trip.find(params[:trip_id])
-    @place.trips << @trip 
+    @place.trips << @trip
     @place.author = current_user
     respond_to do |format|
       if @place.save
@@ -79,9 +78,4 @@ class PlacesController < ApplicationController
       params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture)
     end
 
-    def is_current_user?
-      if !current_user || @trip.author != current_user
-        redirect_to new_user_session_path
-      end
-    end
 end
