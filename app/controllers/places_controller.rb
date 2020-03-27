@@ -68,26 +68,27 @@ class PlacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_place
       @trip = Trip.find(params[:trip_id])
       @place = Place.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def place_params
       params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture)
     end
 
     def is_current_user?
       set_place
-       if !current_user 
-        flash.alert = "Veuillez vous connecter"
-        redirect_to new_user_session_path
-        elsif @place.author != current_user
-          flash.alert = "Vous n'avez pas les droits nécessaires"
-          redirect_to trip_place_path(@trip, @place)
-       end
+      if !current_user
+       flash.alert = "Veuillez vous connecter"
+       redirect_to new_user_session_path
+       elsif @place.author != current_user
+         flash.alert = "Vous n'avez pas les droits nécessaires"
+         redirect_to trip_place_path(@trip, @place)
+      end
     end
+
+    
 
 end
