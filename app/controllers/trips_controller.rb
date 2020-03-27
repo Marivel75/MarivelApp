@@ -75,20 +75,17 @@ class TripsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_trip
       @trip = Trip.find(params[:id])
       gon.places = @trip.places.all
     end
 
-    # Only allow a list of trusted parameters through.
     def trip_params
       params.require(:trip).permit(:title, :description, :category_id, :trip_picture)
     end
 
     def is_current_user?
-      if !current_user || @trip.author != current_user
-        redirect_to new_user_session_path
-      end
+        redirect_to new_user_session_path if !current_user
     end
 end
