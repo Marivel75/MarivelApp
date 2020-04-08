@@ -89,3 +89,4 @@ gem 'omniauth-google'
 gem 'geocoder'
 gem 'gon'
 gem "aws-sdk-s3", require: false
+gem 'pundit'

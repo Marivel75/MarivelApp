@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+
+  enum role: [:traveler, :partner, :admin]
+
+  after_initialize do
+    if self.new_record?
+      self.role ||= :traveler
+    end
+  end
+
   has_many :created_trips, foreign_key: "author_id", class_name: "Trip"
   has_many :created_places, foreign_key: "author_id", class_name: "Place"
 

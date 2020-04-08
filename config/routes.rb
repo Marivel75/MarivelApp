@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :partners
-  resources :travelers
   devise_for :users
   resources :categories
   resources :trips do
@@ -11,15 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :places
-  
+
   root to: "trips#index"
 
   resources :users do
-    resources :trips
-  end
-
-  namespace :admin do
-    resources :users
     resources :trips
   end
 
