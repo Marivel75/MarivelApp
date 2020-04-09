@@ -59,7 +59,6 @@
 .nav-trip-cat {
   background-color: #d4d1c8;
   opacity: 0.9;
-
 }
 
 .container-sm {
@@ -294,6 +293,7 @@
   color: #100000;
   font-weight: bold;
   font-size: 2em;
+  text-decoration: none
 }
 
 .notice-message {

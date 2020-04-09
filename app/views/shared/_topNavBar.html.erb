@@ -11,6 +11,9 @@
         <%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, user_path(current_user.id) %>
       </div>
       <div class="navbar-item">
+        <%= link_to "#{current_user.first_name}", user_path(current_user.id), class:"welcome-text" %>
+      </div>
+      <div class="navbar-item">
         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'button' %>
       </div>
     </div>

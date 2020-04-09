@@ -9,7 +9,7 @@
     <div class="">
       <h1>L'inspiration de vos explorations</h1>
     </div>
-    <!-- <a href = "#categories_index" class = "button button-primary">Découvrez nos trips</a> -->
+
     <% if user_signed_in? %>
       <div class="center">
         <p class='welcome-text'> Bienvenue <%= current_user.first_name%> </p>
@@ -34,7 +34,16 @@
         </div>
       </div>
     <% end %>
+
+    <% if isAdmin? %>
+    <div class="navbar-item">
+        <%= link_to "Espace Admin", admin_users_path, class:'button'  %>
     </div>
+    <% end %>
+
+    </div>
+
+
 
       <br>
       <br>

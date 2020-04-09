@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.includes(:category).all
+    @trips = Trip.published.includes(:category).all
   end
 
   # GET /trips/1
@@ -22,7 +22,6 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
-    puts "@@@@@@@@@"
     @new_place = Place.new()
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
