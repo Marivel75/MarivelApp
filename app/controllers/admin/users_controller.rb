@@ -2,16 +2,14 @@ module Admin
 
   class UsersController < ApplicationController
 
+    before_action :set_user, only: [:show, :update, :edit, :destroy]
+
     def index
       @users = User.all
     end
 
     def new
-
-    end
-
-    def create
-
+      @user = User.new
     end
 
     def show
@@ -19,18 +17,23 @@ module Admin
     end
 
     def edit
+    end
 
+    def update
+      @user.update(user_params)
+      redirect_to admin_user_path(@user[:id]), notice: "Le compte a été modifié."
     end
 
     def destroy
       @user.destroy
-      respond_to do |format|
-        format.html { redirect_to users_path, notice: "L'utilisateur a été supprimé." }
-        format.json { head :no_content }
-      end
+      redirect_to admin_user_path(@user[:id]), notice: "Le compte a été supprimé."
+    end
+
+    private
+
+    def set_user
+      @user = User.find(params[:id])
     end
 
   end
-
-
 end

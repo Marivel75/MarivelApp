@@ -4,7 +4,7 @@ module Admin
 
     before_action :only_admin
 
-    layout 'admin'
+    #layout 'admin'
 
 
     private

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   scope 'admin', module: 'admin',  as: 'admin' do
-    resources :users 
+    resources :users, except: [:create]
   end
 
 
