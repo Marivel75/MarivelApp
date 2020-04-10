@@ -19,7 +19,7 @@
           <td><%= category.id %></td>
           <td><%= category.name %></td>
           <td><%= category.created_at %></td>
-          <td><%= link_to 'Editer', edit_category_path(category) %></td>
+          <td><%= link_to 'Editer', edit_admin_category_path(category) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -27,6 +27,6 @@
 
   <br>
 
-  <%= link_to 'Créer une nouvelle catégorie', new_category_path, class:"button button-primary" %>
+  <%= link_to 'Créer une nouvelle catégorie', new_admin_category_path, class:"button button-primary" %>
 
 </div>
