@@ -36,9 +36,17 @@
     <% end %>
 
     <% if isAdmin? %>
-    <div class="navbar-item">
-        <%= link_to "Espace Admin", admin_users_path, class:'button'  %>
-    </div>
+      <div class="flex-container">
+        <div class="navbar-item">
+            <%= link_to "Espace Admin des users", admin_users_path, class:'button'  %>
+        </div>
+        <div class="navbar-item">
+            <%= link_to "Espace Admin des trips", admin_trips_path, class:'button'  %>
+        </div>
+        <div class="navbar-item">
+            <%= link_to "Espace Admin des catégories", admin_categories_path, class:'button'  %>
+        </div>
+      </div>
     <% end %>
 
     </div>

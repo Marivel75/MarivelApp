@@ -1,7 +1,7 @@
 <div class="allTrips-container">
 
 
-  <% Trip.where(category_id: @category.id).each do |trip| %>
+  <% Trip.where(category_id: @category.id, online: true).each do |trip| %>
   <%if trip.places.length > 0%>
   <div class="card-trip">
 

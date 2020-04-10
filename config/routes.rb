@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :categories
+  resources :categories, only: [:show]
   resources :trips do
     resources :saved_trips
     resources :places
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   scope 'admin', module: 'admin',  as: 'admin' do
     resources :users, except: [:create]
+    resources :trips
+    resources :categories
   end
 
 

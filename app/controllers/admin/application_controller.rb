@@ -6,7 +6,6 @@ module Admin
 
     #layout 'admin'
 
-
     private
 
     def only_admin
