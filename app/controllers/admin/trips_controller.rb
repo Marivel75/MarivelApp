@@ -37,7 +37,7 @@ module Admin
 
       respond_to do |format|
         if @trip.save
-          format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+          format.html { redirect_to @trip, notice: "L'itinéraire a été crée." }
           format.json { render :show, status: :created, location: @trip }
         else
           format.html { render :new }

@@ -31,9 +31,9 @@
           <td><%= trip.updated_at %></td>
           <td><%= trip.online %></td>
           <td>
-            <%= link_to 'Editer', edit_admin_trip_path(trip[:id]) %>
+            <%= link_to 'Édition', edit_admin_trip_path(trip[:id]) %>
           </td>
-          <td> <%= link_to 'Supprimer', admin_trip_path(trip[:id]), method: :delete, data: {confirm: "Êtes-vous sûr de supprimer ce trip ?"} %>
+          <td> <%= link_to 'Suppression', admin_trip_path(trip[:id]), method: :delete, data: {confirm: "Confirmez-vous la suppression de ce trip ?"} %>
           </td>
         </tr>
       <% end %>
