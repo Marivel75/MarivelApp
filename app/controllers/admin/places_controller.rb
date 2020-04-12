@@ -64,7 +64,6 @@ module Admin
       respond_to do |format|
         format.html { redirect_to admin_places_path, notice: 'Le lieu a été supprimé.' }
         format.json { head :no_content }
-
       end
     end
 

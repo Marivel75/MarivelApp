@@ -26,7 +26,7 @@ module Admin
 
     def destroy
       @user.destroy
-      redirect_to admin_user_path(@user[:id]), notice: "Le compte a été supprimé."
+      redirect_to admin_users_path, notice: "Le compte a été supprimé."
     end
 
     private
