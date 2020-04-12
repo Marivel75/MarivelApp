@@ -9,7 +9,7 @@ class User < ApplicationRecord
   end
 
   has_many :created_trips, foreign_key: "author_id", class_name: "Trip"
-  has_many :created_places, foreign_key: "author_id", class_name: "Place"
+  # has_many :created_places, foreign_key: "author_id", class_name: "Place"
 
   after_create :welcome_send
   has_many :saved_trips, dependent: :destroy
@@ -23,7 +23,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
-
 
 
   def self.find_first_by_auth_conditions(warden_conditions)

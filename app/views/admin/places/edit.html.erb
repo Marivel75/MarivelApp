@@ -1,0 +1,26 @@
+<br>
+<br>
+<div class="container">
+  <h1 class="poi-name"><%= @place.name %></h1>
+
+  <p class="strong-text">Adresse </p>
+  <div class="container-sm">
+    <p> <%= @place.address %> </p>
+  </div>
+  <p class="strong-text">Coordonnées géographiques </p>
+  <div class="container-sm">
+    <p> Latitude : <%= @place.latitude %></p>
+    <p> Longitude : <%= @place.longitude %></p>
+  </div>
+<hr />
+</div>
+
+<%= render 'formEditPlace', place: @place %>
+
+<div class="container">
+  <%= link_to "Revenir à la liste des lieux", admin_places_path, class:"button btn-margin" %>
+  <%= link_to "Supprimer le lieu", admin_place_path, method:"delete", data: {confirm: "Confirmez-vous la suppression de ce lieu ?"}, class:"button btn-margin" %>
+</div>
+<br>
+<br>
+<br>

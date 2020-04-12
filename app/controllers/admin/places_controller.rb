@@ -1,7 +1,7 @@
 module Admin
 
   class PlacesController < ApplicationController
-    before_action :set_place, only: [:show, :new, :edit, :update, :destroy]
+    before_action :set_place, only: [:show, :edit, :update, :destroy]
 
     # GET /places
     # GET /places.json
