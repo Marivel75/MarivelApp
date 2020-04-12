@@ -1,0 +1,151 @@
+<div class="container">
+
+  <%= form_with(url:[:admin, trip], model: trip, local: true) do |form| %>
+    <% if trip.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(place.errors.count, "error") %> Les modifications n'ont pas pu être enregistrées :</h2>
+
+        <ul>
+        <% place.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title, "Titre du trip" %>
+      <%= form.text_field :title, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :description, "Description" %>
+      <%= form.text_field :description, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="flex-container">
+    <p>Vous pouvez modifier la photo associée à ce trip : </p>
+    <%= form.file_field :trip_picture %>
+    </div>
+    <br>
+    <div class="">
+      <%= form.label :category, "Modifier la catégorie" %>
+      <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionner une catégorie", class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= form.submit "Confirmer les modifications", class:"button-primary" %>
+    </div>
+  <% end %>
+
+</div>
+
+
+<div class = "container">
+<h3>Etapes du trip</h3>
+<% if @trip.places.length > 0%>
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trip.places.each do |place|%>
+      <tr>
+        <% if place.place_picture.attached? %>
+          <td><img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px"></td>
+        <% else %>
+          <td> <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px"></td>
+        <% end %>
+        <td><%= link_to "#{place.name}", place_path(place[:id])%> </td>
+        <td><%= place.address%></td>
+        <td><%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
+        <td><%= link_to "Supprimer", admin_place_path(@trip, place), method:"delete", data: {confirm: "Êtes-vous sûr de retirer ce lieu du trip ?"}, class:"button", style: "margin-top: 10px" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% else %>
+  <p>Aucune étape n'a encore été ajoutée</p>
+<% end %>
+</div>
+<div class="container">
+
+  <h3>Ajouter des lieux</h3>
+
+  <%= form_with model: [@trip, @new_place], local: true do |form| %>
+    <% if @new_place.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+        <ul>
+        <% @new_place.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name, "Nom" %>
+      <%= form.text_field :name, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :address, "Adresse" %>
+      <%= form.text_area :address, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :subtitle, "Sous-titre" %>
+      <%= form.text_field :subtitle, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :description, "Description" %>
+      <%= form.text_area :description, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :price, "Tarif" %>
+      <%= form.text_field :price, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :price_2, "Autre tarif" %>
+      <%= form.text_field :price_2, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :website, "Site internet" %>
+      <%= form.text_field :website, class:"u-full-width" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :phone, "Téléphone" %>
+      <%= form.text_field :phone, class:"u-full-width" %>
+    </div>
+    <br>
+      <div class="flex-container">
+    <p>Vous pouvez ajouter une photo à votre lieu :</p>
+    <%= form.file_field :place_picture %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Ajouter le lieu", class:"button-primary" %>
+    </div>
+  <% end %>
+</div>
+  <hr />
+
+    <div class="container">
+      <%= link_to "Revenir à la liste des trips", admin_trips_path, class:"button btn-margin" %>
+      <%= link_to "Supprimer le trip", admin_trip_path(trip[:id]), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce trip ?"}, class:"button btn-margin" %>
+    </div>
+  <br>
+  <br>
+  <br>

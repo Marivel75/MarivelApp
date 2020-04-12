@@ -1,0 +1,169 @@
+<div class="container">
+
+    <p class="strong-text"><%= @trip.description%></p>
+
+    <div class="flex-container-center">
+      <i class="fas fa-map-marker-alt fa-3x icon-margin"></i>
+      <p class="welcome-text icon-margin"><%= @trip.places.length%> étape(s)</p>
+    </div>
+    <br>
+
+
+  <div class="row">
+    <div class = "four columns trip_card", style= "max-height: 600px">
+      <% @trip.places.each do |p| %>
+        <div class = "row">
+          <div class = "three columns">
+            <% if p.place_picture.attached? %>
+               <img src = "<%= rails_blob_url(p.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
+            <% else %>
+              <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
+            <% end %>
+          </div>
+          <div class = "nine columns">
+            <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name-sm" %> </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class = "eight columns">
+      <div id="map" style="width: 100%; height: 590px;"></div>
+    </div>
+
+  </div>
+  <br>
+  <br>
+
+
+  <% @trip.places.each do |p| %>
+    <div class = "row">
+      <div class = "three columns">
+        <% if p.place_picture.attached? %>
+           <img src = "<%= rails_blob_url(p.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
+        <% else %>
+          <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
+        <% end %>
+      </div>
+      <div class = "nine columns">
+        <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
+        <p><%= p.description %><p>
+      </div>
+    </div>
+  <% end %>
+<br>
+
+  <div class ="flex-container-around">
+  <%if current_user%>
+    <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
+      <% if pre_saved_trip %>
+        <div class="">
+          <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, class: "twelve columns"%>
+        </div>
+      <% else %>
+        <div class="">
+          <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
+        </div>
+      <% end %>
+  <%end%>
+      <% if @trip.author == current_user%>
+        <div class="navbar-item">
+          <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
+        </div>
+      <% end%>
+        <div class="navbar-item">
+          <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+        </div>
+
+  </div>
+
+
+</div>
+
+
+<p id="notice"><%= notice %></p>
+
+
+
+
+
+
+<script>
+
+var coords = []
+  gon.places.forEach(function(place) {
+    var new_array = [place.longitude, place.latitude];
+    coords.push(new_array)
+
+  });
+
+
+
+var geojson = {type: 'FeatureCollection', features: []}
+ gon.places.forEach(function(place) {
+    var new_feature = {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [place.longitude, place.latitude]
+    },
+    properties: {
+      name: place.name,
+      description: place.description,
+      subtitle: place.subtitle,
+      price: place.price_2,
+      website: place.website,
+      phone: place.phone,
+      address: place.address
+    }
+  };
+  geojson.features.push(new_feature)
+
+  });
+
+// RAJOUTER LA CLÉ EN DESSOUS
+var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
+
+///////////////////
+
+mapboxgl.accessToken = accessToken;
+//on initialise notre map sur le div #map
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [<%= @trip.places.first.longitude%>, <%= @trip.places.first.latitude%>], //un centre initial [longitude, latitude] (facultatif)
+    zoom: 11 //un zoom initial (facultatif)
+});
+
+// add markers to map (les variables geojson et coords sont definies dans asset/javascript/places.js)
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = ' fas fa-map-marker-alt fa-3x ';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h5>' + marker.properties.name + '</h5><p> Adresse : ' + marker.properties.address + '<hr><br>Prix : ' + marker.properties.price + '$  |  Contact : ' + marker.properties.phone + '<hr><br> Site web : ' +  marker.properties.website + '</p>'))
+    .addTo(map);
+});
+
+map.on('load', function () {
+    fitMap(map, coords);
+});
+
+function fitMap(map, coords) {
+    var bounds = coords.reduce(function (bounds, coord) {
+        return bounds.extend(coord);
+    }, new mapboxgl.LngLatBounds(coords[0], coords[0]));
+    map.fitBounds(bounds, {
+        padding: 30 //marge autour des points
+    });
+}
+
+
+
+
+</script>

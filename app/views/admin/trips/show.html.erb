@@ -1,0 +1,14 @@
+<%= render 'tripBanner' %>
+<br>
+
+<% if !@trip.places.empty? %>
+  <%= render 'tripPOIs' %>
+<% else%>
+  <div class = "container">
+    <p>Ce trip ne comporte pas encore d'étapes.</p>
+    <%= link_to "Éditer le trip", edit_admin_trip_path(@trip[:id]), class:"button button-primary" %>
+    <%= link_to "Revenir à la liste des trips", admin_trips_path, class:"button" %>
+  </div>
+<% end %>
+<br>
+<br>
