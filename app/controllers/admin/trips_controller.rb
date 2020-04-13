@@ -37,11 +37,11 @@ module Admin
 
       respond_to do |format|
         if @trip.save
-          format.html { redirect_to @trip, notice: "L'itinéraire a été crée." }
-          format.json { render :show, status: :created, location: @trip }
+          format.html { redirect_to edit_admin_trip_url(@trip[:id]), notice: "L'itinéraire a été crée, vous pouvez maintenant ajouter des étapes." }
+          # format.json { render :show, status: :created, location: @trip }
         else
           format.html { render :new }
-          format.json { render json: @trip.errors, status: :unprocessable_entity }
+          # format.json { render json: @trip.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -50,7 +50,7 @@ module Admin
     # PATCH/PUT /trips/1.json
     def update
       @trip.update(trip_params)
-      redirect_to admin_trip_path(@trip[:id]), notice: "Le trip a été modifié."
+      redirect_to admin_trip_path(@trip[:id]), notice: "L'itinéraire a été modifié."
 
       # @trip.category_id = params[:category_id]
       # respond_to do |format|
@@ -69,8 +69,8 @@ module Admin
     def destroy
       @trip.destroy
       respond_to do |format|
-        format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
-        format.json { head :no_content }
+        format.html { redirect_to admin_trips, notice: "L'itinéraire a été supprimé." }
+        # format.json { head :no_content }
       end
     end
 
@@ -87,17 +87,6 @@ module Admin
         params.require(:trip).permit(:title, :description, :category_id, :trip_picture)
       end
 
-      def is_current_user?
-        set_trip
-         if !current_user
-          flash.alert = "Veuillez vous connecter"
-          redirect_to new_user_session_path
-        elsif  @trip && @trip.author != current_user
-            flash.alert = "Vous n'avez pas les droits nécessaires"
-            redirect_to @trip
-         end
-      end
   end
-
 
 end

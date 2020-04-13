@@ -5,7 +5,7 @@
   <%= render 'tripPOIs' %>
 <% elsif current_user == @trip.author%>
   <div class = "container">
-    <p>Votres trip ne comporte pas encore d'étapes, c'est le moment d'en rajouter !</p>
+    <p>Votre itinéraire ne comporte pas encore d'étape, c'est le moment d'en rajouter !</p>
     <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
     <%= link_to "Revenir aux trips", trips_path, class:"button" %>
   </div>

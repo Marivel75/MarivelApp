@@ -18,9 +18,12 @@ Rails.application.routes.draw do
 
   scope 'admin', module: 'admin',  as: 'admin' do
     resources :users, except: [:create]
-    resources :trips
     resources :categories
     resources :places
+    resources :trips do
+      resources :places
+      resources :trip_pictures, only: [:create]
+    end
   end
 
 

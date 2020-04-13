@@ -1,0 +1,46 @@
+<%= form_with(url: [:admin, @trip], model: @trip, local: true, multipart: true) do |form| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trip.errors.count, "error") %> L'itinéraire n'a pas pu être enregistré :</h2>
+
+      <ul>
+      <% trip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Titre" %>
+    <%= form.text_field :title, class:"u-full-width" %>
+  </div>
+<br>
+
+  <div class="">
+    <%= form.label :category, "Catégorie" %>
+    <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionnez une catégorie de trip.", class:"u-full-width" %>
+  </div>
+
+<br>
+
+  <div class="field">
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description, class:"u-full-width" %>
+  </div>
+  <br>
+  <br>
+
+  <div class="flex-container">
+    <p>Vous pouvez ajouter une photo à votre itinéraire :</p>
+    <%= form.file_field :trip_picture %>
+  </div>
+  <br>
+  <br>
+
+  <div class="actions">
+    <%= form.submit "Enregistrer l'itinéraire", class:"button-primary"%>
+  </div>
+
+<% end %>
