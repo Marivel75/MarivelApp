@@ -13,6 +13,7 @@ class Place < ApplicationRecord
 
   validates :name, :address, :description, presence: true
   validate :found_address_presence
+  
   belongs_to :author, class_name: 'User'
 
   has_many :joins_places_and_trips

@@ -18,6 +18,7 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @start_place = Place.new
   end
 
   # GET /trips/1/edit
@@ -69,7 +70,7 @@ class TripsController < ApplicationController
     @trip.destroy
     respond_to do |format|
       format.html { redirect_to trips_url, notice: "L'itinéraire a été supprimé." }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 
@@ -78,7 +79,7 @@ class TripsController < ApplicationController
     def set_trip
       if params[:id]
         @trip = Trip.find(params[:id])
-        gon.places = @trip.places.all
+        # gon.places = @trip.places.all
       end
     end
 

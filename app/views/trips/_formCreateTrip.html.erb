@@ -1,7 +1,7 @@
 <%= form_with(model: trip, local: true, multipart: true) do |form| %>
   <% if trip.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+      <h2><%= pluralize(trip.errors.count, "error") %> L'itinéraire n'a pas pu être enregistré :</h2>
 
       <ul>
       <% trip.errors.full_messages.each do |message| %>
@@ -13,34 +13,35 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title, "Titre" %>
     <%= form.text_field :title, class:"u-full-width" %>
   </div>
-<br>
-
+  <br>
   <div class="">
-    <%= form.label :category %>
+    <%= form.label :category, "Catégorie" %>
     <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionnez une catégorie de trip.", class:"u-full-width" %>
   </div>
-
-<br>
-
+  <br>
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description, "Description" %>
     <%= form.text_area :description, class:"u-full-width" %>
   </div>
   <br>
   <br>
-
   <div class="flex-container">
-    <p>Vous pouvez ajouter une photo à votre itinéraire :</p>
+    <p>Vous pouvez ajouter une photo :</p>
     <%= form.file_field :trip_picture %>
   </div>
   <br>
   <br>
 
-  <div class="actions">
-    <%= form.submit "Enregistrer"%>
-  </div>
 
+  <div class="flex-container-around">
+    <div class="actions">
+      <%= form.submit "Enregistrer", class:"button-primary"%>
+    </div>
+    <div class="">
+      <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
+    </div>
+  </div>
 <% end %>

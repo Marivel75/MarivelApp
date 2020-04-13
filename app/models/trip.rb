@@ -7,6 +7,7 @@ class Trip < ApplicationRecord
   has_many :joins_places_and_trips
   has_many :places, through: :joins_places_and_trips
 
+
   has_one_attached :trip_picture
 
   validates :title, :description, presence: true
