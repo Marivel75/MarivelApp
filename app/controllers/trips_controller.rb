@@ -18,7 +18,7 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     @categories = Category.all.map{|c| [ c.name, c.id ] }
-    @start_place = Place.new
+    @new_place = Place.new()
   end
 
   # GET /trips/1/edit

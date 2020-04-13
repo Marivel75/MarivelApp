@@ -30,14 +30,14 @@ module Admin
       @place = Place.new(place_params)
       # @trip = Trip.find(params[:trip_id])
       # @place.trips << @trip
-      # @place.author = current_user
+      @place.author = current_user
       respond_to do |format|
         if @place.save
-          format.html { redirect_to [@place], notice: 'Le lieu a été crée.' }
-          format.json { render :show, status: :created, location: @place }
+          format.html { redirect_to admin_place_path(@place[:id]), notice: 'Le lieu a été crée.' }
+          #format.json { render :show, status: :created, location: @place }
         else
           format.html { render :new }
-          format.json { render json: @place.errors, status: :unprocessable_entity }
+          #format.json { render json: @place.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -48,11 +48,11 @@ module Admin
       puts place_params
       respond_to do |format|
         if @place.update(place_params)
-          format.html { redirect_to [@place], notice: 'Les modifications ont été enregistrées.' }
-          format.json { render :show, status: :ok, location: @place }
+          format.html { redirect_to admin_place_path(@place[:id]), notice: 'Les modifications ont été enregistrées.' }
+          #format.json { render :show, status: :ok, location: @place }
         else
           format.html { render :edit }
-          format.json { render json: @place.errors, status: :unprocessable_entity }
+          #format.json { render json: @place.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -63,7 +63,7 @@ module Admin
       @place.destroy
       respond_to do |format|
         format.html { redirect_to admin_places_path, notice: 'Le lieu a été supprimé.' }
-        format.json { head :no_content }
+        #format.json { head :no_content }
       end
     end
 

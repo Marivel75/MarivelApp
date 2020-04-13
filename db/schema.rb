@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_144037) do
+ActiveRecord::Schema.define(version: 2020_04_13_205305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2020_04_13_144037) do
   end
 
   create_table "joins_places_and_trips", force: :cascade do |t|
-    t.bigint "trip_id"
-    t.bigint "place_id"
-    t.index ["place_id"], name: "index_joins_places_and_trips_on_place_id"
-    t.index ["trip_id"], name: "index_joins_places_and_trips_on_trip_id"
+    t.integer "place_id"
+    t.integer "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "places", force: :cascade do |t|

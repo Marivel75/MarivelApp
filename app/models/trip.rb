@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
 
   has_many :saved_trips, dependent: :destroy
 
-  has_many :joins_places_and_trips
+  has_many :joins_places_and_trips, dependant: :destroy
   has_many :places, through: :joins_places_and_trips
 
 

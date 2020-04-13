@@ -12,7 +12,7 @@ module Admin
     # GET /trips/1
     # GET /trips/1.json
     def show
-
+      
     end
 
     # GET /trips/new
