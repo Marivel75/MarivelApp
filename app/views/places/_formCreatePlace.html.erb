@@ -1,4 +1,4 @@
-  <%= form_with model: [@trip, place], local: true do |form| %>
+  <%= form_with model: @place, local: true do |form| %>
     <% if place.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -12,50 +12,57 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :name %>
+      <%= form.label :name, "Nom" %>
       <%= form.text_field :name, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= form.label :address %>
+      <%= form.label :address, "Adresse" %>
       <%= form.text_area :address, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= form.label :description %>
+      <%= form.label :description, "Description" %>
       <%= form.text_area :description, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= form.label :subtitle %>
+      <%= form.label :subtitle, "Sous-titre" %>
       <%= form.text_field :subtitle, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= form.label :price %>
+      <%= form.label :price, "Tarif" %>
       <%= form.text_field :price, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= form.label :price_2 %>
+      <%= form.label :price_2, "Autre tarif" %>
       <%= form.text_field :price_2, class:"u-full-width" %>
     </div>
     <br>
-
     <div class="field">
-      <%= form.label :website %>
+      <%= form.label :website, "Site internet" %>
       <%= form.text_field :website, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= form.label :phone %>
+      <%= form.label :phone, "Téléphone" %>
       <%= form.text_field :phone, class:"u-full-width" %>
     </div>
+    <br>
     <div class="flex-container">
     <p>Vous pouvez ajouter une photo à votre lieu :</p>
     <%= form.file_field :place_picture %>
     </div>
-    <div class="actions">
-      <%= form.submit %>
+    <br>
+    <div class="flex-container-around">
+      <div class="actions">
+        <%= form.submit "Enregitrer le lieu", class:"button-primary" %>
+      </div>
+      <div class="">
+        <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
+      </div>
     </div>
+
   <% end %>

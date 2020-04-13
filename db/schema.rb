@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_211033) do
+ActiveRecord::Schema.define(version: 2020_04_13_144037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 2020_04_08_211033) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "joins_places_and_trips", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.bigint "place_id"
+    t.index ["place_id"], name: "index_joins_places_and_trips_on_place_id"
+    t.index ["trip_id"], name: "index_joins_places_and_trips_on_trip_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.text "address"
@@ -58,13 +65,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_211033) do
     t.datetime "updated_at", null: false
     t.bigint "author_id"
     t.index ["author_id"], name: "index_places_on_author_id"
-  end
-
-  create_table "places_trips", id: false, force: :cascade do |t|
-    t.bigint "place_id", null: false
-    t.bigint "trip_id", null: false
-    t.index ["place_id", "trip_id"], name: "index_places_trips_on_place_id_and_trip_id"
-    t.index ["trip_id", "place_id"], name: "index_places_trips_on_trip_id_and_place_id"
   end
 
   create_table "saved_trips", force: :cascade do |t|
