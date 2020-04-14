@@ -10,11 +10,11 @@ class Place < ApplicationRecord
   end
 
   before_validation :geocode, if: :address_changed?
-  validates :name, :address, :description, presence: true
+  validates :name, :address, presence: true
   validate :found_address_presence
-  # belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'User', optional: true
 
-  has_and_belongs_to_many :trips
+  has_and_belongs_to_many :trips, optional: true
   has_one_attached :place_picture
 
   def found_address_presence

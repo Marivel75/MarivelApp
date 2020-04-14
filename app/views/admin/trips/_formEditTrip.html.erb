@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :title, "Titre dde l'itinéraire" %>
+      <%= form.label :title, "Titre de l'itinéraire" %>
       <%= form.text_field :title, class:"u-full-width" %>
     </div>
     <br>
@@ -35,9 +35,11 @@
     </div>
     <br>
     <div class="">
+      <p class = strong-text>Categorie actuelle : <%= @trip.category.name %> </p>
       <%= form.label :category, "Modifier la catégorie" %>
       <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionner une catégorie", class:"u-full-width" %>
     </div>
+    <br>
     <br>
     <div class="actions">
       <%= form.submit "Confirmer les modifications", class:"button-primary" %>

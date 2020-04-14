@@ -11,6 +11,7 @@
                     input_html: { autocomplete: "first_name", style: 'width: 100%' }%>
 
         <%= f.input :last_name,
+                    label: "Nom",
                     required: false,
                     input_html: { autocomplete: "last_name", style: 'width: 100%' }
                     %>
@@ -37,7 +38,7 @@
     <br>
     <br>
 
-      <%= f.button :submit, "Sign up", class:'button-primary' %>
+      <%= f.button :submit, "Confirmer l'inscription", class:'button-primary' %>
 
   <% end %>
 
