@@ -3,6 +3,7 @@ module Admin
   class TripsController < ApplicationController
     before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
+
     # GET /trips
     # GET /trips.json
     def index
@@ -23,7 +24,7 @@ module Admin
 
     # GET /trips/1/edit
     def edit
-      @new_place = Place.new()
+      @place = Place.new
       @categories = Category.all.map{|c| [ c.name, c.id ] }
     end
 
@@ -49,6 +50,7 @@ module Admin
     # PATCH/PUT /trips/1
     # PATCH/PUT /trips/1.json
     def update
+      @trip.places << @place
       @trip.update(trip_params)
       redirect_to admin_trip_path(@trip[:id]), notice: "L'itinéraire a été modifié."
 
@@ -84,7 +86,7 @@ module Admin
       end
 
       def trip_params
-        params.require(:trip).permit(:title, :description, :category_id, :trip_picture)
+        params.require(:trip).permit(:title, :description, :category_id, :trip_picture, places_attributes: [:id, :name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture])
       end
 
   end

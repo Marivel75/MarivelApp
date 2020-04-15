@@ -29,7 +29,7 @@ module Admin
     def create
       @place = Place.new(place_params)
       # @trip = Trip.find(params[:trip_id])
-      # @place.trips << @trip
+      # @trip.places << @place
       # @place.author = current_user
       respond_to do |format|
         if @place.save

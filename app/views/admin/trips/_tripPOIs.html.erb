@@ -68,7 +68,7 @@
   <%end%>
       <% if @trip.author == current_user%>
         <div class="navbar-item">
-          <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
+          <%= link_to "Éditer le trip", edit_admin_trip_path(@trip[:id]), class:"button button-primary" %>
         </div>
       <% end%>
         <div class="navbar-item">
