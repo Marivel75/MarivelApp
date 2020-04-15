@@ -14,7 +14,12 @@ class Place < ApplicationRecord
   validate :found_address_presence
   belongs_to :author, class_name: 'User', optional: true
 
+<<<<<<< HEAD
   has_and_belongs_to_many :trips, optional: true
+=======
+  has_and_belongs_to_many :trips
+
+>>>>>>> admin
   has_one_attached :place_picture
 
   def found_address_presence

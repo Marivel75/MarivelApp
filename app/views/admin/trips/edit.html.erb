@@ -54,8 +54,14 @@
     </div>
 
   </div>
+  <br>
+  <br>
+  <div class="">
+    <%= link_to "Ajouter des lieux", admin_places_path, class:"button button-primary u-full-width" %>
+  </div>
+
   <hr>
 </div>
 <br>
 
-<%= render 'formEditTrip', trip: @trip %>
+<%= render 'formEditTrip' %>
