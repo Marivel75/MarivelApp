@@ -3,7 +3,7 @@ module Admin
   class TripWaypointsController < ApplicationController
 
     # before_action :set_trip
-    before_action :set_trip_waypoint, only: [:show, :edit, :update, :destroy]
+    # before_action :set_trip_waypoint, only: [:show, :edit, :update, :destroy]
 
 
     # GET /trip_waypoints
@@ -68,6 +68,7 @@ module Admin
     # DELETE /trip_waypoints/1
     # DELETE /trip_waypoints/1.json
     def destroy
+      @trip_waypoint = @place.trip_waypoints.where(trip_id: params[:trip_id])
       @trip_waypoint.destroy
       respond_to do |format|
         format.html { redirect_to admin_trip_path(@trip[:id]), notice: 'Le lieu a été retiré de cet itinéraire.' }
@@ -82,9 +83,8 @@ module Admin
       end
 
       def set_trip_waypoint
+
         @trip_waypoint = TripWaypoint.find(params[:id])
-        @trip_waypoint.place_id = params[:place_id]
-        @trip_waypoint.trip_id = params[:trip_id]
       end
 
       # Only allow a list of trusted parameters through.
