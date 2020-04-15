@@ -2,7 +2,7 @@
 <br>
 
 <% if !@trip.places.empty? %>
-  <%= render 'tripPOIs' %>
+  <%= render 'tripPlaces' %>
 <% elsif current_user == @trip.author%>
   <div class = "container">
     <p>Votre itinéraire ne comporte pas encore d'étape, c'est le moment d'en rajouter !</p>

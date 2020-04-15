@@ -27,16 +27,16 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(place_params)
-    @trip = Trip.find(params[:trip_id])
-    @place.trips << @trip
     @place.author = current_user
+    # @trip = Trip.find(params[:trip_id])
+    # @place.trips << @trip
     respond_to do |format|
       if @place.save
-        format.html { redirect_to [@trip], notice: 'Le lieu a été crée.' }
-        format.json { render :show, status: :created, location: @place }
+        format.html { redirect_to [@place], notice: 'Le lieu a été crée.' }
+        # format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
+        # format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,14 +44,14 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
-    puts place_params
+    # puts place_params
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to [@trip, @place], notice: 'Les modifications ont été enregistrées.' }
-        format.json { render :show, status: :ok, location: @place }
+        format.html { redirect_to [@place], notice: 'Les modifications ont été enregistrées.' }
+        # format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
+        # format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,7 +61,7 @@ class PlacesController < ApplicationController
   def destroy
     @place.destroy
     respond_to do |format|
-      format.html { redirect_to @trip, notice: 'Le lieu a été supprimé.' }
+      format.html { redirect_to new_place_path, notice: 'Le lieu a été supprimé.' }
       format.json { head :no_content }
 
     end
@@ -70,7 +70,7 @@ class PlacesController < ApplicationController
   private
 
     def set_place
-      @trip = Trip.find(params[:trip_id])
+      # @trip = Trip.find(params[:trip_id])
       @place = Place.find(params[:id]) if params[:id]
     end
 

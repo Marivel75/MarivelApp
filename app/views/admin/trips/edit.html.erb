@@ -34,7 +34,7 @@
                 <td><%= link_to "#{place.name}", admin_place_path(place[:id])%> </td>
                 <td><%= place.address%></td>
                 <td><%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
-                <td><%= link_to "Supprimer", admin_place_path(@trip, place), method:"delete", data: {confirm: "Êtes-vous sûr de retirer ce lieu du trip ?"}, class:"button", style: "margin-top: 10px" %></td>
+                <td><%= link_to "Supprimer", admin_trip_waypoint_path(place[:id], @trip[:id]), method:"delete", data: {confirm: "Êtes-vous sûr de retirer ce lieu de l'itinéraire ?"}, class:"button", style: "margin-top: 10px" %></td>
               </tr>
             <% end %>
           </tbody>
@@ -57,7 +57,7 @@
   <br>
   <br>
   <div class="">
-    <%= link_to "Ajouter des lieux", admin_places_path, class:"button button-primary u-full-width" %>
+    <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip[:id]), class:"button button-primary u-full-width" %>
   </div>
 
   <hr>

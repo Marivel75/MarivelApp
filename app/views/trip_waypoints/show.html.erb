@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @trip_waypoint.place %>
+</p>
+
+<p>
+  <strong>Trip:</strong>
+  <%= @trip_waypoint.trip %>
+</p>
+
+<%= link_to 'Edit', edit_trip_waypoint_path(@trip_waypoint) %> |
+<%= link_to 'Back', trip_waypoints_path %>

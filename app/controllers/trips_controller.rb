@@ -18,6 +18,7 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @new_place = Place.new()
   end
 
   # GET /trips/1/edit
@@ -36,11 +37,11 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render :show, status: :created, location: @trip }
+        format.html { redirect_to @trip, notice: "L'itinérarie a été crée." }
+        # format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
+        # format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,7 +50,7 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1.json
   def update
     @trip.update(trip_params)
-    redirect_to trip_path(@trip[:id]), notice: "Le trip a été modifié."
+    redirect_to trip_path(@trip[:id]), notice: "Les modifications ont été enregistrées."
 
     # @trip.category_id = params[:category_id]
     # respond_to do |format|
@@ -68,8 +69,8 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to trips_url, notice: "L'itinéraire a été supprimé." }
+      # format.json { head :no_content }
     end
   end
 
@@ -78,7 +79,7 @@ class TripsController < ApplicationController
     def set_trip
       if params[:id]
         @trip = Trip.find(params[:id])
-        gon.places = @trip.places.all
+        # gon.places = @trip.places.all
       end
     end
 
@@ -92,7 +93,7 @@ class TripsController < ApplicationController
         flash.alert = "Veuillez vous connecter"
         redirect_to new_user_session_path
       elsif  @trip && @trip.author != current_user
-          flash.alert = "Vous n'avez pas les droits nécessaires"
+          flash.alert = "Vous n'avez pas les droits."
           redirect_to @trip
        end
     end

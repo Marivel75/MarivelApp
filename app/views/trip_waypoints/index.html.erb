@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trip Waypoints</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Trip</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trip_waypoints.each do |trip_waypoint| %>
+      <tr>
+        <td><%= trip_waypoint.place %></td>
+        <td><%= trip_waypoint.trip %></td>
+        <td><%= link_to 'Show', trip_waypoint %></td>
+        <td><%= link_to 'Edit', edit_trip_waypoint_path(trip_waypoint) %></td>
+        <td><%= link_to 'Destroy', trip_waypoint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip Waypoint', new_trip_waypoint_path %>

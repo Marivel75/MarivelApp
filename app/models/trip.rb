@@ -4,14 +4,15 @@ class Trip < ApplicationRecord
 
   has_many :saved_trips, dependent: :destroy
 
-  has_and_belongs_to_many :places
-  accepts_nested_attributes_for :places
+  has_many :trip_waypoints, dependent: :destroy
+  has_many :places, through: :trip_waypoints
+
 
   has_one_attached :trip_picture
 
   validates :title, :description, presence: true
 
-  # default_scope { order(created_at: :desc) }
+
   scope :published, -> { where(online: true) }
   scope :offline, -> { where(online: false) }
 

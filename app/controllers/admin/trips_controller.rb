@@ -50,9 +50,8 @@ module Admin
     # PATCH/PUT /trips/1
     # PATCH/PUT /trips/1.json
     def update
-      @trip.places << @place
       @trip.update(trip_params)
-      redirect_to admin_trip_path(@trip[:id]), notice: "L'itinéraire a été modifié."
+      redirect_to admin_trip_path(@trip), notice: "L'itinéraire a été modifié."
 
       # @trip.category_id = params[:category_id]
       # respond_to do |format|

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # resources :trip_waypoints
+
   devise_for :users
   resources :categories, only: [:show]
   resources :trips do
@@ -19,10 +21,16 @@ Rails.application.routes.draw do
   scope 'admin', module: 'admin',  as: 'admin' do
     resources :users, except: [:create]
     resources :categories
-    resources :places
+    
+    resources :places do
+      resources :trip_waypoints, as: 'waypoint'
+    end
+
     resources :trips do
       resources :places
-      resources :trip_pictures, only: [:create]
+      resources :trip_pictures, only: [:create], as: 'picture'
+      resources :trip_waypoints, as: 'waypoint'
+
     end
   end
 
