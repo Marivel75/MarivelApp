@@ -19,18 +19,18 @@ Rails.application.routes.draw do
   end
 
   scope 'admin', module: 'admin',  as: 'admin' do
+
+    get 'admin', to: 'static#admin'
+
     resources :users, except: [:create]
     resources :categories
-    
-    resources :places do
-      resources :trip_waypoints, as: 'waypoint'
-    end
+
+    resources :places
 
     resources :trips do
       resources :places
       resources :trip_pictures, only: [:create], as: 'picture'
       resources :trip_waypoints, as: 'waypoint'
-
     end
   end
 
