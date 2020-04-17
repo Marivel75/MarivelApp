@@ -13,7 +13,7 @@ module Admin
     end
 
     def show
-      @user = User.find(params[:id])
+
     end
 
     def edit
@@ -21,7 +21,7 @@ module Admin
 
     def update
       @user.update(user_params)
-      redirect_to admin_user_path(@user[:id]), notice: "Le compte a été modifié."
+      redirect_to admin_user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
     end
 
     def destroy
