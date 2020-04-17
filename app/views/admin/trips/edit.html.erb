@@ -5,6 +5,27 @@
     <div class = "six columns">
 
       <h1 class="trip-title"><%= @trip.title %></h1>
+      <% if @trip.online == true %>
+        <p> Cet itinéraire est actuellement publié en ligne. </p>
+      <% else %>
+        <p> Cet itinéraire n'est actuellement pas publié en ligne. </p>
+      <% end %>
+
+      <h4>Modifier le satuts</h4>
+
+      <% if @trip.online == false %>
+        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+          <%= f.hidden_field :online, :value => true %>
+          <%= f.submit "Publier", class:"button-primary" %>
+        <% end %>
+      <% else %>
+        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+          <%= f.hidden_field :online, :value => false %>
+          <%= f.submit "Mettre hors-ligne", class:"button-primary" %>
+        <% end %>
+      <% end %>
+
+
       <p>Catégorie : <%= @trip.category.name %></p>
       <p>Description : <%= @trip.description %></p>
 

@@ -3,6 +3,12 @@
     <div class = "jumbotron_trip_text" style= "color:white">
       <h1 class="trip-title-show" style = "color: white"><i class="fas fa-quote-left fa-xs" style= "color:white"></i>  <%= @trip.title %>  <i class="fas fa-quote-right fa-xs" style= "color:white"></i></h1>
 
+      <% if @trip.online == true %>
+        <p> Cet itinéraire est actuellement publié en ligne. </p>
+      <% else %>
+        <p> Cet itinéraire n'est actuellement pas publié en ligne. </p>
+      <% end %>
+
       <!-- <div class="container">
         <p>Un trip de</p>
         <p> <link_to "#{@trip.author.first_name}", user_path(@trip.author.id), class:"strong-text" %></p>

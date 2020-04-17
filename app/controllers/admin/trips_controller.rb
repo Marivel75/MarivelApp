@@ -51,6 +51,7 @@ module Admin
     # PATCH/PUT /trips/1.json
     def update
       @trip.update(trip_params)
+      # @trip.update_attribute(:online => params[:online])
       redirect_to admin_trip_path(@trip), notice: "L'itinéraire a été modifié."
 
       # @trip.category_id = params[:category_id]
@@ -65,12 +66,13 @@ module Admin
       # end
     end
 
+
     # DELETE /trips/1
     # DELETE /trips/1.json
     def destroy
       @trip.destroy
       respond_to do |format|
-        format.html { redirect_to admin_trips, notice: "L'itinéraire a été supprimé." }
+        format.html { redirect_to admin_trips_path, notice: "L'itinéraire a été supprimé." }
         # format.json { head :no_content }
       end
     end
@@ -85,7 +87,7 @@ module Admin
       end
 
       def trip_params
-        params.require(:trip).permit(:title, :description, :category_id, :trip_picture, places_attributes: [:id, :name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture])
+        params.require(:trip).permit(:title, :description, :category_id, :trip_picture, :online)
       end
 
   end
