@@ -35,4 +35,11 @@ Rails.application.routes.draw do
   end
 
 
+  scope 'partner', module: 'partner', as: 'partner' do
+
+    resources :users
+
+
+  end
+
 end
