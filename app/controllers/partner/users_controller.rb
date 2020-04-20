@@ -1,7 +1,7 @@
 module Partner
 
   class UsersController < ApplicationController
-
+    before_action :only_partner
     before_action :set_user, only: [:show, :update, :edit]
 
     def index
@@ -25,14 +25,20 @@ module Partner
     end
 
     def destroy
-    
+
     end
 
     private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+      def only_partner
+        if !user_signed_in? || current_user.role != 'partner'
+          redirect_to root_path, alert: "Accès non autorisé"
+        end
+      end
+
+      def set_user
+        @user = User.find(params[:id])
+      end
 
   end
 end

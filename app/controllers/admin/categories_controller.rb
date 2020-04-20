@@ -1,6 +1,7 @@
 module Admin
 
   class CategoriesController < ApplicationController
+    before_action :only_admin
     before_action :set_category, only: [:show, :edit, :update, :destroy]
 
     # GET /categories
@@ -67,12 +68,17 @@ module Admin
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
+
+      def only_admin
+        if !user_signed_in? || current_user.role != 'admin'
+          redirect_to root_path, alert: "Accès non autorisé"
+        end
+      end
+
       def set_category
         @category = Category.find(params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
       def category_params
         params.require(:category).permit(:name, :description)
       end

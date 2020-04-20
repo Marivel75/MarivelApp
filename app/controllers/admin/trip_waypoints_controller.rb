@@ -1,7 +1,7 @@
 module Admin
 
   class TripWaypointsController < ApplicationController
-
+    before_action :only_admin
     # before_action :set_trip
     #  before_action :set_trip_waypoint, only: [:show, :edit, :update, :destroy]
 
@@ -85,14 +85,17 @@ module Admin
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
 
+      def only_admin
+        if !user_signed_in? || current_user.role != 'admin'
+          redirect_to root_path, alert: "Accès non autorisé"
+        end
+      end
 
       def set_trip_waypoint
         @trip_waypoint = TripWaypoint.where(params[:place_id], params[:trip_id])
       end
 
-      # Only allow a list of trusted parameters through.
       def trip_waypoint_params
         params.require(:trip_waypoint).permit(:place_id, :trip_id)
       end

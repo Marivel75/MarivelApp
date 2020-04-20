@@ -1,7 +1,7 @@
 module Partner
 
   class TripWaypointsController < ApplicationController
-
+    before_action :only_partner
     # before_action :set_trip
     #  before_action :set_trip_waypoint, only: [:show, :edit, :update, :destroy]
 
@@ -85,8 +85,11 @@ module Partner
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
-
+      def only_partner
+        if !user_signed_in? || current_user.role != 'partner'
+          redirect_to root_path, alert: "Accès non autorisé"
+        end
+      end
 
       def set_trip_waypoint
         @trip_waypoint = TripWaypoint.where(params[:place_id], params[:trip_id])
