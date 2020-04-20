@@ -2,7 +2,7 @@
 
   <h2 align="center"> Éditer l'itinéraire </h2>
 
-  <%= form_with(url:[:admin, @trip], model: @trip, local: true) do |form| %>
+  <%= form_with(url:[:partner, @trip], model: @trip, local: true) do |form| %>
     <% if @trip.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(place.errors.count, "error") %> Les modifications n'ont pas pu être enregistrées :</h2>
@@ -37,7 +37,7 @@
     </div>
     <br>
     <br>
-    <div class="actions">
+    <div class="">
       <%= form.submit "Confirmer les modifications", class:"button-primary" %>
     </div>
   <% end %>
@@ -46,8 +46,8 @@
 <hr />
 
     <div class="container">
-      <%= link_to "Revenir à la liste des itinéraires", admin_trips_path, class:"button btn-margin" %>
-      <%= link_to "Supprimer le trip", admin_trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button btn-margin" %>
+      <%= link_to "Revenir à la liste des itinéraires", partner_user_path(current_user.id), class:"button btn-margin" %>
+      <%= link_to "Supprimer le trip", partner_trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button btn-margin" %>
     </div>
   <br>
   <br>

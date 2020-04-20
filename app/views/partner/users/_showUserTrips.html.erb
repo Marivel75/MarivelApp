@@ -1,0 +1,67 @@
+<div class="container">
+
+  <h3>Itinéraires actuellement publiés en ligne</h3>
+
+  <div class="allTrips-container">
+  <% if @user.created_trips.length > 0 %>
+
+   <% @user.created_trips.published.each do |trip| %>
+   <div class="card-trip">
+
+     <div class="card-image">
+       <% if trip.trip_picture.attached? %>
+          <img src = "<%= rails_blob_url(trip.trip_picture)%>" style="float:left;width:100%;height:70%;object-fit:cover;">
+       <% else %>
+         <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" style="float:left;width:100%;height:70%;object-fit:cover;">
+       <% end %>
+     </div>
+
+     <div class="card-content">
+       <div class="card-title">
+         <%= link_to "#{trip.title}", partner_trip_path(trip[:id]), class:"trip-title-card" %>
+       </div>
+       <div class="strong-text-sm">
+         <p><%= trip.category.name %></p>
+         <%= link_to "Explorer", partner_trip_path(trip[:id]), class:"button" %>
+       </div>
+     </div>
+   </div>
+    <% end %>
+  <% end %>
+
+  </div>
+  <br>
+  <hr>
+  <br>
+
+  <h3>Itinéraires actuellement hors-ligne</h3>
+
+    <div class="allTrips-container">
+      <% if @user.created_trips.length > 0 %>
+        <% @user.created_trips.offline.each do |trip| %>
+         <div class="card-trip">
+
+           <div class="card-image">
+             <% if trip.trip_picture.attached? %>
+                <img src = "<%= rails_blob_url(trip.trip_picture)%>" style="float:left;width:100%;height:70%;object-fit:cover;">
+             <% else %>
+               <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" style="float:left;width:100%;height:70%;object-fit:cover;">
+             <% end %>
+           </div>
+
+           <div class="card-content">
+             <div class="card-title">
+               <%= link_to "#{trip.title}", partner_trip_path(trip[:id]), class:"trip-title-card" %>
+             </div>
+             <div class="strong-text-sm">
+               <p><%= trip.category.name %></p>
+               <%= link_to "Explorer", partner_trip_path(trip[:id]), class:"button" %>
+             </div>
+           </div>
+
+         </div>
+        <% end %>
+      <% end %>
+
+    </div>
+</div>

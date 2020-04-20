@@ -1,5 +1,19 @@
 <%= render 'tripBanner' %>
 <br>
+<div class="container-center">
+  <%if current_user%>
+    <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
+      <% if pre_saved_trip %>
+        <div class="">
+          <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, class: "twelve columns"%>
+        </div>
+      <% else %>
+        <div class="">
+          <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
+        </div>
+      <% end %>
+  <%end%>
+</div>
 
 <% if !@trip.places.empty? %>
   <%= render 'tripPlaces' %>

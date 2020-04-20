@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   enum role: [:traveler, :partner, :admin]
+  attr_accessor :login
 
   after_initialize do
     if self.new_record?
@@ -8,20 +9,18 @@ class User < ApplicationRecord
     end
   end
 
+  after_create :welcome_send
+
+  validates :first_name, presence: true
+
   has_many :created_trips, foreign_key: "author_id", class_name: "Trip"
 
   has_many :created_places, foreign_key: "author_id", class_name: "Place"
 
-  after_create :welcome_send
   has_many :saved_trips, dependent: :destroy
-
-  attr_accessor :login
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-  validates :first_name, presence: true
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 

@@ -4,7 +4,7 @@
     <%=link_to 'MARIVEL', trips_path, class:"brand-small" %>
   </div>
 
-  <% if user_signed_in? %>
+  <% if isTraveler? %>
   <div class="">
     <div class="flex-container">
       <div class="navbar-item">
@@ -12,6 +12,36 @@
       </div>
       <div class="navbar-item">
         <%= link_to "#{current_user.first_name}", user_path(current_user.id), class:"welcome-text" %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'button' %>
+      </div>
+    </div>
+  </div>
+
+  <% elsif isAdmin? %>
+  <div class="">
+    <div class="flex-container">
+      <div class="navbar-item">
+        <%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, admin_user_path(current_user.id) %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "#{current_user.first_name}", admin_user_path(current_user.id), class:"welcome-text" %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'button' %>
+      </div>
+    </div>
+  </div>
+
+  <% elsif isPartner? %>
+  <div class="">
+    <div class="flex-container">
+      <div class="navbar-item">
+        <%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, partner_user_path(current_user.id) %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "#{current_user.first_name}", partner_user_path(current_user.id), class:"welcome-text" %>
       </div>
       <div class="navbar-item">
         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'button' %>

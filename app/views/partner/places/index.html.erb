@@ -1,0 +1,34 @@
+<br>
+<br>
+
+<div class="container">
+  <h1>Liste des lieux</h1>
+
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date de création</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td><%= place.id%></td>
+          <td><%= place.name %></td>
+          <td><%= place.created_at%></td>
+          <td><%= link_to 'Détails du lieu', partner_place_url(place[:id])%></td>
+          <td><%= link_to 'Édition', edit_partner_place_path(place[:id]) %></td>
+          <td><%= link_to 'Suppression', partner_place_path(place[:id]), method: :delete, data: { confirm: 'Confirmez-vous la suppression de ce lieu ?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Créer un lieu', new_partner_place_path, class:"button button-primary" %>
+</div>

@@ -6,8 +6,8 @@
 <% else%>
   <div class = "container">
     <p>Ce trip ne comporte pas encore d'étapes.</p>
-    <%= link_to "Éditer le trip", edit_admin_trip_path(@trip[:id]), class:"button button-primary" %>
-    <%= link_to "Revenir à la liste des trips", admin_trips_path, class:"button" %>
+    <%= link_to "Éditer le trip", edit_partner_trip_path(@trip[:id]), class:"button button-primary" %>
+    <%= link_to "Revenir à la liste des trips", partner_user_path(current_user.id), class:"button" %>
   </div>
 <% end %>
 <br>

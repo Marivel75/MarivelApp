@@ -3,7 +3,7 @@
   <br>
   <br>
 
-  <%= form_with(url: [:partner, place], model: place, local: true) do |form| %>
+  <%= form_with(url: [:admin, place], model: place, local: true) do |form| %>
     <% if place.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(place.errors.count, "error") %> Les modifications n'ont pas pu être enregistrées :</h2>

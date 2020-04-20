@@ -1,12 +1,13 @@
 <div class="container">
 
-    <p class="strong-text"><%= @trip.description%></p>
 
-    <div class="flex-container-center">
-      <i class="fas fa-map-marker-alt fa-3x icon-margin"></i>
-      <p class="welcome-text icon-margin"><%= @trip.places.length%> étape(s)</p>
-    </div>
-    <br>
+  <p class="strong-text"><%= @trip.description%></p>
+
+  <div class="flex-container-center">
+    <i class="fas fa-map-marker-alt fa-3x icon-margin"></i>
+    <p class="welcome-text icon-margin"><%= @trip.places.length%> étape(s)</p>
+  </div>
+  <br>
 
 
   <div class="row">
@@ -54,25 +55,18 @@
 <br>
 
   <div class ="flex-container-around">
-
-    <% if @trip.author == current_user%>
-      <div class="navbar-item">
-        <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
-      </div>
-    <% end%>
-
-    <div class="navbar-item">
-      <%= link_to "Revenir aux trips", trips_path, class:"button" %>
-    </div>
-
+      <% if @trip.author == current_user%>
+        <div class="">
+          <%= link_to "Éditer le trip", edit_partner_trip_path(@trip[:id]), class:"button button-primary" %>
+        </div>
+      <% end%>
+        <div class="">
+          <%= link_to "Revenir aux trips", partner_user_path(current_user.id), class:"button" %>
+        </div>
   </div>
 
 
 </div>
-
-
-<p id="notice"><%= notice %></p>
-
 
 
 

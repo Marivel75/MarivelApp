@@ -13,19 +13,6 @@
 
       <h4>Modifier le satut</h4>
 
-      <% if @trip.online == false %>
-        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
-          <%= f.hidden_field :online, :value => true %>
-          <%= f.submit "Publier", class:"button-primary" %>
-        <% end %>
-      <% else %>
-        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
-          <%= f.hidden_field :online, :value => false %>
-          <%= f.submit "Mettre hors-ligne", class:"button-primary" %>
-        <% end %>
-      <% end %>
-
-
       <p>Catégorie : <%= @trip.category.name %></p>
       <p>Description : <%= @trip.description %></p>
 
@@ -52,9 +39,9 @@
                     <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px">
                   </td>
                 <% end %>
-                <td><%= link_to "#{place.name}", admin_place_path(place[:id])%> </td>
+                <td><%= link_to "#{place.name}", partner_place_path(place[:id])%> </td>
                 <td><%= place.address%></td>
-                <td><%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
+                <td><%= link_to "Éditer", edit_partner_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
               </tr>
             <% end %>
           </tbody>
@@ -77,7 +64,7 @@
   <br>
   <br>
   <div class="">
-    <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip[:id]), class:"button button-primary u-full-width" %>
+    <%= link_to "Ajouter des lieux", partner_trip_waypoint_index_path(@trip[:id]), class:"button button-primary u-full-width" %>
   </div>
 
   <hr>

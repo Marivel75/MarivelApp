@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   end
 
   scope 'admin', module: 'admin',  as: 'admin' do
-
     get 'admin', to: 'static#admin'
 
     resources :users, except: [:create]
@@ -36,10 +35,15 @@ Rails.application.routes.draw do
 
 
   scope 'partner', module: 'partner', as: 'partner' do
+    resources :users, only: [:show, :edit, :update]
 
-    resources :users
+    resources :places
 
-
+    resources :trips do
+      resources :places
+      resources :trip_pictures, only: [:create], as: 'picture'
+      resources :trip_waypoints, as: 'waypoint'
+    end
   end
 
 end

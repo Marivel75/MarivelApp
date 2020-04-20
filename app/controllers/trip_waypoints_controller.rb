@@ -1,5 +1,5 @@
 class TripWaypointsController < ApplicationController
-  before_action :set_trip_waypoint, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip_waypoint, only: [:destroy]
 
   # GET /trip_waypoints
   # GET /trip_waypoints.json
@@ -62,12 +62,12 @@ class TripWaypointsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_trip_waypoint
       @trip_waypoint = TripWaypoint.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+
     def trip_waypoint_params
       params.require(:trip_waypoint).permit(:place_id, :trip_id)
     end
