@@ -54,7 +54,8 @@
                 <% end %>
                 <td><%= link_to "#{place.name}", admin_place_path(place[:id])%> </td>
                 <td><%= place.address%></td>
-                <td><%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
+                <td><%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px"%></td>
+
               </tr>
             <% end %>
           </tbody>

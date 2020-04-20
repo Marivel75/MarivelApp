@@ -10,6 +10,7 @@ module Admin
     # GET /trip_waypoints.json
     def index
       @places = Place.all
+      @trip_waypoint = TripWaypoint.all
     end
 
     # GET /trip_waypoints/1
@@ -72,11 +73,10 @@ module Admin
       puts params
       puts "trip_id = #{params[:trip_id]}"
       puts "place_id = #{params[:place_id]}"
+      puts "id = #{params[:trip_waypoint_id]}"
       puts "=================================="
-      @trip_waypoint = TripWaypoint.find(params[:id])
-      puts "=================#{trip_waypoint}======================"
-      # @trip_waypoint.place_id = params[:place_id]
-      # @trip_waypoint.trip_id = params[:trip_id]
+
+
       @trip_waypoint.destroy
       respond_to do |format|
         format.html { redirect_to admin_trip_path(@trip[:id]), notice: 'Le lieu a été retiré de cet itinéraire.' }

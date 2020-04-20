@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     resources :places
 
     resources :trips do
-      resources :places
+      resources :places do
+        resources :trip_waypoints, only: [:destroy]
+      end
       resources :trip_pictures, only: [:create], as: 'picture'
       resources :trip_waypoints, as: 'waypoint'
     end
