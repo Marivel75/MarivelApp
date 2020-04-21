@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # resources :trip_waypoints
 
   devise_for :users
+
   resources :categories, only: [:show]
   resources :trips do
     resources :saved_trips
     resources :places
+    resources :trip_waypoints, as: 'waypoint'
     resources :trip_pictures, only: [:create]
   end
 

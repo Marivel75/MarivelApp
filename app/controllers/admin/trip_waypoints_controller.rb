@@ -2,8 +2,8 @@ module Admin
 
   class TripWaypointsController < ApplicationController
     before_action :only_admin
-    # before_action :set_trip
-    #  before_action :set_trip_waypoint, only: [:show, :edit, :update, :destroy]
+    #before_action :set_trip
+    before_action :set_trip_waypoint,
 
 
     # GET /trip_waypoints
@@ -30,12 +30,6 @@ module Admin
     # POST /trip_waypoints
     # POST /trip_waypoints.json
     def create
-      puts "=================================="
-      puts params
-      puts "trip_id = #{params[:trip_id]}"
-      puts "place_id = #{params[:place_id]}"
-      puts "=================================="
-
       @trip_waypoint = TripWaypoint.new
       @trip_waypoint.place_id = params[:place_id]
       @trip_waypoint.trip_id = params[:trip_id]
@@ -85,6 +79,10 @@ module Admin
     end
 
     private
+
+      def set_trip
+          @trip = Trip.find(params[:id])
+      end
 
       def only_admin
         if !user_signed_in? || current_user.role != 'admin'

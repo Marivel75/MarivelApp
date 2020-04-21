@@ -2,21 +2,62 @@
 <br>
 <div class="container">
   <div class ="row">
-  <div class = "six columns">
-    <h1 class="trip-title"><%= @trip.title %></h1>
-    <p>Catégorie : <%= @trip.category.name %></p>
-    <p>Description : <%= @trip.description %></p>
+    <div class = "six columns">
+      <h1 class="trip-title"><%= @trip.title %></h1>
+      <p>Catégorie : <%= @trip.category.name %></p>
+      <p>Description : <%= @trip.description %></p>
+
+      <% if @trip.places.length > 0 %>
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Nom</th>
+              <th>Adresse</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @trip.places.each do |place|%>
+              <tr>
+                <% if place.place_picture.attached? %>
+                  <td>
+                    <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px">
+                  </td>
+                <% else %>
+                  <td>
+                    <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px">
+                  </td>
+                <% end %>
+                <td><%= link_to "#{place.name}", admin_place_path(place[:id])%> </td>
+                <td><%= place.address%></td>
+                <td><%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px"%></td>
+
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>Aucune étape n'a encore été ajoutée.</p>
+      <% end %>
+
+    </div>
+
+    <div class ="six columns">
+      <% if @trip.trip_picture.attached? %>
+        <img src = "<%= rails_blob_url(@trip.trip_picture)%>" class = "twelve columns", style="float:left;width:100%;height:70%;object-fit:cover;">
+      <% else %>
+        <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style="float:left;width:100%;height:70%;object-fit:cover;">
+      <% end %>
+    </div>
   </div>
-  <div class ="six columns">
-    <% if @trip.trip_picture.attached? %>
-      <img src = "<%= rails_blob_url(@trip.trip_picture)%>" class = "twelve columns", style="float:left;width:100%;height:70%;object-fit:cover;">
-    <% else %>
-      <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style="float:left;width:100%;height:70%;object-fit:cover;">
-    <% end %>
+  <br>
+  <div class="">
+    <%= link_to "Ajouter des lieux", trip_waypoint_index_path(@trip), class:"button button-primary u-full-width" %>
   </div>
-</div>
-  <hr>
-  <h2> Éditez votre trip </h2>
+  <br>
+  <h2> Éditez les détails de l'itinéraire </h2>
 </div>
 
 <%= render 'formEditTrip', trip: @trip %>

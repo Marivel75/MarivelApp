@@ -17,11 +17,3 @@
 <%= render 'showUserTrips' %>
 
 <%= render 'showSavedTrips' %>
-
-<div class="container">
-  <div class = "flex-container-center">
-    <% if @user == current_user %>
-     <%= link_to "Créez un trip", new_trip_path, class:"button" %>
-    <%end%>
-  </div>
-</div>

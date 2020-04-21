@@ -7,17 +7,13 @@ module Admin
 
     end
 
-
-  end
-
-
-  private
-
+    private
     def only_admin
       if !user_signed_in? || current_user.role != 'admin'
         redirect_to root_path, alert: "Accès non autorisé"
       end
     end
 
+  end
 
 end

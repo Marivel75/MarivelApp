@@ -1,10 +1,13 @@
 class TripWaypointsController < ApplicationController
   before_action :set_trip_waypoint, only: [:destroy]
+  before_action :set_trip
+
 
   # GET /trip_waypoints
   # GET /trip_waypoints.json
   def index
     @trip_waypoints = TripWaypoint.all
+    @places = Place.all
   end
 
   # GET /trip_waypoints/1
@@ -24,15 +27,19 @@ class TripWaypointsController < ApplicationController
   # POST /trip_waypoints
   # POST /trip_waypoints.json
   def create
-    @trip_waypoint = TripWaypoint.new(trip_waypoint_params)
+    @trip_waypoint = TripWaypoint.new
+    @trip_waypoint.place_id = params[:place_id]
+    @trip_waypoint.trip_id = params[:trip_id]
+    @trip_waypoint.save
+
 
     respond_to do |format|
       if @trip_waypoint.save
-        format.html { redirect_to @trip_waypoint, notice: 'Trip waypoint was successfully created.' }
-        format.json { render :show, status: :created, location: @trip_waypoint }
+        format.html { redirect_to edit_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire." }
+        #format.json { render :show, status: :created, location: @trip_waypoint }
       else
         format.html { render :new }
-        format.json { render json: @trip_waypoint.errors, status: :unprocessable_entity }
+        #format.json { render json: @trip_waypoint.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,6 +69,11 @@ class TripWaypointsController < ApplicationController
   end
 
   private
+
+
+    def set_trip
+      @trip = Trip.find(params[:trip_id])
+    end
 
     def set_trip_waypoint
       @trip_waypoint = TripWaypoint.find(params[:id])
