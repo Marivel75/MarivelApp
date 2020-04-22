@@ -63,10 +63,12 @@ class TripWaypointsController < ApplicationController
   def destroy
     @trip_waypoint.destroy
     respond_to do |format|
-      format.html { redirect_to trip_waypoints_url, notice: 'Trip waypoint was successfully destroyed.' }
+      format.html { redirect_to edit_trip_path(@trip), notice: "L'étape a été supprimée." }
       format.json { head :no_content }
     end
   end
+
+
 
   private
 
