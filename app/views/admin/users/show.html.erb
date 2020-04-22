@@ -1,29 +1,21 @@
 <div class="profilBanner text-center">
   <p class="profil-title"> Bienvenue <%= @user.first_name%> </p>
-  <p> Vous disposez des autorisations Admin. Retrouvez-les dans l'esapce Admin.</p>
+</div>
+<br>
+
+<div class="container-center">
+  <p> Vous disposez des autorisations Admin. Retrouvez-les dans l'espace Admin.</p>
   <div class="navbar-item">
       <%= link_to "Espace Admin", admin_admin_path, class:'button button-primary' %>
   </div>
   <br>
-</div>
-<br>
-
-<div class="container">
   <div class = "flex-container-around">
     <% if @user == current_user %>
-     <%= link_to 'Éditez votre compte', edit_user_registration_path, class:'button' %>
-     <%= link_to "Créez un trip", new_trip_path, class:"button button-primary" %>
+     <%= link_to 'Paramètres du compte', edit_user_registration_path, class:'button' %>
+     <%= link_to "Création d'itinéraire", new_admin_trip_path, class:"button button-primary" %>
     <%end%>
   </div>
-  <hr>
 </div>
+<hr>
 
 <%= render 'showUserTrips' %>
-
-<div class="container">
-  <div class = "flex-container-center">
-    <% if @user == current_user %>
-     <%= link_to "Créez un trip", new_trip_path, class:"button" %>
-    <%end%>
-  </div>
-</div>

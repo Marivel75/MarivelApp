@@ -15,22 +15,28 @@
         </div>
       <% end %>
 
+    <% else %>
+      <p>Vous avez crée cet itinéraire le <%= @trip.created_at %></p>
   <%end%>
+</div>
+<br>
 
+<div class="container">
+  <p class="strong-text"><%= @trip.description%></p>
 </div>
 
 <% if !@trip.places.empty? %>
   <%= render 'tripPlaces' %>
 <% elsif current_user == @trip.author%>
   <div class = "container">
-    <p>Votre itinéraire ne comporte pas encore d'étape, c'est le moment d'en rajouter !</p>
-    <%= link_to "Éditer le trip", edit_trip_path(@trip[:id]), class:"button button-primary" %>
-    <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+    <p>Votre itinéraire ne comporte pas encore d'étape, c'est le moment d'en rajouter.</p>
+    <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button button-primary" %>
+    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
   </div>
 <% else %>
   <div class = "container">
     <p>Le trip ne comporte pas encore d'étapes, patience !</p>
-    <%= link_to "Revenir aux trips", trips_path, class:"button" %>
+    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
   </div>
 <% end %>
 <br>

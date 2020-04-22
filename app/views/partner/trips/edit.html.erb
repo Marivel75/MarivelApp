@@ -2,73 +2,74 @@
 <br>
 <div class="container">
   <div class ="row">
-    <div class = "six columns">
-
+    <div class = "one-half column">
       <h1 class="trip-title"><%= @trip.title %></h1>
-      <% if @trip.online == true %>
-        <p> Cet itinéraire est actuellement publié en ligne. </p>
-      <% else %>
-        <p> Cet itinéraire n'est actuellement pas publié en ligne. </p>
-      <% end %>
 
-      <h4>Modifier le satut</h4>
+      <div class="flex-container-column">
+        <% if @trip.online == true %>
+          <div class="">
+            <p> Cet itinéraire est actuellement publié en ligne. </p>
+          </div>
+        <% else %>
+          <div class="">
+            <p> Cet itinéraire est en attente de validation pour publication en ligne. </p>
+          </div>
+        <% end %>
+      </div>
 
-      <p>Catégorie : <%= @trip.category.name %></p>
-      <p>Description : <%= @trip.description %></p>
+      <p class="strong-text">Catégorie : <%= @trip.category.name %></p>
+      <p><%= @trip.description %></p>
+      </div>
 
+      <div class ="one-half column">
+        <% if @trip.trip_picture.attached? %>
+          <div class="">
+            <img src = "<%= rails_blob_url(@trip.trip_picture)%>" class = "twelve columns",  style="float:right;width:100%;height:50%;object-fit:cover;">
+          </div>
+        <% else %>
+          <div class="">
+            <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style="float:right;width:70%;height:30%;object-fit:cover;">
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="">
       <% if @trip.places.length > 0 %>
-        <table class="u-full-width">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Nom</th>
-              <th>Adresse</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @trip.places.each do |place|%>
-              <tr>
-                <% if place.place_picture.attached? %>
-                  <td>
-                    <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px">
-                  </td>
-                <% else %>
-                  <td>
-                    <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px">
-                  </td>
-                <% end %>
-                <td><%= link_to "#{place.name}", partner_place_path(place[:id])%> </td>
-                <td><%= place.address%></td>
-                <td><%= link_to "Éditer", edit_partner_place_path(place[:id]), class:"button button-primary", style: "margin-top: 10px" %></td>
-              </tr>
+
+        <% @trip.places.each do |place|%>
+          <div class="flex-container-between ">
+            <% if place.place_picture.attached? %>
+              <div class="">
+                <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px">
+              </div>
+            <% else %>
+              <div class="">
+                <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px">
+              </div>
             <% end %>
-          </tbody>
-        </table>
+            <div class="container-sm">
+              <%= link_to "#{place.name}", partner_place_path(place[:id])%>
+            </div>
+            <div class="container-sm">
+              <%= link_to "Éditer", edit_partner_trip_place_path(place[:id]), class:"button button-primary" %>
+            </div>
+            <div class="container-sm">
+              <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
+              <%= link_to "Supprimer", partner_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button" %>
+            </div>
+          </div>
+        <% end %>
       <% else %>
         <p>Aucune étape n'a encore été ajoutée.</p>
       <% end %>
-
     </div>
-
-    <div class ="six columns">
-      <% if @trip.trip_picture.attached? %>
-        <img src = "<%= rails_blob_url(@trip.trip_picture)%>" class = "twelve columns", style="float:left;width:100%;height:70%;object-fit:cover;">
-      <% else %>
-        <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style="float:left;width:100%;height:70%;object-fit:cover;">
-      <% end %>
-    </div>
-
-  </div>
   <br>
   <br>
-  <div class="">
-    <%= link_to "Ajouter des lieux", partner_trip_waypoint_index_path(@trip[:id]), class:"button button-primary u-full-width" %>
-  </div>
-
+    <div class="">
+      <%= link_to "Ajouter des lieux", partner_trip_waypoint_index_path(trip_id: @trip.id), class:"button button-primary u-full-width" %>
+    </div>
   <hr>
 </div>
 <br>
-
 <%= render 'formEditTrip' %>

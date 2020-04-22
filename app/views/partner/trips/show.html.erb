@@ -1,14 +1,32 @@
 <%= render 'tripBanner' %>
 <br>
+<div class="container-center">
+  <% if @trip.online == true %>
+    <p> Cet itinéraire est actuellement publié en ligne. </p>
+  <% else %>
+    <p> Cet itinéraire est actuellement en attente de validation pour publication en ligne. </p>
+  <% end %>
+</div>
+<div class="container">
+  <p class="strong-text"><%= @trip.description%></p>
+</div>
 
 <% if !@trip.places.empty? %>
   <%= render 'tripPlaces' %>
 <% else%>
   <div class = "container">
     <p>Ce trip ne comporte pas encore d'étapes.</p>
-    <%= link_to "Éditer le trip", edit_partner_trip_path(@trip[:id]), class:"button button-primary" %>
-    <%= link_to "Revenir à la liste des trips", partner_user_path(current_user.id), class:"button" %>
   </div>
 <% end %>
+<br>
+<br>
+<div class="flex-container-around">
+  <div class="">
+    <%= link_to "Éditer le trip", edit_partner_trip_path(@trip[:id]), class:"button button-primary" %>
+  </div>
+  <div class="">
+    <%= link_to "Revenir à la liste des trips", partner_user_path(current_user.id), class:"button" %>
+  </div>
+</div>
 <br>
 <br>

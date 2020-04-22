@@ -32,16 +32,11 @@
     <p>Vous pouvez ajouter une photo :</p>
     <%= form.file_field :trip_picture %>
   </div>
-  <br>
-  <br>
-
-
-  <div class="flex-container-around">
-    <div class="actions">
-      <%= form.submit "Enregistrer", class:"button-primary"%>
-    </div>
-    <div class="">
-      <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
-    </div>
+  <div class="">
+    <%= form.submit "Enregistrer", class:"button-primary"%>
   </div>
 <% end %>
+
+<div class="">
+  <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
+</div>

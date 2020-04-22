@@ -2,8 +2,9 @@ module Admin
 
   class TripWaypointsController < ApplicationController
     before_action :only_admin
-    #before_action :set_trip
-    before_action :set_trip_waypoint,
+    before_action :set_trip_waypoint, only: [:destroy]
+    before_action :set_trip
+
 
 
     # GET /trip_waypoints
@@ -37,7 +38,7 @@ module Admin
 
       respond_to do |format|
         if @trip_waypoint.save
-          format.html { redirect_to admin_trip_path(params[:trip_id]), notice: "Le lieu a été ajouté à l'itinéraire" }
+          format.html { redirect_to admin_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire" }
         # format.json { render :show, status: :created, location: @trip_waypoint }
         else
           format.html { render :new }
@@ -63,17 +64,9 @@ module Admin
     # DELETE /trip_waypoints/1
     # DELETE /trip_waypoints/1.json
     def destroy
-      puts "=================================="
-      puts params
-      puts "trip_id = #{params[:trip_id]}"
-      puts "place_id = #{params[:place_id]}"
-      puts "id = #{params[:trip_waypoint_id]}"
-      puts "=================================="
-
-
       @trip_waypoint.destroy
       respond_to do |format|
-        format.html { redirect_to admin_trip_path(@trip[:id]), notice: 'Le lieu a été retiré de cet itinéraire.' }
+        format.html { redirect_to edit_admin_trip_path(@trip), notice: "L'étape a été supprimée." }
         #format.json { head :no_content }
       end
     end
@@ -81,17 +74,17 @@ module Admin
     private
 
       def set_trip
-          @trip = Trip.find(params[:id])
+          @trip = Trip.find(params[:trip_id])
+      end
+
+      def set_trip_waypoint
+        @trip_waypoint = TripWaypoint.find(params[:id])
       end
 
       def only_admin
         if !user_signed_in? || current_user.role != 'admin'
           redirect_to root_path, alert: "Accès non autorisé"
         end
-      end
-
-      def set_trip_waypoint
-        @trip_waypoint = TripWaypoint.where(params[:place_id], params[:trip_id])
       end
 
       def trip_waypoint_params

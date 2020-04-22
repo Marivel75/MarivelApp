@@ -7,8 +7,8 @@
 <div class="container">
   <div class = "flex-container-around">
     <% if @user == current_user %>
-     <%= link_to 'Éditez votre compte',edit_user_registration_path, class:'button' %>
-     <%= link_to "Créez un trip", new_trip_path, class:"button button-primary" %>
+     <%= link_to 'Paramètres du compte',edit_user_registration_path, class:'button' %>
+     <%= link_to "Créer un itinéraire personnalisé", new_trip_path, class:"button button-primary" %>
     <%end%>
   </div>
   <hr>

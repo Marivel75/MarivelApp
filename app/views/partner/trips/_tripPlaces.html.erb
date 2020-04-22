@@ -1,8 +1,4 @@
 <div class="container">
-
-
-  <p class="strong-text"><%= @trip.description%></p>
-
   <div class="flex-container-center">
     <i class="fas fa-map-marker-alt fa-3x icon-margin"></i>
     <p class="welcome-text icon-margin"><%= @trip.places.length%> étape(s)</p>
@@ -22,7 +18,7 @@
             <% end %>
           </div>
           <div class = "nine columns">
-            <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name-sm" %> </p>
+            <p> <%= link_to "#{p.name}", partner_trip_place_path(@trip.id, p[:id]), class:"poi-name-sm" %> </p>
           </div>
         </div>
       <% end %>
@@ -33,44 +29,8 @@
     </div>
 
   </div>
-  <br>
-  <br>
-
-
-  <% @trip.places.each do |p| %>
-    <div class = "row">
-      <div class = "three columns">
-        <% if p.place_picture.attached? %>
-           <img src = "<%= rails_blob_url(p.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
-        <% else %>
-          <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
-        <% end %>
-      </div>
-      <div class = "nine columns">
-        <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name" %> </p>
-        <p><%= p.description %><p>
-      </div>
-    </div>
-  <% end %>
-<br>
-
-  <div class ="flex-container-around">
-      <% if @trip.author == current_user%>
-        <div class="">
-          <%= link_to "Éditer le trip", edit_partner_trip_path(@trip[:id]), class:"button button-primary" %>
-        </div>
-      <% end%>
-        <div class="">
-          <%= link_to "Revenir aux trips", partner_user_path(current_user.id), class:"button" %>
-        </div>
-  </div>
-
 
 </div>
-
-
-
-
 
 <script>
 
