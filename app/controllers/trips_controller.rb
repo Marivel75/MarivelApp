@@ -79,7 +79,7 @@ class TripsController < ApplicationController
     def set_trip
       if params[:id]
         @trip = Trip.find(params[:id])
-        # gon.places = @trip.places.all
+        gon.places = @trip.places.all
       end
     end
 
