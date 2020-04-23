@@ -32,6 +32,15 @@ User.create(
 )
 
 User.create(
+  first_name: "CMN",
+  last_name: "Centre des monuments nationaux",
+  description: "Premier  opérateur  public,  culturel  et  touristique  avec  plus  de  10  millions  de  visiteurs  par  an,  le  Centre  des monuments nationaux conserve et ouvre à la visite des monuments d’exception ainsi que leurs parcs et jardins. Ils illustrent, par leur diversité, la richesse du patrimoine français.",
+  email: Faker::Internet.email,
+  password: "123456",
+  role: "partner"
+)
+
+User.create(
   first_name: "Nana",
   last_name: Faker::Name.last_name,
   description: Faker::Quotes::Shakespeare.as_you_like_it_quote,
@@ -49,6 +58,17 @@ User.create(
   role: "traveler"
 )
 
+Category.create(
+  name: "Roadtrip"
+)
+
+Category.create(
+  name: "À vélo"
+)
+
+Category.create(
+  name: "À pied"
+)
 
 Place.create(
   name: "Abbaye de Cluny",
@@ -395,4 +415,252 @@ Place.create(
   website: "http://www.maison-george-sand.fr/",
   phone: "33 / (0)2 54 31 06 04",
   author_id: User.first.id
+)
+
+Trip.create(
+  title: "Le long du Rhône et de la Saône",
+  description: "Un voyage à travers les époques et les paysages entre Bourgogne et Méditerranée. Les monuments historiques sont une porte d'entrée pour découvrir la richesse du patrimoine et de la nature du sud-est de l'Héxagone.",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+Trip.create(
+  title: "Le long de la Seine",
+  description: "C’est au bord de la Seine, sur l’ile de la Cité, que Paris est né. Les monuments les plus emblématiques de la capitale forment un décor majestueux. En suivant le cours du fleuve, d’autres monuments remarquables sont à découvrir.",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+Trip.create(
+  title: "Le long de la Loire",
+  description: "Le long de la Loire, ce sont des merveilles architecturales de la Renaissance que l’on découvre en parcourant les routes de cette ancienne région royale. La maison des Valois y a importé un art de vivre inspiré de l’Italie en faisant venir artistes et artisans. Cette période nous a légué une densité exceptionnelle de monuments remarquables, qui ont valu au Val de Loire son inscription au patrimoine mondial de l’Unesco.",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+Trip.create(
+  title: "Le long de la Garonne et de la Dordogne",
+  description: "Une région qui a bien plus que des vignobles à offrir. En témoignent ces lieux qui ont traversé le temps depuis la préhistoire jusqu’à nous pour enchanter les routes de ce beau pays.",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+Trip.create(
+  title: "Le long du canal du Midi",
+  description: "Châteaux et sites archéologiques jalonnent le tracé de ce chef-d’oeuvre du XVIIème siècle, qui révolutionna le transport fluvial et la navigation dans le Midi. Suivre son cours, c’est plonger dans la richesse historique et naturelle de cette région aux couleurs et aux paysages merveilleux.",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+Trip.create(
+  title: "Trois villas des années 30",
+  description: "Trois villas historiques pour parcourir la France du Nord au Sud, ou du Sud au Nord. Trois architectes qui ont marqué au-delà de leur temps pour façonner la modernité et bouleverser la façon « d’habiter ».",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+Trip.create(
+  title: "Elles ont fait l’Histoire",
+  description: "La science, l’amour, la guerre, les arts et la politique. Les femmes ont fait l’Histoire de France ; les monuments historiques en témoignent.",
+  category_id: Category.first.id,
+  author_id: User.where(first_name:"CMN").ids[0],
+  online: true
+)
+
+# Itinéraire Le long du Rhône et de la Saône
+TripWaypoint.create(
+  place_id: Place.find(1).id,
+  trip_id: Trip.find(1).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(2).id,
+  trip_id: Trip.find(1).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(3).id,
+  trip_id: Trip.find(1).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(4).id,
+  trip_id: Trip.find(1).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(5).id,
+  trip_id: Trip.find(1).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(6).id,
+  trip_id: Trip.find(1).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(7).id,
+  trip_id: Trip.find(1).id
+)
+
+# Itinéraire Le long de la Seine
+TripWaypoint.create(
+  place_id: Place.find(8).id,
+  trip_id: Trip.find(2).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(9).id,
+  trip_id: Trip.find(2).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(10).id,
+  trip_id: Trip.find(2).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(11).id,
+  trip_id: Trip.find(2).id
+)
+
+# Itinéraire Le long de la Loire
+TripWaypoint.create(
+  place_id: Place.find(12).id,
+  trip_id: Trip.find(3).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(13).id,
+  trip_id: Trip.find(3).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(14).id,
+  trip_id: Trip.find(3).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(15).id,
+  trip_id: Trip.find(3).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(16).id,
+  trip_id: Trip.find(3).id
+)
+
+# Itinéraire Le long de la Garonne et de la Dordogne
+TripWaypoint.create(
+  place_id: Place.find(17).id,
+  trip_id: Trip.find(4).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(18).id,
+  trip_id: Trip.find(4).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(19).id,
+  trip_id: Trip.find(4).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(20).id,
+  trip_id: Trip.find(4).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(21).id,
+  trip_id: Trip.find(4).id
+)
+
+# Itinéraire Le long du canal du Midi
+TripWaypoint.create(
+  place_id: Place.find(22).id,
+  trip_id: Trip.find(5).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(23).id,
+  trip_id: Trip.find(5).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(24).id,
+  trip_id: Trip.find(5).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(6).id,
+  trip_id: Trip.find(5).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(5).id,
+  trip_id: Trip.find(5).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(4).id,
+  trip_id: Trip.find(5).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(3).id,
+  trip_id: Trip.find(5).id
+)
+
+# Itinéraire Trois villas des années 30
+TripWaypoint.create(
+  place_id: Place.find(25).id,
+  trip_id: Trip.find(6).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(11).id,
+  trip_id: Trip.find(6).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(26).id,
+  trip_id: Trip.find(6).id
+)
+
+# Itinéraire Elles ont fait l'histoireTripWaypoint.create(
+TripWaypoint.create(
+  place_id: Place.find(8).id,
+  trip_id: Trip.find(7).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(2).id,
+  trip_id: Trip.find(7).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(22).id,
+  trip_id: Trip.find(7).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(27).id,
+  trip_id: Trip.find(7).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(28).id,
+  trip_id: Trip.find(7).id
+)
+
+TripWaypoint.create(
+  place_id: Place.find(29).id,
+  trip_id: Trip.find(7).id
 )
