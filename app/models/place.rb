@@ -1,4 +1,7 @@
 class Place < ApplicationRecord
+
+  searchkick
+  
   geocoded_by :address do |object, results|
     if results.present?
      object.latitude = results.first.latitude

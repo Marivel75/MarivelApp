@@ -10,6 +10,50 @@
   background-size: cover;
 }
 
+.navbar-top-screen {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.grid-container-navbar {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-content: center;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  justify-content: space-around;
+  padding-top: 1%;
+}
+
+.grid-item-navbar {
+  align-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 15px;
+
+}
+
+.grid-item-navbar-brand {
+  align-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+
+}
+
 .trip_banner {
   color: black;
   -webkit-background-size: cover;
@@ -180,21 +224,6 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-}
-
-.navbar-top-screen {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 15px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
 }
 
 .navbar-item {

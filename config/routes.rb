@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  # resources :trip_waypoints
+  root to: "trips#index"
+
+  get 'search', to: 'places#search'
 
   devise_for :users
 
@@ -13,8 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :places
-
-  root to: "trips#index"
 
   resources :users do
     resources :trips
