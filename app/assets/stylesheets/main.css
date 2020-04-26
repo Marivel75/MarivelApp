@@ -417,6 +417,11 @@
   background-color: red;
 }
 
+.button-danger {
+  background-color: transparent;
+  
+}
+
 .big-button,
 button,
 input[type="submit"],

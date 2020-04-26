@@ -1,7 +1,7 @@
 class Place < ApplicationRecord
 
   searchkick
-  
+
   geocoded_by :address do |object, results|
     if results.present?
      object.latitude = results.first.latitude
@@ -27,4 +27,13 @@ class Place < ApplicationRecord
       errors.add(:address, "We couldn't find the address")
     end
   end
+
+
+  def search_data
+    {name: name,
+    subtitle: subtitle,
+    description: description
+    }
+  end
+
 end
