@@ -1,25 +1,25 @@
 <%= render 'tripBanner' %>
-<br>
+
+<% if user_signed_in? %>
+  <div class="container-center">
+    <%if current_user != @trip.author %>
+      <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
+        <% if pre_saved_trip %>
+          <div class="">
+            <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete %>
+          </div>
+        <% else %>
+          <div class="">
+            <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
+          </div>
+        <% end %>
+    <%end%>
+  </div>
+<% end %>
+
 <div class="container-center">
-
-  <%if current_user != @trip.author %>
-
-    <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
-      <% if pre_saved_trip %>
-        <div class="">
-          <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete %>
-        </div>
-      <% else %>
-        <div class="">
-          <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
-        </div>
-      <% end %>
-
-    <% else %>
-      <p>Vous avez crée cet itinéraire le <%= @trip.created_at %></p>
-  <%end%>
+  <p>Crée par <span class="strong-text-mid"><%= @trip.author.last_name %></span>, le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
 </div>
-<br>
 
 <div class="container">
   <p class="strong-text"><%= @trip.description%></p>

@@ -1,78 +1,57 @@
   <div class = "jumbotron homepage">
 
 
-  <div class="container">
-    <div class="">
-      <%=link_to 'MARIVEL', trips_path, class:"brand" %>
-    </div>
+    <div class="container-center">
 
-    <div class="">
-      <h1>L'inspiration de vos explorations</h1>
-    </div>
-
-    <% if isTraveler? %>
-      <div class="center">
-        <p class='welcome-text'> Bienvenue <%= current_user.first_name%> </p>
-      </div>
-      <div class="flex-container">
-        <div class="navbar-item">
-          <%= link_to "Ouvrir votre profil", user_path(current_user.id), class:"button button-primary" %>
-        </div>
-        <div class="navbar-item">
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
-        </div>
+      <div class="">
+        <h1 class="jumbotron-heading">Parcourez les guides et planifiez vos itinéraires</h1>
       </div>
 
-    <% elsif isAdmin? %>
-      <div class="center">
-        <p class='welcome-text'> Bienvenue <%= current_user.first_name%></p>
-        <p>Vous êtes administrateur. Retrouvez vos autorisations d'administration dans l'espace Admin.</p>
-      </div>
-      <div class="flex-container">
-        <div class="navbar-item">
-            <%= link_to "Espace Admin", admin_admin_path, class:'button' %>
+      <% if isTraveler? %>
+        <div class="center">
+          <p class='welcome-text'> Bienvenue <%= current_user.first_name%> </p>
         </div>
-        <div class="navbar-item">
-          <%= link_to "Ouvrir votre profil", admin_user_path(current_user.id), class:"button button-primary" %>
-        </div>
-        <div class="navbar-item">
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
-        </div>
-      </div>
-
-    <% elsif isPartner? %>
-      <div class="center">
-        <p class='welcome-text'> Bienvenue cher partenaire</p>
-        <p> Vous êtes connecté sur le compte : <%= current_user.first_name%></p>
-        <p>Retrouvez vos options de gestion et de publication dans votre compte.</p>
-      </div>
-      <div class="flex-container">
-        <div class="navbar-item">
-          <%= link_to "Ouvrir votre compte", partner_user_path(current_user.id), class:"button button-primary" %>
-        </div>
-        <div class="navbar-item">
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
-        </div>
-      </div>
-
-    <% else %>
-      <div class="center">
-        <div class="flex-container">
-          <div class="navbar-item">
-            <%= link_to "Se connecter", new_user_session_path, class:"button" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "S'inscrire", new_user_registration_path, class:"button button-primary" %>
+        <div class="flex-container-center">
+          <div class="flex-container">
+            <%= link_to "Créer un itinéraire", new_trip_path, class:"button button-primary" %>
           </div>
         </div>
-      </div>
 
-    <% end %>
+      <% elsif isAdmin? %>
+        <div class="center">
+          <p class='welcome-text'> Bienvenue <%= current_user.first_name%></p>
+          <p>Vous êtes administrateur. Retrouvez vos autorisations d'administration dans l'espace Admin.</p>
+        </div>
+        <div class="flex-container-center">
+          <div class="navbar-item">
+              <%= link_to "Espace Admin", admin_admin_path, class:'button' %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "Ouvrir votre profil", admin_user_path(current_user.id), class:"button button-primary" %>
+          </div>
+          <div class="navbar-item">
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
+          </div>
+        </div>
+
+      <% elsif isPartner? %>
+        <div class="center">
+          <p class='welcome-text'> Bienvenue cher partenaire</p>
+          <p> Vous êtes connecté sur le compte : <%= current_user.first_name%></p>
+          <p>Retrouvez vos options de gestion et de publication dans votre compte.</p>
+        </div>
+        <div class="flex-container-center">
+          <div class="navbar-item">
+            <%= link_to "Ouvrir votre compte", partner_user_path(current_user.id), class:"button button-primary" %>
+          </div>
+          <div class="navbar-item">
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'navbar-link'  %>
+          </div>
+        </div>
+
+      <% end %>
 
     </div>
-
-
-
-      <br>
-      <br>
+    <br>
+    <br>
   </div>
