@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .jumbotron {
     padding-top: 10%;
 }
@@ -8,6 +12,11 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 
 .navbar-top-screen {
@@ -40,18 +49,52 @@
 }
 
 .grid-item-navbar {
+  width: 22%;
   align-content: center;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 15px;
-
+  box-sizing: border-box;
 }
 
 .grid-item-navbar-brand {
+  width: 22%;
   align-content: center;
   padding-left: 10%;
   padding-right: 10%;
+  box-sizing: border-box;
+}
 
+.grid-container-three-columns {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-content: center;
+  justify-content: start;
+}
+
+.grid-item {
+  align-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
 }
 
 .trip_banner {
@@ -419,7 +462,18 @@
 
 .button-danger {
   background-color: transparent;
-  
+  width: 10px;
+
+}
+
+.button-sm {
+  background-color: transparent;
+  width: 10px;
+  border: none;
+}
+
+.search-field {
+  border: none;
 }
 
 .big-button,

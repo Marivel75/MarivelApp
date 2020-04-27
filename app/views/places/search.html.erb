@@ -2,25 +2,24 @@
   <br><br><br><br>
   <h1>Résultat de la recherche</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @places.each do |place| %>
-        <tr>
-          <td><%= place.name %></td>
-          <td><%= place.address %></td>
-          <td><%= link_to 'Show', place %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% @places.each do |place| %>
+    <div class="row">
+      <div class="grid-item col-2">
+        <% if place.place_picture.attached? %>
+           <img src = "<%= rails_blob_url(p.place_picture)%>">
+        <% else %>
+          <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+        <% end %>
+      </div>
+      <div class="grid-item col-4">
+        <p class="poi-name-sm"><%= link_to place.name, place %></p>
+      </div>
+      <div class="grid-item col-6">
+        <p><%= place.address %></p>
+      </div>
+    </div>
+    <hr>
+  <% end %>
 
   <br>
 
