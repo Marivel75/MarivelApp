@@ -80,7 +80,7 @@ Place.create(
   website: "http://www.cluny-abbaye.fr/",
   phone: "33 / (0)3 85 59 15 93",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Cluny_Farinier_depuis_clocher.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Monastère royal de Brou",
@@ -92,7 +92,7 @@ Place.create(
   website: "http://www.monastere-de-brou.fr/",
   phone: "04 74 22 83 83",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Monastère_royal_de_Brou_(église)_(1).JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Fort Saint-André",
@@ -104,7 +104,7 @@ Place.create(
   website: "http://www.fort-saint-andre.fr/",
   phone: "33 / (0)4 90 25 45 35",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Fort_Saint-André.JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Site archéologique de Glanum",
@@ -116,7 +116,7 @@ Place.create(
   website: "http://www.site-glanum.fr/",
   phone: "33 / (0)4 90 92 23 79",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Site_de_Glanum_Nord_2006-07-16.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Abbaye de Montmajour",
@@ -128,7 +128,7 @@ Place.create(
   website: "http://www.abbaye-montmajour.fr/",
   phone: "33 / (0)4 90 54 64 17",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Montmajour-VueGénérale1.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Tours et remparts d’Aigues-Mortes",
@@ -140,7 +140,7 @@ Place.create(
   website: "http://www.aigues-mortes-monument.fr/",
   phone: "33 / (0)4 66 53 61 55",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Aigues-Mortes_et_salins.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château d’If à Marseille",
@@ -152,7 +152,7 @@ Place.create(
   website: "http://www.chateau-if.fr/",
   phone: "33 / 06 03 06 25 26 / 06 80 52 75 96 / 04 91 59 02 30",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Monte-Cristo_if_castle_-_marseille_France_by_JM_Rosier.JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Panthéon",
@@ -164,7 +164,7 @@ Place.create(
   website: "http://www.paris-pantheon.fr/",
   phone: "33 / (0)1 44 32 18 00",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Fronton_Panthéon_Paris_1.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Arc de Triomphe",
@@ -175,7 +175,7 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 11€",
   website: "http://www.paris-arc-de-triomphe.fr/",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Arc_de_Triomphe,_Paris_21_October_2010.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château de Maisons",
@@ -187,7 +187,7 @@ Place.create(
   website: "http://www.chateau-maisons.fr/",
   phone: "33 / (0)1 39 62 01 49",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_de_Maisons-Laffitte_001.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Villa Savoye",
@@ -199,7 +199,7 @@ Place.create(
   website: "http://www.villa-savoye.fr/",
   phone: "33 / (0)1 39 65 01 06",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Savoye.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château d’Angers",
@@ -211,7 +211,7 @@ Place.create(
   website: "http://www.chateau-angers.fr/",
   phone: "33 / (0)2 41 86 48 77 // 33/ (0) 2 41 86 51 40 Pour les groupes adultes // 33/ (0) 2 41 86 48 79 Pour les groupes scolaires",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/P1310987_Angers_Maine_chateau_roi_Rene_rwk.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château d’Azay-le-Rideau",
@@ -223,7 +223,7 @@ Place.create(
   website: "http://www.azay-le-rideau.fr/",
   phone: "33 / (0)2 47 45 42 04",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/castle-of-azay-le-rideau-1122156_640.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Cloître de la Psalette à Tours",
@@ -235,7 +235,7 @@ Place.create(
   website: "http://www.cloitre-de-la-psalette.fr/",
   phone: "33 / (0)2 47 47 05 19",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Tours_escalier_du_cloître_de_la_Psalette.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château de Fougères-sur-Bièvre",
@@ -247,7 +247,7 @@ Place.create(
   website: "http://www.fougeres-sur-bievre.fr/",
   phone: "33 / (0)2 54 20 27 18",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_de_Fougères-sur-Bièvre-128-Laube-2008-gje.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château de Talcy",
@@ -259,7 +259,7 @@ Place.create(
   website: "http://www.chateau-talcy.fr/",
   phone: "33 / (0)2 54 81 03 01",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Castle_of_Talcy_01.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Tour Pey-Berland",
@@ -271,7 +271,7 @@ Place.create(
   website: "http://www.pey-berland.fr/",
   phone: "33 / (0)5 56 81 26 25",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Bordeaux_Tour_Pey_Berland_statue.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Grotte de Pair-non-Pair",
@@ -283,7 +283,7 @@ Place.create(
   website: "http://www.pair-non-pair.fr/",
   phone: "33 / (0)5 57 68 33 40",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Entrée_de_Pair-non-Pair.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Abbaye de la Sauve Majeure",
@@ -295,7 +295,7 @@ Place.create(
   website: "http://www.abbaye-la-sauve-majeure.fr/",
   phone: "33 / (0)5 56 23 01 55",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Abbaye_de_La_Sauve_01.JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Château de Cadillac",
@@ -307,7 +307,7 @@ Place.create(
   website: "http://www.chateau-cadillac.fr/",
   phone: "33 / (0)5 56 62 69 58",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_des_ducs_d'Epernon_à_Cadillac.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Site archéologique de Montcaret",
@@ -319,7 +319,7 @@ Place.create(
   website: "http://www.villa-montcaret.fr/",
   phone: "33 / (0)5 53 58 50 18",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Montcaret_villa_piscine.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château et remparts de Carcassonne",
@@ -331,7 +331,7 @@ Place.create(
   website: "http://www.remparts-carcassonne.fr/",
   phone: "33 / (0)4 68 11 70 70",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Carcassonne_JPG01.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Forteresse de Salses",
@@ -343,7 +343,7 @@ Place.create(
   website: "http://www.forteresse-salses.fr/",
   phone: "33 / (0)4 68 38 60 13",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Salses_Forteresse_vue_du_sol_02.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Site archéologique d’Ensérune",
@@ -355,7 +355,7 @@ Place.create(
   website: "http://www.enserune.fr/",
   phone: "33 / (0)4 67 37 01 23",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Enserune-Montady-01.JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Villa Cavrois",
@@ -367,7 +367,7 @@ Place.create(
   website: "http://www.villa-cavrois.fr/",
   phone: "+33 / (0)3 20 73 47 12",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Cavrois_Image_Facade_Sud.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "La villa Kérylos",
@@ -379,7 +379,7 @@ Place.create(
   website: "http://www.villakerylos.fr/",
   phone: "+33 / (0)3 20 73 47 12",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Kerylos_BW_2011-06-10_11-56-07.JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Château de Montal",
@@ -391,7 +391,7 @@ Place.create(
   website: "http://www.chateau-montal.fr/",
   phone: "05 65 38 13 72",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_de_Montal_-2.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château d’Oiron",
@@ -403,7 +403,7 @@ Place.create(
   website: "http://www.chateau-oiron.fr/",
   phone: "33 / (0)5 49 96 51 25",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Oiron_château.JPG"), filename: "image.jpg")
 
 Place.create(
   name: "Domaine de George Sand",
@@ -415,15 +415,15 @@ Place.create(
   website: "http://www.maison-george-sand.fr/",
   phone: "33 / (0)2 54 31 06 04",
   author_id: User.first.id
-)
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/George_Sand_House_Cover_Shot.jpg"), filename: "image.jpg")
 
 Trip.create(
   title: "Le long du Rhône et de la Saône",
-  description: "Un voyage à travers les époques et les paysages entre Bourgogne et Méditerranée. Les monuments historiques sont une porte d'entrée pour découvrir la richesse du patrimoine et de la nature du sud-est de l'Héxagone.",
+  description: "Un voyage à travers les époques et les paysages entre Bourgogne et Méditerranée. Les monuments historiques sont une porte d'entrée pour découvrir la richesse du patrimoine et de la nature du sud-est de l'Hexagone.",
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Monte-Cristo_if_castle_-_marseille_France_by_JM_Rosier.JPG"), filename: "image.jpg")
 
 Trip.create(
   title: "Le long de la Seine",
@@ -431,7 +431,7 @@ Trip.create(
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/BastilleDay_PatrouilleDeFrance_(pixinn.net).jpg"), filename: "image.jpg")
 
 Trip.create(
   title: "Le long de la Loire",
@@ -439,7 +439,7 @@ Trip.create(
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Basse-indre_loire.jpg"), filename: "image.jpg")
 
 Trip.create(
   title: "Le long de la Garonne et de la Dordogne",
@@ -447,7 +447,7 @@ Trip.create(
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_des_ducs_d'Epernon_à_Cadillac.jpg"), filename: "image.jpg")
 
 Trip.create(
   title: "Le long du canal du Midi",
@@ -455,7 +455,7 @@ Trip.create(
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Canal du Midi.jpg"), filename: "image.jpg")
 
 Trip.create(
   title: "Trois villas des années 30",
@@ -463,7 +463,7 @@ Trip.create(
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Cavrois_Image_Facade_Sud.jpg"), filename: "image.jpg")
 
 Trip.create(
   title: "Elles ont fait l’Histoire",
@@ -471,7 +471,7 @@ Trip.create(
   category_id: Category.first.id,
   author_id: User.where(first_name:"CMN").ids[0],
   online: true
-)
+).trip_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Fronton_Panthéon_Paris_1.jpg"), filename: "image.jpg")
 
 # Itinéraire Le long du Rhône et de la Saône
 TripWaypoint.create(

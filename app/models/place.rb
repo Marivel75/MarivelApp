@@ -28,7 +28,6 @@ class Place < ApplicationRecord
     end
   end
 
-
   def search_data
     {name: name,
     subtitle: subtitle,
