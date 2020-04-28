@@ -31,11 +31,11 @@
             <% end %>
           </div>
         <% end %>
+        <div class="">
+          <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", admin_trip_path(@trip[:id]), class:"button button-primary" %>
+        </div>
       </div>
-
-      <p class="strong-text">Catégorie : <%= @trip.category.name %></p>
-      <p><%= @trip.description %></p>
-      </div>
+    </div>
 
       <div class ="one-half column">
         <% if @trip.trip_picture.attached? %>
@@ -50,10 +50,16 @@
       </div>
     </div>
 
+    <div class="">
+      <p class="strong-text">Catégorie : <%= @trip.category.name %></p>
+      <p class="strong-text">Description :</p>
+      <p><%= @trip.description %></p>
+    </div>
+
 
     <div class="">
+      <p class="strong-text">Étapes :</p>
       <% if @trip.places.length > 0 %>
-
         <% @trip.places.each do |place|%>
           <div class="flex-container-between ">
             <% if place.place_picture.attached? %>

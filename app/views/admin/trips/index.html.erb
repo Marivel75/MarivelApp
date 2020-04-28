@@ -27,8 +27,8 @@
           <td><%= trip.title %></td>
           <td><%= trip.author_id %></td>
           <td><%= trip.category.name %></td>
-          <td><%= trip.created_at %></td>
-          <td><%= trip.updated_at %></td>
+          <td><%= trip.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= trip.updated_at.strftime("%d/%m/%Y") %></td>
           <td><%= trip.online %></td>
           <td>
             <%= link_to 'Édition', edit_admin_trip_path(trip[:id]) %>

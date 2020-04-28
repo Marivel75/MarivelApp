@@ -47,6 +47,9 @@
           <div class = "container-center">
             <p> <%= link_to "#{p.name}", trip_place_path(@trip.id, p[:id]), class:"poi-name-sm" %> </p>
           </div>
+          <div class="container-center">
+            <p class="strong-text-mid"><%= p.subtitle %></p>
+          </div>
           <div class="container-start">
             <p><%= p.description %></p>
           </div>
