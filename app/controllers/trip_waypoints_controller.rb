@@ -36,10 +36,10 @@ class TripWaypointsController < ApplicationController
     respond_to do |format|
       if @trip_waypoint.save
         format.html { redirect_to edit_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire." }
-        #format.json { render :show, status: :created, location: @trip_waypoint }
+        format.json { render :show, status: :created, location: @trip_waypoint }
       else
         format.html { render :new }
-        #format.json { render json: @trip_waypoint.errors, status: :unprocessable_entity }
+        format.json { render json: @trip_waypoint.errors, status: :unprocessable_entity }
       end
     end
   end

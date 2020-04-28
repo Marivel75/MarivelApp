@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   before_action :is_current_user?, only: [:create, :new, :edit, :update]
 
   def search
-    @places = Place.search(params[:search])
+    @places = Place.search(params[:search])  
   end
 
   def index
@@ -27,23 +27,22 @@ class PlacesController < ApplicationController
     respond_to do |format|
       if @place.save
         format.html { redirect_to [@place], notice: 'Le lieu a été crée.' }
-        # format.json { render :show, status: :created, location: @place }
+        format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
-        # format.json { render json: @place.errors, status: :unprocessable_entity }
+        format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
-    # puts place_params
     respond_to do |format|
       if @place.update(place_params)
         format.html { redirect_to [@place], notice: 'Les modifications ont été enregistrées.' }
-        # format.json { render :show, status: :ok, location: @place }
+        format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
-        # format.json { render json: @place.errors, status: :unprocessable_entity }
+        format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +51,7 @@ class PlacesController < ApplicationController
     @place.destroy
     respond_to do |format|
       format.html { redirect_to new_place_path, notice: 'Le lieu a été supprimé.' }
-      # format.json { head :no_content }
+      format.json { head :no_content }
     end
   end
 
