@@ -1,7 +1,7 @@
 <div class = "grid-container-navbar">
 
     <div class="grid-item-navbar">
-      <%= form_with url: '/search', model: @place, method: "get" do %>
+      <%= form_with url: '/search', model: @place, method: "get", local: true do %>
         <div class="flex-container">
           <div class="">
             <%= text_field_tag :search, params[:search] %>

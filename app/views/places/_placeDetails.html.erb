@@ -49,6 +49,8 @@
         <div class="flex-container-around">
           <% if current_user && current_user[:id] == @place.author_id %>
             <%= link_to "Éditer le lieu", edit_place_path(@place[:id]), class:"button button-primary" %>
+          <% elsif current_user && current_user.role == admin %>
+            <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button button-primary" %>
           <% end %>
           <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
         </div>
@@ -103,49 +105,3 @@ geojson.features.forEach(function(marker) {
     .addTo(map);
 });
 </script>
-<!--
-<div class="container">
-  <h1 class="poi-name"><%= @place.name %></h1>
-
-  <p class="strong-text">Adresse </p>
-  <div class="container-sm">
-    <p> <%= @place.address %> </p>
-  </div>
-  <p class="strong-text">Coordonnées géographiques </p>
-  <div class="container-sm">
-    <p> Latitude : <%= @place.latitude %></p>
-    <p> Longitude : <%= @place.longitude %></p>
-  </div>
-
-
-<div>
-  <p class="strong-text"> Informations sur le lieu </p>
-  <div class="container-sm">
-    <p class="strong-text">
-      <%= @place.subtitle %>
-    </p>
-
-    <p>
-      <%= @place.description %>
-    </p>
-
-    <p>
-      <%= @place.price %>
-    </p>
-
-    <p>
-      <%= @place.price_2 %>
-    </p>
-
-    <p>
-      <%= @place.phone %>
-    </p>
-
-    <p>
-      <%= link_to @place.website, "http://#{@place.website}" %>
-    </p>
-
-  </div>
-
-</div>
--->
