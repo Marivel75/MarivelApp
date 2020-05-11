@@ -47,15 +47,6 @@
 
       <div id="map" style="width: 100%; height: 240px"></div>
       <br>
-
-      <div>
-        <% if current_user && current_user[:id] == @place.author_id %>
-        <%= link_to "Éditer le lieu", edit_partner_place_path(@place[:id]), class:"button button-primary" %>
-        <% elsif isAdmin? %>
-          <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button button-primary" %>
-        <% end %>
-        <%= link_to "Revenir à l'ajout d'étapes à l'itinéraire", :back, class:"button" %>
-      </div>
     </div>
   </div>
 

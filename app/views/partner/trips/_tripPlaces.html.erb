@@ -8,17 +8,17 @@
 
   <div class="row">
     <div class = "four columns trip_card", style= "max-height: 600px">
-      <% @trip.places.each do |p| %>
+      <% @trip.places.each do |place| %>
         <div class = "row">
           <div class = "three columns">
-            <% if p.place_picture.attached? %>
-               <img src = "<%= rails_blob_url(p.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
+            <% if place.place_picture.attached? %>
+               <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
             <% else %>
               <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
             <% end %>
           </div>
           <div class = "nine columns">
-            <p> <%= link_to "#{p.name}", partner_trip_place_path(@trip.id, p[:id]), class:"poi-name-sm" %> </p>
+            <p> <%= link_to "#{place.name}", partner_place_path(place[:id]), class:"poi-name-sm" %> </p>
           </div>
         </div>
       <% end %>
@@ -33,24 +33,24 @@
   <br>
 
   <div class="container">
-    <% @trip.places.each do |p| %>
+    <% @trip.places.each do |place| %>
 
         <div class ="">
-          <% if p.place_picture.attached? %>
-             <img src = "<%= rails_blob_url(p.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
+          <% if place.place_picture.attached? %>
+             <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px">
           <% else %>
             <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px">
           <% end %>
         </div>
         <div class="container">
           <div class = "container-center">
-            <p> <%= link_to "#{p.name}", partner_trip_place_path(@trip.id, p[:id]), class:"poi-name-sm" %> </p>
+            <p> <%= link_to "#{place.name}", partner_place_path(place[:id]), class:"poi-name-sm" %> </p>
           </div>
           <div class="container-center">
-            <p class="strong-text-mid"><%= p.subtitle %></p>
+            <p class="strong-text-mid"><%= place.subtitle %></p>
           </div>
           <div class="container-start">
-            <p><%= p.description %></p>
+            <p><%= sanitize place.description %></p>
           </div>
         </div>
         <br>

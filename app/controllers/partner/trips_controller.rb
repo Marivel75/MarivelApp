@@ -52,34 +52,22 @@ module Partner
     # PATCH/PUT /trips/1.json
     def update
       @trip.update(trip_params)
-      # @trip.update_attribute(:online => params[:online])
       redirect_to partner_trip_path(@trip), notice: "L'itinéraire a été modifié."
-
-      # @trip.category_id = params[:category_id]
-      # respond_to do |format|
-      #   if @trip.update(trip_params)
-      #     format.html { redirect_to trip_path(@trip[:id]), notice: 'Trip was successfully updated.' }
-      #     format.json { render :show, status: :ok, location: @trip }
-      #   else
-      #     format.html { render :edit }
-      #     format.json { render json: @trip.errors, status: :unprocessable_entity }
-      #   end
-      # end
     end
 
 
     # DELETE /trips/1
     # DELETE /trips/1.json
-    def destroy
-      @trip.destroy
-      respond_to do |format|
-        format.html { redirect_to partner_trips_path, notice: "L'itinéraire a été supprimé." }
-        # format.json { head :no_content }
-      end
-    end
+    # def destroy
+    #   @trip.destroy
+    #   respond_to do |format|
+    #     format.html { redirect_to partner_trips_path, notice: "L'itinéraire a été supprimé." }
+    #     # format.json { head :no_content }
+    #   end
+    # end
 
     private
-    
+
       def only_partner
         if !user_signed_in? || current_user.role != 'partner'
           redirect_to root_path, alert: "Accès non autorisé"

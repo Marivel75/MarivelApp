@@ -42,13 +42,11 @@ Rails.application.routes.draw do
 
   scope 'partner', module: 'partner', as: 'partner' do
     resources :users, only: [:show, :edit, :update]
-    resources :places, except: [:destroy]
+    resources :places, only: [:show]
 
-    resources :trips do
-      resources :places
-      resources :trip_pictures, only: [:create], as: 'picture'
-      resources :trip_waypoints, as: 'waypoint'
+    resources :trips, only: [:index, :show]
+      # resources :trip_pictures, only: [:create], as: 'picture'
+      # resources :trip_waypoints, only: [:index, :new, :create, :destroy], as: 'waypoint'
     end
-  end
 
 end
