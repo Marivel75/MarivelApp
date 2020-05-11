@@ -22,7 +22,7 @@
 </div>
 
 <div class="container">
-  <p class="strong-text"><%= @trip.description%></p>
+  <p class="strong-text"><%= sanitize @trip.description%></p>
 </div>
 
 <% if !@trip.places.empty? %>

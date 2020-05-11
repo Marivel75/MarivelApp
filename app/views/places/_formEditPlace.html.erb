@@ -20,32 +20,33 @@
       <%= form.label :address %>
       <%= form.text_area :address, class:"u-full-width" %>
     </div>
-
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description, class:"u-full-width" %>
-    </div>
-
+    <br>
     <div class="field">
       <%= form.label :subtitle %>
       <%= form.text_field :subtitle, class:"u-full-width" %>
     </div>
-
+    <br>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.hidden_field :description, id:'place_description', class:"u-full-width" %>
+      <trix-editor input="place_description"></trix-editor>
+    </div>
+    <br>
     <div class="field">
       <%= form.label :price %>
       <%= form.text_field :price, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
       <%= form.label :website %>
       <%= form.text_field :website, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
       <%= form.label :phone %>
       <%= form.text_field :phone, class:"u-full-width" %>
     </div>
-
+    <br>
     <div class="field">
       <%= form.label :price_2 %>
       <%= form.text_field :price_2, class:"u-full-width" %>

@@ -18,7 +18,7 @@
       </div>
 
       <p class="strong-text">Catégorie : <%= @trip.category.name %></p>
-      <p>Description : <%= @trip.description %></p>
+      <p>Description : <%= sanitize @trip.description %></p>
     </div>
 
     <div class="one-half column">

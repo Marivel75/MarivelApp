@@ -38,7 +38,7 @@
   <div class="">
     <p class="strong-text">Catégorie : <%= @trip.category.name %></p>
     <p class="strong-text">Description :</p>
-    <p><%= @trip.description %></p>
+    <p><%= sanitize @trip.description %></p>
   </div>
 
   <div class="">

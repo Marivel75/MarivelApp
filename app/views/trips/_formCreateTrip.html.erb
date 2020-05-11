@@ -24,7 +24,8 @@
   <br>
   <div class="field">
     <%= form.label :description, "Description" %>
-    <%= form.text_area :description, class:"u-full-width" %>
+    <%= form.hidden_field :description, id:'trip_description', class:"u-full-width" %>
+    <trix-editor input="trip_description"></trix-editor>
   </div>
   <br>
   <br>
