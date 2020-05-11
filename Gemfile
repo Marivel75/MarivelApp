@@ -92,3 +92,5 @@ gem "aws-sdk-s3", require: false
 # gem 'pundit'
 
 gem 'searchkick'
+
+gem 'trix'

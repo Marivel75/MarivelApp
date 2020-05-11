@@ -13,8 +13,11 @@
       <% end %>
       <hr>
       <hr>
+      <span class ="twelve columns strong-text">
+        <p> <%= @place.subtitle %></p>
+      </span>
       <span class ="twelve columns" style = "min-height: 50px">
-        <p> <%= @place.description%></p>
+        <p> <%= sanitize @place.description%></p>
       </span>
     </div>
 

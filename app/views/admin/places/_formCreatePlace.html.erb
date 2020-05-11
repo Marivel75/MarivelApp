@@ -22,13 +22,14 @@
     </div>
 
     <div class="field">
-      <%= form.label :description, "Description" %>
-      <%= form.text_area :description, class:"u-full-width" %>
+      <%= form.label :subtitle, "Sous-titre" %>
+      <%= form.text_field :subtitle, class:"u-full-width" %>
     </div>
 
     <div class="field">
-      <%= form.label :subtitle, "Sous-titre" %>
-      <%= form.text_field :subtitle, class:"u-full-width" %>
+      <%= form.label :description %>
+      <%= form.hidden_field :description, id:'place_description', class:"u-full-width" %>
+      <trix-editor input="place_description"></trix-editor>
     </div>
 
     <div class="field">
