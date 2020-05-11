@@ -8,19 +8,17 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
   resources :trips do
-    resources :saved_trips
-    resources :places
+    resources :saved_trips, only: [:create, :destroy]
+    # resources :places
     resources :trip_waypoints, as: 'waypoint'
     resources :trip_pictures, only: [:create]
   end
 
-  resources :places
+  resources :places, except: [:destroy]
 
-  resources :users do
+  resources :users, except: [:index, :destroy] do
     resources :trips
   end
-
-
 
 
   scope 'admin', module: 'admin',  as: 'admin' do
@@ -36,8 +34,6 @@ Rails.application.routes.draw do
       resources :trip_waypoints, only: [:index, :new, :create, :destroy], as: 'waypoint'
     end
   end
-
-
 
 
   scope 'partner', module: 'partner', as: 'partner' do

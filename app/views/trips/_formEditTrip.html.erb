@@ -47,7 +47,7 @@
     <div class="container">
       <%= link_to "Revenir à l'accueil", trips_path, class:"button btn-margin" %>
       <% if @trip.author == current_user %>
-      <%= link_to "Supprimer le trip", trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button btn-margin" %>
+        <%= link_to "Supprimer l'itinéraire", trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button btn-margin" %>
       <% end %>
     </div>
   <br>
