@@ -18,8 +18,14 @@
 <% end %>
 
 <div class="container-center">
-  <p>Crée par <span class="strong-text-mid"><%= @trip.author.last_name %></span>, le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
+  <p>Crée par <span class="strong-text-mid"><%= @trip.author.first_name %> <%= @trip.author.last_name %></span>, le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
+  <% if @trip.online == false %>
+    <div class="">
+      <p> Cet itinéraire est en attente de validation par l'admin pour publication en ligne. </p>
+    </div>
+  <% end %>
 </div>
+
 
 <div class="container">
   <p class="strong-text"><%= sanitize @trip.description%></p>

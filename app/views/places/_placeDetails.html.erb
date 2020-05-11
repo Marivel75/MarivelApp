@@ -49,7 +49,7 @@
         <div class="flex-container-around">
           <% if current_user && current_user[:id] == @place.author_id %>
             <%= link_to "Éditer le lieu", edit_place_path(@place[:id]), class:"button button-primary" %>
-          <% elsif current_user && current_user.role == admin %>
+          <% elsif isAdmin? %>
             <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button button-primary" %>
           <% end %>
           <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>

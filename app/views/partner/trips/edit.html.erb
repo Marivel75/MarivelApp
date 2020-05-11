@@ -58,9 +58,16 @@
           <div class="container-sm">
             <%= link_to "#{place.name}", partner_place_path(place[:id])%>
           </div>
-          <div class="container-sm">
-            <%= link_to "Éditer", edit_partner_trip_place_path(place[:id]), class:"button button-primary" %>
-          </div>
+          <% if current_user && current_user[:id] == place.author_id %>
+            <div class="container-sm">
+              <%= link_to "Éditer", edit_partner_trip_place_path(place[:id]), class:"button button-primary" %>
+            </div>
+          <% elsif isAdmin? %>
+            <div class="container-sm">
+              <%= link_to "Éditer le lieu", edit_admin_place_path(place[:id]), class:"button button-primary" %>
+            </div>
+          <% end %>
+
           <div class="container-sm">
             <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
             <%= link_to "Supprimer", partner_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button" %>
