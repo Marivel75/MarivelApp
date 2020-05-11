@@ -22,7 +22,7 @@
           <td><%= place.created_at%></td>
           <td><%= link_to 'Détails du lieu', admin_place_url(place[:id])%></td>
           <td><%= link_to 'Édition', edit_admin_place_path(place[:id]) %></td>
-          <td><%= link_to 'Suppression', admin_place_path(place[:id]), method: :delete, data: { confirm: 'Confirmez-vous la suppression de ce lieu ?' } %></td>
+
         </tr>
       <% end %>
     </tbody>

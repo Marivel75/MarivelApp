@@ -75,7 +75,7 @@
               <%= link_to "#{place.name}", admin_place_path(place[:id])%>
             </div>
             <div class="container-sm">
-              <%= link_to "Éditer", edit_admin_trip_place_path(place[:id]), class:"button button-primary" %>
+              <%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary" %>
             </div>
             <div class="container-sm">
               <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>

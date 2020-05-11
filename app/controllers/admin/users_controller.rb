@@ -19,15 +19,15 @@ module Admin
     def edit
     end
 
-    def update
-      @user.update(user_params)
-      redirect_to admin_user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
-    end
+    # def update
+    #   @user.update(user_params)
+    #   redirect_to admin_user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
+    # end
 
-    def destroy
-      @user.destroy
-      redirect_to admin_users_path, notice: "Le compte a été supprimé."
-    end
+    # def destroy
+    #   @user.destroy
+    #   redirect_to admin_users_path, notice: "Le compte a été supprimé."
+    # end
 
     private
 
@@ -36,7 +36,7 @@ module Admin
         redirect_to root_path, alert: "Accès non autorisé"
       end
     end
-    
+
     def set_user
       @user = User.find(params[:id])
     end
