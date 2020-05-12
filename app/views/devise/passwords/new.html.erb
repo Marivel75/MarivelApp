@@ -14,14 +14,15 @@
 
       <div>
         <%= f.input :email,
-                    placeholder: "email",
+                    label: false,
+                    placeholder: "Entrez ici votre email",
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "email", style: 'width:100%' } %>
       </div>
       <br>
       <div>
-        <%= f.button :submit, "Oui, il me faut les instructions pour le réinitialiser", class:'button-primary' %>
+        <%= f.button :submit, "M'envoyer la réinitialisation", class:'button-primary' %>
       </div>
     <% end %>
 

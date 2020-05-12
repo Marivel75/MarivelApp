@@ -1,4 +1,4 @@
-  <h2>Sign up</h2>
+  <h2>Inscription</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -33,13 +33,8 @@
                     label: 'Confirmation du mot de passe',
                     required: false,
                     input_html: { autocomplete: "new-password", style: 'width: 100%' } %>
-
-
     <br>
-    <br>
-
       <%= f.button :submit, "Confirmer l'inscription", class:'button-primary' %>
-
   <% end %>
 
   <%= render "devise/shared/links" %>
