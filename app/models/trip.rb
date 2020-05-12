@@ -16,4 +16,13 @@ class Trip < ApplicationRecord
   scope :published, -> { where(online: true) }
   scope :offline, -> { where(online: false) }
 
+  searchkick
+
+  def search_data
+    attributes.merge(
+      category_name: category(&:name),
+      places_name: places.map(&:name)
+    )
+  end
+
 end

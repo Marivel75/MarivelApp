@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root to: "trips#index"
 
-  get 'search', to: "places#search"
+  get 'searchplaces', to: "places#search"
+
+  get 'searchtrips', to: "trips#search"
 
   devise_for :users
 

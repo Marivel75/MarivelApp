@@ -2,8 +2,11 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
   before_action :is_current_user?, except: [:show, :index]
 
-  # GET /trips
-  # GET /trips.json
+  def search
+    query = params[:q].presence || "*"
+    @trips = Trip.search(query)
+  end
+
   def index
     @trips = Trip.published.includes(:category).all
   end

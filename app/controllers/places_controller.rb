@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   before_action :is_current_user?, only: [:create, :new, :edit, :update]
 
   def search
-    @places = Place.search(params[:search])  
+    @places = Place.search(params[:q])  
   end
 
   def index
