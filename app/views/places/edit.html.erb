@@ -13,7 +13,13 @@
     <p> Longitude : <%= @place.longitude %></p>
   </div>
 <hr />
+
+<div class="">
+  <%= link_to "Vous pouvez ajouter des tags au lieu", place_join_tag_to_places_path(@place.id), class:"button button-primary u-full-width" =%>
 </div>
+<hr>
+</div>
+
 
 <%= render 'formEditPlace', place: @place %>
 

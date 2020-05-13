@@ -22,6 +22,11 @@ class Place < ApplicationRecord
 
   has_one_attached :place_picture
 
+  has_many :join_tag_to_places
+  has_many :place_tags, through: :join_tag_to_places
+
+
+
   def found_address_presence
     if latitude.blank? || longitude.blank?
       errors.add(:address, "We couldn't find the address")

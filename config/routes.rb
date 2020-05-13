@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  resources :place_tags
   root to: "trips#index"
 
   get 'searchplaces', to: "places#search"
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :categories, only: [:show]
+
   resources :trips do
     resources :saved_trips, only: [:create, :destroy]
     # resources :places
@@ -16,7 +19,9 @@ Rails.application.routes.draw do
     resources :trip_pictures, only: [:create]
   end
 
-  resources :places, except: [:destroy]
+  resources :places, except: [:destroy] do
+    resources :join_tag_to_places
+  end
 
   resources :users, except: [:index, :destroy] do
     resources :trips

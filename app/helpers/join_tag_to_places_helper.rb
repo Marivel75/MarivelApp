@@ -1,0 +1,2 @@
+module JoinTagToPlacesHelper
+end
