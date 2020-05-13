@@ -33,7 +33,11 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :show]
     resources :categories, except: [:destroy]
-    resources :places, except: [:destroy]
+
+    resources :places, except: [:destroy] do
+      resources :tags, only: [:index]
+    end
+
 
     resources :trips, except: [:destroy] do
       # resources :places, except: [:destroy]

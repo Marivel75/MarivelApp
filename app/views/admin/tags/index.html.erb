@@ -1,0 +1,11 @@
+<br>
+<br>
+
+<div class="container">
+  <h2>Liste de tous les tags</h2>
+    <% @tags.each do |tag| %>
+      <%= tag.name %>
+      <%= tag.taggings_count %>
+    <% end %>
+
+</div>

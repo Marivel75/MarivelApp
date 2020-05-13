@@ -17,6 +17,12 @@
     <% end %>
 
     <div class="field">
+      <%= form.label :tag_list, "Vous pouvez entrer des tags en les séparant par une virgule" %>
+      <%= form.text_field :tag_list, class:"u-full-width" %>
+    </div>
+    <br>
+
+    <div class="field">
       <%= form.label :address, "Adresse" %>
       <%= form.text_area :address, class:"u-full-width" %>
     </div>

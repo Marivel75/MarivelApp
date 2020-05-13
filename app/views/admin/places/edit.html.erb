@@ -12,6 +12,11 @@
     <p> Latitude : <%= @place.latitude %></p>
     <p> Longitude : <%= @place.longitude %></p>
   </div>
+  <p class="strong-text">Liste des tags</p>
+  <div class="container-sm">
+    <%= @place.tag_list %>
+    <p>Vous pouvez ajouter des tags ci-dessous, ou consulter la liste <span type =button><%= link_to 'ICI', admin_place_tags_path(@place.id)  %></span></p>
+  </div>
 <hr />
 </div>
 

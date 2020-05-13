@@ -95,3 +95,5 @@ gem "aws-sdk-s3", require: false
 gem 'searchkick'
 
 gem 'trix'
+
+gem 'acts-as-taggable-on', '~> 6.0'

@@ -87,7 +87,7 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params.require(:trip).permit(:title, :description, :category_id, :trip_picture)
+      params.require(:trip).permit(:title, :description, :category_id, :trip_picture, :tag_list)
     end
 
     def is_current_user?
