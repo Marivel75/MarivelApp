@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  resources :place_tags
   root to: "trips#index"
 
   get 'searchplaces', to: "places#search"
@@ -20,8 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :places, except: [:destroy] do
-    resources :join_tag_to_places
-  end
+    end
 
   resources :users, except: [:index, :destroy] do
     resources :trips
