@@ -15,7 +15,8 @@
   <p class="strong-text">Liste des tags</p>
   <div class="container-sm">
     <%= @place.tag_list %>
-    <p>Vous pouvez ajouter des tags ci-dessous, ou consulter la liste <span type =button><%= link_to 'ICI', admin_place_tags_path(@place.id)  %></span></p>
+    <p>Vous pouvez ajouter des tags ci-dessous.</p>
+    <p>Consulter la liste <span type =button><%= link_to 'ICI', admin_tags_path  %></span></p>
   </div>
 <hr />
 </div>

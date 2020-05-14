@@ -26,6 +26,11 @@
       <trix-editor input="trip_description"></trix-editor>
     </div>
     <br>
+    <div class="field">
+      <%= form.label :tag_list, "Vous pouvez entrer des tags en les séparant par une virgule" %>
+      <%= form.text_field :tag_list, class:"u-full-width" %>
+    </div>
+    <br>
     <div class="flex-container">
     <p> Modifier la photo associée : </p>
     <%= form.file_field :trip_picture %>

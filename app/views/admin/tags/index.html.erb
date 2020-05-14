@@ -1,11 +1,28 @@
 <br>
 <br>
 
+
+
 <div class="container">
   <h2>Liste de tous les tags</h2>
-    <% @tags.each do |tag| %>
-      <%= tag.name %>
-      <%= tag.taggings_count %>
-    <% end %>
+
+  <table class="u-full-width">
+    <thead>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Nombre de lieux tagués</th>
+    </thead>
+
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.id %></td>
+          <td><%= tag.name %></td>
+          <td><%= tag.taggings_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
 
 </div>
