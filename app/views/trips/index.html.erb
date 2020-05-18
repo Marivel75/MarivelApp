@@ -1,4 +1,38 @@
-<%= render 'shared/jumbotron' %>
-<br><br>
+<%= render 'shared/hero' %>
 
-<%= render 'indexAllTrips' %>
+<section class="section">
+  <div class="container has-text-centered">
+    <h1 class="title">Parcourez les guides</h1>
+  </div>
+  <hr>
+
+  <div class="tile is-ancestor wrap-container">
+    <% @trips.each do |trip| %>
+        <div class="tile is-parent is-3">
+
+          <div class="tile is-child box">
+            <figure class="image is-5by3">
+                <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+            </figure>
+            <p class="title">
+              <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"title is-3 has-text-primary" %>
+            </p>
+            <p class="subtitle has-text-black">
+              <%= trip.category.name %>
+            </p>
+            <div class="media">
+              <figure class="media-left image is-48x48">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              </figure>
+              <div class="media-content">
+                <p class="title is-5"><%= trip.author.last_name %></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    <% end %>
+  </div>
+
+</section>
