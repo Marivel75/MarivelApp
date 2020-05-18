@@ -1,49 +1,34 @@
-<%= render 'tripBanner' %>
+<%= render 'tripBannerBis' %>
 
 <% if user_signed_in? %>
-  <div class="container-center">
-    <%if current_user != @trip.author %>
-      <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
-        <% if pre_saved_trip %>
-          <div class="">
-            <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete %>
-          </div>
-        <% else %>
-          <div class="">
-            <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post %>
+  <section class="section">
+      <div class="container has-text-centered">
+        <%if current_user != @trip.author %>
+          <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
+            <% if pre_saved_trip %>
+                <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, class:"button is-danger is-outlined" %>
+            <% else %>
+                <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post, class:"button is-primary is-outlined" %>
+            <% end %>
+        <%end%>
+      </div>
+      <br>
+      <div class="has-text-centered">
+        <p>Crée par <strong><%= @trip.author.last_name %></strong>, le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
+        <% if @trip.online == false %>
+          <div class="container">
+            <p> Cet itinéraire est en attente de validation par l'admin pour publication en ligne. </p>
           </div>
         <% end %>
-    <%end%>
-  </div>
+      </div>
+  </section>
 <% end %>
 
-<div class="container-center">
-  <p>Crée par <span class="strong-text-mid"><%= @trip.author.first_name %> <%= @trip.author.last_name %></span>, le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
-  <% if @trip.online == false %>
-    <div class="">
-      <p> Cet itinéraire est en attente de validation par l'admin pour publication en ligne. </p>
-    </div>
-  <% end %>
-</div>
-
-
-<div class="container">
-  <p class="strong-text"><%= sanitize @trip.description%></p>
-</div>
-
-<% if !@trip.places.empty? %>
-  <%= render 'tripPlaces' %>
-<% elsif current_user == @trip.author%>
-  <div class = "container">
-    <p>Votre itinéraire ne comporte pas encore d'étape, c'est le moment d'en rajouter.</p>
-    <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button button-primary" %>
-    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+<section>
+  <div class="container is-fluid">
+    <p class="has-text-weight-semibold"><%= sanitize @trip.description%></p>
   </div>
-<% else %>
-  <div class = "container">
-    <p>Le trip ne comporte pas encore d'étapes, patience !</p>
-    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
-  </div>
-<% end %>
-<br>
-<br>
+  <br>
+</section>
+
+<%= render 'tripPlacesBis' %>

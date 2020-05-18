@@ -12,6 +12,7 @@
  *
  *= require bulma
  *= require bulma-customisation
+ *= require mapboxMaps
  * require main
  * require skeleton
  * require normalize

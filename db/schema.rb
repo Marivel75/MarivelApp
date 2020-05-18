@@ -43,21 +43,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_192821) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "join_tag_to_places", force: :cascade do |t|
-    t.bigint "place_id"
-    t.bigint "place_tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_join_tag_to_places_on_place_id"
-    t.index ["place_tag_id"], name: "index_join_tag_to_places_on_place_tag_id"
-  end
-
-  create_table "place_tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.text "address"
@@ -153,8 +138,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_192821) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "join_tag_to_places", "place_tags"
-  add_foreign_key "join_tag_to_places", "places"
   add_foreign_key "places", "users", column: "author_id"
   add_foreign_key "saved_trips", "trips"
   add_foreign_key "saved_trips", "users"
