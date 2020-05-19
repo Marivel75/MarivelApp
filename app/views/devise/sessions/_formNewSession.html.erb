@@ -1,32 +1,32 @@
-  <h2>Connexion</h2>
-
+<div class="box">
+  <div class="container has-text-centered">
+    <h2 class="title is-2 has-fontweight-bold">Connexion</h2>
+  </div>
+  <br>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
-      <div class="six-columns">
-        <%= f.input :login, label: "Identifiant",
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email", style: 'width: 100%' } %>
-      </div>
+
+
+          <%= f.input :login, label: "Identifiant",
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+
       <br>
 
-      <div class="six-columns">
+
         <%= f.input :password, label: "Mot de passe",
                     required: false,
-                    input_html: { autocomplete: "current-password", style: 'width: 100%' } %>
-      </div>
-    </div>
-    <br>
+                    input_html: { autocomplete: "current-password" } %>
+
+      <br>
 
       <%= f.input :remember_me, label: "Conserver la connexion", as: :boolean if devise_mapping.rememberable? %>
       <br>
       <br>
-
-      <%= f.button :submit, "CONNEXION", class:'button-primary' %>
-
+      <div class="field">
+        <%= f.button :submit, "CONNEXION", class:'button is-primary is-fullwidth' %>
+      </div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
   <br>
-  <br>
-  <br>
+    <%= render "devise/shared/links" %>
+</div>

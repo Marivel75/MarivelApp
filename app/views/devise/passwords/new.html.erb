@@ -1,36 +1,32 @@
-<div class="security-zone">
+<section class="section has-background-black">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box">
+        <div class="container has-text-centered">
+          <h2 class="title is-2 has-color-dsanger has-fontweight-bold">Zone de sécurité</h2>
+          <h3 class="warning-text">Vous avez oublié votre mot de passe ?</h3>
+        </div>
+        <br>
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= f.error_notification %>
 
-  <div class="jumbotron">
-    <div class="container">
-      <p class="warning-text">Zone de sécurité</p>
+          <div>
+            <%= f.input :email,
+                        label: false,
+                        placeholder: "Entrez ici votre email",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+          </div>
+          <br>
+          <div>
+            <%= f.button :submit, "M'envoyer la réinitialisation", class:'button is-danger is-fullwidth' %>
+          </div>
+        <% end %>
+        <br>
+        <%= render "devise/shared/links" %>
+      </div>
+
     </div>
   </div>
-
-  <div class="container">
-    <h3 class="warning-text">Vous avez oublié votre mot de passe ?</h3>
-
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= f.error_notification %>
-
-      <div>
-        <%= f.input :email,
-                    label: false,
-                    placeholder: "Entrez ici votre email",
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email", style: 'width:100%' } %>
-      </div>
-      <br>
-      <div>
-        <%= f.button :submit, "M'envoyer la réinitialisation", class:'button-primary' %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
-  </div>
-  <br>
-  <br>
-
-  <%= render 'shared/buttonBackToHome' %>
-<br><br>
-</div>
+</section>
