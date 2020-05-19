@@ -35,3 +35,7 @@ trix-toolbar .button_group button.icon,
 trix-toolbar .button_group input[type=button].icon {
   display: initial;
 }
+
+trix-editor .textarea {
+  display: initial;
+}

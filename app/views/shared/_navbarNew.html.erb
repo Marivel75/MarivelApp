@@ -34,9 +34,7 @@
           <%= link_to "#{current_user.first_name}", user_path(current_user.id), class:"is-size-3 has-text-black" %>
         </div>
         <div class="navbar-item">
-          <div class="buttons">
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"button is-light" %>
-          </div>
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"button is-light" %>
         </div>
 
       <% elsif isAdmin? %>
@@ -47,22 +45,20 @@
           <%= link_to "#{current_user.first_name}", admin_user_path(current_user.id), class:"is-size-3 has-text-black" %>
         </div>
         <div class="navbar-item">
-          <div class="buttons">
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"button is-light" %>
-          </div>
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"button is-light" %>
         </div>
 
       <% elsif isPartner? %>
         <div class="navbar-item">
-        <span class="icon has-text-success"><%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, patner_user_path(current_user.id) %></span>
+        <span class="icon has-text-success"><%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, partner_user_path(current_user.id) %></span>
         </div>
         <div class="navbar-item">
           <%= link_to "#{current_user.first_name}", partner_user_path(current_user.id), class:"is-size-3 has-text-black" %>
         </div>
         <div class="navbar-item">
-          <div class="buttons">
+
             <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"button is-light" %>
-          </div>
+
         </div>
 
       <% else %>

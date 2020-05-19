@@ -1,11 +1,43 @@
 <%= render 'shared/hero' %>
 
 <section class="section">
-  <div class="container has-text-centered">
-    <h3 class ="title is-2"> Bienvenue <%= current_user.first_name%> </h3>
-    <%= link_to "Créer un itinéraire", new_trip_path, class:"button is-primary is-rounded" %>
-  </div>
-  <hr>
+  <% if isTraveler? %>
+    <div class="container has-text-centered">
+      <h2 class ="title is-2"> Bienvenue <%= current_user.first_name%> </h2>
+      <%= link_to "Créer un itinéraire", new_trip_path, class:"button is-primary is-rounded" %>
+    </div>
+
+  <% elsif isPartner? %>
+    <div class="box has-text-centered">
+      <h2 class="title is-2"> Bienvenue cher partenaire </h2>
+      <p> Vous êtes connecté sur le compte : <%= current_user.first_name%></p>
+      <p>Retrouvez vos options de gestion et de publication dans votre compte.</p>
+      <br>
+      <%= link_to "Aller sur mon compte", partner_user_path(current_user.id), class:"button is-primary is-rounded" %>
+    </div>
+
+  <% elsif isAdmin? %>
+    <div class="box has-text-centered">
+      <h2 class='title is-2'> Bienvenue <%= current_user.first_name%></h2>
+      <p>Vous êtes administrateur. Retrouvez vos autorisations d'administration dans l'espace Admin.</p>
+      <br>
+      <div class="buttons is-centered">
+        <%= link_to "Espace Admin", admin_admin_path, class:'button is-rounded' %>
+        <%= link_to "Ouvrir votre profil", admin_user_path(current_user.id), class:"button is-primary is-rounded" %>
+      </div>
+    </div>
+
+    <% else %>
+    <div class="box has-text-centered">
+      <h2 class='title is-2'> Bienvenue cher visiteur</h2>
+      <p> Vous voulez créer vos propres itinéraires personnels ?</p>
+      <p>Enregistrer les itinéraires qui vous plaisent pour les retrouver facilement ?</p>
+      <br>
+
+      <%= link_to "Créez votre compte", new_user_registration_path, class:"button is-primary is-rounded is-large" %>
+    </div>
+
+  <% end %>
 
   <div class="container has-text-centered">
     <h1 class="title is-1">Parcourir les guides</h1>
