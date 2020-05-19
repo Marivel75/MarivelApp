@@ -14,7 +14,6 @@
       </div>
       <br>
       <div class="has-text-centered">
-        <p>Crée par <strong><%= @trip.author.last_name %></strong>, le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
         <% if @trip.online == false %>
           <div class="container">
             <p class="is-italic has-text-weight-medium"> Cet itinéraire est en attente de validation par l'admin pour publication en ligne. </p>
@@ -24,14 +23,20 @@
   </section>
 <% end %>
 
-<section>
-  <div class="container is-fluid">
-    <p class="has-text-weight-semibold"><%= sanitize @trip.description%></p>
+<section class="section">
+  <div class="columns is-mobile is-centered">
+    <div class="column is-half">
+      <div class="box has-text-centered">
+        <p>Crée par <strong><%= @trip.author.last_name %></strong></p>
+        <p>le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="subtitle is-4 has-text-weight-bold"><%= sanitize @trip.description%></p>
   </div>
   <br>
-</section>
 
-<section class="section has-text-centered">
   <% if !@trip.places.empty? %>
     <%= render 'tripPlacesBis' %>
   <% elsif current_user == @trip.author%>

@@ -38,11 +38,14 @@
     </div>
 
   <% end %>
+</section>
 
-  <div class="container has-text-centered">
-    <h1 class="title is-1">Parcourir les guides</h1>
+  <div class="container has-background-info is-fluid has-text-centered">
+    <br>
+    <h1 class="title is-1 has-text-white">Parcourir les guides</h1>
+    <br>
   </div>
-
+<section class=section>
   <div class="tile is-ancestor wrap-container">
     <% @trips.each do |trip| %>
         <div class="tile is-parent is-3">
@@ -75,5 +78,4 @@
 
     <% end %>
   </div>
-
 </section>
