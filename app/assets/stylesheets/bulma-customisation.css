@@ -26,3 +26,12 @@
   text-align: center;
   border-radius: 5px;
   }
+
+.font-raleway {
+  font-family: raleway;
+}
+
+trix-toolbar .button_group button.icon,
+trix-toolbar .button_group input[type=button].icon {
+  display: initial;
+}

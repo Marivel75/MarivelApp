@@ -2,9 +2,14 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <h1 class="title">Parcourez les guides</h1>
+    <h3 class ="title is-2"> Bienvenue <%= current_user.first_name%> </h3>
+    <%= link_to "Créer un itinéraire", new_trip_path, class:"button is-primary is-rounded" %>
   </div>
   <hr>
+
+  <div class="container has-text-centered">
+    <h1 class="title is-1">Parcourir les guides</h1>
+  </div>
 
   <div class="tile is-ancestor wrap-container">
     <% @trips.each do |trip| %>
