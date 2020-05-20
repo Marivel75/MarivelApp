@@ -27,7 +27,7 @@
   <div class="columns is-mobile is-centered">
     <div class="column is-half">
       <div class="box has-text-centered">
-        <p>Crée par <strong><%= @trip.author.last_name %></strong></p>
+        <p>Crée par <strong><%= @trip.author.first_name %> <%= @trip.author.last_name %></strong></p>
         <p>le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
       </div>
     </div>
@@ -39,6 +39,11 @@
 
   <% if !@trip.places.empty? %>
     <%= render 'tripPlacesBis' %>
+    <div class="buttons is-centered">
+      <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
+      <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+    </div>
+
   <% elsif current_user == @trip.author%>
       <div class = "container">
         <strong>Votre itinéraire ne comporte pas encore d'étape. Vous pouvez en ajouter en l'éditant.</strong>

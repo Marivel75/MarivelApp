@@ -1,0 +1,150 @@
+<% if @place.place_picture.attached? %>
+  <section class="hero is-medium" style="background-size:cover;background-image:url(<%= rails_blob_url(@place.place_picture)%>);">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-1 has-text-white">
+          <%= @place.name %>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+<% else %>
+  <section class="hero is-medium" style="background-size:cover;background-image: url('https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80')">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-1 has-text-white">
+          <%= @place.name %>
+        </h1>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+
+<section class="section">
+  <div class="box">
+    <p> <%= sanitize @place.description%></p>
+  </div>
+<br>
+
+  <div class="columns">
+    <div class="column box">
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <i class="fas fa-map-marker-alt fa-2x icon-margin"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.address %></p>
+        </div>
+      </div>
+
+      <% if @place.price !="" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <i class="fas fa-euro-sign fa-2x"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.price %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @place.price_2 !="" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <i class="fas fa-euro-sign fa-2x"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.price_2 %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @place.phone !="" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <span><i class="fas fa-tty fa-2x"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.phone %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @place.website != "" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <strong>WEB :</strong>
+        </div>
+        <div class="column">
+          <p><%= link_to @place.website, "#{@place.website}" %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="column is-narrow">
+
+    </div>
+    <div class="column box">
+      <div id="map" style="width: 100%; height: 380px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="buttons is-centered">
+    <% if current_user && current_user[:id] == @place.author_id %>
+      <%= link_to "Éditer le lieu", edit_place_path(@place[:id]), class:"button is-warning" %>
+    <% elsif isAdmin? %>
+      <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button is-warning" %>
+    <% end %>
+    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+  </div>
+</section>
+
+<script>
+
+  var place = gon.place
+  var geojson = {type: 'FeatureCollection', features: [
+     {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [place.longitude, place.latitude]
+    },
+    properties: {
+      name: place.name,
+      description: place.description,
+      subtitle: place.subtitle,
+      price: place.price_2,
+      website: place.website,
+      phone: place.phone,
+      address: place.address
+    }
+  }
+  ]}
+var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
+
+mapboxgl.accessToken = accessToken;
+//on initialise notre map sur le div #map
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [place.longitude,place.latitude], //un centre initial [longitude, latitude] (facultatif)
+    zoom: 8 //un zoom initial (facultatif)
+});
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = ' fas fa-map-marker-alt fa-3x ';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.name + '</h3><p>' + marker.properties.address + '<hr><br>' + marker.properties.price + '$  |  ' + marker.properties.phone + '<hr><br>' +  marker.properties.website + '</p>'))
+    .addTo(map);
+});
+</script>

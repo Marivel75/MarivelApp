@@ -43,40 +43,45 @@
     <h2 class="title is-2"> Les étapes de l'itinéraire</h2>
   </div>
   <br>
+
   <div class="container">
     <% if @trip.places.length > 0 %>
-      <% @trip.places.each do |place|%>
-        <div class="box">
-          <% if place.place_picture.attached? %>
-            <div class="">
-              <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px">
+
+          <div class="tile is-ancestor wrap-container">
+
+              <% @trip.places.each do |place|%>
+                          <div class="tile is-parent is-2">
+                  <div class="tile box is-child has-text-centered">
+                    <figure class="image is-5by3">
+                      <% if place.place_picture.attached? %>
+                        <img src = "<%= rails_blob_url(place.place_picture)%>" class="is-rounded">
+                      <% else %>
+                        <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+                      <% end %>
+                    </figure>
+                    <br>
+                    <p class="title is-6">
+                      <%= link_to "#{place.name}", place_path(place[:id])%>
+                    </p>
+                    <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
+                    <%= link_to "Supprimer",trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+                  </div>
             </div>
-          <% else %>
-            <div class="">
-              <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px">
-            </div>
-          <% end %>
-          <div class="">
-            <%= link_to "#{place.name}", place_path(place[:id])%>
+              <% end %>
+
           </div>
-          <% if place.author == current_user %>
-            <div class="">
-              <%= link_to "Éditer", edit_place_path(place[:id]), class:"button button-primary" %>
-            </div>
-            <% end %>
-          <div class="">
-            <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
-            <%= link_to "Supprimer",trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button" %>
-          </div>
+
+      <% else %>
+        <div class="box has-text-centered">
+          <p>Aucune étape n'a encore été ajoutée.</p>
         </div>
+
       <% end %>
-    <% else %>
-    <div class="box has-text-centered">
-      <p>Aucune étape n'a encore été ajoutée.</p>
-      <br>
-      <%= link_to "Ajouter des lieux", trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
-    </div>
-    <% end %>
+
+
+
+
+    <%= link_to "Ajouter des lieux", trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
   </div>
 </section>
 
