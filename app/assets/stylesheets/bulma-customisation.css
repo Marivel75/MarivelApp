@@ -14,24 +14,6 @@
   flex-wrap: wrap;
 }
 
-.mapboxgl-popup {
-  overflow-y: scroll;
-  overflow-x: scroll;
-  width: 200px;
-  height: 300px;
-  font: 12px/20px 'Open Sans', sans-serif;
-  border-radius: 5px;
-
-  }
-.mapboxgl-popup {
-  overflow-y: scroll;
-  overflow-x: scroll;
-  width: 200px;
-  height: 300px;
-  text-align: center;
-  border-radius: 5px;
-  }
-
 .font-raleway {
   font-family: raleway;
 }

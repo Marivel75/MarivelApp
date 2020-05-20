@@ -18,8 +18,10 @@ Rails.application.routes.draw do
     resources :trip_pictures, only: [:create]
   end
 
-  resources :places, except: [:destroy] do
-    end
+  resources :places, except: [:destroy]
+
+  resources :tags, only: [:index]
+
 
   resources :users, except: [:index, :destroy] do
     resources :trips

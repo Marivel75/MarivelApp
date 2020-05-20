@@ -1,29 +1,29 @@
 <%= render 'tripBannerBis' %>
 
-<% if user_signed_in? %>
-  <section class="section">
-      <div class="container has-text-centered">
-        <%if current_user != @trip.author %>
-          <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
-            <% if pre_saved_trip %>
-                <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, class:"button is-danger is-outlined" %>
-            <% else %>
-                <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post, class:"button is-primary is-outlined" %>
-            <% end %>
-        <%end%>
-      </div>
-      <br>
-      <div class="has-text-centered">
-        <% if @trip.online == false %>
-          <div class="container">
-            <p class="is-italic has-text-weight-medium"> Cet itinéraire est en attente de validation par l'admin pour publication en ligne. </p>
-          </div>
-        <% end %>
-      </div>
-  </section>
-<% end %>
-
 <section class="section">
+
+  <% if user_signed_in? %>
+    <div class="container has-text-centered">
+      <%if current_user != @trip.author %>
+        <% pre_saved_trip = @trip.saved_trips.find { |saved_trip| saved_trip.user_id == current_user.id} %>
+          <% if pre_saved_trip %>
+              <%= button_to 'Retirer des favoris', trip_saved_trip_path(@trip, pre_saved_trip.id), method: :delete, class:"button is-danger is-outlined" %>
+          <% else %>
+              <%= button_to 'Ajouter aux favoris', trip_saved_trips_path(@trip), method: :post, class:"button is-primary is-outlined" %>
+          <% end %>
+      <%end%>
+    </div>
+    <br>
+    <div class="has-text-centered">
+      <% if @trip.online == false %>
+        <div class="container">
+          <p class="is-italic has-text-weight-medium"> Cet itinéraire est en attente de validation par l'admin pour publication en ligne. </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
   <div class="columns is-mobile is-centered">
     <div class="column is-half">
       <div class="box has-text-centered">
