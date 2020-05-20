@@ -1,5 +1,7 @@
 <section class=section>
   <h1 class="title is-1 has-text-primary has-text-centered"><%= @trip.title %></h1>
+  <p class="has-text-centered">Catégorie : <strong> <%= @trip.category.name %> </strong></p>
+  <br>
   <div class="container has-text-centered">
     <% if @trip.online == true %>
       <p class="is-italic"> Cet itinéraire est actuellement publié en ligne. </p>
@@ -10,9 +12,11 @@
   <br>
   <div class ="columns">
     <div class = "column">
-      <p class="">Catégorie : <strong> <%= @trip.category.name %> </strong></p>
-      <br>
-      <p>Description : <span class="has-text-weight-medium"><%= sanitize @trip.description %></span></p>
+      <div class="container">
+        <p class="has-text-centered" >Description :</p>
+        <br>
+        <p class="has-text-weight-medium"><%= sanitize @trip.description %></p>
+      </div>
     </div>
 
     <div class="column">
@@ -26,7 +30,7 @@
         </div>
       <% else %>
         <div class="container">
-          <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+          <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
         </div>
       <% end %>
     </div>

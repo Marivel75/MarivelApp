@@ -10,7 +10,8 @@
   <% elsif isPartner? %>
     <div class="box has-text-centered">
       <h2 class="title is-2"> Bienvenue cher partenaire </h2>
-      <p> Vous êtes connecté sur le compte : <%= current_user.first_name%></p>
+      <p> Vous êtes connecté sur le compte :</p>
+      <strong><%= current_user.first_name%></strong>
       <p>Retrouvez vos options de gestion et de publication dans votre compte.</p>
       <br>
       <%= link_to "Aller sur mon compte", partner_user_path(current_user.id), class:"button is-primary is-rounded" %>
