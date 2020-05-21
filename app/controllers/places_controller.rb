@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   end
 
   def index
-    Place.all
+    @places = Place.all
   end
 
   def show

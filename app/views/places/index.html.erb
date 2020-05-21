@@ -1,43 +1,32 @@
-<h1>Places</h1>
+<section class="section">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Description</th>
-      <th>Subtitle</th>
-      <th>Price</th>
-      <th>Website</th>
-      <th>Phone</th>
-      <th>Price 2</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="box has-text-centered">
 
-  <tbody>
+    <h1 class="title is-1 has-text-weight-bold">Résultats de la recherche</h1>
+    <p class = "has-text-weight-semibold">Nombre d'élements listés : <%= @places.length %></p>
+  </div>
+
+  <div class="tile is-ancestor wrap-container">
     <% @places.each do |place| %>
-      <tr>
-        <td><%= place.name %></td>
-        <td><%= place.address %></td>
-        <td><%= place.latitude %></td>
-        <td><%= place.longitude %></td>
-        <td><%= place.description %></td>
-        <td><%= place.subtitle %></td>
-        <td><%= place.price %></td>
-        <td><%= place.website %></td>
-        <td><%= place.phone %></td>
-        <td><%= place.price_2 %></td>
-        <td><%= link_to 'Show', place %></td>
-        <td><%= link_to 'Edit', edit_place_path(place) %></td>
-        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+      <div class="tile is-parent is-3">
+
+        <div class="tile is-child box">
+          <figure class="image is-5by3">
+            <% if place.place_picture.attached? %>
+               <img src = "<%= rails_blob_url(place.place_picture)%>">
+            <% else %>
+              <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+            <% end %>
+          </figure>
+          <p class="title">
+            <%= link_to "#{place.name}", place_path(place[:id]), class:"title is-4 has-text-primary" %>
+          </p>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <%= link_to "Retour à l'accueil", root_path, class:"button is-fullwidth is-medium is-light" %>
 
-<%= link_to 'New Place', new_place_path %>
+</section>

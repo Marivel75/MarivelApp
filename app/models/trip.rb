@@ -1,6 +1,6 @@
 class Trip < ApplicationRecord
   acts_as_ordered_taggable_on :tags
-  
+
   belongs_to :author, class_name: 'User'
   belongs_to :category
 

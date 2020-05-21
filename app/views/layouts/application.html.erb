@@ -32,9 +32,8 @@
 
     <!-- Scripts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="trix.js"></script>
     <!-- <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     <link rel="stylesheet" href="css/github-prettify-theme.css">
     <script src="js/site.js"></script> -->
@@ -52,6 +51,9 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="https://kit.fontawesome.com/82b59b489d.js" crossorigin="anonymous"></script>
 
+    <!-- Trix
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script type="text/javascript" src="trix.js"></script>
 
 
   </head>
@@ -64,7 +66,15 @@
     <br>
     <br>
       <% flash.each do |type, msg| %>
-        <div class="notice-message text-center" >
+        <div class="notification is-info is-light has-text-centered" >
+          <%= msg %>
+        </div>
+      <% end %>
+    <% elsif flash[:success]%>
+    <br>
+    <br>
+      <% flash.each do |type, msg| %>
+        <div class="notification is-primary is-light has-text-centered"" >
           <%= msg %>
         </div>
       <% end %>
@@ -72,7 +82,7 @@
     <br>
     <br>
       <% flash.each do |type, msg| %>
-        <div class=" alert-message text-center" >
+        <div class="notification is-danger is-light has-text-centered"" >
           <%= msg %>
         </div>
       <% end %>

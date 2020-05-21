@@ -40,7 +40,7 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: "L'itinérarie a été crée." }
+        format.html { redirect_to @trip, notice: "L'itinéraire a été crée." }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new }
@@ -72,7 +72,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     respond_to do |format|
-      format.html { redirect_to trips_url, notice: "L'itinéraire a été supprimé." }
+      format.html { redirect_to trips_url, alert: "L'itinéraire a été supprimé." }
       format.json { head :no_content }
     end
   end
