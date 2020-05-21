@@ -50,7 +50,7 @@
           <div class="tile is-ancestor wrap-container">
 
               <% @trip.places.each do |place|%>
-                          <div class="tile is-parent is-2">
+                <div class="tile is-parent is-2">
                   <div class="tile box is-child has-text-centered">
                     <figure class="image is-5by3">
                       <% if place.place_picture.attached? %>
@@ -64,9 +64,9 @@
                       <%= link_to "#{place.name}", place_path(place[:id])%>
                     </p>
                     <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
-                    <%= link_to "Supprimer",trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+                    <%= link_to "Supprimer", trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
                   </div>
-            </div>
+                </div>
               <% end %>
 
           </div>
@@ -77,9 +77,6 @@
         </div>
 
       <% end %>
-
-
-
 
     <%= link_to "Ajouter des lieux", trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
   </div>

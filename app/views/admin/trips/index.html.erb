@@ -1,46 +1,47 @@
-<br>
-<br>
-<div class="container">
-  <h1> Liste des trip </h1>
-
-
-  <table class="u-full-width">
-
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Titre</th>
-        <th>ID de l'auteur</th>
-        <th>Catégorie</th>
-        <th>Date de création</th>
-        <th>Date de dernière actualisation</th>
-        <th>Statut</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @trips.each do |trip| %>
-        <tr>
-          <td><%= trip.id %></td>
-          <td><%= trip.title %></td>
-          <td><%= trip.author_id %></td>
-          <td><%= trip.category.name %></td>
-          <td><%= trip.created_at.strftime("%d/%m/%Y") %></td>
-          <td><%= trip.updated_at.strftime("%d/%m/%Y") %></td>
-          <td><%= trip.online %></td>
-          <td>
-            <%= link_to 'Édition', edit_admin_trip_path(trip[:id]) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-
-  </table>
-
-  <div class="flex-container">
-    <%= link_to "Créer un nouvel itinéraire", new_admin_trip_path, class:"button button-primary" %>
+<section class="section">
+  <div class="container has-text-centered">
+    <h1 class="title is-1"> Liste des itinéraires </h1>
   </div>
+  <br>
 
-</div>
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>ID de l'auteur</th>
+          <th>Catégorie</th>
+          <th>Date de création</th>
+          <th>Date de dernière actualisation</th>
+          <th>Statut</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @trips.each do |trip| %>
+          <tr>
+            <td><%= trip.id %></td>
+            <td><%= trip.title %></td>
+            <td><%= trip.author_id %></td>
+            <td><%= trip.category.name %></td>
+            <td><%= trip.created_at.strftime("%d/%m/%Y") %></td>
+            <td><%= trip.updated_at.strftime("%d/%m/%Y") %></td>
+            <td><%= trip.online %></td>
+            <td>
+              <%= link_to 'Édition', edit_admin_trip_path(trip[:id]) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+
+    <div class="container has-text-centered">
+      <%= link_to "Créer un nouvel itinéraire", new_admin_trip_path, class:"button is-primary" %>
+    </div>
+
+
+</section>

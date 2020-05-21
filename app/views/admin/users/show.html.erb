@@ -1,21 +1,25 @@
-<div class="profilBanner text-center">
-  <p class="profil-title"> Bienvenue <%= @user.first_name%> </p>
-</div>
-<br>
-
-<div class="container-center">
-  <p> Vous disposez des autorisations Admin. Retrouvez-les dans l'espace Admin.</p>
-  <div class="navbar-item">
-      <%= link_to "Espace Admin", admin_admin_path, class:'button button-primary' %>
+<section class="hero is-large hero-user-account">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 has-text-white"> Bienvenue <%= @user.first_name%> </h1>
+    </div>
   </div>
-  <br>
-  <div class = "flex-container-around">
+</section>
+
+<section class="section">
+  <div class="buttons is-centered">
     <% if @user == current_user %>
-     <%= link_to 'Paramètres du compte', edit_user_registration_path, class:'button' %>
-     <%= link_to "Création d'itinéraire", new_admin_trip_path, class:"button button-primary" %>
+     <%= link_to 'Paramètres du compte', edit_user_registration_path, class:'button is-rounded' %>
+     <%= link_to "Créer un itinéraire pour publication", new_admin_trip_path, class:"button is-rounded is-primary" %>
     <%end%>
   </div>
-</div>
-<hr>
+  <% if isAdmin? %>
+  <div class="container has-text-centered">
+    <%= link_to "Espace Admin", admin_admin_path, class:"button is-info is-rounded" %>
+  </div>
+  <% end %>
+</section>
 
-<%= render 'showUserTrips' %>
+<section class="section">
+  <%= render 'showUserTrips' %>
+</section>

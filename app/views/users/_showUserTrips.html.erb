@@ -2,6 +2,7 @@
   <h3 class="title is-3 has-text-weight-bold">Les itinéraires que j'ai crées</h3>
 </div>
 <br>
+
 <% if @user.created_trips.length > 0 %>
 
   <div class="tile is-ancestor wrap-container">
@@ -29,13 +30,13 @@
   </div>
 
 <% elsif @user == current_user %>
-<div class="container">
-  <p>Vous n'avez publié aucun itinéraire, c'est le moment de commencer !</p>
-</div>
+  <div class="container">
+    <p>Vous n'avez publié aucun itinéraire, c'est le moment de commencer !</p>
+  </div>
 
 <% else %>
-<div class="container">
-  <p><%= @user.first_name%> n'a publié aucun itinéraire pour le moment.</p>
-</div>
+  <div class="container">
+    <p><%= @user.first_name%> n'a publié aucun itinéraire pour le moment.</p>
+  </div>
 
 <% end %>

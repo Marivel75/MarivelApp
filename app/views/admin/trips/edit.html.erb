@@ -1,98 +1,120 @@
-<br>
-<br>
-<div class="container">
-  <div class ="row">
-    <div class = "one-half column">
-      <h1 class="trip-title"><%= @trip.title %></h1>
-
-      <div class="flex-container-column">
-        <% if @trip.online == true %>
-          <div class="">
-            <p> Cet itinéraire est actuellement publié en ligne. </p>
-          </div>
-        <% else %>
-          <div class="">
-            <p> Cet itinéraire n'est actuellement pas publié en ligne. </p>
-          </div>
-        <% end %>
-
-        <% if @trip.online == false %>
-          <div class="">
-            <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
-              <%= f.hidden_field :online, :value => true %>
-              <%= f.submit "Publier", class:"button-primary" %>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="">
-            <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
-              <%= f.hidden_field :online, :value => false %>
-              <%= f.submit "Mettre hors-ligne", class:"button" %>
-            <% end %>
-          </div>
-        <% end %>
-        <div class="">
-          <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", admin_trip_path(@trip[:id]), class:"button button-primary" %>
-        </div>
-      </div>
-    </div>
-
-      <div class ="one-half column">
-        <% if @trip.trip_picture.attached? %>
-          <div class="">
-            <img src = "<%= rails_blob_url(@trip.trip_picture)%>" class = "twelve columns",  style="float:right;width:100%;height:50%;object-fit:cover;">
-          </div>
-        <% else %>
-          <div class="">
-            <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style="float:right;width:70%;height:30%;object-fit:cover;">
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="">
-      <p class="strong-text">Catégorie : <%= @trip.category.name %></p>
-      <p class="strong-text">Description :</p>
-      <p><%= sanitize @trip.description %></p>
-    </div>
-
-
-    <div class="">
-      <p class="strong-text">Étapes :</p>
-      <% if @trip.places.length > 0 %>
-        <% @trip.places.each do |place|%>
-          <div class="flex-container-between ">
-            <% if place.place_picture.attached? %>
-              <div class="">
-                <img src = "<%= rails_blob_url(place.place_picture)%>" class = "twelve columns", style = "height: 50px; width: 45px">
-              </div>
-            <% else %>
-              <div class="">
-                <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "height: 50px; width: 45px">
-              </div>
-            <% end %>
-            <div class="container-sm">
-              <%= link_to "#{place.name}", admin_place_path(place[:id])%>
-            </div>
-            <div class="container-sm">
-              <%= link_to "Éditer", edit_admin_place_path(place[:id]), class:"button button-primary" %>
-            </div>
-            <div class="container-sm">
-              <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
-              <%= link_to "Supprimer", admin_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button" %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p>Aucune étape n'a encore été ajoutée.</p>
+<section class="section">
+  <h1 class="title is-1 has-text-primary has-text-centered"><%= @trip.title %></h1>
+  <p class="has-text-centered">Catégorie : <strong> <%= @trip.category.name %> </strong></p>
+  <br>
+  <div class="container has-text-centered">
+    <% if @trip.online == true %>
+      <p class="is-italic"> Cet itinéraire est actuellement publié en ligne. </p>
+    <% else %>
+      <p class="is-italic"> Cet itinéraire est en attente de validation pour publication en ligne. </p>
+    <% end %>
+  </div>
+  <br>
+  <% if @trip.online == false %>
+    <div class="container has-text-centered">
+      <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+        <%= f.hidden_field :online, :value => true %>
+        <%= f.submit "Publier", class:"button is-primary" %>
       <% end %>
     </div>
-  <br>
-  <br>
-    <div class="">
-      <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(trip_id: @trip.id), class:"button button-primary u-full-width" %>
+  <% else %>
+    <div class="container has-text-centered">
+      <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+        <%= f.hidden_field :online, :value => false %>
+        <%= f.submit "Mettre hors-ligne", class:"button is-warning" %>
+      <% end %>
     </div>
-  <hr>
-</div>
-<br>
-<%= render 'formEditTrip' %>
+  <% end %>
+  <br>
+  <div class="container has-text-centered">
+    <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", admin_trip_path(@trip[:id]), class:"button button-primary" %>
+  </div>
+
+  <div class ="columns">
+    <div class = "column">
+      <div class="container">
+        <p class="has-text-centered has-text-weight-bold">Description</p>
+        <br>
+        <p class="has-text-weight-medium"><%= sanitize @trip.description %></p>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="container has-text-centered">
+        <strong>Photo d'illustration de l'itinéraire</strong>
+      </div>
+      <br>
+      <% if @trip.trip_picture.attached? %>
+        <div class="container">
+          <img src = "<%= rails_blob_url(@trip.trip_picture)%>">
+        </div>
+      <% else %>
+        <div class="container">
+          <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2"> Les étapes de l'itinéraire</h2>
+  </div>
+  <br>
+
+  <div class="container">
+    <% if @trip.places.length > 0 %>
+
+          <div class="tile is-ancestor wrap-container">
+
+              <% @trip.places.each do |place|%>
+                <div class="tile is-parent is-2">
+                  <div class="tile box is-child has-text-centered">
+                    <figure class="image is-5by3">
+                      <% if place.place_picture.attached? %>
+                        <img src = "<%= rails_blob_url(place.place_picture)%>" class="is-rounded">
+                      <% else %>
+                        <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+                      <% end %>
+                    </figure>
+                    <br>
+                    <p class="title is-6">
+                      <%= link_to "#{place.name}", admin_place_path(place[:id])%>
+                    </p>
+                    <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
+                    <%= link_to "Supprimer", admin_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+                  </div>
+                </div>
+              <% end %>
+
+          </div>
+
+      <% else %>
+        <div class="box has-text-centered">
+          <p>Aucune étape n'a encore été ajoutée.</p>
+        </div>
+
+      <% end %>
+
+    <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2"> Éditez les détails de l'itinéraire </h2>
+  </div>
+
+  <%= render 'formEditTripAdmin', trip: @trip %>
+</section>
+
+<section class="section">
+  <div class="buttons is-centered">
+    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+    <% if @trip.author == current_user %>
+      <%= link_to "Supprimer l'itinéraire", trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button is-danger" %>
+    <% end %>
+  </div>
+</section>

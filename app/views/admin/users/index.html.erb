@@ -1,36 +1,38 @@
-<br>
-<br>
-<div class="container">
-  <h1> Liste des comptes </h1>
+<section class="section">
+  <div class="container has-text-centered">
+    <h1 class="title is-1"> Liste des comptes utilisateurs </h1>
+  </div>
+  <br>
+  <div class="container has-text-centered">
+    <table class="table">
 
-
-  <table class="u-full-width">
-
-    <thead>
-      <tr>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>email</th>
-        <th>Statut</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.each do |user| %>
+      <thead>
         <tr>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role %></td>
-          <td>
-            <%= link_to 'Voir le profil', user_path(user[:id]) %>
-          </td>
+          <th>ID</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>email</th>
+          <th>Statut</th>
+          <th></th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
+      </thead>
 
-  </table>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td>
+              <%= link_to 'Voir le profil', user_path(user[:id]) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
 
-</div>
+    </table>
+  </div>
+</section>

@@ -1,39 +1,42 @@
 <div class="container">
+  <h3 class="title is-3 has-text-weight-bold">Itinéraires publiés</h3>
+</div>
+<br>
 
-  <h3>Itinéraires publiés</h3>
+<% if @user.created_trips.length > 0 %>
 
-  <div class="allTrips-container">
-  <% if @user.created_trips.length > 0 %>
+  <div class="tile is-ancestor wrap-container">
+    <% @user.created_trips.each do |trip| %>
+     <div class="tile is-parent is-3">
 
-   <% @user.created_trips.each do |trip| %>
-   <div class="card-trip">
-
-     <div class="card-image">
-       <% if trip.trip_picture.attached? %>
-          <img src = "<%= rails_blob_url(trip.trip_picture)%>" style="float:left;width:100%;height:70%;object-fit:cover;">
-       <% else %>
-         <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" style="float:left;width:100%;height:70%;object-fit:cover;">
-       <% end %>
-     </div>
-
-     <div class="card-content">
-       <div class="card-title">
-         <%= link_to "#{trip.title}", admin_trip_path(trip[:id]), class:"trip-title-card" %>
-       </div>
-       <div class="strong-text-sm">
-         <p><%= trip.category.name %></p>
-         <%= link_to "Explorer", admin_trip_path(trip[:id]), class:"button" %>
-       </div>
-     </div>
-   </div>
+        <div class="tile is-child box">
+          <figure class="image is-5by3">
+            <% if trip.trip_picture.attached? %>
+               <img src = "<%= rails_blob_url(trip.trip_picture)%>">
+            <% else %>
+              <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+            <% end %>
+          </figure>
+          <p class="title">
+             <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"title is-4 has-text-primary" %>
+          </p>
+          <p class="subtitle has-text-black is-6">
+            <%= trip.category.name %>
+          </p>
+          <%= link_to "Explorer", admin_trip_path(trip[:id]), class:"button is-outlined is-primary" %>
+        </div>
+      </div>
     <%end%>
-
-  <% elsif @user == current_user %>
-    <p>Vous n'avez publié aucun trip, c'est le moment de commencer !</p>
-  <% else %>
-    <p><%= @user.first_name%> n'a publié aucun trip pour le moment !</p>
-  <% end %>
-
   </div>
 
-</div>
+<% elsif @user == current_user %>
+  <div class="container">
+    <p>Vous n'avez publié aucun itinéraire, c'est le moment de commencer !</p>
+  </div>
+
+<% else %>
+  <div class="container">
+    <p><%= @user.first_name%> n'a publié aucun itinéraire pour le moment.</p>
+  </div>
+
+<% end %>
