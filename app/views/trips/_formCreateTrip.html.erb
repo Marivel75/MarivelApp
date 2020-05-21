@@ -1,43 +1,48 @@
-<%= form_with(model: trip, local: true, multipart: true) do |form| %>
-  <% if trip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(trip.errors.count, "error") %> L'itinéraire n'a pas pu être enregistré :</h2>
+<section class="section">
 
-      <ul>
-      <% trip.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+  <%= form_with(model: trip, local: true, multipart: true) do |form| %>
+    <% if trip.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(trip.errors.count, "error") %> L'itinéraire n'a pas pu être enregistré :</h2>
 
-      </ul>
+        <ul>
+        <% trip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title, "Titre" %>
+      <%= form.text_field :title, class:"input" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :category, "Catégorie" %>
+      <div class="control">
+        <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionnez une catégorie de trip.", class:"select is-fullwidth" %>
+      </div>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :description, "Description" %>
+      <div class="control">
+        <%= form.hidden_field :description, id:'trip_description' %>
+        <trix-editor input="trip_description"></trix-editor>
+      </div>
+      <br>
+    </div>
+
+    <div class="field">
+      <strong>Vous pouvez ajouter une photo :</strong>
+      <%= form.file_field :trip_picture %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.submit "Enregistrer", class:"button is-primary is-fullwidth"%>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title, "Titre" %>
-    <%= form.text_field :title, class:"u-full-width" %>
-  </div>
-  <br>
-  <div class="">
-    <%= form.label :category, "Catégorie" %>
-    <%= select_tag :category_id, options_for_select(@categories), prompt: "Sélectionnez une catégorie de trip.", class:"u-full-width" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= form.label :description, "Description" %>
-    <%= form.hidden_field :description, id:'trip_description', class:"u-full-width" %>
-    <trix-editor input="trip_description"></trix-editor>
-  </div>
-  <br>
-  <br>
-  <div class="flex-container">
-    <p>Vous pouvez ajouter une photo :</p>
-    <%= form.file_field :trip_picture %>
-  </div>
-  <div class="">
-    <%= form.submit "Enregistrer", class:"button-primary"%>
-  </div>
-<% end %>
-
-<div class="">
-  <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
-</div>
+</section>

@@ -1,64 +1,107 @@
-<div class="container">
-
-  <div class="row">
-
-    <div class= "seven columns">
-      <% if @place.place_picture.attached? %>
-        <img src = "<%= rails_blob_url(@place.place_picture)%>" class = "twelve columns", style = "margin-bottom: 10px; max-height: 700px">
-      <% else %>
-        <img src = "https://images.unsplash.com/photo-1585068026984-52c8cb27ed5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class = "twelve columns", style = "margin-bottom: 10px; max-height: 700px">
-      <% end %>
-      <hr>
-      <hr>
-      <span class ="twelve columns" style = "min-height: 50px">
-        <p> <%= sanitize @place.description%></p>
-      </span>
+<% if @place.place_picture.attached? %>
+  <section class="hero is-large" style="background-size:cover;background-image:url(<%= rails_blob_url(@place.place_picture)%>);">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-1 has-text-white">
+          <%= @place.name %>
+        </h1>
+      </div>
     </div>
+  </section>
 
-    <div class="five columns">
-      <div class = "place_card">
+<% else %>
+  <section class="hero is-medium" style="background-size:cover;background-image: url('https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80')">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-1 has-text-white">
+          <%= @place.name %>
+        </h1>
+      </div>
+    </div>
+  </section>
+<% end %>
 
-        <h1 class="poi-name"><%= @place.name %></h1>
 
-        <p>Adresse : <%= @place.address %></p>
+<section class="section">
+  <div class="box">
+    <p> <%= sanitize @place.description%></p>
+  </div>
+<br>
 
-        <% if @place.price !="" %>
-          <p>Prix : <%= @place.price %></p>
-        <% end %>
-
-        <% if @place.price_2 !="" %>
-          <p>Prix : <%= @place.price_2 %></p>
-        <% end %>
-
-        <% if @place.phone !="" %>
-          <p>Contact : <%= @place.phone %></p>
-        <% end %>
-
-        <% if @place.website != "" %>
-          <p>Site web : <%= link_to @place.website, "#{@place.website}" %></p>
-        <% end %>
-
+  <div class="columns">
+    <div class="column box">
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <i class="fas fa-map-marker-alt fa-2x icon-margin"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.address %></p>
+        </div>
       </div>
 
-      <br>
-
-      <div id="map" style="width: 100%; height: 240px"></div>
-      <br>
-      <br>
-
-        <div class="flex-container-around">
-          <% if current_user && current_user[:id] == @place.author_id %>
-            <%= link_to "Éditer le lieu", edit_place_path(@place[:id]), class:"button button-primary" %>
-          <% elsif isAdmin? %>
-            <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button button-primary" %>
-          <% end %>
-          <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+      <% if @place.price !="" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <i class="fas fa-euro-sign fa-2x"></i>
         </div>
+        <div class="column">
+          <p><%= @place.price %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @place.price_2 !="" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <i class="fas fa-euro-sign fa-2x"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.price_2 %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @place.phone !="" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <span><i class="fas fa-tty fa-2x"></i>
+        </div>
+        <div class="column">
+          <p><%= @place.phone %></p>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @place.website != "" %>
+      <div class="columns is-mobile">
+        <div class="column is-narrow">
+          <strong>WEB :</strong>
+        </div>
+        <div class="column">
+          <p><%= link_to @place.website, "#{@place.website}" %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="column is-narrow">
+
+    </div>
+    <div class="column box">
+      <div id="map" style="width: 100%; height: 350px;"></div>
     </div>
   </div>
+</section>
 
-</div>
-
+<section class="section">
+  <div class="buttons is-centered">
+    <% if current_user && current_user[:id] == @place.author_id %>
+      <%= link_to "Éditer le lieu", edit_place_path(@place[:id]), class:"button is-warning" %>
+    <% elsif isAdmin? %>
+      <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button is-warning" %>
+    <% end %>
+    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+  </div>
+</section>
 
 <script>
 

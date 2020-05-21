@@ -1,4 +1,4 @@
-<%= render 'tripBannerBis' %>
+<%= render 'tripBanner' %>
 
 <section class="section">
 
@@ -38,25 +38,30 @@
   <br>
 
   <% if !@trip.places.empty? %>
-    <%= render 'tripPlacesBis' %>
+    <%= render 'tripPlaces' %>
+  <% elsif current_user == @trip.author%>
+    <div class = "container">
+      <strong>Votre itinéraire ne comporte pas encore d'étape. Vous pouvez en ajouter en l'éditant.</strong>
+    </div>
+  <% else %>
+    <div class = "container">
+      <p>Le trip ne comporte pas encore d'étapes.</p>
+    </div>
+  <% end %>
+
+  <% if isAdmin? %>
     <div class="buttons is-centered">
       <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
       <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
     </div>
-
   <% elsif current_user == @trip.author%>
-      <div class = "container">
-        <strong>Votre itinéraire ne comporte pas encore d'étape. Vous pouvez en ajouter en l'éditant.</strong>
-        <br><br>
-        <div class="buttons is-centered">
-          <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
-          <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
-        </div>
-      </div>
-  <% else %>
-      <div class = "container">
-        <p>Le trip ne comporte pas encore d'étapes.</p>
+      <div class="buttons is-centered">
+        <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
         <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
       </div>
+  <% else %>
+    <div class = "container has-text-centered">
+      <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+    </div>
   <% end %>
 </section>
