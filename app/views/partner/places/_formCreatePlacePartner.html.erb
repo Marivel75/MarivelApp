@@ -13,50 +13,50 @@
 
     <div class="field">
       <%= form.label :name, "Nom" %>
-      <%= form.text_field :name, class:"u-full-width" %>
+      <%= form.text_field :name, class:"input" %>
     </div>
 
     <div class="field">
       <%= form.label :address, "Adresse" %>
-      <%= form.text_area :address, class:"u-full-width" %>
+      <%= form.text_area :address, class:"input" %>
     </div>
 
     <div class="field">
       <%= form.label :subtitle, "Sous-titre" %>
-      <%= form.text_field :subtitle, class:"u-full-width" %>
+      <%= form.text_field :subtitle, class:"input" %>
     </div>
 
     <div class="field">
       <%= form.label :description, "Description" %>
-      <%= form.hidden_field :description, id:'place_description', class:"u-full-width" %>
+      <%= form.hidden_field :description, id:'place_description', class:"input" %>
       <trix-editor input="place_description"></trix-editor>
     </div>
 
     <div class="field">
       <%= form.label :price, "Tarif" %>
-      <%= form.text_field :price, class:"u-full-width" %>
+      <%= form.text_field :price, class:"input" %>
     </div>
 
     <div class="field">
       <%= form.label :price_2, "Autre tarif" %>
-      <%= form.text_field :price_2, class:"u-full-width" %>
+      <%= form.text_field :price_2, class:"input" %>
     </div>
     <br>
 
     <div class="field">
       <%= form.label :website, "Site internet" %>
-      <%= form.text_field :website, class:"u-full-width" %>
+      <%= form.text_field :website, class:"input" %>
     </div>
 
     <div class="field">
       <%= form.label :phone, "Téléphone" %>
-      <%= form.text_field :phone, class:"u-full-width" %>
+      <%= form.text_field :phone, class:"input" %>
     </div>
-    <div class="flex-container">
+    <div class="field">
     <p>Vous pouvez ajouter une photo à votre lieu :</p>
     <%= form.file_field :place_picture %>
     </div>
-    <div class="actions">
-      <%= form.submit "Enregistrer le lieu", class:"button-primary" %>
+    <div class="field">
+      <%= form.submit "Enregistrer le lieu", class:"button is-primary" %>
     </div>
   <% end %>

@@ -1,29 +1,47 @@
-<%= render 'tripBanner' %>
-<br>
-<div class="container-center">
-  <% if @trip.online == true %>
-    <p> Cet itinéraire est actuellement publié en ligne. </p>
-  <% else %>
-    <p> Cet itinéraire est actuellement en attente de validation pour publication en ligne. </p>
-  <% end %>
-</div>
-<div class="container">
-  <p class="strong-text"><%= sanitize @trip.description%></p>
-</div>
+<%= render 'trips/tripBanner' %>
 
-<% if !@trip.places.empty? %>
-  <%= render 'tripPlaces' %>
-<% else%>
-  <div class = "container">
-    <p>Ce trip ne comporte pas encore d'étapes.</p>
+<section class="section">
+  <div class="container has-text-centered">
+    <% if @trip.online == true %>
+      <p class="has-text-weight-semibold"> Cet itinéraire est actuellement publié en ligne. </p>
+    <% else %>
+      <p class="has-text-weight-semibold"> Cet itinéraire n'est actuellement pas publié en ligne. </p>
+    <% end %>
   </div>
-<% end %>
-<br>
-<br>
-<div class="flex-container-around">
-  <div class="">
-    <%= link_to "Revenir à la liste des itinéraires", partner_user_path(current_user.id), class:"button" %>
+  <br>
+  <div class="columns is-mobile is-centered">
+    <div class="column is-half">
+      <div class="box has-text-centered">
+        <p>Crée par <strong><%= @trip.author.first_name %> <%= @trip.author.last_name %></strong></p>
+        <p>le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
+      </div>
+    </div>
   </div>
-</div>
-<br>
-<br>
+  <div class="container">
+    <p class="subtitle is-4 has-text-weight-bold"><%= sanitize @trip.description%></p>
+  </div>
+  <br>
+
+  <% if !@trip.places.empty? %>
+    <%= render 'tripPlacesPartner' %>
+  <% elsif current_user == @trip.author%>
+    <div class = "container">
+      <strong>Votre itinéraire ne comporte pas encore d'étape. Vous pouvez en ajouter en l'éditant.</strong>
+    </div>
+  <% else %>
+    <div class = "container">
+      <p>Le trip ne comporte pas encore d'étapes.</p>
+    </div>
+  <% end %>
+
+  <% if isAdmin? %>
+    <div class="buttons is-centered">
+      <%= link_to "Éditer l'itinéraire", edit_admin_trip_path(@trip[:id]), class:"button is-info" %>
+      <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+    </div>
+  <% end %>
+    <div class = "container has-text-centered">
+      <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+    </div>
+
+</section>
