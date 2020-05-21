@@ -1,17 +1,20 @@
-<div class="profilBanner text-center">
-  <p class="profil-title"><%= @user.first_name%></p>
-  <p class="profil-title"> Bienvenue cher partenaire </p>
-  <br>
-</div>
-<br>
-
-<div class="container">
-  <% if @user == current_user %>
-    <div class="">
-      <%= link_to 'Éditez votre compte', edit_user_registration_path, class:'button u-full-width' %>
+<section class="hero is-large hero-user-account">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 has-text-white"> <%= @user.first_name%> </h1>
+      <h1 class="subtitle is-1 has-text-white"> Bienvenue cher partenaire</h1>
     </div>
-  <%end%>
-</div>
-<br>
+  </div>
+</section>
 
-<%= render 'showUserTrips' %>
+<section class="section">
+  <div class="buttons is-centered">
+    <% if @user == current_user %>
+     <%= link_to 'Paramètres du compte', edit_user_registration_path, class:'button is-rounded' %>
+    <%end%>
+  </div>
+</section>
+
+<section class="section">
+  <%= render 'showPartnerTrips' %>
+</section>
