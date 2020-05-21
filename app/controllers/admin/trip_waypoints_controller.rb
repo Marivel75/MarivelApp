@@ -38,7 +38,7 @@ module Admin
 
       respond_to do |format|
         if @trip_waypoint.save
-          format.html { redirect_to admin_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire" }
+          format.html { redirect_to edit_admin_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire" }
         # format.json { render :show, status: :created, location: @trip_waypoint }
         else
           format.html { render :new }

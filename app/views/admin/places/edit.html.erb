@@ -1,31 +1,52 @@
-<br>
-<br>
-<div class="container">
-  <h1 class="poi-name"><%= @place.name %></h1>
+<section class="section">
+  <h1 class="title is-1 has-text-primary has-text-centered"><%= @place.name %></h1>
 
-  <p class="strong-text">Adresse </p>
-  <div class="container-sm">
-    <p> <%= @place.address %> </p>
-  </div>
-  <p class="strong-text">Coordonnées géographiques </p>
-  <div class="container-sm">
+  <p class="has-text-centered"> <%= @place.address %> </p>
+
+  <p class="has-text-centered"><strong>Coordonnées géographiques </strong></p>
+  <br>
+  <div class="has-text-centered">
     <p> Latitude : <%= @place.latitude %></p>
     <p> Longitude : <%= @place.longitude %></p>
   </div>
-  <p class="strong-text">Liste des tags</p>
-  <div class="container-sm">
-    <%= @place.tag_list %>
-    <p>Vous pouvez ajouter des tags ci-dessous.</p>
-    <p>Consulter la liste <span type =button><%= link_to 'ICI', admin_tags_path  %></span></p>
+
+  <div class="columns">
+    <div class = "column">
+      <div class="container">
+        <div class="container has-text-centered">
+          <strong>Description</strong>
+        </div>
+        <br>
+        <p class="has-text-weight-medium"><%= sanitize @place.description %></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="container has-text-centered">
+        <strong>Photo d'illustration du lieu</strong>
+      </div>
+      <br>
+      <% if @place.place_picture.attached? %>
+        <div class="container">
+          <img src = "<%= rails_blob_url(@place.place_picture)%>">
+        </div>
+      <% else %>
+        <div class="container">
+          <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+        </div>
+      <% end %>
+    </div>
   </div>
-<hr />
-</div>
 
-<%= render 'formEditPlace', place: @place %>
-
-<div class="container">
-  <%= link_to "Revenir à la liste des lieux", admin_places_path, class:"button btn-margin" %>
-</div>
+<!-- <div class="">
+   link_to "Vous pouvez ajouter des tags au lieu", place_join_tag_to_places_path(@place.id), class:"button is-primary" =%>
+</div> -->
+</section>
+<hr>
+<section class="section">
+  <h2 class="title is-2 has-text-centered"> Éditez la description du lieu </h2>
+  <%= render 'formEditPlaceAdmin', place: @place %>
 <br>
-<br>
-<br>
+  <div class="container has-text-centered">
+    <%= link_to "Revenir à la liste des lieux", admin_places_path, class:"button" %>
+  </div>
+</section>

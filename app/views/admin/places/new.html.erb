@@ -1,14 +1,11 @@
-<br>
-<br>
-<div class="container">
-  <h1>Créer un lieu</h1>
-<br>
-<br>
-<%= render 'formCreatePlace', place: @place %>
-
-
-  <div>
-    <%= link_to "Revenir à la liste des lieux", admin_places_path, class:"button" %>
+<section class="section">
+  <div class="container">
+    <h1 class="title is-1 has-text-centered">Créer un lieu</h1>
   </div>
 
-</div>
+  <%= render 'formCreatePlaceAdmin', place: @place %>
+  <br>
+  <div class="contaienr has-text-centered">
+    <%= link_to "Revenir à la liste des lieux", admin_places_path, class:"button" %>
+  </div>
+</section>
