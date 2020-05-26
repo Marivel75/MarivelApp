@@ -108,43 +108,43 @@
   var place = gon.place
   var geojson = {type: 'FeatureCollection', features: [
      {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [place.longitude, place.latitude]
-    },
-    properties: {
-      name: place.name,
-      description: place.description,
-      subtitle: place.subtitle,
-      price: place.price_2,
-      website: place.website,
-      phone: place.phone,
-      address: place.address
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [place.longitude, place.latitude]
+      },
+      properties: {
+        name: place.name,
+        description: place.description,
+        subtitle: place.subtitle,
+        price: place.price_2,
+        website: place.website,
+        phone: place.phone,
+        address: place.address
+      }
     }
-  }
   ]}
-var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
+  var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
 
-mapboxgl.accessToken = accessToken;
-//on initialise notre map sur le div #map
-var map = new mapboxgl.Map({
+  mapboxgl.accessToken = accessToken;
+
+  //on initialise notre map sur le div #map
+  var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [place.longitude,place.latitude], //un centre initial [longitude, latitude] (facultatif)
     zoom: 8 //un zoom initial (facultatif)
-});
-geojson.features.forEach(function(marker) {
+  });
 
-  // create a HTML element for each feature
-  var el = document.createElement('div');
-  el.className = ' fas fa-map-marker-alt fa-3x ';
-
-  // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML('<h3>' + marker.properties.name + '</h3><p>' + marker.properties.address + '<hr><br>' + marker.properties.price + '$  |  ' + marker.properties.phone + '<hr><br>' +  marker.properties.website + '</p>'))
-    .addTo(map);
-});
+  geojson.features.forEach(function(marker) {
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = ' fas fa-map-marker-alt fa-3x ';
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML('<strong>' + marker.properties.name + '</strong><p>' + marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '</strong>'))
+      .addTo(map);
+  });
 </script>
