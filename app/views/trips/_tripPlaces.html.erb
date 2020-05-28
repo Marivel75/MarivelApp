@@ -6,17 +6,17 @@
     </div>
     <br>
     <div class="columns is-mobile is-centered">
-      <div class="column is-half-desktop is-three-quarters-mobile">
-        <div id="map" style="width: 100%; height: 300px;"></div>
+      <div class="column is-two-thirds-desktop is-three-quarters-mobile">
+        <div id="map" style="width: 100%; height: 400px;"></div>
       </div>
     </div>
   </div>
 <br>
   <% @trip.places.each do |place| %>
 
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <figure class="image is-5by3">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-two-thirds-desktop">
+        <figure class="image is-5y3">
           <% if place.place_picture.attached? %>
              <img src = "<%= rails_blob_url(place.place_picture)%>">
           <% else %>
@@ -25,14 +25,14 @@
         </figure>
       </div>
     </div>
-    <div class="columns is-centered">
-      <div class="column is-four-fifths has-text-centered">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-two-thirds-desktop has-text-centered">
         <h2 class="is-size-2 has-text-primary"><%= link_to "#{place.name}", place_path(place[:id])%></h2>
         <p class="subtitle has-text-black is-size-5"><%= place.subtitle %></p>
       </div>
     </div>
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-two-thirds-desktop">
         <p class="is-size-6"><%= sanitize place.description %></p>
       </div>
     </div>
@@ -83,6 +83,7 @@
   });
 
   // add markers to map (les variables geojson et coords sont definies dans asset/javascript/places.js)
+
   geojson.features.forEach(function(marker) {
     // create a HTML element for each feature
     var el = document.createElement('div');
@@ -91,7 +92,9 @@
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML('<strong>' + marker.properties.name + '</strong><p>' + marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '</strong>'))
+      .setHTML('<strong>' + marker.properties.name + '</strong><p>'
+              + marker.properties.address + '</p>'
+              + '<strong>' + marker.properties.website + '</strong>'))
       .addTo(map);
   });
 
