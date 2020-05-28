@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require trix
 //*= require mapbox-gl
+//*= require mapbox-gl-geocoder
 // require_tree .

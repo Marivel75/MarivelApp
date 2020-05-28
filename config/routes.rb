@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'searchtrips', to: "trips#search"
 
+  get 'map', to: "map#show"
+
   devise_for :users
 
   resources :categories, only: [:show]

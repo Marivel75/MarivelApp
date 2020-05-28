@@ -73,7 +73,7 @@ Category.create(
 Place.create(
   name: "Abbaye de Cluny",
   address: "Palais du Pape Gélase Place du 11 Août 1944 71250 Cluny",
-  description: "Située à 20 minutes seulement de Mâcon, cette abbaye a rayonné sur l’Europe durant tout le Moyen-Âge. Fondée en 910, ele possédait des proportions hors du commun : les plus hautes voûtes du monde roman témoignent encore aujourd’hui de ce gigantisme. Un film 3D et des restitutions virtuelles complètent la visite et permettent de retrouver toute la majesté du lieu.",
+  description: "Située à 20 minutes seulement de Mâcon, cette abbaye a rayonné sur l’Europe durant tout le Moyen-Âge. Fondée en 910, elle possédait des proportions hors du commun : les plus hautes voûtes du monde roman témoignent encore aujourd’hui de ce gigantisme. Un film 3D et des restitutions virtuelles complètent la visite et permettent de retrouver toute la majesté du lieu.",
   subtitle: "Une abbaye rayonnant sur toute l’Europe au Moyen-Âge",
   price: "Plein tarif adulte : 9,50€",
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 7,50€",
