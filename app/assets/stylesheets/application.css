@@ -12,9 +12,9 @@
  *
  *= require bulma-customisation
  *= require mapboxMaps
- *= require bulma
  *= require trix
  *= require mapbox-gl
  *= require mapbox-gl-directions
  *= require mapbox-gl-geocoder
+ *= require bulma
  */

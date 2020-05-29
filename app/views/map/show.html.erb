@@ -1,34 +1,16 @@
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-  }
+<style media="screen">
+body {
+  margin: 0;
+  padding: 0;
+}
 
-  #map {
-    position: absolute;
-    top: 65px;
-    bottom: 0;
-    width: 100%;
-  }
+#map {
+  position: absolute;
+  top: 65px;
+  bottom: 0;
+  width: 100%;
+}
 </style>
-
-<!-- Mapbox Directions API -->
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
-<link
-rel="stylesheet"
-href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
-type="text/css"
-/>
-
-<!-- Mapbox Geocoding API -->
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-<link
-rel="stylesheet"
-href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
-type="text/css"
-/>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
 
 <!-- html pour la carte -->
@@ -60,8 +42,22 @@ type="text/css"
   map.addControl(
     new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
+    language: 'fr-FR',
     mapboxgl: mapboxgl
     })
   );
+
+  // Add geolocate control to the map.
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
+    trackUserLocation: true
+    })
+  );
+
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
 
 </script>
