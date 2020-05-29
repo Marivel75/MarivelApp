@@ -24,11 +24,18 @@ body {
  mapboxgl.accessToken = 'pk.eyJ1Ijoicm9jcGVsaWNhbiIsImEiOiJjanN3N3lzZXQwN3BqNDNvZmYwM2hybWd6In0.flGOgYQ1ae6VnI00gUoL5A';
 
   var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10',
-    center: [4.6592744, 46.43413520000001], // starting position
-    zoom: 12
+   container: 'map',
+   style: 'mapbox://styles/mapbox/streets-v11',
+   center: [2.332097, 48.831352], // starting position, Paris coordinates
+   zoom: 5
   });
+
+  var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    language: 'fr-FR',
+    mapboxgl: mapboxgl,
+    placeholder: ' ',
+  })
 
 // Script pour Directions
   map.addControl(
@@ -39,13 +46,7 @@ body {
   );
 
 // Script pour le geocoder
-  map.addControl(
-    new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    language: 'fr-FR',
-    mapboxgl: mapboxgl
-    })
-  );
+  map.addControl(geocoder);
 
   // Add geolocate control to the map.
   map.addControl(
