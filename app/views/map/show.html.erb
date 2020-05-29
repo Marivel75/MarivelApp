@@ -6,17 +6,30 @@ body {
 
 #map {
   position: absolute;
-  top: 65px;
+  top: 60px;
   bottom: 0;
   width: 100%;
+  padding-top: 10px;
 }
+
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+}
+
 </style>
 
 
 <!-- html pour la carte -->
-<div id='map'> Map</div>
 
-<div id="instructions"></div>
+<div id='map'>
+
+    <div class="columns is-mobile is-centered">
+      <div class="column is-half">
+        <div id="geocoder" class="geocoder"></div>
+      </div>
+    </div>
+
+</div>
 
 
 
@@ -37,6 +50,8 @@ body {
     placeholder: ' ',
   })
 
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
 // Script pour Directions
   map.addControl(
   new MapboxDirections({
@@ -44,9 +59,6 @@ body {
   }),
   'top-left'
   );
-
-// Script pour le geocoder
-  map.addControl(geocoder);
 
   // Add geolocate control to the map.
   map.addControl(
@@ -60,5 +72,6 @@ body {
 
   // Add zoom and rotation controls to the map.
   map.addControl(new mapboxgl.NavigationControl());
+
 
 </script>
