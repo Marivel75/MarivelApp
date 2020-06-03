@@ -484,233 +484,233 @@ Trip.create(
 TripWaypoint.create(
   place_id: Place.find(1).id,
   trip_id: Trip.find(1).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(2).id,
   trip_id: Trip.find(1).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(3).id,
   trip_id: Trip.find(1).id,
-  rank: 2
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(4).id,
   trip_id: Trip.find(1).id,
-  rank: 3
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(5).id,
   trip_id: Trip.find(1).id,
-  rank: 4
+  rank: 5
 )
 
 TripWaypoint.create(
   place_id: Place.find(6).id,
   trip_id: Trip.find(1).id,
-  rank: 5
+  rank: 6
 )
 
 TripWaypoint.create(
   place_id: Place.find(7).id,
   trip_id: Trip.find(1).id,
-  rank: 6
+  rank: 7
 )
 
 # Itinéraire Le long de la Seine
 TripWaypoint.create(
   place_id: Place.find(30).id,
   trip_id: Trip.find(2).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(8).id,
   trip_id: Trip.find(2).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(9).id,
   trip_id: Trip.find(2).id,
-  rank: 2
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(10).id,
   trip_id: Trip.find(2).id,
-  rank: 3
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(11).id,
   trip_id: Trip.find(2).id,
-  rank: 4
+  rank: 5
 )
 
 # Itinéraire Le long de la Loire
 TripWaypoint.create(
   place_id: Place.find(12).id,
   trip_id: Trip.find(3).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(13).id,
   trip_id: Trip.find(3).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(14).id,
   trip_id: Trip.find(3).id,
-  rank: 2
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(15).id,
   trip_id: Trip.find(3).id,
-  rank: 3
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(16).id,
   trip_id: Trip.find(3).id,
-  rank: 4
+  rank: 5
 )
 
 # Itinéraire Le long de la Garonne et de la Dordogne
 TripWaypoint.create(
   place_id: Place.find(17).id,
   trip_id: Trip.find(4).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(18).id,
   trip_id: Trip.find(4).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(19).id,
   trip_id: Trip.find(4).id,
-  rank: 2
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(20).id,
   trip_id: Trip.find(4).id,
-  rank: 3
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(21).id,
   trip_id: Trip.find(4).id,
-  rank: 4
+  rank: 5
 )
 
 # Itinéraire Le long du canal du Midi
 TripWaypoint.create(
   place_id: Place.find(22).id,
   trip_id: Trip.find(5).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(23).id,
   trip_id: Trip.find(5).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(24).id,
   trip_id: Trip.find(5).id,
-  rank: 2
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(6).id,
   trip_id: Trip.find(5).id,
-  rank: 3
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(5).id,
   trip_id: Trip.find(5).id,
-  rank: 4
+  rank: 5
 )
 
 TripWaypoint.create(
   place_id: Place.find(4).id,
   trip_id: Trip.find(5).id,
-  rank: 5
+  rank: 6
 )
 
 TripWaypoint.create(
   place_id: Place.find(3).id,
   trip_id: Trip.find(5).id,
-  rank: 6
+  rank: 7
 )
 
 # Itinéraire Trois villas des années 30
 TripWaypoint.create(
   place_id: Place.find(25).id,
   trip_id: Trip.find(6).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(11).id,
   trip_id: Trip.find(6).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(26).id,
   trip_id: Trip.find(6).id,
-  rank: 2
+  rank: 3
 )
 
 # Itinéraire Elles ont fait l'histoire
 TripWaypoint.create(
   place_id: Place.find(8).id,
   trip_id: Trip.find(7).id,
-  rank: 0
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(2).id,
   trip_id: Trip.find(7).id,
-  rank: 1
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(22).id,
   trip_id: Trip.find(7).id,
-  rank: 2
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(27).id,
   trip_id: Trip.find(7).id,
-  rank: 3
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(28).id,
   trip_id: Trip.find(7).id,
-  rank: 4
+  rank: 5
 )
 
 TripWaypoint.create(
   place_id: Place.find(29).id,
   trip_id: Trip.find(7).id,
-  rank: 5
+  rank: 6
 )

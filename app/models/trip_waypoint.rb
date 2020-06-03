@@ -4,4 +4,5 @@ class TripWaypoint < ApplicationRecord
 
   searchkick
 
+
 end
