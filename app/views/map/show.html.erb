@@ -38,7 +38,7 @@ body {
 
   var map = new mapboxgl.Map({
    container: 'map',
-   style: 'mapbox://styles/mapbox/streets-v11',
+   style: 'mapbox://styles/mapbox/streets-v10',
    center: [2.332097, 48.831352], // starting position, Paris coordinates
    zoom: 5
   });
@@ -46,6 +46,9 @@ body {
   var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     language: 'fr-FR',
+    marker: {
+      color: '#0a0a5c'
+    },
     mapboxgl: mapboxgl,
     placeholder: ' ',
   })
@@ -53,12 +56,13 @@ body {
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
 // Script pour Directions
-  map.addControl(
+/*  map.addControl(
   new MapboxDirections({
   accessToken: mapboxgl.accessToken
   }),
   'top-left'
   );
+*/
 
   // Add geolocate control to the map.
   map.addControl(
@@ -73,5 +77,7 @@ body {
   // Add zoom and rotation controls to the map.
   map.addControl(new mapboxgl.NavigationControl());
 
+  var language = new MapboxLanguage();
+  map.addControl(language);
 
 </script>
