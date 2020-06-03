@@ -417,6 +417,13 @@ Place.create(
   author_id: User.first.id
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/George_Sand_House_Cover_Shot.jpg"), filename: "image.jpg")
 
+Place.create(
+  name: "Île de la Cité",
+  address: "1 boulevard du Palais, Paris",
+  description: "Depuis l’incendie de la Cathédrale Notre-Dame de Paris le 15 avril 2019, le bâtiment et ses abords sont fermés au public. Néanmoins, n’hésitez-pas à venir contempler la Cathédrale et à parcourir les petites rues de l’île de la Cité. La promenade reste un moment magique et mémorable. À quelques mètres, se trouve la Sainte-Chapelle, joyau du gothique rayonnant édifié par Saint Louis au coeur de l'ancien Palais de la Cité. Découvrez ses vitraux uniques qui nimbent l'air de couleurs et de lumière et qui ont abrité la Couronne d'Épines du Christ. Poursuivez votre escapade en visitant la Conciergerie, composée d'exceptionnelles salles gothiques du premier palais royal parisien et qui fut par la suite la prison du tribunal révolutionnaire. A la fin du XVIIème siècle, de nombreux prévenus y furent incarcérées, dont Marie-Antoinette.",
+  author_id: User.first.id
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/1280px-Île_de_la_Cité_shortly_before_sunrise,_West_View_140320_1.jpg"), filename: "image.jpg")
+
 Trip.create(
   title: "Le long du Rhône et de la Saône",
   description: "Un voyage à travers les époques et les paysages entre Bourgogne et Méditerranée. Les monuments historiques sont une porte d'entrée pour découvrir la richesse du patrimoine et de la nature du sud-est de l'Hexagone.",
@@ -476,191 +483,234 @@ Trip.create(
 # Itinéraire Le long du Rhône et de la Saône
 TripWaypoint.create(
   place_id: Place.find(1).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 0
 )
 
 TripWaypoint.create(
   place_id: Place.find(2).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(3).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(4).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(5).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(6).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 5
 )
 
 TripWaypoint.create(
   place_id: Place.find(7).id,
-  trip_id: Trip.find(1).id
+  trip_id: Trip.find(1).id,
+  rank: 6
 )
 
 # Itinéraire Le long de la Seine
 TripWaypoint.create(
+  place_id: Place.find(30).id,
+  trip_id: Trip.find(2).id,
+  rank: 0
+)
+
+TripWaypoint.create(
   place_id: Place.find(8).id,
-  trip_id: Trip.find(2).id
+  trip_id: Trip.find(2).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(9).id,
-  trip_id: Trip.find(2).id
+  trip_id: Trip.find(2).id,
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(10).id,
-  trip_id: Trip.find(2).id
+  trip_id: Trip.find(2).id,
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(11).id,
-  trip_id: Trip.find(2).id
+  trip_id: Trip.find(2).id,
+  rank: 4
 )
 
 # Itinéraire Le long de la Loire
 TripWaypoint.create(
   place_id: Place.find(12).id,
-  trip_id: Trip.find(3).id
+  trip_id: Trip.find(3).id,
+  rank: 0
 )
 
 TripWaypoint.create(
   place_id: Place.find(13).id,
-  trip_id: Trip.find(3).id
+  trip_id: Trip.find(3).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(14).id,
-  trip_id: Trip.find(3).id
+  trip_id: Trip.find(3).id,
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(15).id,
-  trip_id: Trip.find(3).id
+  trip_id: Trip.find(3).id,
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(16).id,
-  trip_id: Trip.find(3).id
+  trip_id: Trip.find(3).id,
+  rank: 4
 )
 
 # Itinéraire Le long de la Garonne et de la Dordogne
 TripWaypoint.create(
   place_id: Place.find(17).id,
-  trip_id: Trip.find(4).id
+  trip_id: Trip.find(4).id,
+  rank: 0
 )
 
 TripWaypoint.create(
   place_id: Place.find(18).id,
-  trip_id: Trip.find(4).id
+  trip_id: Trip.find(4).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(19).id,
-  trip_id: Trip.find(4).id
+  trip_id: Trip.find(4).id,
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(20).id,
-  trip_id: Trip.find(4).id
+  trip_id: Trip.find(4).id,
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(21).id,
-  trip_id: Trip.find(4).id
+  trip_id: Trip.find(4).id,
+  rank: 4
 )
 
 # Itinéraire Le long du canal du Midi
 TripWaypoint.create(
   place_id: Place.find(22).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 0
 )
 
 TripWaypoint.create(
   place_id: Place.find(23).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(24).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(6).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(5).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(4).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 5
 )
 
 TripWaypoint.create(
   place_id: Place.find(3).id,
-  trip_id: Trip.find(5).id
+  trip_id: Trip.find(5).id,
+  rank: 6
 )
 
 # Itinéraire Trois villas des années 30
 TripWaypoint.create(
   place_id: Place.find(25).id,
-  trip_id: Trip.find(6).id
+  trip_id: Trip.find(6).id,
+  rank: 0
 )
 
 TripWaypoint.create(
   place_id: Place.find(11).id,
-  trip_id: Trip.find(6).id
+  trip_id: Trip.find(6).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(26).id,
-  trip_id: Trip.find(6).id
+  trip_id: Trip.find(6).id,
+  rank: 2
 )
 
-# Itinéraire Elles ont fait l'histoireTripWaypoint.create(
+# Itinéraire Elles ont fait l'histoire
 TripWaypoint.create(
   place_id: Place.find(8).id,
-  trip_id: Trip.find(7).id
+  trip_id: Trip.find(7).id,
+  rank: 0
 )
 
 TripWaypoint.create(
   place_id: Place.find(2).id,
-  trip_id: Trip.find(7).id
+  trip_id: Trip.find(7).id,
+  rank: 1
 )
 
 TripWaypoint.create(
   place_id: Place.find(22).id,
-  trip_id: Trip.find(7).id
+  trip_id: Trip.find(7).id,
+  rank: 2
 )
 
 TripWaypoint.create(
   place_id: Place.find(27).id,
-  trip_id: Trip.find(7).id
+  trip_id: Trip.find(7).id,
+  rank: 3
 )
 
 TripWaypoint.create(
   place_id: Place.find(28).id,
-  trip_id: Trip.find(7).id
+  trip_id: Trip.find(7).id,
+  rank: 4
 )
 
 TripWaypoint.create(
   place_id: Place.find(29).id,
-  trip_id: Trip.find(7).id
+  trip_id: Trip.find(7).id,
+  rank: 5
 )
