@@ -1,5 +1,6 @@
 class Place < ApplicationRecord
   acts_as_ordered_taggable_on :tags
+
   searchkick
 
   geocoded_by :address do |object, results|

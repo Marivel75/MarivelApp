@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   root to: "trips#index"
 
-  get 'searchplaces', to: "places#search"
+  get 'search', to: "search#index"
 
-  get 'searchtrips', to: "trips#search"
+  #get 'searchtrips', to: "trips#search"
 
   get 'map', to: "map#show"
 
