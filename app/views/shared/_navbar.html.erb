@@ -5,7 +5,7 @@
       <span class='is-size-2'><%=link_to 'MARIVEL', trips_path, class:'is-size-2 has-text-black' %></span>
     </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -15,22 +15,28 @@
 
   <div class="navbar-menu" id="navMenu">
 
-    <div class="navbar-start">
-      <%= form_with url: '/searchtrips', method: "get", local: true do %>
-      <div class="navbar-item field has-addons">
-        <div class="control">
-          <%= text_field_tag :q, params[:q], class:"input" %>
+    <div class="navbar-start columns is-mobile">
+      <div class="column is-narrow">
+        <%= form_with url: '/searchtrips', method: "get", local: true do %>
+        <div class="navbar-item field has-addons">
+          <div class="control">
+            <%= text_field_tag :q, params[:q], class:"input" %>
+          </div>
+          <div class="control">
+            <%= button_tag :submit, class:"button is-black" do %>
+              <i class="fas fa-search-location"></i>
+            <% end %>
+          </div>
         </div>
-        <div class="control">
-          <%= button_tag :submit, class:"button is-black" do %>
-            <i class="fas fa-search-location"></i>
-          <% end %>
+        <% end %>
+      </div>
+      <div class="column">
+        <div class="navbar-item">
+          <%= link_to "Carto", map_path, class:'button is-rounded is-outlined is-info' %>
         </div>
       </div>
-      <% end %>
-      <div class="navbar-item">
-        <%= link_to "Carto", map_path, class:'button is-rounded is-outlined is-info' %>
-      </div>
+
+
 
     </div>
 
@@ -62,6 +68,7 @@
           <div class="buttons">
             <%= link_to '<i class="fas fa-user-circle fa-3x "></i>'.html_safe, partner_user_path(current_user.id), class:"button is-white" %>
             <%= link_to "#{current_user.first_name}", partner_user_path(current_user.id), class:"is-size-3 has-text-black" %>
+          </div>
         </div>
         <div class="navbar-item">
           <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"button is-light" %>
@@ -77,33 +84,37 @@
       <% end %>
     </div>
   </div>
+
 </nav>
 
 <script>
+
   document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
 
-    // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
 
-        // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
 
+        });
       });
-    });
-  }
+    }
 
   });
+
+
 
 </script>

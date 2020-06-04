@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
+    <!-- Remove Turbolinks. I can't fix the problems with Javascript -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -25,7 +27,6 @@
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="trix.css">
 
     <!-- Scripts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -53,9 +54,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="https://kit.fontawesome.com/82b59b489d.js" crossorigin="anonymous"></script>
 
-    <!-- Trix
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script type="text/javascript" src="trix.js"></script>
+
 
     <!-- Mapbox language selon la langue du navigateur -->
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.1/mapbox-gl-language.js'></script>

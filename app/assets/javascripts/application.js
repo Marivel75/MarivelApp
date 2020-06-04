@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require trix
 //*= require mapbox-gl
 //*= require mapbox-gl-directions
