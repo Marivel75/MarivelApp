@@ -1,7 +1,7 @@
 class Place < ApplicationRecord
   acts_as_ordered_taggable_on :tags
 
-  searchkick
+  searchkick suggest: [:name]
 
   geocoded_by :address do |object, results|
     if results.present?

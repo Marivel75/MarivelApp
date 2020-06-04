@@ -18,7 +18,7 @@ class Trip < ApplicationRecord
   scope :published, -> { where(online: true) }
   scope :offline, -> { where(online: false) }
 
-  searchkick
+  searchkick suggest: [:title]
 
   def search_data
     attributes.merge(
