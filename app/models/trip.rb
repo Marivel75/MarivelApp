@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  acts_as_ordered_taggable_on :tags
+  acts_as_taggable_on :tags
 
   belongs_to :author, class_name: 'User'
   belongs_to :category
@@ -30,8 +30,10 @@ class Trip < ApplicationRecord
   def search_data
     attributes.merge(
       category_name: category(&:name),
-      places_name: places.map(&:name)
+      places_name: places.map(&:name),
+      tags_name: tags.map(&:name)
     )
+
   end
 
 end
