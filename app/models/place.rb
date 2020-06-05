@@ -1,7 +1,7 @@
 class Place < ApplicationRecord
-  acts_as_ordered_taggable_on :tags
+  acts_as_taggable_on :tags
 
-  searchkick suggest: [:name]
+
 
   geocoded_by :address do |object, results|
     if results.present?
@@ -33,6 +33,10 @@ class Place < ApplicationRecord
       errors.add(:address, "We couldn't find the address")
     end
   end
+
+
+
+  searchkick suggest: [:name], language: "french", match: :word_middle
 
   def search_data
     {name: name,

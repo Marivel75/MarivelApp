@@ -19,9 +19,8 @@ class Trip < ApplicationRecord
   scope :offline, -> { where(online: false) }
 
 
-  searchkick suggest: [:title]
+  searchkick suggest: [:title], language: "french", match: :word_middle
   scope :search_import, -> { where(online: true) }
-
 
   def should_index?
     online
