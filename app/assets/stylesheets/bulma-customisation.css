@@ -1,3 +1,11 @@
+@font-face {
+   font-family: 'CourierPrime';
+   src: url('//vendor/fonts/font-file.file-extension')
+}
+body {
+  font-family: 'CourierPrime'
+}
+
 .hero-background {
   background: url('https://images.unsplash.com/photo-1534008724586-bd8c3169293b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80');
   background-size:cover;
@@ -28,6 +36,6 @@ trix-editor .textarea {
 }
 
 
-.fa-user-circle, .fa-map-marker-alt {
+.fa-user-circle, .fa-map-marker-alt, .fa-map-marker-alt, .fa-euro-sign, .fa-tty {
 color: #0a0a5c;
 }

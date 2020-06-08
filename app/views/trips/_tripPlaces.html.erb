@@ -7,7 +7,7 @@
 
     <div class="columns">
       <div class="column">
-        <p class="is-size-4 has-text-centered">Type d'itinéraire : <%= @trip.category.name %> </p>
+        <p class="is-size-5 has-text-centered">Type d'itinéraire : <strong><%= @trip.category.name %> </strong></p>
       </div>
 
         <div class="column">
@@ -18,8 +18,8 @@
     </div>
 
     <div class="columns is-mobile is-centered">
-      <div class="column is-three-quarters">
-        <div id="map" style="width: 100%; height: 400px;"></div>
+      <div class="column is-three-quarters-mobile is-three-fifths-tablet is-two-thirds-desktop is-three-quarters-widescreen is-three-quarters-fullhd">
+        <div id="map" style="width: 100%; height: 350px;"></div>
       </div>
     </div>
   </div>
@@ -28,8 +28,8 @@
   <% @trip.trip_waypoints.order(rank: :asc).each do |waypoint| %>
 
     <div class="columns is-mobile is-centered">
-      <div class="column is-two-thirds-desktop">
-        <figure class="image is-5y3">
+      <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+        <figure class="image is-5by3">
           <% if waypoint.place.place_picture.attached? %>
              <img src = "<%= rails_blob_url(waypoint.place.place_picture)%>">
           <% else %>
@@ -39,13 +39,13 @@
       </div>
     </div>
     <div class="columns is-mobile is-centered">
-      <div class="column is-two-thirds-desktop has-text-centered">
+      <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd has-text-centered">
         <h2 class="is-size-2 has-text-primary"><%= link_to "#{waypoint.rank}. #{waypoint.place.name}", place_path(waypoint.place[:id])%></h2>
         <p class="subtitle has-text-black is-size-5"><%= waypoint.place.subtitle %></p>
       </div>
     </div>
-    <div class="columns is-mobile is-centered">
-      <div class="column is-two-thirds-desktop">
+    <div class="columns is-mobile is-three-quarters is-centered">
+      <div class="column column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
         <p class="is-size-6"><%= sanitize waypoint.place.description %></p>
       </div>
     </div>

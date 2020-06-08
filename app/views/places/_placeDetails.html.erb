@@ -23,73 +23,91 @@
 
 
 <section class="section">
-  <div class="box">
-    <p> <%= sanitize @place.description%></p>
+
+  <div class="columns is-mobile is-centered">
+    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+      <div class="box">
+        <p> <%= sanitize @place.description%></p>
+      </div>
+    </div>
   </div>
+
 <br>
 
-  <div class="columns">
-    <div class="column box">
-      <div class="columns is-mobile">
-        <div class="column is-narrow">
-          <i class="fas fa-map-marker-alt fa-2x icon-margin"></i>
+  <div class="columns is-centered">
+
+    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+
+      <div class="columns is-centered">
+
+        <div class="column box is-one-third">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-map-marker-alt fa-2x icon-margin"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.address %></p>
+            </div>
+          </div>
+
+          <% if @place.price !="" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-euro-sign fa-2x"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.price %></p>
+            </div>
+          </div>
+          <% end %>
+
+          <% if @place.price_2 !="" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-euro-sign fa-2x"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.price_2 %></p>
+            </div>
+          </div>
+          <% end %>
+
+          <% if @place.phone !="" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <span><i class="fas fa-tty fa-2x"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.phone %></p>
+            </div>
+          </div>
+          <% end %>
+
+          <% if @place.website != "" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <strong style="color:#0a0a5c;"> WEB :</strong>
+            </div>
+            <div class="column">
+              <p><%= link_to @place.website, "#{@place.website}", target:"_blank"  %></p>
+            </div>
+          </div>
+          <% end %>
         </div>
-        <div class="column">
-          <p><%= @place.address %></p>
+
+        <div class="column is-narrow">
+
+        </div>
+
+        <div class="column box">
+          <div id="map" style="width: 100%; height: 350px;"></div>
         </div>
       </div>
 
-      <% if @place.price !="" %>
-      <div class="columns is-mobile">
-        <div class="column is-narrow">
-          <i class="fas fa-euro-sign fa-2x"></i>
-        </div>
-        <div class="column">
-          <p><%= @place.price %></p>
-        </div>
-      </div>
-      <% end %>
-
-      <% if @place.price_2 !="" %>
-      <div class="columns is-mobile">
-        <div class="column is-narrow">
-          <i class="fas fa-euro-sign fa-2x"></i>
-        </div>
-        <div class="column">
-          <p><%= @place.price_2 %></p>
-        </div>
-      </div>
-      <% end %>
-
-      <% if @place.phone !="" %>
-      <div class="columns is-mobile">
-        <div class="column is-narrow">
-          <span><i class="fas fa-tty fa-2x"></i>
-        </div>
-        <div class="column">
-          <p><%= @place.phone %></p>
-        </div>
-      </div>
-      <% end %>
-
-      <% if @place.website != "" %>
-      <div class="columns is-mobile">
-        <div class="column is-narrow">
-          <strong>WEB :</strong>
-        </div>
-        <div class="column">
-          <p><%= link_to @place.website, "#{@place.website}", target:"_blank"  %></p>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <div class="column is-narrow">
-
-    </div>
-    <div class="column box">
-      <div id="map" style="width: 100%; height: 350px;"></div>
     </div>
   </div>
+
+
 </section>
 
 <section class="section">
@@ -104,6 +122,10 @@
 </section>
 
 <script>
+
+  var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
+
+  mapboxgl.accessToken = accessToken;
 
   var place = gon.place
   var geojson = {type: 'FeatureCollection', features: [
@@ -124,17 +146,21 @@
       }
     }
   ]}
-  var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
 
-  mapboxgl.accessToken = accessToken;
 
   //on initialise notre map sur le div #map
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [place.longitude,place.latitude], //un centre initial [longitude, latitude] (facultatif)
-    zoom: 8 //un zoom initial (facultatif)
+    zoom: 7 //un zoom initial (facultatif)
   });
+
+  // Default Language : Français
+  mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js');
+  map.addControl(new MapboxLanguage({
+    defaultLanguage: 'fr'
+  }));
 
   geojson.features.forEach(function(marker) {
     // create a HTML element for each feature
@@ -147,4 +173,11 @@
       .setHTML('<strong>' + marker.properties.name + '</strong><p>' + marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '</strong>'))
       .addTo(map);
   });
+
+  // Add fulllscreen control on the map
+  map.addControl(new mapboxgl.FullscreenControl());
+
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
+
 </script>
