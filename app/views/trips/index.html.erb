@@ -3,13 +3,13 @@
 <section class="section">
   <% if isTraveler? %>
     <div class="container has-text-centered">
-      <h2 class ="title is-2"> Bienvenue <%= current_user.first_name%> </h2>
+      <h2 class ="title is-2 has-text-black-bis"> Bienvenue <%= current_user.first_name%> </h2>
       <%= link_to "Créer un itinéraire", new_trip_path, class:"button is-primary is-rounded" %>
     </div>
 
   <% elsif isPartner? %>
     <div class="box has-text-centered">
-      <h2 class="title is-2"> Bienvenue cher partenaire </h2>
+      <h2 class="title is-2 has-text-black-bis"> Bienvenue cher partenaire </h2>
       <p> Vous êtes connecté sur le compte :</p>
       <strong><%= current_user.first_name%></strong>
       <p>Retrouvez vos options de gestion et de publication dans votre compte.</p>
@@ -19,7 +19,7 @@
 
   <% elsif isAdmin? %>
     <div class="box has-text-centered">
-      <h2 class='title is-2'> Bienvenue <%= current_user.first_name%></h2>
+      <h2 class='title is-2 has-text-black-bis'> Bienvenue <%= current_user.first_name%></h2>
       <p>Vous êtes administrateur. Retrouvez vos autorisations d'administration dans l'espace Admin.</p>
       <br>
       <div class="buttons is-centered">
@@ -31,7 +31,7 @@
 
     <% else %>
     <div class="box has-text-centered">
-      <h2 class='title is-2 has-text-black'> Bienvenue cher visiteur</h2>
+      <h2 class='title is-2 has-text-black-bis'> Bienvenue cher visiteur</h2>
       <p class="has-text-black-bis"> Vous voulez créer vos propres itinéraires personnels ?</p>
       <p class="has-text-black-bis">Enregistrer les itinéraires qui vous plaisent pour les retrouver facilement ?</p>
       <br>
@@ -42,13 +42,10 @@
   <% end %>
 </section>
 
-
 <section class=section>
   <div class="columns is-centered">
-    <div class="column is-two-thirds-fulhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
 
-      <div class="container is-fluid">
-        <br>
         <h1 class="title is-2 has-text-black">Explorer les guides</h1>
         <div class="columns">
           <div class="column is-two-thirds has-text-right">
@@ -65,8 +62,7 @@
           </div>
 
         </div>
-        <br>
-      </div>
+
       <div class="tile is-ancestor wrap-container">
         <% @trips.each do |trip| %>
             <div class="tile is-parent is-4">
