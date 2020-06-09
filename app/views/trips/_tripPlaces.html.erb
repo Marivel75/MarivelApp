@@ -2,17 +2,17 @@
   <div class="container">
     <div class="container has-text-centered">
       <i class="fas fa-map-marker-alt fa-2x icon-margin"></i>
-      <span class="is-size-3"><%= @trip.places.length%> étape(s)</span>
+      <span class="is-size-4 has-text-black-bis has-text-weight-semibold"><%= @trip.places.length%> étape(s)</span>
     </div>
 
     <div class="columns">
       <div class="column">
-        <p class="is-size-5 has-text-centered">Type d'itinéraire : <strong><%= @trip.category.name %> </strong></p>
+        <p class="is-size-6 has-text-centered has-text-black-bis">Type d'itinéraire : <span class= "is-size-6 has-text-centered has-text-black-bis has-text-weight-semibold"><%= @trip.category.name %></span> </p>
       </div>
 
         <div class="column">
           <% if @trip.tag_list.any? %>
-            <p class="is-size-5 has-text-centered"> Tags : <%= @trip.tag_list %> </p>
+            <p class="is-size-6 has-text-centered has-text-black-bis"> Tags : <%= @trip.tag_list %> </p>
           <% end %>
         </div>
     </div>
@@ -40,13 +40,13 @@
     </div>
     <div class="columns is-mobile is-centered">
       <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd has-text-centered">
-        <h2 class="is-size-2 has-text-primary"><%= link_to "#{waypoint.rank}. #{waypoint.place.name}", place_path(waypoint.place[:id])%></h2>
+        <h2 class="is-size-2"><%= link_to "#{waypoint.rank}. #{waypoint.place.name}", place_path(waypoint.place[:id]), class:"has-text-black"%></h2>
         <p class="subtitle has-text-black is-size-5"><%= waypoint.place.subtitle %></p>
       </div>
     </div>
     <div class="columns is-mobile is-three-quarters is-centered">
       <div class="column column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
-        <p class="is-size-6"><%= sanitize waypoint.place.description %></p>
+        <p class="is-size-6 has-text-black-bis"><%= sanitize waypoint.place.description %></p>
       </div>
     </div>
     <br>
@@ -68,11 +68,7 @@
     zoom: 11 //un zoom initial (facultatif)
   });
 
-  // Default Language : Français
-  mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js');
-  map.addControl(new MapboxLanguage({
-    defaultLanguage: 'fr'
-  }));
+
 
   var coords = []
   gon.places.forEach(function(place) {
