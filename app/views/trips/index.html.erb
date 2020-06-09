@@ -50,6 +50,21 @@
       <div class="container is-fluid">
         <br>
         <h1 class="title is-2 has-text-black">Explorer les guides</h1>
+        <div class="columns">
+          <div class="column is-two-thirds has-text-right">
+            <h4 class="is-subtitle is-4 has-text-black has-text-weight-semibold">Parcourir les catégories :</h4>
+          </div>
+          <div class="column has-text-right">
+            <%= link_to "Roadtrips", category_path(id=1), class:"is-4 has-text-black" %>
+          </div>
+          <div class="column has-text-right">
+            <%= link_to "À vélo", category_path(id=2), class:"is-4 has-text-black" %>
+          </div>
+          <div class="column has-text-right">
+            <%= link_to "À pied", category_path(id=3), class:"is-4 has-text-black has-text-right" %>
+          </div>
+
+        </div>
         <br>
       </div>
       <div class="tile is-ancestor wrap-container">

@@ -1,23 +1,50 @@
-<div class="">
-  <div class="jumbotron roadtrip-cat">
-    <div class="container">
-      <%= render 'categoryBanner' %>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fulhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+
+      <div class="box has-text-centered">
+        <h1 class="title is-1 has-text-black has-text-weight-bold"><%= @category.name.upcase %></h1>
+        <h2 class='is-subtitle has-text-black is-3'> Nombre d'itinéraires : <%= @category.trips.published.length %> </h2>
+      </div>
+
+      <div class="tile is-ancestor wrap-container">
+        <% Trip.where(category_id: @category.id, online: true).each do |trip| %>
+          <%if trip.places.length > 0%>
+          <div class="tile is-parent is-3">
+
+            <div class="tile is-child box">
+              <figure class="image is-5by3">
+                <% if trip.trip_picture.attached? %>
+                   <img src = "<%= rails_blob_url(trip.trip_picture)%>">
+                <% else %>
+                  <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+                <% end %>
+              </figure>
+              <p class="title">
+                <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"title is-4 has-text-primary" %>
+              </p>
+              <p class="subtitle has-text-black is-6">
+                <%= trip.category.name %>
+              </p>
+              <div class="media">
+                <figure class="media-left image is-48x48">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                </figure>
+                <div class="media-content">
+                  <p class="is-6"><%= trip.author.last_name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
-  <br>
-  <br>
+</section>
 
-  <div class="container">
-    <%= render 'shared/navbar' %>
-    <%= render 'indexTripByCategory' %>
-  </div>
-  <br>
-
-
-
-  <div class="container">
-    <%= link_to "Retour à l'accueil", trips_path, class:'button' %>
-  </div>
-  <br>
-
+<div class = "container has-text-centered">
+  <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
 </div>
+<br>
