@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
-
-body {
-  font-family: "Courier Prime", monospace;
+* {
+  font-family: 'Courier Prime', monospace;
 }
 
+#brand {
+  font-family: 'Lora', serif;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+}
 .hero-background {
   background: url('https://images.unsplash.com/photo-1534008724586-bd8c3169293b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80');
   background-size:cover;
