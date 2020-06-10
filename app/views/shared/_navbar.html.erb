@@ -30,13 +30,13 @@
         </div>
         <% end %>
       </div>
-      <div class="column">
-        <div class="navbar-item">
-          <%= link_to "Carto", map_path, class:'button is-rounded is-outlined is-info' %>
+      <% if isAdmin? %>
+        <div class="column">
+          <div class="navbar-item">
+            <%= link_to "Carto", map_path, class:'button is-rounded is-outlined is-info' %>
+          </div>
         </div>
-      </div>
-
-
+      <% end %>
 
     </div>
 
