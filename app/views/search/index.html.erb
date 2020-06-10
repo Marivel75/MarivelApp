@@ -23,14 +23,13 @@
 
       <% if @places.total_count != 0 %>
         <h2 class="title is-2 has-text-white has-background-black has-text-centered">Les lieux</h2>
-
         <div class="tile is-ancestor wrap-container">
           <% @places.each do |place| %>
             <%= render 'shared/placeTile', place: place %>
           <% end %>
         </div>
-
       <% end %>
+
       <div class="has-text-centered">
         <%= link_to "Retour à l'accueil", root_path, class:"button" %>
       </div>
