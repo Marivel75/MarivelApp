@@ -2,11 +2,7 @@
   font-family: 'Courier Prime', monospace;
 }
 
-#brand {
-  font-family: 'Lora', serif;
-}
-
-h1 {
+h1, #brand {
   font-family: 'Lato', sans-serif;
 }
 .hero-background {

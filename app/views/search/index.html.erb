@@ -6,10 +6,10 @@
 
         <h1 class="title is-1 has-text-black has-text-weight-bold">Résultat de la recherche :</h1>
         <% if @trips.suggestions.any? || @places.suggestions.any? %>
-          <p class="has-text-warning is-italic has-text-weight-semi-bold is-size-4">Votre recherche peut aussi concerner le terme : <%= @trips.suggestions.first || @places.suggestions.first %> </p>
+          <p class="has-text-info is-italic has-text-weight-semi-bold is-size-4">Votre recherche peut aussi concerner le terme : <%= @trips.suggestions.first || @places.suggestions.first %> </p>
         <% end %>
-        <p class="has-text-weight-semibold is-size-5"><%= @trips.total_count %> itinéraires</p>
-        <p class="has-text-weight-semibold is-size-5"><%= @places.total_count %> lieux</p>
+        <p class="has-text-black-bis has-text-weight-semibold is-size-5"><%= @trips.total_count %> itinéraires</p>
+        <p class="has-text-black-bis has-text-weight-semibold is-size-5"><%= @places.total_count %> lieux</p>
       </div>
 
       <% if @trips.total_count != 0 %>
