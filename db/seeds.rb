@@ -79,7 +79,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 7,50€",
   website: "http://www.cluny-abbaye.fr/",
   phone: "33 / (0)3 85 59 15 93",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "CC BY-SA 1.0, https://commons.wikimedia.org/w/index.php?curid=1028947"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Cluny_Farinier_depuis_clocher.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -91,7 +92,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 7,50€",
   website: "http://www.monastere-de-brou.fr/",
   phone: "04 74 22 83 83",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par © Benoît Prieur / Wikimedia Commons, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=33658475"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Monastère_royal_de_Brou_(église)_(1).JPG"), filename: "image.jpg")
 
 Place.create(
@@ -103,7 +105,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.fort-saint-andre.fr/",
   phone: "33 / (0)4 90 25 45 35",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1095185"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Fort_Saint-André.JPG"), filename: "image.jpg")
 
 Place.create(
@@ -115,7 +118,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.site-glanum.fr/",
   phone: "33 / (0)4 90 92 23 79",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Rodrigue Eckert — Travail personnel, Domaine public, https://commons.wikimedia.org/w/index.php?curid=1520583"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Site_de_Glanum_Nord_2006-07-16.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -127,7 +131,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.abbaye-montmajour.fr/",
   phone: "33 / (0)4 90 54 64 17",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=96374"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Montmajour-VueGénérale1.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -139,7 +144,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.aigues-mortes-monument.fr/",
   phone: "33 / (0)4 66 53 61 55",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Alainauzas — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=59795326"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Aigues-Mortes_et_salins.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -151,7 +157,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.chateau-if.fr/",
   phone: "33 / 06 03 06 25 26 / 06 80 52 75 96 / 04 91 59 02 30",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Jean-Marc Rosier http://www.cjrosier.com — Travail personnel, CC BY 2.5, https://commons.wikimedia.org/w/index.php?curid=1610961"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Monte-Cristo_if_castle_-_marseille_France_by_JM_Rosier.JPG"), filename: "image.jpg")
 
 Place.create(
@@ -163,7 +170,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 9€",
   website: "http://www.paris-pantheon.fr/",
   phone: "33 / (0)1 44 32 18 00",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Chabe01 — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=54342255"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Fronton_Panthéon_Paris_1.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -174,7 +182,8 @@ Place.create(
   price: "Individuel : 13€",
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 11€",
   website: "http://www.paris-arc-de-triomphe.fr/",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Jiuguang Wang — Flickr: Arc de Triomphe, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=33787667"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Arc_de_Triomphe,_Paris_21_October_2010.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -186,7 +195,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.chateau-maisons.fr/",
   phone: "33 / (0)1 39 62 01 49",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Moonik — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=19058066"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_de_Maisons-Laffitte_001.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -198,7 +208,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.villa-savoye.fr/",
   phone: "33 / (0)1 39 65 01 06",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Photographie : Michal Lewi / Architectes : Le Corbusier († 1965) et Pierre Jeanneret († 1967) — Travail personnel de Michal Lewi, Image non libre, https://fr.wikipedia.org/w/index.php?curid=9805686"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Savoye.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -210,7 +221,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 7,50€",
   website: "http://www.chateau-angers.fr/",
   phone: "33 / (0)2 41 86 48 77 // 33/ (0) 2 41 86 51 40 Pour les groupes adultes // 33/ (0) 2 41 86 48 79 Pour les groupes scolaires",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Mbzt — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=48265876"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/P1310987_Angers_Maine_chateau_roi_Rene_rwk.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -222,7 +234,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 9€",
   website: "http://www.azay-le-rideau.fr/",
   phone: "33 / (0)2 47 45 42 04",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par GuyFrancis — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=16744078"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/castle-of-azay-le-rideau-1122156_640.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -234,7 +247,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 3,5€",
   website: "http://www.cloitre-de-la-psalette.fr/",
   phone: "33 / (0)2 47 47 05 19",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par © Croquant / Wikimedia Commons, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10752024"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Tours_escalier_du_cloître_de_la_Psalette.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -246,7 +260,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.fougeres-sur-bievre.fr/",
   phone: "33 / (0)2 54 20 27 18",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Gerd Eichmann — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=79593098"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_de_Fougères-sur-Bièvre-128-Laube-2008-gje.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -258,7 +273,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.chateau-talcy.fr/",
   phone: "33 / (0)2 54 81 03 01",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par I, Patrick GIRAUD, CC BY 2.5, https://commons.wikimedia.org/w/index.php?curid=2735422"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Castle_of_Talcy_01.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -270,7 +286,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.pey-berland.fr/",
   phone: "33 / (0)5 56 81 26 25",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Olivier Aumage — Photo taken by Olivier Aumage, CC BY-SA 2.0 fr, https://commons.wikimedia.org/w/index.php?curid=168977"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Bordeaux_Tour_Pey_Berland_statue.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -282,7 +299,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.pair-non-pair.fr/",
   phone: "33 / (0)5 57 68 33 40",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Xabi Rome-Hérault, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=3565987"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Entrée_de_Pair-non-Pair.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -294,7 +312,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.abbaye-la-sauve-majeure.fr/",
   phone: "33 / (0)5 56 23 01 55",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par William Ellison — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=41822844"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Abbaye_de_La_Sauve_01.JPG"), filename: "image.jpg")
 
 Place.create(
@@ -306,7 +325,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 5€",
   website: "http://www.chateau-cadillac.fr/",
   phone: "33 / (0)5 56 62 69 58",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par William corby — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=16703738"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_des_ducs_d'Epernon_à_Cadillac.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -318,8 +338,9 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 3,50€",
   website: "http://www.villa-montcaret.fr/",
   phone: "33 / (0)5 53 58 50 18",
-  author_id: User.first.id
-).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Montcaret_villa_piscine.jpg"), filename: "image.jpg")
+  author_id: User.first.id,
+  attribution: "Par Philippe Berthé — https://regards.monuments-nationaux.fr/fr/feature/483/la-villa-gallo-romaine-de-montcaret/page/1/nobc/1, Licence Ouverte, https://commons.wikimedia.org/w/index.php?curid=89030333"
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/1485px-Villa_gallo-romaine_de_Montcaret,_piscine_froide_des_thermes_(phbw09_8383).jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Château et remparts de Carcassonne",
@@ -330,8 +351,9 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 7,50€",
   website: "http://www.remparts-carcassonne.fr/",
   phone: "33 / (0)4 68 11 70 70",
-  author_id: User.first.id
-).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Carcassonne_JPG01.jpg"), filename: "image.jpg")
+  author_id: User.first.id,
+  attribution: "Par Chensiyuan — Travail personnel, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=50100276"
+).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/1831px-1_carcassonne_aerial_2016.jpg"), filename: "image.jpg")
 
 Place.create(
   name: "Forteresse de Salses",
@@ -342,7 +364,7 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.forteresse-salses.fr/",
   phone: "33 / (0)4 68 38 60 13",
-  author_id: User.first.id
+  author_id: User.first.id,
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Salses_Forteresse_vue_du_sol_02.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -354,7 +376,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 3,50€",
   website: "http://www.enserune.fr/",
   phone: "33 / (0)4 67 37 01 23",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Totor-22 — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=11939960"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Enserune-Montady-01.JPG"), filename: "image.jpg")
 
 Place.create(
@@ -366,7 +389,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 7,50€",
   website: "http://www.villa-cavrois.fr/",
   phone: "+33 / (0)3 20 73 47 12",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Jean-Pierre Dalbéra — https://www.flickr.com/photos/dalbera/20513987475, Image non libre, https://fr.wikipedia.org/w/index.php?curid=12493365"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Cavrois_Image_Facade_Sud.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -378,7 +402,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 9€",
   website: "http://www.villakerylos.fr/",
   phone: "+33 / (0)3 20 73 47 12",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Berthold Werner — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=15718919"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/MarivelApp/app/assets/images/Villa_Kerylos_BW_2011-06-10_11-56-07.JPG"), filename: "image.jpg")
 
 Place.create(
@@ -390,7 +415,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.chateau-montal.fr/",
   phone: "05 65 38 13 72",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par MOSSOT — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=9287335"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Château_de_Montal_-2.jpg"), filename: "image.jpg")
 
 Place.create(
@@ -402,7 +428,8 @@ Place.create(
   price_2: "Tarif professionnels du tourisme ou groupes à partir de 20 personnes : 6,50€",
   website: "http://www.chateau-oiron.fr/",
   phone: "33 / (0)5 49 96 51 25",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Père Igor — Travail personnel, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=4408753"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/Oiron_château.JPG"), filename: "image.jpg")
 
 Place.create(
@@ -421,7 +448,8 @@ Place.create(
   name: "Île de la Cité",
   address: "1 boulevard du Palais, Paris",
   description: "Depuis l’incendie de la Cathédrale Notre-Dame de Paris le 15 avril 2019, le bâtiment et ses abords sont fermés au public. Néanmoins, n’hésitez-pas à venir contempler la Cathédrale et à parcourir les petites rues de l’île de la Cité. La promenade reste un moment magique et mémorable. À quelques mètres, se trouve la Sainte-Chapelle, joyau du gothique rayonnant édifié par Saint Louis au coeur de l'ancien Palais de la Cité. Découvrez ses vitraux uniques qui nimbent l'air de couleurs et de lumière et qui ont abrité la Couronne d'Épines du Christ. Poursuivez votre escapade en visitant la Conciergerie, composée d'exceptionnelles salles gothiques du premier palais royal parisien et qui fut par la suite la prison du tribunal révolutionnaire. A la fin du XVIIème siècle, de nombreux prévenus y furent incarcérées, dont Marie-Antoinette.",
-  author_id: User.first.id
+  author_id: User.first.id,
+  attribution: "Par Daniel Vorndran / DXR, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=31704254"
 ).place_picture.attach(io: File.open("/Users/mikael/Documents/Projet ESUS/MARIVEL/DESIGN/Photos/1280px-Île_de_la_Cité_shortly_before_sunrise,_West_View_140320_1.jpg"), filename: "image.jpg")
 
 Trip.create(
