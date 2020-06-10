@@ -1,5 +1,11 @@
-<div class="container">
-  <h1 class="title is-1 has-text-centered">Créer un lieu</h1>
-</div>
-
-<%= render 'formCreatePlace', place: @place %>
+<section class="section">
+  <div class="container">
+    <h1 class="title is-1 has-text-centered">Créer un lieu</h1>
+  </div>
+  <br>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <%= render 'formCreatePlace', place: @place %>
+    </div>
+  </div>
+</section>

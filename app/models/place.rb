@@ -16,6 +16,7 @@ class Place < ApplicationRecord
   before_validation :geocode, if: :address_changed?
   validates :name, :address, presence: true
   validate :found_address_presence
+
   belongs_to :author, class_name: 'User', optional: true
 
   has_many :trip_waypoints
@@ -30,7 +31,7 @@ class Place < ApplicationRecord
 
   def found_address_presence
     if latitude.blank? || longitude.blank?
-      errors.add(:address, "We couldn't find the address")
+      errors.add(:address, "Nous n'avons pas pu localiser l'adresse.")
     end
   end
 
