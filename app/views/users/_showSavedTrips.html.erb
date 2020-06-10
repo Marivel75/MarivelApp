@@ -7,26 +7,8 @@
 
   <div class="tile is-ancestor wrap-container">
     <% @user.saved_trips.each do |saved_trip| %>
-      <div class="tile is-parent is-4">
-
-       <div class="tile is-child box">
-          <figure class="image is-5by3">
-            <% if saved_trip.trip.trip_picture.attached? %>
-               <img src = "<%= rails_blob_url(saved_trip.trip.trip_picture)%>">
-            <% else %>
-              <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
-            <% end %>
-          </figure>
-          <p class='title'>
-            <%= link_to "#{saved_trip.trip.title}", trip_path(saved_trip.trip[:id]), class:"title is-4 has-text-primary" %>
-          </p>
-          <p class='subtitle has-text-black is-6'>
-            <%= saved_trip.trip.category.name %>
-          </p>
-          <%= link_to "Explorer", trip_path(saved_trip.trip[:id]), class:"button is-outlined is-primary" %>
-        </div>
-      </div>
-    <%end%>
+    <%= render 'trips/tripTile', trip: saved_trip.trip  %>
+    <% end %>
   </div>
 
 <% elsif @user == current_user %>

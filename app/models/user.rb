@@ -3,6 +3,8 @@ class User < ApplicationRecord
   enum role: [:traveler, :partner, :admin]
   attr_accessor :login
 
+  has_one_attached :avatar
+
   after_initialize do
     if self.new_record?
       self.role ||= :traveler

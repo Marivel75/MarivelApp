@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   resources :tags, only: [:index]
 
 
-  resources :users, except: [:index, :destroy] do
+  resources :users, only: [:show] do
     resources :trips
+    resources :avatars, only: [:create]
   end
 
 

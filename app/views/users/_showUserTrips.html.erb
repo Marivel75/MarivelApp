@@ -3,29 +3,11 @@
 </div>
 <br>
 
-<% if @user.created_trips.length > 0 %>
+  <% if @user.created_trips.length > 0 %>
 
   <div class="tile is-ancestor wrap-container">
     <% @user.created_trips.each do |trip| %>
-     <div class="tile is-parent is-4">
-
-        <div class="tile is-child box">
-          <figure class="image is-5by3">
-            <% if trip.trip_picture.attached? %>
-               <img src = "<%= rails_blob_url(trip.trip_picture)%>">
-            <% else %>
-              <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
-            <% end %>
-          </figure>
-          <p class="title">
-             <%= link_to "#{trip.title}", trip_path(trip[:id]), class:"title is-4 has-text-primary" %>
-          </p>
-          <p class="subtitle has-text-black is-6">
-            <%= trip.category.name %>
-          </p>
-          <%= link_to "Explorer", trip_path(trip[:id]), class:"button is-outlined is-primary" %>
-        </div>
-      </div>
+     <%= render 'trips/tripTile', trip: trip %>
     <%end%>
   </div>
 
