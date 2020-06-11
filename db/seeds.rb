@@ -98,7 +98,7 @@ Place.create(
 
 Place.create(
   name: "Fort Saint-André",
-  address: "Fort Saint-André 30400 Villeneuve-lez-Avigon",
+  address: "30400 Villeneuve-lez-Avignon",
   description: "Autrefois reliée à Avignon par son célèbre pont, la ville de Villeneuve-lez-Avignon ne manque pas de charme. Son fort a été construit pour affirmer la supériorité de la monarchie capétienne sur ses voisins avignonais. Il est admirablement conservé et constitue un ensemble significatif du degré de perfectionnement de l’architecture militaire. Dominant la chartreuse, il constitue un point de vue exceptionnel.",
   subtitle: "L’un des plus beaux points de vue sur la Cité des Papes",
   price: "Individuel : 6€",
@@ -111,7 +111,7 @@ Place.create(
 
 Place.create(
   name: "Site archéologique de Glanum",
-  address: "Site archéologique de Glanum Avenue Vincent Van Gogh 13210 Saint-Rémy-de-Provence",
+  address: "Avenue Vincent Van Gogh, 13210 Saint-Rémy-de-Provence",
   description: "A seulement 30 minutes d’Avignon, le charmant village de Saint-Rémy de Provence accueille les vestiges d’une cité aux influences grecques puis romaines. Ce site archéologique niché au coeur des Alpilles, cadre naturel exxceptionnel, offre un voyage dans le temps hors du commun. On y voit encore les grands monuments, disposés le long d’une rue centrale, qui caractérisent les cités de la Rome Impériale : les temples, la basilique, le Forum, la Curie, les thermes et les habitations.",
   subtitle: "D’importants vestiges grecs et romains au coeur des Alpilles",
   price: "Individuel : 8€",
@@ -137,7 +137,7 @@ Place.create(
 
 Place.create(
   name: "Tours et remparts d’Aigues-Mortes",
-  address: "Tours et remparts d'Aigues-Mortes Logis du Gouverneur 30220 Aigues-Mortes",
+  address: "30220 Aigues-Mortes",
   description: "A 45 minutes d’Arles, Saint-Louis a fondé la ville fortifiée d’Aigues-Mortes pour doter la France d’un port sur la Méditérranée. Le donjon, les remparts et les tours sont de véritables joyaux de l’architecture gothique. La terasse de la tour de Constance permet de découvrir un panorama grandiose, dominant la Camargue et les marais salants.",
   subtitle: "Les remparts de Saint-Louis au coeur de la Camargue",
   price: "Individuel : 8€",
@@ -163,7 +163,7 @@ Place.create(
 
 Place.create(
   name: "Panthéon",
-  address: "Panthéon Place du Panthéon 75005 PARIS",
+  address: "Place du Panthéon, 75005 PARIS",
   description: "En créant une architecture religieuse exemplaire, Soufflot répondait au voeu de Louis XV de glorifier dignement la monarchie en la personne de Sainte Geneviève, patronne de Paris, à laquelle était dédié l’édifice. En 1791, la Révolution laïcise le monument qui devient le Panthéon national. Au XIXème siècle, il reçoit, au gré des régimes successifs, une affectation tantôt religieuse, tantôt patriotique. Depuis 1885, date de la panthéonisation de Victor Hugo, l’édifice est devenu le lieu où reposent les grands personnages de la patrie : Voltaire, Rousseau, Zola, Pierre et Maire Curie… Suite à une grande campagne de restauration, l’accès à la colonnade est désormais ouvert, découvrez une autre vue de Paris.",
   subtitle: "Un lieu consacré à la mémoire des hommes et des femmes qui ont crée les points d’appui de notre histoire depuis la Révolution",
   price: "Individuel : 11,50€",
@@ -176,7 +176,7 @@ Place.create(
 
 Place.create(
   name: "Arc de Triomphe",
-  address: "Arc de triomphe 27, rue Vernet 75008 Paris",
+  address: "27, rue Vernet 75008 Paris",
   description: "En 1806, Napoléon Ier ordonne la construction de l’Arc de Triomphe en l’honneur de la Grande Armée. Inspiré des arts antiques, ce monument emblématique porte les noms illutres de la nation et abrite la tombe du soldat inconnu dont la flamme est ravivée tous les soirs. De la terasse, vous pourrez admirer, de jour comme de nuit, un panorama unique sur les Champs Élysées. Découvrez lors de la visite l’exposition « Soldats Inconnus ».",
   subtitle: "Un panorama unique sur les Champs Élysées",
   price: "Individuel : 13€",
@@ -253,7 +253,7 @@ Place.create(
 
 Place.create(
   name: "Château de Fougères-sur-Bièvre",
-  address: "Château de Fougères-sur-Bièvre",
+  address: "41120 Fougères-sur-Bièvre",
   description: "Petit château fort édifié dans la seconde moitié du XVème siècle et au début du XVIème siècle, Fougères présente une imposante courtine d’entrée à mâchicoulis, un chemin de ronde et un donjon. Par le choix des matériaux et des techniques, ce château est l’illustration parfaite de l’art de bâtir du terroir. Au XVIème siècle, une galerie à arcades, inspirée de celle du château de Blois, signe de l’essor de la Renaissance. Les charpentes du château sont ouvertes à la visite. Profitez d’une mise en lumière du château tous les soirs de l’année. N’oubliez pas de visiter le jardin d’inspiration médiévale.",
   subtitle: "Un petit château fort illustrant l’art de bâtir du terroir",
   price: "Individuel : 6€",
@@ -266,7 +266,7 @@ Place.create(
 
 Place.create(
   name: "Château de Talcy",
-  address: "Château de Talcy 41370 TALCY",
+  address: "18, rue du Château, 41370 TALCY",
   description: "À 25 km de Blois, les toits effilés du château de Talcy émergent des plaintes céréalières de la petite Beauce. Le puit, les communs pourvus d’un pressoir et d’un colombier et le jardin réhabilité en verger de collection soulignent le caractère agricole du domaine. Le château a conservé l’aspect intérieur et les meubles qu’il avait au XVIIIème siècle. Ronsard y fut épris de Cassandre, fille du propriétaire et banquier italien Bernard Salviati, qui lui inspira le célébre poème Mignonne, allons voir…",
   subtitle: "Un petit joyau dans l’ombre des grands",
   price: "Individuel : 6€",
@@ -279,7 +279,7 @@ Place.create(
 
 Place.create(
   name: "Tour Pey-Berland",
-  address: "Tour Pey-Berland Place Pey-Berland 33000 Bordeaux",
+  address: "Place Pey-Berland 33000 Bordeaux",
   description: "Fleuron du gothique flamboyant, la tour Pey-Berland est le clocher de la cathédrale de Bordeaux, dont elle est séparée pour ne pas menacer sa structure. Elle renferme des cloches imposantes et est surmontée d’une Vierge dorée depuis le XIXème siècle. À 50 mètres de haut, ses deux terrasses proposent une vue à 360° sur la ville, et présentent son histoire et ses monuments. À ne pas manquer ! Une visite privée avec apéritif en dehors des horaires d’ouverture de mai à octobre.",
   subtitle: "Un panorama unique en plein centre de Bordeaux",
   price: "Individuel : 6€",
@@ -292,7 +292,7 @@ Place.create(
 
 Place.create(
   name: "Grotte de Pair-non-Pair",
-  address: "Grotte de Pair-non-Pair 2, chemin de Pair non Pair 33710 Prignac et Marcamps",
+  address: "2, chemin de Pair non Pair 33710 Prignac et Marcamps",
   description: "Tout près de l’estuaire de la Gironde, découvrez Pair-non-Pair, une des plus anciennes grottes ornées au monde. Ce témoignage émouvant de l’éveil artistique de l’humanité est aussi un haut lieu de la recherche scientifique. Découverte en 1881, elle est ornée de gravures (chevaux, bouquetins, cervidés, mammouths, bovidés) qui sont parmi les plus anciennes expressions artistiques de l’homme de la Préhistoire (entre 33000 et 26000 ans). Un espace muséographique complète la visite par la présentation d’objets préhistoriques découverts sur place.",
   subtitle: "La grotte préhistorique de Gironde",
   price: "Individuel : 8€",
@@ -331,7 +331,7 @@ Place.create(
 
 Place.create(
   name: "Site archéologique de Montcaret",
-  address: "Site archéologique de Montcaret Le Bourg 24230 Montcaret",
+  address: "1 rue des Anciennes Postes, 24230 Montcaret",
   description: "Les vestiges des 1er-5ème siècles réoccupés au moyen âge apartiennent à la partie résidentielle d’une demeure aristocratique gallo-romaine rurale (une villa). La partie la mieux conservée de cet ensemble présente une pièce de plan polylobée de 60 m2 au sol mosaïqué, probablement une salle à manger, greffée sur une salle d’apparat de 320 m2. L’intérêt du site réside dans la richesse des mosaïques et dans la durée d’occupation ininterrompue depuis l’Antiquité jusqu’à nos jours.",
   subtitle: "Les mosaïques gallo-romaines de Dordogne",
   price: "Individuel : 4€",
@@ -357,7 +357,7 @@ Place.create(
 
 Place.create(
   name: "Forteresse de Salses",
-  address: "Forteresse de Salses 66600 SALSES-LE-CHÂTEAU",
+  address: "66600 SALSES-LE-CHÂTEAU",
   description: "À 15 km de Perpignan, visitez la forteresse de Salses, un exemple unique d’architecture militaire, entre château fort et bastion moderne. Découvrez au sein du monument du XVème siècle le dialogue surprenant entre le lieu et des installations d’artistes contemporains majeurs.",
   subtitle: "Salses, la forteresse de l’intérieur",
   price: "Individuel : 8€",
@@ -369,7 +369,7 @@ Place.create(
 
 Place.create(
   name: "Site archéologique d’Ensérune",
-  address: "Site archéologique d'Ensérune 34440 Nissan-lez-Ensérune",
+  address: "34440 Nissan-lez-Ensérune",
   description: "À une dizaine de kilomètres de Béziers, entre garrigue languedocienne et rivages méditerranéens, visitez le site archéologique d’Ensérune et découvrez un village gaulois parmi les plus importants du Midi. Les fouilles, réalisées depuis 1915, ont mis au jour les vestiges d’un habitat qui remonte au milieu du VIème siècle avant Jésus-Christ et se poursuit jusqu’au début du Ier siècle de notre ère.",
   subtitle: "L’un des sites archéologiques les plus importants du Midi-méditerranéen",
   price: "Individuel : 4€",
@@ -408,7 +408,7 @@ Place.create(
 
 Place.create(
   name: "Château de Montal",
-  address: "Château de Montal 46400 Saint-Jean Lespinasse",
+  address: "46400 Saint-Jean-Lespinasse",
   description: "Dès 1938, devant les menaces de guerre, l’administration française envisage l’évacuation d’oeuvres d’art majeures. Le déplacement de la Joconde du Musée du Louvres se fait dès le 28 août 1939. Le château de Montal, situé dans le Lot, offre des atouts non négligeables pour l’accueillir : risques d’incendies limités, vastes salles voutées en rez-de-chaussé. Le 13 mars 1943, une modeste caisse immatriculée MNLP0 arrive à Montal. ll s’agit de la Joconde ! En juillet 1944, craignant les bombardements alliés, l’équipe du château de Montal inscrit dans le pré jouxtant le monument « Musée du Louvres » en grandes lettres blanches. Le château de Montal ne sera jamais bombardé et, le 15 juin 1945, les oeuvres reprendront le chemin de la capital!",
   subtitle: "Mona Lisa, le chef d’oeuvre en péril",
   price: "Individuel : 8€",
