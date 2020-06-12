@@ -99,3 +99,5 @@ gem 'trix'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'mapbox-gl-rails'
+
+gem 'ransack', github: 'activerecord-hackery/ransack'
