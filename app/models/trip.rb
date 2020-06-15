@@ -19,20 +19,22 @@ class Trip < ApplicationRecord
   scope :offline, -> { where(online: false) }
 
 
-  searchkick suggest: [:title], language: "french", match: :word_middle
-  scope :search_import, -> { where(online: true) }
 
-  def should_index?
-    online
-  end
 
-  def search_data
-    attributes.merge(
-      category_name: category(&:name),
-      places_name: places.map(&:name),
-      tags_name: tags.map(&:name)
-    )
-
-  end
+# Code pour la Searchkick et Elastsearch
+  # searchkick suggest: [:title], language: "french", match: :word_middle
+  # scope :search_import, -> { where(online: true) }
+  #
+  # def should_index?
+  #   online
+  # end
+  #
+  # def search_data
+  #   attributes.merge(
+  #     category_name: category(&:name),
+  #     places_name: places.map(&:name),
+  #     tags_name: tags.map(&:name)
+  #   )
+  # end
 
 end

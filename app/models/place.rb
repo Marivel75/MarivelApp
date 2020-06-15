@@ -37,13 +37,13 @@ class Place < ApplicationRecord
 
 
 
-  searchkick suggest: [:name], language: "french", match: :word_middle
-
-  def search_data
-    {name: name,
-    subtitle: subtitle,
-    description: description
-    }
-  end
+  # searchkick suggest: [:name], language: "french", match: :word_middle
+  #
+  # def search_data
+  #   {name: name,
+  #   subtitle: subtitle,
+  #   description: description
+  #   }
+  # end
 
 end
