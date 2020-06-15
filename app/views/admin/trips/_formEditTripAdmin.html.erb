@@ -25,7 +25,7 @@
     </div>
     <br>
     <div class="field">
-      <%= form.label :description, "Modifier la description" %>
+      <strong><%= form.label :description, "Modifier la description" %></strong>
       <%= form.hidden_field :description, id:'trip_description', class:"input" %>
       <trix-editor input="trip_description"></trix-editor>
     </div>
@@ -38,6 +38,11 @@
     <div class="field">
       <strong> Modifier la photo associée : </strong>
       <%= form.file_field :trip_picture %>
+    </div>
+    <br>
+    <div class="field">
+      <strong><%= form.label :attribution_photo, "Entrer une attribution auteur pour la photo" %></strong>
+      <%= form.text_field :attribution_photo, class:"input" %>
     </div>
     <br>
     <div class="field">

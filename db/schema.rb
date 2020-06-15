@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_131926) do
+ActiveRecord::Schema.define(version: 2020_06_15_183325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_131926) do
     t.datetime "updated_at", null: false
     t.bigint "author_id"
     t.boolean "online", default: false
+    t.string "attribution_photo"
     t.index ["author_id"], name: "index_trips_on_author_id"
   end
 
