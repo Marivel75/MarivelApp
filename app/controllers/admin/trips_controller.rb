@@ -53,7 +53,7 @@ module Admin
     def update
       @trip.update(trip_params)
       # @trip.update_attribute(:online => params[:online])
-      redirect_to admin_trip_path(@trip), notice: "L'itinéraire a été modifié."
+      redirect_to trip_path(@trip), notice: "L'itinéraire a été modifié."
 
       # @trip.category_id = params[:category_id]
       # respond_to do |format|
