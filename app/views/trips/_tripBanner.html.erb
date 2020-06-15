@@ -1,13 +1,14 @@
 <% if @trip.trip_picture.attached? %>
-  <section class="hero is-medium" style="background-size:cover;background-image:url(<%= rails_blob_url(@trip.trip_picture)%>);">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <h1 class="title is-1 has-text-white">
-          <%= @trip.title %>
-        </h1>
-      </div>
+<section class="hero is-medium" style="background-size:cover;background-image:url(<%= rails_blob_url(@trip.trip_picture)%>);">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 has-text-white">
+        <%= @trip.title %>
+      </h1>
     </div>
-  </section>
+  </div>
+</section>
+
   <% if @trip.attribution_photo %>
    <p class="is-size-7 has-text-grey-light has-text-right"><%= @trip.attribution_photo %></p>
   <% end %>
