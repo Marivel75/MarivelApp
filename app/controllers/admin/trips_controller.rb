@@ -94,7 +94,7 @@ module Admin
       end
 
       def trip_params
-        params.require(:trip).permit(:title, :description, :category_id, :trip_picture, :online, :tag_list)
+        params.require(:trip).permit(:title, :description, :category_id, :trip_picture, :online, :tag_list, :attribution_photo)
       end
 
   end
