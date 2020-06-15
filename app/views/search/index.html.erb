@@ -5,13 +5,13 @@
       <div class="box has-text-centered">
 
         <h2 class="title is-2 has-text-black has-text-weight-bold">Résultat de la recherche :</h2>
-        <p class="has-text-black-bis has-text-weight-semibold is-size-4"><%= @trips.length %> itinéraires</p>
-        <p class="has-text-black-bis has-text-weight-semibold is-size-4"><%= @places.length %> lieux</p>
+        <p class="has-text-black-bis has-text-weight-semibold is-size-4"><%= @trips.length %> itinéraire(s)</p>
+        <p class="has-text-black-bis has-text-weight-semibold is-size-4"><%= @places.length %> lieu(x)</p>
       </div>
 
 
-      <% if @trips %>
-        <h2 class="title is-2 has-text-white has-background-black has-text-centered">Les itinéraires</h2>
+      <% if @trips.length != 0 %>
+        <h2 class="title is-2 has-text-white has-background-black has-text-centered">Itinéraire(s)</h2>
         <div class="tile is-ancestor wrap-container">
           <% @trips.each do |trip| %>
             <%= render 'trips/tripTile', trip: trip %>
@@ -19,8 +19,8 @@
         </div>
       <% end %>
 
-      <% if @places %>
-        <h2 class="title is-2 has-text-white has-background-black has-text-centered">Les lieux</h2>
+      <% if @places.length != 0 %>
+        <h2 class="title is-2 has-text-white has-background-black has-text-centered">Lieu(x)</h2>
         <div class="tile is-ancestor wrap-container">
           <% @places.each do |place| %>
             <%= render 'shared/placeTile', place: place %>
