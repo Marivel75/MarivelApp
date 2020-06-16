@@ -1,5 +1,6 @@
 <% if @trip.trip_picture.attached? %>
-<section class="hero is-medium" style="background-size:cover;background-image:url(<%= rails_blob_url(@trip.trip_picture)%>);">
+<section class="hero is-large" style="background-image:url(<%= rails_blob_url(@trip.trip_picture)%>); background-size: cover; background-position: center;">
+
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title is-1 has-text-white">
@@ -7,6 +8,7 @@
       </h1>
     </div>
   </div>
+
 </section>
 
   <% if @trip.attribution_photo %>
