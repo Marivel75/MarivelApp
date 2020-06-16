@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root to: "trips#index"
+  root to: 'trips#index'
 
   get 'search', to: "search#index"
 
