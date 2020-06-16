@@ -2,10 +2,6 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :new,:edit, :update, :destroy]
   before_action :is_current_user?, only: [:create, :new, :edit, :update]
 
-  def search
-    @places = Place.search(params[:q])
-  end
-
   def index
     @places = Place.all
   end
@@ -62,7 +58,7 @@ class PlacesController < ApplicationController
     end
 
     def place_params
-      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture, :tag_list)
+      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture, :tag_list, :attribution)
     end
 
     def is_current_user?

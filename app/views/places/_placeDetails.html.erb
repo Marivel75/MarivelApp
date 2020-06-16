@@ -9,6 +9,10 @@
     </div>
   </section>
 
+  <% if @place.attribution %>
+    <p class="is-size-7 has-text-grey-light has-text-right"><%= @place.attribution %></p>
+  <% end %>
+
 <% else %>
   <section class="hero is-medium" style="background-size:cover;background-image: url('https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80')">
     <div class="hero-body">

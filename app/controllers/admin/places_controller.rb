@@ -49,7 +49,7 @@ module Admin
       puts place_params
       respond_to do |format|
         if @place.update(place_params)
-          format.html { redirect_to admin_place_path(@place[:id]), notice: 'Les modifications ont été enregistrées.' }
+          format.html { redirect_to place_path(@place[:id]), notice: 'Les modifications ont été enregistrées.' }
           # format.json { render :show, status: :ok, location: @place }
         else
           format.html { render :edit }
@@ -82,7 +82,7 @@ module Admin
       end
 
       def place_params
-        params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture, :tag_list)
+        params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture, :tag_list, :attribution)
       end
 
   end

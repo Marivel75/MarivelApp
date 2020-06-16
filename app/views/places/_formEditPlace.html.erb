@@ -12,44 +12,49 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :address %>
+    <strong><%= form.label :address %></strong>
     <%= form.text_area :address, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :subtitle %>
+    <strong><%= form.label :subtitle %></strong>
     <%= form.text_field :subtitle,class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :description %>
+    <strong><%= form.label :description %></strong>
     <%= form.hidden_field :description, id:'place_description', class:"input" %>
     <trix-editor input="place_description"></trix-editor>
   </div>
   <br>
   <div class="field">
-    <%= form.label :price %>
+    <strong><%= form.label :price %></strong>
     <%= form.text_field :price, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :website %>
+    <strong><%= form.label :website %></strong>
     <%= form.text_field :website, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :phone %>
+    <strong><%= form.label :phone %></strong>
     <%= form.text_field :phone, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :price_2 %>
+    <strong><%= form.label :price_2 %></strong>
     <%= form.text_field :price_2, class:"input"%>
   </div>
   <br>
   <div class="flex-container">
-  <p>Vous pouvez modifier la photo associée à ce lieu : </p>
+  <strong><p>Vous pouvez modifier la photo associée à ce lieu : </p></strong>
   <%= form.file_field :place_picture %>
+  </div>
+  <br>
+  <div class="field">
+    <strong> <%= form.label :attribution, "Entrer une attribution pour l'auteur de la photo" %></strong>
+    <%= form.text_field :attribution, class:"input" %>
   </div>
   <br>
   <div class="field">
