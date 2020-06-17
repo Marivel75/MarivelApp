@@ -38,3 +38,9 @@ trix-editor .textarea {
 .fa-user-circle, .fa-map-marker-alt, .fa-map-marker-alt, .fa-euro-sign, .fa-tty, .fa-print {
 color: #0a0a5c;
 }
+
+.fit-image {
+  object-fit: cover;
+  /*border: solid black 1px;*/
+  max-height: 120px;
+}
