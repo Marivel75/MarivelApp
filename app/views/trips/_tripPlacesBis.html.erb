@@ -29,7 +29,7 @@
     <div class="columns is-mobile is-centered">
       <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
 
-        <div class="columns is-variable is-2">
+        <div class="columns is-multiline is-variable is-2">
           <div class="column is-one-quarter">
             <figure class="image is-5by3">
               <% if waypoint.place.place_picture.attached? %>
@@ -39,21 +39,21 @@
               <% end %>
             </figure>
           </div>
-          <div class="column">
+          <div class="column is-three-quarters">
             <h3 class="is-size-5 has-text-weight-semibold"><%= link_to "#{waypoint.rank}. #{waypoint.place.name}", place_path(waypoint.place[:id]), class:"has-text-black"%></h3>
             <p class="subtitle has-text-black is-size-6"><%= waypoint.place.subtitle %></p>
           </div>
-        </div>
-
-        <div class="column">
-          <p class="is-size-6 has-text-black-bis"><%= sanitize waypoint.place.description %></p>
+          <div class="column">
+            <p class="is-size-6 has-text-black-bis"><%= sanitize waypoint.place.description %></p>
+          </div>
         </div>
         <div class="columns is-centered">
           <div class="column is-half">
             <hr>
           </div>
-
         </div>
+
+
 
 
 
