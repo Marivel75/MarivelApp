@@ -30,8 +30,18 @@
   </div>
   <br>
   <div class="field">
+    <%= form.label :tag_list, "Vous pouvez entrer des tags en les séparant par une virgule" %>
+    <%= form.text_field :tag_list, class:"input" %>
+  </div>
+  <br>
+  <div class="field">
   <strong> Modifier la photo associée : </strong>
   <%= form.file_field :trip_picture %>
+  </div>
+  <br>
+  <div class="field">
+    <strong><%= form.label :attribution_photo, "Entrer une attribution pour l'auteur de la photo" %></strong>
+    <%= form.text_field :attribution_photo, class:"input" %>
   </div>
   <br>
   <div class="field">

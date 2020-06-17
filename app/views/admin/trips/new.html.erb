@@ -6,4 +6,10 @@
   </div>
 </section>
 
-<%= render 'formCreateTripAdmin'  %>
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+        <%= render 'trips/formCreateTrip', trip: @trip %>
+    </div>
+  </div>
+</section>

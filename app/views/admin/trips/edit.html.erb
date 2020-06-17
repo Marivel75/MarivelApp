@@ -27,87 +27,95 @@
   <% end %>
   <br>
   <div class="container has-text-centered">
-    <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", admin_trip_path(@trip[:id]), class:"button button-primary" %>
-  </div>
-
-  <div class ="columns">
-    <div class = "column">
-      <div class="container">
-        <p class="has-text-centered has-text-weight-bold">Description</p>
-        <br>
-        <p class="has-text-weight-medium"><%= sanitize @trip.description %></p>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="container has-text-centered">
-        <strong>Photo d'illustration de l'itinéraire</strong>
-      </div>
-      <br>
-      <% if @trip.trip_picture.attached? %>
-        <div class="container">
-          <img src = "<%= rails_blob_url(@trip.trip_picture)%>">
-        </div>
-      <% else %>
-        <div class="container">
-          <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="title is-2"> Les étapes de l'itinéraire</h2>
+    <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", trip_path(@trip[:id]), class:"button button-primary" %>
   </div>
   <br>
-
-  <div class="container">
-    <% if @trip.places.length > 0 %>
-
-          <div class="tile is-ancestor wrap-container">
-
-              <% @trip.places.each do |place|%>
-                <div class="tile is-parent is-2">
-                  <div class="tile box is-child has-text-centered">
-                    <figure class="image is-5by3">
-                      <% if place.place_picture.attached? %>
-                        <img src = "<%= rails_blob_url(place.place_picture)%>" class="is-rounded">
-                      <% else %>
-                        <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
-                      <% end %>
-                    </figure>
-                    <br>
-                    <p class="title is-6">
-                      <%= link_to "#{place.name}", admin_place_path(place[:id])%>
-                    </p>
-                    <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
-                    <%= link_to "Supprimer", admin_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
-                  </div>
-                </div>
-              <% end %>
-
+  
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class ="columns">
+        <div class = "column">
+          <div class="container">
+            <p class="has-text-centered has-text-black-bis has-text-weight-semibold">Description</p>
+            <br>
+            <p class="has-text-weight-medium"><%= sanitize @trip.description %></p>
           </div>
-
-      <% else %>
-        <div class="box has-text-centered">
-          <p>Aucune étape n'a encore été ajoutée.</p>
         </div>
 
-      <% end %>
+        <div class="column">
+          <div class="container has-text-centered">
+            <p class="has-text-centered has-text-black-bis has-text-weight-semibold">Photo d'illustration de l'itinéraire</p>
+          </div>
+          <br>
+          <% if @trip.trip_picture.attached? %>
+            <div class="container">
+              <img src = "<%= rails_blob_url(@trip.trip_picture)%>">
+            </div>
+          <% else %>
+            <div class="container">
+              <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
+</section>
+
+<section class="section">
+
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="container">
+        <h2 class="title is-2"> Les étapes de l'itinéraire</h2>
+      </div>
+      <br>
+
+      <div class="container">
+        <% if @trip.places.length > 0 %>
+
+              <div class="tile is-ancestor wrap-container">
+                  <% @trip.places.each do |place|%>
+                    <div class="tile is-parent is-2">
+                      <div class="tile box is-child has-text-centered">
+                        <figure class="image is-5by3">
+                          <% if place.place_picture.attached? %>
+                            <img src = "<%= rails_blob_url(place.place_picture)%>" class="is-rounded">
+                          <% else %>
+                            <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+                          <% end %>
+                        </figure>
+                        <br>
+                        <p class="title is-6">
+                          <%= link_to "#{place.name}", place_path(place[:id])%>
+                        </p>
+                        <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
+                        <%= link_to "Supprimer", admin_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+                      </div>
+                    </div>
+                  <% end %>
+              </div>
+          <% else %>
+            <div class="box has-text-centered">
+              <p>Aucune étape n'a encore été ajoutée.</p>
+            </div>
+          <% end %>
+        <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container">
-    <h2 class="title is-2"> Éditez les détails de l'itinéraire </h2>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="container">
+        <h2 class="title is-2"> Éditez les détails de l'itinéraire </h2>
+      </div>
+      <%= render 'formEditTripAdmin', trip: @trip %>
+    </div>
   </div>
-
-  <%= render 'formEditTripAdmin', trip: @trip %>
 </section>
 
 <section class="section">
