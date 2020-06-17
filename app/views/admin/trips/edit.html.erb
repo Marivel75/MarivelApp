@@ -1,40 +1,36 @@
-<section class=section>
-
+<section class="section">
   <h1 class="title is-1 has-text-primary has-text-centered"><%= @trip.title %></h1>
   <p class="has-text-centered">Catégorie : <strong> <%= @trip.category.name %> </strong></p>
   <br>
-
-  <% if isAdmin? %>
+  <div class="container has-text-centered">
+    <% if @trip.online == true %>
+      <p class="is-italic"> Cet itinéraire est actuellement publié en ligne. </p>
+    <% else %>
+      <p class="is-italic"> Cet itinéraire est en attente de validation pour publication en ligne. </p>
+    <% end %>
+  </div>
+  <br>
+  <% if @trip.online == false %>
     <div class="container has-text-centered">
-      <% if @trip.online == true %>
-        <p class="is-italic"> Cet itinéraire est actuellement publié en ligne. </p>
-      <% else %>
-        <p class="is-italic"> Cet itinéraire est en attente de validation pour publication en ligne. </p>
+      <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+        <%= f.hidden_field :online, :value => true %>
+        <%= f.submit "Publier", class:"button is-primary" %>
       <% end %>
     </div>
-    <br>
-    <% if @trip.online == false %>
-      <div class="container has-text-centered">
-        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
-          <%= f.hidden_field :online, :value => true %>
-          <%= f.submit "Publier", class:"button is-primary" %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="container has-text-centered">
-        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
-          <%= f.hidden_field :online, :value => false %>
-          <%= f.submit "Mettre hors-ligne", class:"button is-warning" %>
-        <% end %>
-      </div>
-    <% end %>
-    <br>
+  <% else %>
     <div class="container has-text-centered">
-      <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", admin_trip_path(@trip[:id]), class:"button button-primary" %>
+      <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+        <%= f.hidden_field :online, :value => false %>
+        <%= f.submit "Mettre hors-ligne", class:"button is-warning" %>
+      <% end %>
     </div>
-    <br>
   <% end %>
-
+  <br>
+  <div class="container has-text-centered">
+    <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", trip_path(@trip[:id]), class:"button button-primary" %>
+  </div>
+  <br>
+  
   <div class="columns is-centered">
     <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
       <div class ="columns">
@@ -64,8 +60,8 @@
       </div>
     </div>
   </div>
-</section>
 
+</section>
 
 <section class="section">
 
@@ -75,6 +71,7 @@
         <h2 class="title is-2"> Les étapes de l'itinéraire</h2>
       </div>
       <br>
+
       <div class="container">
         <% if @trip.places.length > 0 %>
 
@@ -94,7 +91,7 @@
                           <%= link_to "#{place.name}", place_path(place[:id])%>
                         </p>
                         <% trip_waypoint = TripWaypoint.where(place_id: place.id, trip_id: @trip.id) %>
-                        <%= link_to "Supprimer", trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+                        <%= link_to "Supprimer", admin_trip_waypoint_path(@trip, trip_waypoint.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
                       </div>
                     </div>
                   <% end %>
@@ -104,7 +101,7 @@
               <p>Aucune étape n'a encore été ajoutée.</p>
             </div>
           <% end %>
-        <%= link_to "Ajouter des lieux", trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
+        <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
       </div>
     </div>
   </div>
@@ -116,20 +113,16 @@
       <div class="container">
         <h2 class="title is-2"> Éditez les détails de l'itinéraire </h2>
       </div>
-      <%= render 'formEditTrip', trip: @trip %>
+      <%= render 'formEditTripAdmin', trip: @trip %>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="columns is-centered">
-    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
-      <div class="buttons is-centered">
-        <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
-        <% if @trip.author == current_user %>
-          <%= link_to "Supprimer l'itinéraire", trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button is-danger" %>
-        <% end %>
-      </div>
-    </div>
+  <div class="buttons is-centered">
+    <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
+    <% if @trip.author == current_user %>
+      <%= link_to "Supprimer l'itinéraire", trip_path(@trip[:id]), method:"delete", data: {confirm: "Confirmez-vous la suppression de cet itinéraire ?"}, class:"button is-danger" %>
+    <% end %>
   </div>
 </section>
