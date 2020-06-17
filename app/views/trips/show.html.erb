@@ -54,7 +54,7 @@
   <br>
   <% if isAdmin? %>
     <div class="buttons is-centered">
-      <%= link_to "Éditer l'itinéraire", edit_admin_trip_path(@trip[:id]), class:"button is-info" %>
+      <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
       <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
     </div>
   <% elsif current_user == @trip.author%>

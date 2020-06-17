@@ -4,6 +4,37 @@
   <p class="has-text-centered">Catégorie : <strong> <%= @trip.category.name %> </strong></p>
   <br>
 
+  <% if isAdmin? %>
+    <div class="container has-text-centered">
+      <% if @trip.online == true %>
+        <p class="is-italic"> Cet itinéraire est actuellement publié en ligne. </p>
+      <% else %>
+        <p class="is-italic"> Cet itinéraire est en attente de validation pour publication en ligne. </p>
+      <% end %>
+    </div>
+    <br>
+    <% if @trip.online == false %>
+      <div class="container has-text-centered">
+        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+          <%= f.hidden_field :online, :value => true %>
+          <%= f.submit "Publier", class:"button is-primary" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="container has-text-centered">
+        <%= form_with(url: [:admin, @trip], model: @trip, local: true) do |f| %>
+          <%= f.hidden_field :online, :value => false %>
+          <%= f.submit "Mettre hors-ligne", class:"button is-warning" %>
+        <% end %>
+      </div>
+    <% end %>
+    <br>
+    <div class="container has-text-centered">
+      <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", admin_trip_path(@trip[:id]), class:"button button-primary" %>
+    </div>
+    <br>
+  <% end %>
+
   <div class="columns is-centered">
     <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
       <div class ="columns">

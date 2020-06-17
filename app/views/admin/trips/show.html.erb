@@ -46,7 +46,7 @@
   <br>
 
   <% if !@trip.places.empty? %>
-    <%= render 'tripPlacesAdmin' %>
+    <%= render 'trips/tripPlacesBis', trip: @trip %>
   <% elsif current_user == @trip.author%>
     <div class = "container">
       <strong>Votre itinéraire ne comporte pas encore d'étape. Vous pouvez en ajouter en l'éditant.</strong>
@@ -59,12 +59,12 @@
 
   <% if isAdmin? %>
     <div class="buttons is-centered">
-      <%= link_to "Éditer l'itinéraire", edit_admin_trip_path(@trip[:id]), class:"button is-info" %>
+      <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
       <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
     </div>
   <% elsif current_user == @trip.author%>
       <div class="buttons is-centered">
-        <%= link_to "Éditer l'itinéraire", edit_admin_trip_path(@trip[:id]), class:"button is-info" %>
+        <%= link_to "Éditer l'itinéraire", edit_trip_path(@trip[:id]), class:"button is-info" %>
         <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
       </div>
   <% else %>
