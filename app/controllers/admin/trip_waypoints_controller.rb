@@ -11,7 +11,6 @@ module Admin
     # GET /trip_waypoints.json
     def index
       @places = Place.all
-      @trip_waypoint = TripWaypoint.all
     end
 
     # GET /trip_waypoints/1

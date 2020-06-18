@@ -6,8 +6,7 @@ class TripWaypointsController < ApplicationController
   # GET /trip_waypoints
   # GET /trip_waypoints.json
   def index
-    @trip_waypoints = TripWaypoint.all
-    @places = Place.all
+    @places = Place.where(online: true).or(Place.where(author_id: current_user))
   end
 
   # GET /trip_waypoints/1

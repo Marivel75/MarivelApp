@@ -30,7 +30,7 @@
     <% end %>
     <br>
     <div class="container has-text-centered">
-      <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", trip_path(@trip[:id]), class:"button button-primary" %>
+      <%= link_to "Voir l'itinéraire tel qu'il apparaît en ligne", trip_path(@trip[:id]), class:"button" %>
     </div>
     <br>
   <% end %>
@@ -104,7 +104,7 @@
               <p>Aucune étape n'a encore été ajoutée.</p>
             </div>
           <% end %>
-        <%= link_to "Ajouter des lieux", trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
+        <%= link_to "Ajouter des lieux", admin_trip_waypoint_index_path(@trip), class:"button is-medium is-fullwidth is-primary" %>
       </div>
     </div>
   </div>
