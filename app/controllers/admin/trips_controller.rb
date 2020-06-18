@@ -39,7 +39,7 @@ module Admin
 
       respond_to do |format|
         if @trip.save
-          format.html { redirect_to edit_admin_trip_url(@trip[:id]), notice: "L'itinéraire a été crée, vous pouvez maintenant ajouter des étapes." }
+          format.html { redirect_to edit_trip_url(@trip[:id]), notice: "L'itinéraire a été crée, vous pouvez maintenant ajouter des étapes." }
           # format.json { render :show, status: :created, location: @trip }
         else
           format.html { render :new }

@@ -1,29 +1,56 @@
 <section class="hero is-large hero-user-account">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title is-1 has-text-white"> Bienvenue <%= @user.first_name%> </h1>
+      <h1 class="title is-1 has-text-white"> <%= @user.first_name%> </h1>
+    </div>
+    <div class="container has-text-centered">
+      <h2 class="subtitle is-2 has-text-white"> <%= @user.description%> </h2>
     </div>
   </div>
 </section>
 
+<% if isTraveler? %>
+  <section class="section">
+      <% if @user == current_user %>
+        <div class="columns is-centered">
+          <div class="column has-text-centered is-narrow">
+            <%= link_to 'Éditer le compte', edit_user_path(@user.id), class:"button is-rounded" %>
+          </div>
+          <div class="column has-text-centered is-narrow">
+            <%= link_to 'Modifier le mot de passe', edit_user_registration_path, class:'button is-warning is-rounded' %>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column has-text-centered is-narrow">
+            <%= link_to "Créer un itinéraire personnalisé", new_trip_path, class:"button is-rounded is-primary" %>
+          </div>
+        </div>
+      <% end %>
+  </section>
+<% end %>
+
+<% if isAdmin? %>
 <section class="section">
     <% if @user == current_user %>
       <div class="columns is-centered">
-        <div class="column">
-
+        <div class="column has-text-centered is-narrow">
+          <%= link_to 'Éditer le compte', edit_admin_user_path(@user.id), class:"button is-rounded" %>
         </div>
-        <div class="column has-text-centered">
-          <%= link_to 'Paramètres du compte', edit_user_registration_path, class:'button is-rounded' %>
+        <div class="column has-text-centered is-narrow">
+          <%= link_to 'Modifier le mot de passe', edit_user_registration_path, class:'button is-warning is-rounded' %>
+         </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column has-text-centered is-narrow">
+          <%= link_to "Créer un itinéraire pour publication", new_admin_trip_path, class:"button is-rounded is-primary" %>
         </div>
-        <div class="column">
-          <%= link_to "Créer un itinéraire personnalisé", new_trip_path, class:"button is-rounded is-primary" %>
-        </div>
-        <div class="column">
-
+        <div class="column has-text-centered is-narrow">
+          <%= link_to "Espace Admin", admin_admin_path, class:"button is-info is-rounded" %>
         </div>
       </div>
     <% end %>
-</section>
+  </section>
+<% end %>
 
 <section class="section">
   <div class="columns is-mobile is-centered">

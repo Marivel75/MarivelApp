@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index]
 
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     resources :trips
     resources :avatars, only: [:create]
   end
@@ -34,14 +34,14 @@ Rails.application.routes.draw do
   scope 'admin', module: 'admin',  as: 'admin' do
     get 'admin', to: 'static#admin'
 
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :edit, :update]
     resources :categories, except: [:destroy]
 
     resources :places, except: [:destroy]
 
     resources :tags, only: [:index]
 
-    resources :trips, only: [:index, :new, :edit, :update] do
+    resources :trips, only: [:index, :new, :update] do
       # resources :places, except: [:destroy]
       resources :trip_pictures, only: [:create], as: 'picture'
       resources :trip_waypoints, only: [:index, :new, :create, :destroy], as: 'waypoint'

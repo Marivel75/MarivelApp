@@ -31,7 +31,7 @@
             <td><%= trip.updated_at.strftime("%d/%m/%Y") %></td>
             <td><%= trip.online %></td>
             <td>
-              <%= link_to 'Édition', edit_admin_trip_path(trip[:id]) %>
+              <%= link_to 'Édition', edit_trip_path(trip[:id]) %>
             </td>
           </tr>
         <% end %>
@@ -40,7 +40,7 @@
     </table>
 
     <div class="container has-text-centered">
-      <%= link_to "Créer un nouvel itinéraire", new_admin_trip_path, class:"button is-primary" %>
+      <%= link_to "Créer un nouvel itinéraire", new_trip_path, class:"button is-primary" %>
     </div>
 
 
