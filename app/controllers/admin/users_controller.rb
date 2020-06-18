@@ -19,10 +19,10 @@ module Admin
     def edit
     end
 
-    # def update
-    #   @user.update(user_params)
-    #   redirect_to admin_user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
-    # end
+    def update
+      @user.update(user_params)
+      redirect_to admin_user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
+    end
 
     # def destroy
     #   @user.destroy
@@ -39,6 +39,10 @@ module Admin
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def user_params
+
     end
 
   end

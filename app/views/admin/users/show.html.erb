@@ -9,12 +9,13 @@
 <section class="section">
   <div class="buttons is-centered">
     <% if @user == current_user %>
-     <%= link_to 'Paramètres du compte', edit_user_registration_path, class:'button is-rounded' %>
-     <%= link_to "Créer un itinéraire pour publication", new_admin_trip_path, class:"button is-rounded is-primary" %>
+     <%= link_to 'Modifier le mot de passe', edit_user_registration_path, class:'button is-warning is-rounded' %>
+     <%= link_to 'Éditer le compte', edit_admin_user_path(@user.id), class:"button is-rounded" %>
     <%end%>
   </div>
   <% if isAdmin? %>
   <div class="container has-text-centered">
+    <%= link_to "Créer un itinéraire pour publication", new_admin_trip_path, class:"button is-rounded is-primary" %>
     <%= link_to "Espace Admin", admin_admin_path, class:"button is-info is-rounded" %>
   </div>
   <% end %>

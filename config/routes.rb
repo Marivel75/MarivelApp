@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   scope 'admin', module: 'admin',  as: 'admin' do
     get 'admin', to: 'static#admin'
 
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show, :edit, :update]
     resources :categories, except: [:destroy]
 
     resources :places, except: [:destroy]
