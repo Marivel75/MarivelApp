@@ -10,39 +10,41 @@
     <p> Longitude : <%= @place.longitude %></p>
   </div>
 
-  <div class="columns">
-    <div class = "column">
-      <div class="container">
-        <div class="container has-text-centered">
-          <strong>Description</strong>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="columns">
+        <div class = "column">
+          <div class="container">
+            <p class="has-text-centered has-text-black-bis has-text-weight-semibold">Description</p>
+          <br>
+          <p class="has-text-weight-medium"><%= sanitize @place.description %></p>
+          </div>
         </div>
-        <br>
-        <p class="has-text-weight-medium"><%= sanitize @place.description %></p>
+        <div class="column">
+          <div class="container has-text-centered">
+            <strong>Photo d'illustration du lieu</strong>
+          </div>
+          <br>
+          <% if @place.place_picture.attached? %>
+            <div class="container">
+              <img src = "<%= rails_blob_url(@place.place_picture)%>">
+            </div>
+          <% else %>
+            <div class="container">
+              <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="column">
-      <div class="container has-text-centered">
-        <strong>Photo d'illustration du lieu</strong>
-      </div>
-      <br>
-      <% if @place.place_picture.attached? %>
-        <div class="container">
-          <img src = "<%= rails_blob_url(@place.place_picture)%>">
-        </div>
-      <% else %>
-        <div class="container">
-          <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
-        </div>
-      <% end %>
     </div>
   </div>
-
-<!-- <div class="">
-   link_to "Vous pouvez ajouter des tags au lieu", place_join_tag_to_places_path(@place.id), class:"button is-primary" =%>
-</div> -->
 </section>
-<hr>
+
 <section class="section">
-  <h2 class="title is-2 has-text-centered"> Éditez la description du lieu </h2>
-  <%= render 'formEditPlace' %>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <h2 class="title is-2 has-text-centered"> Éditez la description du lieu </h2>
+      <%= render 'formEditPlace' %>
+    </div>
+  </div>
 </section>

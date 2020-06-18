@@ -23,7 +23,7 @@
           <td><%= place.created_at.strftime("%d/%m/%Y")%></td>
           <td><%= place.updated_at.strftime("%d/%m/%Y") %></td>
           <td><%= place.online %></td>
-          <td><%= link_to 'Détails du lieu', admin_place_url(place[:id])%></td>
+          <td><%= link_to 'Détails du lieu', place_url(place[:id])%></td>
           <td><%= link_to 'Édition', edit_admin_place_path(place[:id]) %></td>
 
         </tr>
@@ -32,6 +32,6 @@
   </table>
 
   <div class="container has-text-centered">
-    <%= link_to 'Créer un lieu', new_admin_place_path, class:"button is-primary" %>
+    <%= link_to 'Créer un lieu', new_place_path, class:"button is-primary" %>
   </div>
 </section>

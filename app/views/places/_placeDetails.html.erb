@@ -116,10 +116,11 @@
 
 <section class="section">
   <div class="buttons is-centered">
-    <% if current_user && current_user[:id] == @place.author_id %>
+    <% if current_user == @place.author && current_user.role != "admin" %>
       <%= link_to "Éditer le lieu", edit_place_path(@place[:id]), class:"button is-warning" %>
     <% elsif isAdmin? %>
       <%= link_to "Éditer le lieu", edit_admin_place_path(@place[:id]), class:"button is-warning" %>
+    <% else %>
     <% end %>
     <%= link_to "Revenir à l'accueil", trips_path, class:"button" %>
   </div>

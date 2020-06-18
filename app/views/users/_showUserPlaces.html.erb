@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 class="title is-3 has-text-weight-bold has-text-black-bis">Les lieux que j'ai crées</h3>
+</div>
+<br>
+
+<% if @user.created_places.length > 0 %>
+
+  <div class="tile is-ancestor wrap-container">
+    <div class="tile is-ancestor wrap-container">
+      <% @user.created_places.each do |place| %>
+        <div class="tile is-parent is-2">
+          <div class="tile box is-child has-text-centered">
+            <figure class="image is-5by3">
+              <% if place.place_picture.attached? %>
+                <img src = "<%= rails_blob_url(place.place_picture)%>" class="is-rounded">
+              <% else %>
+                <img src = "https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80">
+              <% end %>
+            </figure>
+            <br>
+            <p class="title is-6">
+              <%= link_to "#{place.name}", place_path(place[:id])%>
+            </p>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+
+<% elsif @user == current_user %>
+  <div class="container">
+    <p>Vous n'avez publié aucun itinéraire, c'est le moment de commencer !</p>
+  </div>
+
+<% else %>
+  <div class="container">
+    <p><%= @user.first_name%> n'a publié aucun itinéraire pour le moment.</p>
+  </div>
+
+<% end %>
