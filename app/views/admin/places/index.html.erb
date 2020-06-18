@@ -10,6 +10,7 @@
         <th>Name</th>
         <th>Date de création</th>
         <th>Dernière actualisation</th>
+        <th>Statut de publication</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
           <td><%= place.name %></td>
           <td><%= place.created_at.strftime("%d/%m/%Y")%></td>
           <td><%= place.updated_at.strftime("%d/%m/%Y") %></td>
+          <td><%= place.online %></td>
           <td><%= link_to 'Détails du lieu', admin_place_url(place[:id])%></td>
           <td><%= link_to 'Édition', edit_admin_place_path(place[:id]) %></td>
 

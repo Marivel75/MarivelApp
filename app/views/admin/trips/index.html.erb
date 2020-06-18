@@ -14,7 +14,7 @@
           <th>Catégorie</th>
           <th>Date de création</th>
           <th>Date de dernière actualisation</th>
-          <th>Statut</th>
+          <th>Statut de publication</th>
           <th></th>
           <th></th>
         </tr>
@@ -31,7 +31,7 @@
             <td><%= trip.updated_at.strftime("%d/%m/%Y") %></td>
             <td><%= trip.online %></td>
             <td>
-              <%= link_to 'Édition', edit_trip_path(trip[:id]) %>
+              <%= link_to 'Édition', edit_admin_trip_path(trip[:id]) %>
             </td>
           </tr>
         <% end %>

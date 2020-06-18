@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     resources :tags, only: [:index]
 
-    resources :trips, only: [:index, :new, :update] do
+    resources :trips, only: [:index, :new, :edit, :update] do
       # resources :places, except: [:destroy]
       resources :trip_pictures, only: [:create], as: 'picture'
       resources :trip_waypoints, only: [:index, :new, :create, :destroy], as: 'waypoint'
