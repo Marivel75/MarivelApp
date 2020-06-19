@@ -2,7 +2,11 @@
   font-family: 'Lora', serif;
 }
 
-h1, #brand {
+#brand {
+  font-family: 'Paprika', cursive;
+}
+
+h1 {
   font-family: 'Raleway', sans-serif;
 }
 .hero-background {
