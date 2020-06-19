@@ -21,7 +21,7 @@ module Admin
 
     def update
       @user.update(user_params)
-      redirect_to admin_user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
+      redirect_to user_path(@user[:id]), notice: "Les modifications ont été enregistrées."
     end
 
     # def destroy

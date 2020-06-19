@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @trips = Trip.where(category_id: @category.id, online: true)
   end
 
   # GET /categories/new
