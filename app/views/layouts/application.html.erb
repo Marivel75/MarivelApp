@@ -49,6 +49,10 @@
 
     <%= render 'shared/navbar' %>
 
+    <% if isAdmin? %>
+      <%= render 'shared/navBarAdmin' %>
+    <% end %>
+
     <% if flash[:notice] %>
     <br>
     <br>
