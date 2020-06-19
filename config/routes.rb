@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   get 'search', to: "search#index"
 
-  #get 'searchtrips', to: "trips#search"
-
   get 'map', to: "map#show"
 
   devise_for :users
@@ -24,7 +22,6 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index]
 
-
   resources :users, only: [:show, :edit, :update] do
     resources :trips
     resources :avatars, only: [:create]
@@ -35,6 +32,7 @@ Rails.application.routes.draw do
     get 'admin', to: 'static#admin'
 
     resources :users, only: [:index, :edit, :update]
+
     resources :categories, except: [:destroy]
 
     resources :places, only: [:index, :new, :edit, :update]
@@ -42,7 +40,6 @@ Rails.application.routes.draw do
     resources :tags, only: [:index]
 
     resources :trips, only: [:index, :new, :edit, :update] do
-      # resources :places, except: [:destroy]
       resources :trip_pictures, only: [:create], as: 'picture'
       resources :trip_waypoints, only: [:index, :new, :create, :destroy], as: 'waypoint'
     end
