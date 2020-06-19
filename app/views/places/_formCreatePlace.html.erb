@@ -58,6 +58,11 @@
   </div>
   <br>
   <div class="field">
+    <strong><%= form.label :attribution, "Entrez une attribution pour l'auteur de la photo" %></strong>
+    <%= form.text_field :attribution, class:"input" %>
+  </div>
+  <br>
+  <div class="field">
     <%= form.submit "Enregitrer le lieu", class:"button is-primary is-fullwidth" %>
   </div>
 
