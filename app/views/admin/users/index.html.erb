@@ -29,6 +29,9 @@
             <td>
               <%= link_to 'Voir le profil', user_path(user[:id]) %>
             </td>
+            <td>
+              <%= link_to 'Éditer le profil', edit_admin_user_path(user[:id]) %>
+            </td>
           </tr>
         <% end %>
       </tbody>

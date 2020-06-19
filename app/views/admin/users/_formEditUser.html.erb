@@ -12,6 +12,14 @@
 <% end %>
 
   <div class="field">
+    <p>Profil actuel : <strong><%= user.role %></strong></p>
+    <p><strong><%= f.label :role, "Modifier le profile" %></strong></p>
+    <div class="select is-fullwidth">
+      <%= f.select :role, options_for_select(@roles), option: "Modifier le profil" %>
+    </div>
+  </div>
+  <br>
+  <div class="field">
     <strong><%= f.label :first_name, "Prénom" %></strong>
     <%= f.text_field :first_name, class:'input' %>
   </div>

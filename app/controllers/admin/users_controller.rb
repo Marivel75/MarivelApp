@@ -17,6 +17,7 @@ module Admin
     end
 
     def edit
+      @roles = User.roles.keys.to_a
     end
 
     def update
@@ -42,7 +43,7 @@ module Admin
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :description)
+      params.require(:user).permit(:first_name, :last_name, :email, :description, :role)
     end
 
   end
