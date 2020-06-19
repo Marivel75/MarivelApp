@@ -1,5 +1,5 @@
 <section class="section">
-  <h1 class="title is-1 has-text-primary has-text-centered"><%= @place.name %></h1>
+  <h1 class="title is-1 has-text-black has-text-centered"><%= @place.name %></h1>
 
   <% if isAdmin? %>
     <div class="container has-text-centered">
@@ -21,7 +21,7 @@
       <div class="container has-text-centered">
         <%= form_with(url: [:admin, @place], model: @place, local: true) do |f| %>
           <%= f.hidden_field :online, :value => false %>
-          <%= f.submit "Mettre hors-ligne", class:"button is-primary"%>
+          <%= f.submit "Mettre hors-ligne", class:"button is-warning"%>
         <% end %>
       </div>
     <% end %>
