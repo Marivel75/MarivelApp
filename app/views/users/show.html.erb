@@ -37,7 +37,7 @@
 <% end %>
 
 <% if isAdmin? %>
-<section class="section">
+  <section class="section">
     <% if @user == current_user %>
       <div class="columns is-centered">
         <div class="column has-text-centered is-narrow">
@@ -56,6 +56,24 @@
         </div>
       </div>
     <% end %>
+  </section>
+<% end %>
+
+<% if isPartner? %>
+  <section class='section'>
+    <div class="columns is-centered">
+      <div class="column has-text-centered is-narrow">
+        <%= link_to 'Éditer le compte', edit_user_path(@user.id), class:"button is-rounded" %>
+      </div>
+      <div class="column has-text-centered is-narrow">
+        <%= link_to 'Modifier le mot de passe', edit_user_registration_path, class:'button is-warning is-rounded' %>
+       </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column has-text-centered is-narrow">
+        <%= link_to "Créer un itinéraire personnalisé", new_trip_path, class:"button is-rounded is-primary" %>
+      </div>
+    </div>
   </section>
 <% end %>
 

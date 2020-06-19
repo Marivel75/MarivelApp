@@ -1,6 +1,6 @@
 <section class=section>
 
-  <h1 class="title is-1 has-text-primary has-text-centered"><%= @trip.title %></h1>
+  <h1 class="title is-1 has-text-black has-text-centered"><%= @trip.title %></h1>
   <p class="has-text-centered">Catégorie : <strong> <%= @trip.category.name %> </strong></p>
   <br>
 
@@ -85,6 +85,7 @@
       <div class="container">
         <h2 class="title is-2"> Éditez les détails de l'itinéraire </h2>
       </div>
+      <br>
       <%= render 'formEditTrip', trip: @trip %>
     </div>
   </div>
