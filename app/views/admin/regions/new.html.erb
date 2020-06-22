@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="container">
+        <h1 class="title is-1 has-text-centered">Créer une région</h1>
+      </div>
+
+      <%= render 'formCreateRegionAdmin', region: @region %>
+      <br>
+      <div class="container has-text-centered">
+        <%= link_to "Revenir à la liste des régions", admin_regions_path, class:"button" %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<%= form_with(url: [:admin, region], model: @region, local: true) do |f| %>
+  <% if region.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(region.errors.count, "error") %> Les modifications n'ont pas pu être enregistrées :</h2>
+
+      <ul>
+      <% region.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, class:"input" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description, class:"input" %>
+  </div>
+  <div class="field">
+    <%= f.submit "Enregistrer la région", class:"button is-primary is-fullwidth" %>
+  </div>
+<% end %>

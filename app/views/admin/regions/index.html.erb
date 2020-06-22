@@ -1,0 +1,33 @@
+<section class='section'>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="container has-text-centered">
+        <h1 class="title is-1">Liste des régions</h1>
+      </div>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @regions.each do |region| %>
+          <tr>
+            <td><%= region.id %></td>
+            <td><%= region.name %></td>
+            <td><%= link_to "Éditer", edit_admin_region_path(region) %></td>
+            <td><%= link_to "Voir les itinéraires de la région", admin_region_path(region.id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <div class="container has-text-centered">
+        <%= link_to 'Créer une nouvelle région', new_admin_region_path, class:"button is-primary" %>
+      </div>
+    </div>
+  </div>
+</section>

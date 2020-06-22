@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   root to: 'trips#index'
 
   get 'search', to: "search#index"
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
     resources :places, only: [:index, :new, :edit, :update]
 
     resources :tags, only: [:index]
+
+    resources :regions
 
     resources :trips, only: [:index, :new, :edit, :update] do
       resources :trip_pictures, only: [:create], as: 'picture'

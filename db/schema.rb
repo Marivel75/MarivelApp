@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_085808) do
+ActiveRecord::Schema.define(version: 2020_06_22_092627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(version: 2020_06_22_085808) do
     t.boolean "online", default: false
     t.string "city"
     t.index ["author_id"], name: "index_places_on_author_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "saved_trips", force: :cascade do |t|
