@@ -12,14 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :tag_list, "Vous pouvez entrer des tags en les séparant par une virgule" %>
+    <strong><%= form.label :tag_list, "Vous pouvez entrer des tags en les séparant par une virgule" %></strong>
     <%= form.text_field :tag_list, class:"input" %>
   </div>
   <br>
 
   <div class="field">
-    <%= form.label :address, "Adresse" %>
-    <%= form.text_area :address, class:"input" %>
+    <strong><%= form.label :address, "Adresse" %></strong>
+    <%= form.text_field :address, class:"input" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <strong><%= form.label :city, "Ville" %></strong>
+    <%= form.text_field :city, class:"input" %>
   </div>
   <br>
 
