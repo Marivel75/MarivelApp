@@ -1,0 +1,2 @@
+module JoinRegionToPlacesHelper
+end

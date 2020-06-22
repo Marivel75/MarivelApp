@@ -27,6 +27,8 @@ class Place < ApplicationRecord
   has_many :join_tag_to_places
   has_many :place_tags, through: :join_tag_to_places
 
+  has_many :join_region_to_places
+  has_many :regions, through: :join_region_to_places
 
 
   def found_address_presence

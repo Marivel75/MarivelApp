@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :join_region_to_places
   root to: 'trips#index'
 
   get 'search', to: "search#index"

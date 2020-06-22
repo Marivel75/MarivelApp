@@ -1,48 +1,65 @@
 <section class="section">
-  <h1 class="title is-1 has-text-black has-text-centered"><%= @place.name %></h1>
-
-  <% if isAdmin? %>
-    <div class="container has-text-centered">
-      <% if @place.online == true %>
-        <p>Ce lieu est actuellement publié en ligne et visible par tous les utilisateurs</p>
-      <% else %>
-      <p>Ce lieu n'est actuellement pas publié en ligne. Il est visible unqiuement par l'admin et par son auteur (si différent de l'admin)</p>
-      <% end %>
-    </div>
-    <br>
-    <% if @place.online == false %>
-      <div class="container has-text-centered">
-        <%= form_with(url: [:admin, @place], model: @place, local: true) do |f| %>
-          <%= f.hidden_field :online, :value => true %>
-          <%= f.submit "Publier", class:"button is-primary"%>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="container has-text-centered">
-        <%= form_with(url: [:admin, @place], model: @place, local: true) do |f| %>
-          <%= f.hidden_field :online, :value => false %>
-          <%= f.submit "Mettre hors-ligne", class:"button is-warning"%>
-        <% end %>
-      </div>
-    <% end %>
-    <br>
-    <div class="container has-text-centered">
-      <%= link_to "Voir le lieu tel qu'il apparaît en ligne", place_path(@place[:id]), class:"button" %>
-    </div>
-    <br>
-  <% end %>
-
-  <p class="has-text-centered"> <%= @place.address %> </p>
-
-  <p class="has-text-centered"><strong>Coordonnées géographiques </strong></p>
-  <br>
-  <div class="has-text-centered">
-    <p> Latitude : <%= @place.latitude %></p>
-    <p> Longitude : <%= @place.longitude %></p>
-  </div>
-
   <div class="columns is-centered">
     <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <h1 class="title is-1 has-text-black has-text-centered"><%= @place.name %></h1>
+
+      <% if isAdmin? %>
+        <div class="container has-text-centered">
+          <% if @place.online == true %>
+            <p>Ce lieu est actuellement publié en ligne et visible par tous les utilisateurs</p>
+          <% else %>
+          <p>Ce lieu n'est actuellement pas publié en ligne. Il est visible unqiuement par l'admin et par son auteur (si différent de l'admin)</p>
+          <% end %>
+        </div>
+        <br>
+        <% if @place.online == false %>
+          <div class="container has-text-centered">
+            <%= form_with(url: [:admin, @place], model: @place, local: true) do |f| %>
+              <%= f.hidden_field :online, :value => true %>
+              <%= f.submit "Publier", class:"button is-primary"%>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="container has-text-centered">
+            <%= form_with(url: [:admin, @place], model: @place, local: true) do |f| %>
+              <%= f.hidden_field :online, :value => false %>
+              <%= f.submit "Mettre hors-ligne", class:"button is-warning"%>
+            <% end %>
+          </div>
+        <% end %>
+        <br>
+        <div class="container has-text-centered">
+          <%= link_to "Voir le lieu tel qu'il apparaît en ligne", place_path(@place[:id]), class:"button" %>
+        </div>
+        <br>
+      <% end %>
+
+      <p class="has-text-centered"> <%= @place.address %> </p>
+      <br>
+      <p class="has-text-centered"><strong>Coordonnées géographiques :  </strong></p>
+      <div class="has-text-centered">
+        <p> Latitude : <%= @place.latitude %></p>
+        <p> Longitude : <%= @place.longitude %></p>
+      </div>
+      <br>
+      <p class="has-text-centered"><strong>Région(s) :  </strong></p>
+        <% if @place.regions %>
+          <div class="columns is-centered">
+            <% @place.regions.each do |r| %>
+              <div class="column">
+                  <p class="has-text-black"> <%= r.name %></p>
+              </div>
+              <div class="column">
+                <%= link_to "Modifier la région", class:"button" %>
+              </div>
+            <% end %>
+
+          </div>
+
+        <% else %>
+          <%= link_to "Ajouter la région", class:"button" %>
+        <% end %>
+
       <div class="columns">
         <div class = "column">
           <div class="container">
