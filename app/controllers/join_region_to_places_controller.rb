@@ -1,10 +1,11 @@
 class JoinRegionToPlacesController < ApplicationController
-  before_action :set_join_region_to_place, only: [:show, :edit, :update, :destroy]
+  before_action :set_join_region_to_place, only: [:destroy]
+  before_action :set_place
 
   # GET /join_region_to_places
   # GET /join_region_to_places.json
   def index
-    @join_region_to_places = JoinRegionToPlace.all
+    @regions = Region.all
   end
 
   # GET /join_region_to_places/1
@@ -24,11 +25,13 @@ class JoinRegionToPlacesController < ApplicationController
   # POST /join_region_to_places
   # POST /join_region_to_places.json
   def create
-    @join_region_to_place = JoinRegionToPlace.new(join_region_to_place_params)
-    
+    @join_region_to_place = JoinRegionToPlace.new
+    @join_region_to_place.place_id = params[:place_id]
+    @join_region_to_place.region_id = params[:region_id]
+
     respond_to do |format|
       if @join_region_to_place.save
-        format.html { redirect_to admin_edit_place_path(@place), notice: 'Join region to place was successfully created.' }
+        format.html { redirect_to edit_place_path(@place), notice: 'La région a été ajoutée.' }
         format.json { render :show, status: :created, location: @join_region_to_place }
       else
         format.html { render :new }
@@ -56,7 +59,7 @@ class JoinRegionToPlacesController < ApplicationController
   def destroy
     @join_region_to_place.destroy
     respond_to do |format|
-      format.html { redirect_to join_region_to_places_url, notice: 'Join region to place was successfully destroyed.' }
+      format.html { redirect_to edit_place_path(@place), notice: 'Le région a été retirée.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,10 @@ class JoinRegionToPlacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def join_region_to_place_params
-      params.fetch(:join_region_to_place, {})
+      params.require(:join_region_to_place).permit(:place_id, :region_id)
+    end
+
+    def set_place
+      @place = Place.find(params[:place_id])
     end
 end

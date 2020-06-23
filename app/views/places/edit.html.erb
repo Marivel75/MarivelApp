@@ -1,17 +1,42 @@
 <section class="section">
-  <h1 class="title is-1 has-text-primary has-text-centered"><%= @place.name %></h1>
-
-  <p class="has-text-centered"> <%= @place.address %> </p>
-
-  <p class="has-text-centered"><strong>Coordonnées géographiques </strong></p>
-  <br>
-  <div class="has-text-centered">
-    <p> Latitude : <%= @place.latitude %></p>
-    <p> Longitude : <%= @place.longitude %></p>
-  </div>
-
   <div class="columns is-centered">
     <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <h1 class="title is-1 has-text-primary has-text-centered"><%= @place.name %></h1>
+
+      <p class="has-text-centered"> <%= @place.address %> </p>
+
+      <p class="has-text-centered"><strong>Coordonnées géographiques </strong></p>
+      <br>
+      <div class="has-text-centered">
+        <p> Latitude : <%= @place.latitude %></p>
+        <p> Longitude : <%= @place.longitude %></p>
+      </div>
+      <br>
+      <p class="has-text-centered"><strong>Région(s) :  </strong></p>
+      <br>
+        <% if @place.regions %>
+          <% @place.regions.each do |region| %>
+            <div class="columns is-centered">
+              <div class="column">
+
+              </div>
+              <div class="column">
+                  <p class="has-text-black"> <%= region.name %></p>
+              </div>
+              <div class="column">
+                <% join_region_to_place = JoinRegionToPlace.where(place_id: @place.id, region_id: region.id) %>
+                <%= link_to 'Supprimer', place_region_path(@place, join_region_to_place.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+              </div>
+              <div class="column">
+
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <br>
+        <%= link_to "Ajouter une région", place_region_index_path(@place), class:"button is-fullwidth" %>
+        <br>
+
       <div class="columns">
         <div class = "column">
           <div class="container">

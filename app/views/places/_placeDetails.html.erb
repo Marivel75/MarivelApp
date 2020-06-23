@@ -31,7 +31,9 @@
   <div class="columns is-mobile is-centered">
     <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
 
-        <p> <%= sanitize @place.description%></p>
+      <p class="has-text-black has-text-centered"> Lieu crée par : <%= @place.author.first_name %></p>
+      <br>
+      <p class="has-text-black"> <%= sanitize @place.description%></p>
 
     </div>
   </div>

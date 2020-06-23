@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :trip_pictures, only: [:create]
   end
 
-  resources :places, except: [:destroy]
+  resources :places, except: [:destroy] do
+    resources :join_region_to_places, only: [:index, :new, :create, :destroy], as: 'region'
+  end
 
   resources :tags, only: [:index]
 
@@ -54,6 +56,7 @@ Rails.application.routes.draw do
 
   scope 'partner', module: 'partner', as: 'partner' do
     resources :users, only: [:show, :edit, :update]
+
     resources :places, only: [:show]
 
     resources :trips, only: [:index, :show]

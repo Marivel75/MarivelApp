@@ -1,7 +1,7 @@
 module Admin
   class JoinRegionToPlacesController < ApplicationController
     before_action :only_admin
-    before_action :set_join_region_to_place, only: [:show, :edit, :update, :destroy]
+    before_action :set_join_region_to_place, only: [:destroy]
     before_action :set_place
 
     # GET /join_region_to_places
