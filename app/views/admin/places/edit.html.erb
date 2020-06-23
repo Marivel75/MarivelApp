@@ -43,23 +43,29 @@
       </div>
       <br>
       <p class="has-text-centered"><strong>Région(s) :  </strong></p>
+      <br>
         <% if @place.regions %>
-          <div class="columns is-centered">
-            <% @place.regions.each do |r| %>
+          <% @place.regions.each do |region| %>
+            <div class="columns is-centered">
               <div class="column">
-                  <p class="has-text-black"> <%= r.name %></p>
+
               </div>
               <div class="column">
-                <%= link_to "Modifier la région", class:"button" %>
+                  <p class="has-text-black"> <%= region.name %></p>
               </div>
-            <% end %>
+              <div class="column">
+                <% join_region_to_place = JoinRegionToPlace.where(place_id: @place.id, region_id: region.id) %>
+                <%= link_to 'Supprimer', admin_place_region_path(@place, join_region_to_place.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+              </div>
+              <div class="column">
 
-          </div>
-
-        <% else %>
-          <%= link_to "Ajouter la région", class:"button" %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-
+        <br>
+        <%= link_to "Ajouter une région", admin_place_region_index_path(@place), class:"button is-fullwidth" %>
+        <br>
       <div class="columns">
         <div class = "column">
           <div class="container">

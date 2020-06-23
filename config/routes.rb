@@ -37,7 +37,9 @@ Rails.application.routes.draw do
 
     resources :categories, except: [:destroy]
 
-    resources :places, only: [:index, :new, :edit, :update]
+    resources :places, only: [:index, :new, :edit, :update] do
+      resources :join_region_to_places, only: [:index, :new, :create, :destroy], as: 'region'
+    end
 
     resources :tags, only: [:index]
 

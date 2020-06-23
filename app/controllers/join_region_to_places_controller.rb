@@ -25,10 +25,10 @@ class JoinRegionToPlacesController < ApplicationController
   # POST /join_region_to_places.json
   def create
     @join_region_to_place = JoinRegionToPlace.new(join_region_to_place_params)
-
+    
     respond_to do |format|
       if @join_region_to_place.save
-        format.html { redirect_to @join_region_to_place, notice: 'Join region to place was successfully created.' }
+        format.html { redirect_to admin_edit_place_path(@place), notice: 'Join region to place was successfully created.' }
         format.json { render :show, status: :created, location: @join_region_to_place }
       else
         format.html { render :new }

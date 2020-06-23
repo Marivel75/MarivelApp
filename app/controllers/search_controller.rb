@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   def index
     query = params[:q]
     @trips = Trip.published.ransack(title_or_description_or_places_name_cont: query).result(distinct: true)
-    @places = Place.ransack(name_or_city_or_subtitle_or_description_cont: query).result(distinct: true)
+    @places = Place.ransack(name_or_city_or_subtitle_or_description_or_regions_name_cont: query).result(distinct: true)
   end
 
   # Code pour Searchkick

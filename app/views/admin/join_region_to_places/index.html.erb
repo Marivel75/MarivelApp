@@ -1,25 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Join Region To Places</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @join_region_to_places.each do |join_region_to_place| %>
-      <tr>
-        <td><%= link_to 'Show', join_region_to_place %></td>
-        <td><%= link_to 'Edit', edit_join_region_to_place_path(join_region_to_place) %></td>
-        <td><%= link_to 'Destroy', join_region_to_place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Join Region To Place', new_join_region_to_place_path %>
+<section class='section'>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="container has-text-centered">
+        <h1 class="title is-1">Liste des régions</h1>
+      </div>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @regions.each do |region| %>
+          <tr>
+            <td><%= region.id %></td>
+            <td><%= region.name %></td>
+            <td><%= link_to "Ajouter", admin_place_region_index_path(region_id:region.id), method: 'post', class:'button' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <div class="container has-text-centered">
+        <%= link_to 'Créer une nouvelle région', new_admin_region_path, class:"button is-primary" %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@ module Admin
   class JoinRegionToPlacesController < ApplicationController
     before_action :only_admin
     before_action :set_join_region_to_place, only: [:show, :edit, :update, :destroy]
+    before_action :set_place
 
     # GET /join_region_to_places
     # GET /join_region_to_places.json
@@ -26,13 +27,13 @@ module Admin
     # POST /join_region_to_places
     # POST /join_region_to_places.json
     def create
-      @join_region_to_place = JoinRegionToPlace.new(join_region_to_place_params)
-      # @join_region_to_place.place_id = params[:place_id]
-      # @join_region_to_place.region_id = params[:region_id]
+      @join_region_to_place = JoinRegionToPlace.new
+      @join_region_to_place.place_id = params[:place_id]
+      @join_region_to_place.region_id = params[:region_id]
 
       respond_to do |format|
         if @join_region_to_place.save
-          format.html { redirect_to @join_region_to_place, notice: 'Join region to place was successfully created.' }
+          format.html { redirect_to edit_admin_place_path(@place), notice: 'La région a été ajoutée.' }
           format.json { render :show, status: :created, location: @join_region_to_place }
         else
           format.html { render :new }
@@ -60,7 +61,7 @@ module Admin
     def destroy
       @join_region_to_place.destroy
       respond_to do |format|
-        format.html { redirect_to join_region_to_places_url, notice: 'Join region to place was successfully destroyed.' }
+        format.html { redirect_to edit_admin_place_path(@place), notice: 'La région a été retirée.' }
         format.json { head :no_content }
       end
     end
@@ -69,6 +70,10 @@ module Admin
       # Use callbacks to share common setup or constraints between actions.
       def set_join_region_to_place
         @join_region_to_place = JoinRegionToPlace.find(params[:id])
+      end
+
+      def set_place
+          @place = Place.find(params[:place_id])
       end
 
       # Only allow a list of trusted parameters through.
