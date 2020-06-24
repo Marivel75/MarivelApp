@@ -1,10 +1,10 @@
 <% if @place.place_picture.attached? %>
-  <section class="hero is-large" style="background-image:url(<%= rails_blob_url(@place.place_picture)%>);background-size: cover; background-position: center;">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <h1 class="title is-1 has-text-white">
-          <%= @place.name %>
-        </h1>
+  <section class="section">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+
+          <img src = "<%= rails_blob_url(@place.place_picture)%>">
+
       </div>
     </div>
   </section>
