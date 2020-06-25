@@ -1,6 +1,6 @@
 <% if @place.place_picture.attached? %>
   <section class="hero is-large has-background-black">
-    <div class="hero-body" style="background-image:url(<%= rails_blob_url(@place.place_picture)%>);background-size:cover;">
+    <div class="hero-body" style="background:url(<%= rails_blob_url(@place.place_picture)%>);background-size:cover;">
         <h1 class="title is-1 has-text-white has-text-centered">
           <%= @place.name %>
         </h1>
