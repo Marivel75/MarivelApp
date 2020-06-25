@@ -90,7 +90,7 @@ class TripsController < ApplicationController
        if !current_user
         flash.alert = "Veuillez vous connecter"
         redirect_to new_user_session_path
-      elsif  @trip && @trip.author != current_user
+      elsif  @trip && @trip.author != current_user && current_user.role != 'admin'
           flash.alert = "Vous n'avez pas les droits."
           redirect_to @trip
        end
