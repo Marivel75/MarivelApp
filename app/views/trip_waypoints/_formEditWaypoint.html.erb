@@ -1,0 +1,11 @@
+<%= form_with model: waypoint, local: true do |f| %>
+
+<div class="field">
+  <strong><%= f.label :rank, "Entrer une position" %></strong>
+  <%= f.number_field :rank, class:"input" %>
+</div>
+<div class="field">
+  <%= f.submit "Confirmer", class:"button is-primary" %>
+</div>
+
+<% end %>

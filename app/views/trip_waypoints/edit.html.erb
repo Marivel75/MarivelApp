@@ -1,6 +1,25 @@
-<h1>Editing Trip Waypoint</h1>
+<section class="section">
 
-<%= render 'form', trip_waypoint: @trip_waypoint %>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <h1 class="is-size-1 has-text-centered has-text-black">Positionnement de l'étape</h1>
 
-<%= link_to 'Show', @trip_waypoint %> |
-<%= link_to 'Back', trip_waypoints_path %>
+      <div class="container has-text-centered">
+        <% if @trip_waypoint.rank %>
+          <p>La position actuelle de cette étape est : </p>
+          <p><%= @trip_waypoint.rank %></p>
+        <% else %>
+          <p>L'étape n'est pas encore positionnée.</p>
+        <% end %>
+      </div>
+      <br>
+      <br>
+      <div class="container has-text-centered">
+        <h2 class="is-size-2 has-text-centered has-text-black">Modifier la position</h2>
+        <%= render 'formEditWaypoint', waypoint: @trip_waypoint %>
+      </div>
+
+
+    </div>
+  </div>
+</section>

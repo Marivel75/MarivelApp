@@ -1,5 +1,5 @@
 class TripWaypointsController < ApplicationController
-  before_action :set_trip_waypoint, only: [:destroy]
+  before_action :set_trip_waypoint, only: [:edit, :destroy]
   before_action :set_trip
 
 
@@ -82,6 +82,6 @@ class TripWaypointsController < ApplicationController
 
 
     def trip_waypoint_params
-      params.require(:trip_waypoint).permit(:place_id, :trip_id)
+      params.require(:trip_waypoint).permit(:place_id, :trip_id, :rank)
     end
 end
