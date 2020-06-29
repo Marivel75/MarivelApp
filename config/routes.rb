@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-
-
   resources :join_region_to_places
+
+  resources :trip_waypoints, only: [:edit, :update, :destroy]
+
   root to: 'trips#index'
 
   get 'search', to: "search#index"
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   resources :trips do
     resources :saved_trips, only: [:create, :destroy]
     # resources :places
-    resources :trip_waypoints, as: 'waypoint'
+    resources :trip_waypoints, only: [:index, :new, :create], as: 'waypoint'
     resources :trip_pictures, only: [:create]
   end
 
@@ -39,6 +40,8 @@ Rails.application.routes.draw do
 
     resources :categories, except: [:destroy]
 
+    resources :trip_waypoints, only: [:edit, :update, :destroy]
+
     resources :places, only: [:index, :new, :edit, :update] do
       resources :join_region_to_places, only: [:index, :new, :create, :destroy], as: 'region'
     end
@@ -49,7 +52,7 @@ Rails.application.routes.draw do
 
     resources :trips, only: [:index, :new, :edit, :update] do
       resources :trip_pictures, only: [:create], as: 'picture'
-      resources :trip_waypoints, only: [:index, :new, :create, :destroy], as: 'waypoint'
+      resources :trip_waypoints, only: [:index, :new, :create], as: 'waypoint'
     end
   end
 

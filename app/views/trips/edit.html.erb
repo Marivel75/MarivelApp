@@ -49,7 +49,7 @@
 
           <div class="tile is-ancestor wrap-container">
 
-            <% @trip.trip_waypoints.each do |waypoint|%>
+            <% @trip.trip_waypoints.order(rank: :asc).each do |waypoint|%>
               <div class="tile is-parent is-3">
                 <div class="tile box is-child has-text-centered">
                   <figure class="image is-5by3">
@@ -60,15 +60,16 @@
                     <% end %>
                     </figure>
                     <br>
+                    <p class="has-text-black has-text-weight-bold"><%= waypoint.rank %></p>
                     <p class="title is-6">
-                      <%= link_to "#{waypoint.place.name}", place_path(waypoint.place.id)%>
+                      <%= link_to "#{waypoint.place.name}", place_path(waypoint.place.id), class:"has-text-black"%>
                     </p>
                     <div class="container">
-                      <%= link_to "Positionner l'étape", edit_trip_waypoint_path(@trip, waypoint.id), class:"button is-info" %>
+                      <%= link_to "Positionner l'étape", edit_trip_waypoint_path(waypoint.id), class:"button is-info" %>
                     </div>
                     <br>
                     <div class="container">
-                      <%= link_to "Supprimer", trip_waypoint_path(@trip, waypoint.id), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
+                      <%= link_to "Supprimer", trip_waypoint_path(waypoint.id), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer cette étape ?"}, class:"button is-danger" %>
                     </div>
                   </div>
                 </div>
