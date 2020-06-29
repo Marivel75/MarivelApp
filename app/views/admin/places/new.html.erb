@@ -3,7 +3,7 @@
     <h1 class="title is-1 has-text-centered">Créer un lieu</h1>
   </div>
 
-  <%= render 'formCreatePlaceAdmin', place: @place %>
+  <%= render 'place/formCreatePlace', place: @place %>
   <br>
   <div class="container has-text-centered">
     <%= link_to "Revenir à la liste des lieux", admin_places_path, class:"button" %>

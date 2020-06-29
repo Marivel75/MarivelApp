@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
     end
 
     def place_params
-      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture, :tag_list, :attribution, :online)
+      params.require(:place).permit(:name, :address, :description, :subtitle, :price, :website, :phone, :price_2, :place_picture, :tag_list, :attribution, :online, :city)
     end
 
     def is_current_user?

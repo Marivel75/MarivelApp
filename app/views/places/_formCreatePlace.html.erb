@@ -12,48 +12,53 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name, "Nom" %>
+    <strong><%= form.label :name, "Nom" %></strong>
     <%= form.text_field :name, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :address, "Adresse" %>
+    <strong><%= form.label :address, "Adresse" %></strong>
     <%= form.text_area :address, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :subtitle, "Sous-titre" %>
+    <strong><%= form.label :city, "Ville" %></strong>
+    <%= form.text_field :city, class:"input" %>
+  </div>
+  <br>
+  <div class="field">
+    <strong><%= form.label :subtitle, "Sous-titre" %></strong>
     <%= form.text_field :subtitle, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :description, "Description" %>
+    <strong><%= form.label :description, "Description" %></strong>
     <%= form.hidden_field :description, id:'place_description', class:"input" %>
     <trix-editor input="place_description"></trix-editor>
   </div>
   <br>
   <div class="field">
-    <%= form.label :price, "Tarif" %>
+    <strong><%= form.label :price, "Tarif" %></strong>
     <%= form.text_field :price, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :price_2, "Autre tarif" %>
+    <strong><%= form.label :price_2, "Autre tarif" %></strong>
     <%= form.text_field :price_2, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :website, "Site internet" %>
+    <strong><%= form.label :website, "Site internet" %></strong>
     <%= form.text_field :website, class:"input" %>
   </div>
   <br>
   <div class="field">
-    <%= form.label :phone, "Téléphone" %>
+    <strong><%= form.label :phone, "Téléphone" %></strong>
     <%= form.text_field :phone, class:"input" %>
   </div>
   <br>
   <div class="field">
-  <p>Vous pouvez ajouter une photo à votre lieu :</p>
+  <strong><p>Vous pouvez ajouter une photo à votre lieu :</p></strong>
   <%= form.file_field :place_picture %>
   </div>
   <br>
