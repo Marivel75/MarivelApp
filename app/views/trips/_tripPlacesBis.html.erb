@@ -40,7 +40,16 @@
             </figure>
           </div>
           <div class="column is-three-quarters">
-            <h3 class="is-size-5 has-text-weight-semibold"><%= link_to "#{waypoint.rank} #{waypoint.place.name}", place_path(waypoint.place[:id]), class:"has-text-black"%></h3>
+            <div class="columns">
+              <div class="column is-narrow">
+                <div class="numberCircle">
+                  <%= waypoint.rank %>
+                </div>
+              </div>
+              <div class="column">
+                <h3 class="is-size-5 has-text-weight-semibold"><%= link_to "#{waypoint.place.name}", place_path(waypoint.place[:id]), class:"has-text-black"%></h3>
+              </div>
+            </div>
             <p class="subtitle has-text-black is-size-6"><%= waypoint.place.subtitle %></p>
           </div>
           <div class="column">
