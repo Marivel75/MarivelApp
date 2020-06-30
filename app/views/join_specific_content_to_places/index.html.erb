@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Join Specific Content To Places</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @join_specific_content_to_places.each do |join_specific_content_to_place| %>
+      <tr>
+        <td><%= link_to 'Show', join_specific_content_to_place %></td>
+        <td><%= link_to 'Edit', edit_join_specific_content_to_place_path(join_specific_content_to_place) %></td>
+        <td><%= link_to 'Destroy', join_specific_content_to_place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Join Specific Content To Place', new_join_specific_content_to_place_path %>

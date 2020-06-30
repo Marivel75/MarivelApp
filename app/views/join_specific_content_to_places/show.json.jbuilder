@@ -1,0 +1,1 @@
+json.partial! "join_specific_content_to_places/join_specific_content_to_place", join_specific_content_to_place: @join_specific_content_to_place

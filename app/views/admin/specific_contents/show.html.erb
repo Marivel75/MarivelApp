@@ -25,16 +25,20 @@
 
       <p>
         <strong>Contenu:</strong>
-        <%= @specific_content.content %>
+        <%= sanitize @specific_content.content %>
       </p>
 
       <p>
         <strong>Lien externe:</strong>
-        <%= @specific_content.external_link %>
+        <%= link_to @specific_content.external_link, "#{@specific_content.external_link}", target:"_blank" %>
       </p>
+      <br>
 
-      <%= link_to 'Éditer le contenu', edit_admin_specific_content_path(@specific_content) %> |
-      <%= link_to 'revenir à a liste des contenus', admin_specific_contents_path %>
+      <div class="buttons is-centered">
+        <%= link_to 'Éditer le contenu', edit_admin_specific_content_path(@specific_content), class:"button is-info" %>
+        <%= link_to 'revenir à la liste des contenus', admin_specific_contents_path, class:'button' %>
+      </div>
+
 
     </div>
   </div>

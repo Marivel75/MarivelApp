@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :join_specific_content_to_places
   # resources :specific_contents
 
   resources :join_region_to_places
