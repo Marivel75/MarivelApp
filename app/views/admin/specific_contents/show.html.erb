@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+
+
+      <% if @specific_content.specific_content_picture.attached? %>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="container">
+              <img src="<%= rails_blob_url(@specific_content.specific_content_picture)%>" alt="photo">
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <p>
+        <strong>Titre</strong>
+        <%= @specific_content.title %>
+      </p>
+
+      <p>
+        <strong>Sous-titre:</strong>
+        <%= @specific_content.subtitle %>
+      </p>
+
+      <p>
+        <strong>Contenu:</strong>
+        <%= @specific_content.content %>
+      </p>
+
+      <p>
+        <strong>Lien externe:</strong>
+        <%= @specific_content.external_link %>
+      </p>
+
+      <%= link_to 'Éditer le contenu', edit_admin_specific_content_path(@specific_content) %> |
+      <%= link_to 'revenir à a liste des contenus', admin_specific_contents_path %>
+
+    </div>
+  </div>
+</section>

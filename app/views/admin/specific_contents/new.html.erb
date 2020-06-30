@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+
+      <div class="container has-text-centered">
+        <h1 class="is-title is-size-1 has-text-black">Nouveau contenu</h1>
+      </div>
+
+      <%= render 'formSpecificContent', specific_content: @specific_content %>
+      <br>
+      <div class="container has-text-centered">
+        <%= link_to "Revenir à la liste des contenus", admin_specific_contents_path, class:"button" %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @specific_content.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @specific_content.subtitle %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @specific_content.content %>
+</p>
+
+<p>
+  <strong>External link:</strong>
+  <%= @specific_content.external_link %>
+</p>
+
+<%= link_to 'Edit', edit_specific_content_path(@specific_content) %> |
+<%= link_to 'Back', specific_contents_path %>

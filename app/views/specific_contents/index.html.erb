@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Specific Contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Subtitle</th>
+      <th>Content</th>
+      <th>External link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @specific_contents.each do |specific_content| %>
+      <tr>
+        <td><%= specific_content.title %></td>
+        <td><%= specific_content.subtitle %></td>
+        <td><%= specific_content.content %></td>
+        <td><%= specific_content.external_link %></td>
+        <td><%= link_to 'Show', specific_content %></td>
+        <td><%= link_to 'Edit', edit_specific_content_path(specific_content) %></td>
+        <td><%= link_to 'Destroy', specific_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Specific Content', new_specific_content_path %>

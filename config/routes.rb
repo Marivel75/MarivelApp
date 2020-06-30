@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # resources :specific_contents
+
   resources :join_region_to_places
 
   resources :trip_waypoints, only: [:edit, :update, :destroy]
@@ -35,6 +37,8 @@ Rails.application.routes.draw do
 
   scope 'admin', module: 'admin',  as: 'admin' do
     get 'admin', to: 'static#admin'
+
+    resources :specific_contents
 
     resources :users, only: [:index, :edit, :update]
 

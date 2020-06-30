@@ -1,0 +1,37 @@
+<section class='section'>
+  <div class="container has-text-centered">
+    <h1>Liste des contenus additionnels aux itinéraires et aux lieux</h1>
+  </div>
+  <br>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>External link</th>
+        <th>Date de création</th>
+        <th>Date de dernière actualisation</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @specific_contents.each do |specific_content| %>
+        <tr>
+          <td><%= specific_content.title %></td>
+          <td><%= specific_content.subtitle %></td>
+          <td><%= specific_content.external_link %></td>
+          <td><%= specific_content.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= specific_content.updated_at.strftime("%d/%m/%Y") %></td>
+          <td><%= link_to 'Voir le contenu', admin_specific_content_path(specific_content) %></td>
+          <td><%= link_to 'Éditer', edit_admin_specific_content_path(specific_content) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="container has-text-centered">
+    <%= link_to 'Écrire un nouveau contenu', new_admin_specific_content_path, class:"button is-primary" %>
+  </div>
+</section>

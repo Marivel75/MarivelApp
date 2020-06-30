@@ -1,0 +1,2 @@
+module SpecificContentsHelper
+end

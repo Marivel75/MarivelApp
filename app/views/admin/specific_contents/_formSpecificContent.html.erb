@@ -1,0 +1,46 @@
+<%= form_with(url: [:admin, specific_content], model: specific_content, local: true) do |f|    %>
+  <% if specific_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(specific_content.errors.count, "error") %> Les modifications n'ont pas pu être enregistrées :</h2>
+
+      <ul>
+      <% specific_content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <strong><%= f.label :title, "Titre" %></strong>
+    <%= f.text_field :title, class: 'input' %>
+  </div>
+  <br>
+  <div class="field">
+    <strong><%= f.label :title, "Sous-titre" %></strong>
+    <%= f.text_field :subtitle, class: 'input' %>
+  </div>
+  <br>
+  <div class="field">
+    <strong><%= f.label :content, "Contenu" %></strong>
+    <div class="control">
+      <%= f.hidden_field :content, id:'specific_content' %>
+      <trix-editor input="specific_content"></trix-editor>
+    </div>
+  </div>
+  <br>
+  <div class="field">
+    <strong><%= f.label :external_link, "Lien externe" %></strong>
+    <%= f.text_field :external_link, class: 'input' %>
+  </div>
+  <br>
+  <div class="field">
+  <p><strong>Vous pouvez ajouter une photo :</strong></p>
+  <%= f.file_field :specific_content_picture %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.submit "Enregistrer le contenu", class:"button is-primary is-fullwidth" %>
+  </div>
+
+<% end %>
