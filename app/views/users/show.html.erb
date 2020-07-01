@@ -27,11 +27,6 @@
             <%= link_to 'Modifier le mot de passe', edit_user_registration_path, class:'button is-warning is-rounded' %>
           </div>
         </div>
-        <div class="columns is-centered">
-          <div class="column has-text-centered is-narrow">
-            <%= link_to "Créer un itinéraire personnalisé", new_trip_path, class:"button is-rounded is-primary" %>
-          </div>
-        </div>
       <% end %>
   </section>
 <% end %>
@@ -80,23 +75,7 @@
 <section class="section">
   <div class="columns is-mobile is-centered">
     <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
-      <%= render 'showUserTrips' %>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="columns is-mobile is-centered">
-    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
       <%= render 'showSavedTrips' %>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="columns is-mobile is-centered">
-    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
-      <%= render 'showUserPlaces' %>
     </div>
   </div>
 </section>

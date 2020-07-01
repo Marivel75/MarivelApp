@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :join_specific_content_to_places
+  # resources :join_specific_content_to_places
   # resources :specific_contents
 
-  resources :join_region_to_places
+  # resources :join_region_to_places
 
-  resources :trip_waypoints, only: [:edit, :update, :destroy]
+  # resources :trip_waypoints, only: [:edit, :update, :destroy]
 
   root to: 'trips#index'
 
@@ -17,22 +17,20 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resources :trips do
+  resources :trips, only: [:index, :show] do
     resources :saved_trips, only: [:create, :destroy]
     # resources :places
-    resources :trip_waypoints, only: [:index, :new, :create], as: 'waypoint'
-    resources :trip_pictures, only: [:create]
+    # resources :trip_waypoints, only: [:index, :new, :create], as: 'waypoint'
+    # resources :trip_pictures, only: [:create]
   end
 
-  resources :places, except: [:destroy] do
-    resources :join_region_to_places, only: [:index, :new, :create, :destroy], as: 'region'
-  end
+  resources :places, only: [:show]
 
-  resources :tags, only: [:index]
+  # resources :tags, only: [:index]
 
   resources :users, only: [:show, :edit, :update] do
-    resources :trips
-    resources :avatars, only: [:create]
+    # resources :trips
+    # resources :avatars, only: [:create]
   end
 
 

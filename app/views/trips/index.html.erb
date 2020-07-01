@@ -4,7 +4,7 @@
   <% if isTraveler? %>
     <div class="container has-text-centered">
       <h2 class ="title is-2 has-text-black-bis"> Bienvenue <%= current_user.first_name%> </h2>
-      <%= link_to "Créer un itinéraire", new_trip_path, class:"button is-primary is-rounded" %>
+      <%= link_to "Accédez à votre compte", user_path(current_user), class:"button is-primary is-rounded" %>
     </div>
 
   <% elsif isPartner? %>

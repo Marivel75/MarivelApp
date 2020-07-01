@@ -31,6 +31,11 @@ class Place < ApplicationRecord
   has_many :join_specific_content_to_places
   has_many :specific_contents, through: :join_specific_content_to_places
 
+  scope :published_place, -> { where(online: true) }
+  scope :offline_place, -> { where(online: false) }
+
+
+
   def found_address_presence
     if latitude.blank? || longitude.blank?
       errors.add(:address, "Nous n'avons pas pu localiser l'adresse.")
