@@ -48,7 +48,7 @@ module Admin
     def update
       respond_to do |format|
         if @join_specific_content_to_place.update(join_specific_content_to_place_params)
-          format.html { redirect_to @join_specific_content_to_place, notice: 'Join specific content to place was successfully updated.' }
+          format.html { redirect_to edit_admin_place_path(@place), notice: 'Join specific content to place was successfully updated.' }
           format.json { render :show, status: :ok, location: @join_specific_content_to_place }
         else
           format.html { render :edit }
@@ -62,7 +62,7 @@ module Admin
     def destroy
       @join_specific_content_to_place.destroy
       respond_to do |format|
-        format.html { redirect_to join_specific_content_to_places_url, notice: 'Join specific content to place was successfully destroyed.' }
+        format.html { redirect_to edit_admin_place_path(@place), notice: 'Join specific content to place was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

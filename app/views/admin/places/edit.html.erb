@@ -66,6 +66,7 @@
         <br>
         <%= link_to "Ajouter une région", admin_place_region_index_path(@place), class:"button is-warning is-fullwidth" %>
         <br>
+        <hr>
       <div class="columns">
         <div class = "column">
           <div class="container">
@@ -93,6 +94,27 @@
         </div>
       </div>
       <br>
+      <% if @place.specific_contents %>
+        <div class="container has-text-centered">
+          <strong>Les contenus additionnels</strong>
+        </div>
+        <br>
+        <% @place.specific_contents.each do |specific_content| %>
+          <div class="columns is-centered">
+            <div class="column">
+              <strong><%= specific_content.title %></strong>
+            </div>
+            <div class="column">
+              <%= link_to 'Voir le contenu', admin_specific_content_path(specific_content.id), class:'button' %>
+            </div>
+            <div class="column">
+              <% join_specific_content_to_place = JoinSpecificContentToPlace.where(place_id: @place.id, specific_content_id: specific_content.id) %>
+              <%= link_to 'Supprimer', admin_place_specific_content_path(@place, join_specific_content_to_place.ids), method:"delete", data: {confirm: "Êtes-vous sûr de supprimer ce contenu du lieu ?"}, class:"button is-danger" %>
+            </div>
+
+          </div>
+        <% end %>
+      <% end %>
 
       <%= link_to "Ajouter du contenu additionnel", admin_place_specific_content_index_path(@place), class:'button is-warning is-fullwidth' %>
     </div>
