@@ -35,10 +35,30 @@
       <br>
       <p class="has-text-black"> <%= sanitize @place.description%></p>
 
+      <br>
+
+      <% if @place.specific_contents %>
+
+      <hr>
+        <% @place.specific_contents.each do |specific_content| %>
+        <div class="">
+          <figure class='image is-128x128 left-image'>
+            <img src="<%= rails_blob_url(specific_content.specific_content_picture)%>" alt="photo">
+          </figure>
+
+            <p class='has-text-black has-text-weight-bold'><%= specific_content.title %></p>
+            <p class="is-italic"><%= specific_content.subtitle %></p>
+            <br>
+            <p><%= sanitize specific_content.content %></p>
+
+        </div>
+
+
+        <% end %>
+        <hr>
+      <% end %>
     </div>
   </div>
-
-<br>
 
   <div class="columns is-centered">
 
