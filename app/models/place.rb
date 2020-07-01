@@ -28,6 +28,8 @@ class Place < ApplicationRecord
   has_many :join_region_to_places
   has_many :regions, through: :join_region_to_places
 
+  has_many :join_specific_content_to_places
+  has_many :specific_contents, through: :join_specific_content_to_places
 
   def found_address_presence
     if latitude.blank? || longitude.blank?

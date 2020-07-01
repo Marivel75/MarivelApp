@@ -39,7 +39,9 @@ Rails.application.routes.draw do
   scope 'admin', module: 'admin',  as: 'admin' do
     get 'admin', to: 'static#admin'
 
-    resources :specific_contents
+    resources :specific_contents do
+      # resources :join_specific_content_to_places, only: [:index, :new, :create, :destroy]
+    end
 
     resources :users, only: [:index, :edit, :update]
 
@@ -49,6 +51,7 @@ Rails.application.routes.draw do
 
     resources :places, only: [:index, :new, :edit, :update] do
       resources :join_region_to_places, only: [:index, :new, :create, :destroy], as: 'region'
+      resources :join_specific_content_to_places, only: [:index, :new, :create, :destroy], as: 'specific_content'
     end
 
     resources :tags, only: [:index]

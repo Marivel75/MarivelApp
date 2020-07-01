@@ -1,0 +1,37 @@
+<section class='section'>
+  <div class="columns is-centered">
+    <div class="column is-two-thirds-fullhd is-two-thirds-widescreen is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+      <div class="container has-text-centered">
+        <h1>liste des contenus additionnels</h1>
+      </div>
+      <br>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @specific_contents.each do |specific_content| %>
+            <tr>
+              <td><%= specific_content.id %></td>
+              <td><%= specific_content.title %></td>
+              <td><%= link_to 'Show', admin_specific_content_path(specific_content.id) %></td>
+              <td><%= link_to 'Edit', edit_admin_specific_content_path(specific_content.id) %></td>
+              <td><%= link_to 'Ajouter au lieu', admin_place_specific_content_index_path(specific_content_id: specific_content.id), method: :post, class: 'button'%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <div class="container has-text-centered">
+        <%= link_to 'Créer un nouveau contenu additionnel', new_admin_specific_content_path %>
+      </div>
+
+
+    </div>
+  </div>
+</section>

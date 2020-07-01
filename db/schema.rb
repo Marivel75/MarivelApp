@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_083448) do
+ActiveRecord::Schema.define(version: 2020_06_30_152715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2020_06_30_083448) do
     t.datetime "updated_at", null: false
     t.index ["place_id"], name: "index_join_region_to_places_on_place_id"
     t.index ["region_id"], name: "index_join_region_to_places_on_region_id"
+  end
+
+  create_table "join_specific_content_to_places", force: :cascade do |t|
+    t.bigint "place_id"
+    t.bigint "specific_content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_join_specific_content_to_places_on_place_id"
+    t.index ["specific_content_id"], name: "index_join_specific_content_to_places_on_specific_content_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -170,6 +179,8 @@ ActiveRecord::Schema.define(version: 2020_06_30_083448) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "join_region_to_places", "places"
   add_foreign_key "join_region_to_places", "regions"
+  add_foreign_key "join_specific_content_to_places", "places"
+  add_foreign_key "join_specific_content_to_places", "specific_contents"
   add_foreign_key "places", "users", column: "author_id"
   add_foreign_key "saved_trips", "trips"
   add_foreign_key "saved_trips", "users"
