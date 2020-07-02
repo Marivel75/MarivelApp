@@ -17,14 +17,14 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resources :trips, only: [:index, :show] do
+  resources :trips, only: [:new, :create, :index, :show] do
     resources :saved_trips, only: [:create, :destroy]
     # resources :places
     # resources :trip_waypoints, only: [:index, :new, :create], as: 'waypoint'
     # resources :trip_pictures, only: [:create]
   end
 
-  resources :places, only: [:show]
+  resources :places, only: [:new, :create, :show]
 
   # resources :tags, only: [:index]
 
