@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resources :trips, only: [:new, :create, :index, :show] do
+  resources :trips, except: [:edit, :destroy] do
     resources :saved_trips, only: [:create, :destroy]
     # resources :places
     # resources :trip_waypoints, only: [:index, :new, :create], as: 'waypoint'
