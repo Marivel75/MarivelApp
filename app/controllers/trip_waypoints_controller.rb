@@ -34,7 +34,7 @@ class TripWaypointsController < ApplicationController
 
     respond_to do |format|
       if @trip_waypoint.save
-        format.html { redirect_to edit_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire." }
+        format.html { redirect_to edit_admin_trip_path(@trip), notice: "Le lieu a été ajouté à l'itinéraire." }
         format.json { render :show, status: :created, location: @trip_waypoint }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class TripWaypointsController < ApplicationController
   # PATCH/PUT /trip_waypoints/1.json
   def update
     @trip_waypoint.update(trip_waypoint_params)
-    redirect_to edit_trip_path(@trip_waypoint.trip.id), notice: "La position de l'étape a été enregistrée."
+    redirect_to edit_admin_trip_path(@trip_waypoint.trip.id), notice: "La position de l'étape a été enregistrée."
     # respond_to do |format|
     #   if @trip_waypoint.update(trip_waypoint_params)
     #     format.html { redirect_to @trip_waypoint, notice: 'Trip waypoint was successfully updated.' }
@@ -64,7 +64,7 @@ class TripWaypointsController < ApplicationController
   def destroy
     @trip_waypoint.destroy
     respond_to do |format|
-      format.html { redirect_to edit_trip_path(@trip_waypoint.trip.id), notice: "L'étape a été supprimée." }
+      format.html { redirect_to edit_admin_trip_path(@trip_waypoint.trip.id), notice: "L'étape a été supprimée." }
       format.json { head :no_content }
     end
   end
