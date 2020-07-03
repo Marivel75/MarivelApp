@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # resources :join_region_to_places
 
-  # resources :trip_waypoints, only: [:edit, :update, :destroy]
+  resources :trip_waypoints, only: [:edit, :update, :destroy]
 
   root to: 'trips#index'
 
