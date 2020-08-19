@@ -12,7 +12,7 @@ class Place < ApplicationRecord
   end
 
   before_validation :geocode, if: :address_changed?
-  validates :name, :address, presence: true
+  validates :name, presence: true
   validate :found_address_presence
 
   belongs_to :author, class_name: 'User', optional: true
