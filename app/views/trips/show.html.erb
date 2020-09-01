@@ -32,9 +32,8 @@
 
   <div class="columns is-mobile is-centered">
     <div class="column is-half-desktop is-three-quarters-mobile">
-      <div class="box has-text-centered">
-        <p class="has-text-black-bis has-text-weight-semibold">Crée par <%= @trip.author.first_name %> <%= @trip.author.last_name %></p>
-        <p class="has-text-black-bis">le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
+      <div class="has-text-centered">
+        <p class="has-text-black-bis">Publié le <%= @trip.created_at.strftime("%d/%m/%Y")  %></p>
       </div>
     </div>
   </div>
