@@ -26,7 +26,7 @@
       <br>
       <div class="buttons is-centered">
         <%= link_to "Espace Admin", admin_admin_path, class:'button is-rounded' %>
-        <%= link_to "Ouvrir votre profil", admin_user_path(current_user.id), class:"button is-primary is-rounded" %>
+        <%= link_to "Ouvrir votre profil", user_path(current_user.id), class:"button is-primary is-rounded" %>
         <%= link_to "Ouvrir la carte", map_path, class:'button is-rounded is-outlined is-info' %>
       </div>
     </div>
@@ -51,7 +51,7 @@
 
       <h1 class="title is-2 has-text-black">Explorer les guides</h1>
 
-      <div class="columns">
+      <!-- <div class="columns">
         <div class="column is-two-thirds has-text-right">
           <h4 class="is-subtitle is-4 has-text-black has-text-weight-semibold">Filtrer par catégories :</h4>
         </div>
@@ -64,7 +64,7 @@
         <div class="column has-text-right">
           <%= link_to "À pied", category_path(id=3), class:"is-4 has-text-black has-text-right" %>
         </div>
-      </div>
+      </div> -->
 
       <div class="tile is-ancestor wrap-container">
         <% @trips.each do |trip| %>
