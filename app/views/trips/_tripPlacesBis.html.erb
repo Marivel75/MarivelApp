@@ -91,15 +91,10 @@
           </div>
         </div>
 
-
-
-
-
       </div>
     </div>
   <% end %>
 </section>
-
 
 <script>
 
@@ -107,11 +102,12 @@
   var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
   mapboxgl.accessToken = accessToken;
 
+
   var waypoints = {
     type: 'FeatureCollection',
     features : []
   };
-  gon.places.forEach(function(place) {
+  gon.trip_waypoints.forEach(function(place) {
     let new_feature = {
       type: 'Feature',
       geometry: {
@@ -133,12 +129,14 @@
   });
 
   var coords = []
-  gon.places.forEach(function(place) {
+  gon.trip_waypoints.forEach(function(place) {
     var new_array = [place.longitude, place.latitude];
     coords.push(new_array)
   });
 
   var listCoords = coords.join(";");
+
+  console.log(coords);
 
   //on initialise notre map sur le div #map
   var map = new mapboxgl.Map({
@@ -245,5 +243,7 @@
 
   // Add zoom and rotation controls to the map.
   map.addControl(new mapboxgl.NavigationControl());
+
+  console.log(gon.trip_waypoints[0]);
 
 </script>

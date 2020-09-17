@@ -9,7 +9,11 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-
+    gon.trip = @trip
+    gon.trip_waypoints = []
+    @trip.trip_waypoints.each do |n|
+      gon.trip_waypoints.push(n.place)
+    end
   end
 
   # GET /trips/new
