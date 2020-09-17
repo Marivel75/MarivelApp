@@ -14,6 +14,10 @@ class TripsController < ApplicationController
     @trip.trip_waypoints.each do |n|
       gon.trip_waypoints.push(n.place)
     end
+    gon.waypoints_rank = []
+    @trip.trip_waypoints.each do |r|
+      gon.waypoints_rank.push(r.rank)
+    end
   end
 
   # GET /trips/new

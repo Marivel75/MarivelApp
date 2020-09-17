@@ -155,8 +155,8 @@
     waypoints.features.forEach(function(marker) {
       // create a HTML element for each feature
       var el = document.createElement('i');
-      el.className = 'numberCircle';
-      el.innerHTML = "1";
+      el.className = 'fas fa-map-marker-alt fa-3x';
+      //el.innerHTML = gon.waypoints_rank ;
       var popup = new mapboxgl.Popup({ offset: 25 }).setHTML('<strong>' + marker.properties.name + '</strong><p>'+ marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '<strong>');
       // make a marker for each feature and add to the map
       new mapboxgl.Marker(el)
@@ -245,6 +245,6 @@
   // Add zoom and rotation controls to the map.
   map.addControl(new mapboxgl.NavigationControl());
 
-  console.log(gon.trip_waypoints[0]);
+  console.log(coords.indexOf(coords[0]) + 1);
 
 </script>
