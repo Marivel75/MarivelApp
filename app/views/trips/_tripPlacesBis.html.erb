@@ -101,40 +101,18 @@
 </section>
 
 
-
-
-
 <script>
 
   // RAJOUTER LA CLÉ EN DESSOUS
   var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
   mapboxgl.accessToken = accessToken;
 
-  //on initialise notre map sur le div #map
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10',
-    center: [<%= trip.places.first.longitude%>, <%= trip.places.first.latitude%>], //un centre initial [longitude, latitude] qui est le point de départ de l'itinéraire (facultatif).
-    zoom: 11 //un zoom initial (facultatif)
-  });
-
-  var language = new MapboxLanguage();
-  map.addControl(language);
-
-
-  var coords = []
-  gon.places.forEach(function(place) {
-    var new_array = [place.longitude, place.latitude];
-    coords.push(new_array)
-  });
-
-  var geojson = {
+  var waypoints = {
     type: 'FeatureCollection',
-    features: []
-  }
-
+    features : []
+  };
   gon.places.forEach(function(place) {
-    var new_feature = {
+    let new_feature = {
       type: 'Feature',
       geometry: {
         type: 'Point',
@@ -144,57 +122,122 @@
         name: place.name,
         description: place.description,
         subtitle: place.subtitle,
-        price: place.price_2,
+        price: place.price,
+        price2: place.price_2,
         website: place.website,
         phone: place.phone,
         address: place.address,
       }
     };
-    geojson.features.push(new_feature)
+    waypoints.features.push(new_feature)
   });
 
-  /**
-   * Assign a unique id to each geojson item. To use this `id`
-   * later to associate each point on the map with a listing
-   * in a sidebar.
-  */
-  geojson.features.forEach(function(geojson, i) {
-    geojson.properties.id = i;
+  var coords = []
+  gon.places.forEach(function(place) {
+    var new_array = [place.longitude, place.latitude];
+    coords.push(new_array)
   });
 
-  map.on('load', function () {
-      fitMap(map, coords);
+  var listCoords = coords.join(";");
+
+  //on initialise notre map sur le div #map
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [<%= trip.places.first.longitude%>, <%= trip.places.first.latitude%>], //un centre initial [longitude, latitude] qui est le point de départ de l'itinéraire
+    zoom: 11 //un zoom initial (facultatif)
   });
 
-  function fitMap(map, coords) {
-    var bounds = coords.reduce(function (bounds, coord) {
-      return bounds.extend(coord);
-      },
-      new mapboxgl.LngLatBounds(coords[0], coords[0]));
-    map.fitBounds(bounds, {
-      padding: 30 //marge autour des points
-    });
+  var language = new MapboxLanguage();
+  map.addControl(language);
 
-    addMarkers()
-  }
 
   // function to call on map load to add markers to map
   function addMarkers() {
-    geojson.features.forEach(function(marker) {
+    waypoints.features.forEach(function(marker) {
       // create a HTML element for each feature
       var el = document.createElement('div');
       el.className = 'fas fa-map-marker-alt fa-3x';
+      var popup = new mapboxgl.Popup({ offset: 25 }).setHTML('<strong>' + marker.properties.name + '</strong><p>'+ marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '<strong>');
       // make a marker for each feature and add to the map
       new mapboxgl.Marker(el)
         .setLngLat(marker.geometry.coordinates)
-        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-        .setHTML('<strong>' + marker.properties.name + '</strong><p>'+ marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '<strong>'))
+        .setPopup(popup) // add popups
         .addTo(map);
     });
+    //marker.togglePopup(); // toggle popup open or closed
+  };
 
-    marker.togglePopup(); // toggle popup open or closed
-  }
+  function getRoute() {
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + listCoords + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
 
+    console.log(url)
+
+    var req = new XMLHttpRequest();
+    req.open('GET', url, true);
+
+    req.onload = function() {
+      var json = JSON.parse(req.response);
+      var data = json.routes[0];
+      var route = data.geometry.coordinates;
+      var geojson = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: route
+        }
+      };
+
+      if (map.getSource('route')) {
+        map.getSource('route').setData(geojson);
+      } else {
+        map.addLayer({
+          id: 'route',
+          type: 'line',
+          source: {
+            type: 'geojson',
+            data: {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'LineString',
+                coordinates: geojson
+              }
+            }
+          },
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': '#0a0a5c',
+            'line-width': 5,
+            'line-opacity': 0.75
+          }
+        });
+      };
+    };
+
+     req.send();
+   };
+
+   function fitMap() {
+     var bounds = coords.reduce(function (bounds, coord) {
+       return bounds.extend(coord);
+     }, new mapboxgl.LngLatBounds(coords[0], coords[0]));
+     map.fitBounds(bounds, {
+       padding: 100
+     });
+    getRoute();
+  };
+
+    map.on('load', function() {
+      addMarkers();
+      fitMap(map, coords);
+    });
+
+    getRoute();
 
 
   // Add fulllscreen control on the map
