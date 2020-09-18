@@ -150,23 +150,6 @@
   map.addControl(language);
 
 
-  // function to call on map load to add markers to map
-  function addMarkers() {
-    waypoints.features.forEach(function(marker) {
-      // create a HTML element for each feature
-      var el = document.createElement('i');
-      el.className = 'fas fa-map-marker-alt fa-3x';
-      //el.innerHTML = gon.waypoints_rank ;
-      var popup = new mapboxgl.Popup({ offset: 25 }).setHTML('<strong>' + marker.properties.name + '</strong><p>'+ marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '<strong>');
-      // make a marker for each feature and add to the map
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(popup) // add popups
-        .addTo(map);
-    });
-    //marker.togglePopup(); // toggle popup open or closed
-  };
-
   function getRoute() {
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + listCoords + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
 
@@ -187,7 +170,6 @@
           coordinates: route
         }
       };
-
       if (map.getSource('route')) {
         map.getSource('route').setData(geojson);
       } else {
@@ -212,13 +194,30 @@
           paint: {
             'line-color': '#0a0a5c',
             'line-width': 5,
-            'line-opacity': 0.75
+            /*'line-opacity': 0.75*/
           }
         });
       };
     };
 
      req.send();
+   };
+
+   // function to call on map load to add markers to map
+   function addMarkers() {
+     waypoints.features.forEach(function(marker) {
+       // create a HTML element for each feature
+       let el = document.createElement('i');
+       el.className = 'numberCircle';
+       el.innerHTML = waypoints.features.indexOf(marker) + 1;
+       let popup = new mapboxgl.Popup({ offset: 25 }).setHTML('<strong>' + marker.properties.name + '</strong><p>'+ marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '<strong>');
+       // make a marker for each feature and add to the map
+       new mapboxgl.Marker(el)
+         .setLngLat(marker.geometry.coordinates)
+         .setPopup(popup) // add popups
+         .addTo(map);
+     });
+     //marker.togglePopup(); // toggle popup open or closed
    };
 
    function fitMap() {
