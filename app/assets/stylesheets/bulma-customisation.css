@@ -39,8 +39,12 @@ trix-editor .textarea {
 }
 
 
-.fa-user-circle, .fa-map-marker-alt, .fa-map-marker-alt, .fa-euro-sign, .fa-tty, .fa-print, .fa-globe {
+.fas {
 color: #0a0a5c;
+}
+
+.fa-search-location {
+  color: white;
 }
 
 .fit-image {
@@ -88,4 +92,17 @@ color: #0a0a5c;
   cursor: pointer;
   padding: 15px;
   border-radius: 4px;
+}
+
+#datas {
+  position: absolute;
+  margin: 20px;
+  width: 30%;
+  top: 0;
+  bottom: 1%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow-y: scroll;
+  font-family: sans-serif;
+  line-height: 2em;
 }

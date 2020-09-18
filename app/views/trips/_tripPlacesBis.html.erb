@@ -43,10 +43,15 @@
   </div>
 
   <div class="columns is-mobile is-centered">
-    <div class="column is-three-quarters-mobile is-three-fifths-tablet is-two-thirds-desktop is-three-quarters-widescreen is-three-quarters-fullhd">
-      <div id="map" style="width: 100%; height: 350px;"></div>
+    <div class="column is-three-quarters-mobile">
+      <div class="container">
+        <div id="map" style="width: 100%; height: 500px;"></div>
+        <div id="datas" class="is-hidden-mobile"></div>
+      </div>
+
     </div>
   </div>
+
 </div>
 
 <br>
@@ -198,6 +203,70 @@
           }
         });
       };
+
+      var datasDiv = document.getElementById('datas');
+
+      // Calcul du temps de trajet
+      let totalSeconds = data.duration
+      let hours = Math.floor(totalSeconds / 3600);
+      totalSeconds %= 3600;
+      let minutes = Math.floor(totalSeconds / 60);
+      let seconds = totalSeconds % 60;
+
+      minutes = String(minutes).padStart(2, "0");
+      hours = String(hours).padStart(2, "0");
+      seconds = String(seconds).padStart(2, "0");
+
+      let tripDuration = hours +':'+ ('0'+minutes).slice(-2);
+
+      // Récupération du nombre d'étapes
+      let nbWaypoints = json.waypoints.length;
+
+      // Récupération de la distance totale
+      let tripDistance = data.distance;
+      tripDistance = Math.round(tripDistance / 100) / 10;
+
+      // Récupération du nom de chaque étape
+      let waypointsNames = [];
+      waypoints.features.forEach(function(feature) {
+        let name = feature.properties.name
+        waypointsNames.push(name)
+      });
+
+      // Récupération de la distance entre chaque étape
+      let waypointsDistance = [];
+      let legs = data.legs;
+      Object.values(legs);
+      legs.forEach(function(leg) {
+        let distance = Math.round(leg.distance / 100) / 10;
+        waypointsDistance.push(distance)
+      });
+      console.log(waypointsDistance)
+
+      // Récupération du temps de trajet entre chaque étape
+      let waypointsDuration = [];
+      legs.forEach(function(leg) {
+        let totalSeconds = leg.duration
+        let hours = Math.floor(totalSeconds / 3600);;
+        totalSeconds %= 3600;
+        let minutes = Math.floor(totalSeconds / 60);
+        let seconds = totalSeconds % 60
+        minutes = String(minutes).padStart(2, "0");
+        hours = String(hours).padStart(2, "0");
+        seconds = String(seconds).padStart(2, "0");
+        let duration = hours +':'+ ('0'+minutes).slice(-2) +':'+ ('0'+seconds).slice(-2);
+        waypointsDuration.push(duration)
+      });
+      console.log(waypointsDuration)
+
+      // Création des tripDetails
+      let tripDetails = [];
+      for (i = 0; i < waypointsNames.length - 1; i++) {
+        tripDetails.push("<i class='fas fa-map-marker-alt fa-lg'></i> <span class='pl-3 has-text-weight-bold has-text-black is-size-6'>" + waypointsNames[i] + "</span><p class='has-text-right is-size-7 has-text-weight-bold has-text-black'>" + waypointsDistance[i] + " km</p><p class='has-text-right is-size-7 has-text-weight-bold has-text-black''>" + waypointsDuration[i] + "</p>");
+      }
+      // Affichage des datas du tripDuration
+      datasDiv.innerHTML = "<h4 class='title is-5 has-text-centered has-text-black'> Données globales </h4><p class='pl-3 is-size-7 has-text-centered'><i class='fas fa-lg fa-clock'></i> " + tripDuration + "<strong class='is-size-5'> | </strong><i class='fas fa-map-marker-alt fa-lg'></i> " + nbWaypoints + "<strong class='is-size-5'> | </strong> <i class='fas fa-lg fa-road'></i> " + tripDistance + "km</p><br><h4 class='title is-5 has-text-black has-text-centered'> Détails de l'itinéraire</h4><p class='has-text-centered'><i class='fas fa-lg fa-route'></i></p>" + tripDetails.join(" ") + "<i class='fas fa-map-marker-alt fa-lg'></i> <span class=' pl-3 has-text-weight-bold is-size-6 has-text-black'>" + waypointsNames.slice(-1)[0] + "</span><p class='has-text-centered'><i class='fas fa-lg fa-flag-checkered'></i></p>";
+
     };
 
      req.send();
@@ -225,7 +294,7 @@
        return bounds.extend(coord);
      }, new mapboxgl.LngLatBounds(coords[0], coords[0]));
      map.fitBounds(bounds, {
-       padding: 100
+       padding: 80
      });
     getRoute();
   };
