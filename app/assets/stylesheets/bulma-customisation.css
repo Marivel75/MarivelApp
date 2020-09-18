@@ -106,3 +106,10 @@ color: #0a0a5c;
   font-family: sans-serif;
   line-height: 2em;
 }
+
+#tripNav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  z-index: 999;
+}
