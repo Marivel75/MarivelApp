@@ -47,6 +47,10 @@ color: #0a0a5c;
   color: white;
 }
 
+.fa-camera-retro {
+  color: white;
+}
+
 .fit-image {
   object-fit: cover;
   /*border: solid black 1px;*/

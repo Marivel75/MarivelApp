@@ -6,12 +6,15 @@
       </div>
     </div>
     <div class="hero-foot">
-      <div class="container has-text-centered">
-        <button id="imgButton" type="button" name="button" class="button is-primary is-light has-text-black">Agrandir</button>
+      <div class="container">
+        <ul>
+          <li><a id="imgButton" type="button" name="button" style="margin-left: 15px;"><i class="fas fa-camera-retro fa-2x"></i></a></li>
+          <% if place.attribution %>
+            <li><p class="is-size-7 has-text-grey-light has-text-right"><%= place.attribution %></p></li>
+          <% end %>
+        </ul>
       </div>
-      <% if place.attribution %>
-        <p class="is-size-7 has-text-grey-light has-text-right"><%= place.attribution %></p>
-      <% end %>
+
     </div>
 
   </section>
@@ -41,7 +44,6 @@
           <div class="column is-narrow">
             <nav id="placeNav" class="panel has-background-white">
               <p class="panel-tabs">
-                <a href="#description" class="is-size-6">Description</a>
                 <a href="#carto" class="is-size-6">Carto</a>
               </p>
             </nav>
@@ -55,11 +57,6 @@
   </div>
 
 </section>
-
-<div id="description"  class="container is-fluid has-background-white">
-  <p class="has-text-white">transition</p>
-  <br>
-</div>
 
 <section>
   <div class="columns is-mobile is-centered">
