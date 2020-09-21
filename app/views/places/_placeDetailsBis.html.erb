@@ -1,90 +1,3 @@
-<section class="section">
-  <div class="columns is-centered">
-    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
-      <div class="container">
-        <h1 class="title is-4 has-text-black">
-          <%= place.name %>
-        </h1>
-
-        <!-- Infos pratiques -->
-        <div class="columns is-mobile">
-          <div class="column is-narrow">
-            <i class="fas fa-map-marker-alt fa-lg"></i>
-          </div>
-          <div class="column">
-            <p class="is-size-6 has-text-black"><%= place.address %></p>
-          </div>
-        </div>
-        <% if place.phone != "" %>
-          <div class="columns is-mobile">
-            <div class="column is-narrow">
-              <i class="fas fa-tty fa-lg"></i>
-            </div>
-            <div class="column">
-              <p class="is-size-6 has-text-black"><%= place.phone %></p>
-            </div>
-          </div>
-        <% end %>
-
-        <% if place.website != "" %>
-          <div class="columns is-mobile">
-            <div class="column is-narrow">
-              <i class="fas fa-globe fa-lg"></i>
-            </div>
-            <div class="column">
-              <p class="is-size-6 has-text-black"><%= link_to place.website, "#{place.website}", target:"_blank" %>></p>
-            </div>
-          </div>
-        <% end %>
-
-
-        <!-- Infos touristiques -->
-        <div class="columns">
-          <% if place.price != "" %>
-            <div class="column is-narrow">
-              <div class="columns is-mobile">
-                <div class="column is-narrow">
-                  <i class="fas fa-euro-sign fa-lg"></i>
-                </div>
-                <div class="column">
-                  <p class="is-size-6 has-text-black"><%= place.price %></p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          <% if place.price_2 != "" %>
-            <div class="column is-narrow">
-              <div class="columns is-mobile">
-                <div class="column is-narrow">
-                  <i class="fas fa-euro-sign fa-lg"></i>
-                </div>
-                <div class="column">
-                  <p class="is-size-6 has-text-black"><%= place.price_2  %></p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="columns">
-          <div class="column is-narrow">
-            <nav id="placeNav" class="panel has-background-white">
-              <p class="panel-tabs">
-                <a href="#description" class="is-size-6">Description</a>
-                <a href="#carto" class="is-size-6">Carto</a>
-              </p>
-            </nav>
-          </div>
-          <div class="column">
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
 <% if place.place_picture.attached? %>
   <section class="hero is-medium" style="background:url(<%=rails_blob_url(@place.place_picture)%>);background-position: center;background-size:cover;">
     <div class="hero-body">
@@ -115,6 +28,33 @@
   </div>
 
 <% end %>
+
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+      <div class="container">
+        <h1 class="title is-4 has-text-black">
+          <%= place.name %>
+        </h1>
+
+        <div class="columns">
+          <div class="column is-narrow">
+            <nav id="placeNav" class="panel has-background-white">
+              <p class="panel-tabs">
+                <a href="#description" class="is-size-6">Description</a>
+                <a href="#carto" class="is-size-6">Carto</a>
+              </p>
+            </nav>
+          </div>
+          <div class="column">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
 
 <div id="description"  class="container is-fluid has-background-white">
   <p class="has-text-white">transition</p>
@@ -157,12 +97,81 @@
   <p class="has-text-white">transition</p>
   <br>
 </div>
+
 <section class="section">
-  <div class="columns is-mobile is-centered">
-    <div class="column is-three-quarters-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd has-text-centered">
-      <div id="map" style="width: 100%; height: 350px;"></div>
+  <div class="columns is-centered">
+
+    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+
+      <div class="columns is-centered">
+
+        <div class="column">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-map-marker-alt fa-2x icon-margin"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.address %></p>
+            </div>
+          </div>
+
+          <% if @place.phone !="" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <span><i class="fas fa-tty fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.phone %></p>
+            </div>
+          </div>
+          <% end %>
+
+          <% if @place.website != "" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-globe fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= link_to @place.website, "#{@place.website}", target:"_blank"  %></p>
+            </div>
+          </div>
+          <% end %>
+
+          <% if @place.price !="" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-euro-sign fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.price %></p>
+            </div>
+          </div>
+          <% end %>
+
+          <% if @place.price_2 !="" %>
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-euro-sign fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= @place.price_2 %></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+        <div class="column is-narrow">
+
+        </div>
+
+        <div class="column">
+          <div id="map" style="width: 100%; height: 350px;"></div>
+        </div>
+      </div>
+
     </div>
   </div>
+
 </section>
 
 <script>
