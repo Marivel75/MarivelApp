@@ -1,0 +1,205 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title is-1 has-text-black">
+      <%= place.name %>
+    </h1>
+
+    <!-- Infos pratiques -->
+    <div class="columns is-mobile">
+      <div class="column is-narrow">
+        <i class="fas fa-map-marker-alt fa-lg"></i>
+      </div>
+      <div class="column">
+        <p><%= place.address %></p>
+      </div>
+    </div>
+    <div class="columns">
+      <% if place.phone %>
+        <div class="column is-narrow">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-tty fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= place.phone %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% if place.website %>
+        <div class="column is-narrow">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-globe fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= link_to place.website, "#{place.website}", target:"_blank"  %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Infos touristiques -->
+    <div class="columns">
+      <% if place.price %>
+        <div class="column is-narrow">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-euro-sign fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= place.price %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% if place.price_2 %>
+        <div class="column is-narrow">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <i class="fas fa-euro-sign fa-lg"></i>
+            </div>
+            <div class="column">
+              <p><%= place.price_2  %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="columns">
+      <div class="column is-narrow">
+        <nav id="placeNav" class="panel has-background-white">
+          <p class="panel-tabs">
+            <a href="#description" class="is-size-6">Description</a>
+            <a href="#map" class="is-size-6">Carto</a>
+          </p>
+        </nav>
+      </div>
+      <div class="column">
+
+      </div>
+
+    </div>
+  </div>
+  <br>
+
+</section>
+
+<% if place.place_picture.attached? %>
+  <section class="hero is-large has-background-black">
+    <div class="hero-body" style="background:url(<%=rails_blob_url(place.place_picture)%>);background-position: center;background-size:cover;">
+    </div>
+
+  </section>
+
+
+  <% if place.attribution %>
+    <p class="is-size-7 has-text-grey-light has-text-right"><%= place.attribution %></p>
+  <% end %>
+
+<% else %>
+  <section class="hero is-medium" style="background-size:cover;background-image: url('https://images.unsplash.com/photo-1589596619062-068730a17443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80')">
+  </section>
+<% end %>
+
+<section>
+  <div class="columns is-mobile is-centered">
+    <div class="column is-full-mobile is-three-quarters-tablet is-three-quarters-desktop is-three-fifths-widescreen is-three-fifths-fullhd">
+      <br>
+      <div class="container is-fluid">
+
+        <p id="description" class="has-text-black"> <%= sanitize place.description%></p>
+
+        <% if place.specific_contents %>
+          <% place.specific_contents.each do |specific_content| %>
+          <hr>
+          <div class="">
+            <figure class='image is-128x128 left-image'>
+              <img src="<%= rails_blob_url(specific_content.specific_content_picture)%>" alt="photo">
+            </figure>
+
+              <p class='has-text-black has-text-weight-bold'><%= specific_content.title %></p>
+              <p class="is-italic"><%= specific_content.subtitle %></p>
+              <br>
+              <p><%= sanitize specific_content.content %></p>
+          </div>
+          <hr>
+          <% end %>
+        <% end %>
+
+      </div>
+      <br>
+
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div id="map" style="width: 100%; height: 350px;"></div>
+  </div>
+</section>
+
+<script>
+
+  var accessToken =  '<%= ENV['MAPBOX_KEY']%>';
+
+  mapboxgl.accessToken = accessToken;
+
+  var place = gon.place
+  var geojson = {type: 'FeatureCollection', features: [
+     {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [place.longitude, place.latitude]
+      },
+      properties: {
+        name: place.name,
+        description: place.description,
+        subtitle: place.subtitle,
+        price: place.price_2,
+        website: place.website,
+        phone: place.phone,
+        address: place.address
+      }
+    }
+  ]}
+
+
+  //on initialise notre map sur le div #map
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [place.longitude,place.latitude], //un centre initial [longitude, latitude] (facultatif)
+    zoom: 7 //un zoom initial (facultatif)
+  });
+
+  // Default Language : Français
+  mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js');
+  map.addControl(new MapboxLanguage({
+    defaultLanguage: 'fr'
+  }));
+
+  geojson.features.forEach(function(marker) {
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = ' fas fa-map-marker-alt fa-3x ';
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML('<strong>' + marker.properties.name + '</strong><p>' + marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '</strong>'))
+      .addTo(map);
+  });
+
+  // Add fulllscreen control on the map
+  map.addControl(new mapboxgl.FullscreenControl());
+
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
+
+</script>

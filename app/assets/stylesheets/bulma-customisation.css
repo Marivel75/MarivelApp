@@ -119,3 +119,10 @@ color: #0a0a5c;
   top: 4rem;
   z-index: 999;
 }
+
+#placeNav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  z-index: 999;
+}
