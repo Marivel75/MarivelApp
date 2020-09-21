@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="columns">
-      <% if place.phone %>
+      <% if place.phone != "" %>
         <div class="column is-narrow">
           <div class="columns is-mobile">
             <div class="column is-narrow">
@@ -26,7 +26,7 @@
           </div>
         </div>
       <% end %>
-      <% if place.website %>
+      <% if place.website != "" %>
         <div class="column is-narrow">
           <div class="columns is-mobile">
             <div class="column is-narrow">
@@ -42,7 +42,7 @@
 
     <!-- Infos touristiques -->
     <div class="columns">
-      <% if place.price %>
+      <% if place.price != "" %>
         <div class="column is-narrow">
           <div class="columns is-mobile">
             <div class="column is-narrow">
@@ -54,7 +54,7 @@
           </div>
         </div>
       <% end %>
-      <% if place.price_2 %>
+      <% if place.price_2 != "" %>
         <div class="column is-narrow">
           <div class="columns is-mobile">
             <div class="column is-narrow">
