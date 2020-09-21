@@ -45,22 +45,21 @@
         <% end %>
     </div>
   </div>
+</div>
 
-  <div id="carto" class="container is-fluid has-background-primary-light">
-    <p class="has-text-white-ter">transition</p>
-    <br><br><br><br>
-  </div>
+<div id="carto" class="container is-fluid has-background-primary-light">
+  <p class="has-text-white-ter">transition</p>
+  <br><br><br><br>
+</div>
 
-  <div class="columns is-mobile is-centered">
-    <div class="column is-three-quarters">
-      <div class="container">
-        <div id="map" style="width: 100%; height: 500px;"></div>
-        <div id="datas" class="is-hidden-mobile"></div>
-      </div>
-
+<div class="columns is-mobile is-centered">
+  <div class="column is-three-quarters">
+    <div class="container">
+      <div id="tripMap"></div>
+      <div id="datas" class="is-hidden-mobile"></div>
     </div>
-  </div>
 
+  </div>
 </div>
 
 <div id="guide" class="container is-fluid has-background-primary-light">
@@ -155,9 +154,9 @@
 
   console.log(coords);
 
-  //on initialise notre map sur le div #map
+  //on initialise notre map sur le div #tripMap
   var map = new mapboxgl.Map({
-    container: 'map',
+    container: 'tripMap',
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [<%= trip.places.first.longitude%>, <%= trip.places.first.latitude%>], //un centre initial [longitude, latitude] qui est le point de départ de l'itinéraire
     zoom: 11 //un zoom initial (facultatif)
@@ -306,7 +305,7 @@
        return bounds.extend(coord);
      }, new mapboxgl.LngLatBounds(coords[0], coords[0]));
      map.fitBounds(bounds, {
-       padding: 80
+       padding: 50
      });
     getRoute();
   };
@@ -325,6 +324,5 @@
   // Add zoom and rotation controls to the map.
   map.addControl(new mapboxgl.NavigationControl());
 
-  console.log(coords.indexOf(coords[0]) + 1);
 
 </script>

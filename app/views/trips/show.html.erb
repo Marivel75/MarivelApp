@@ -7,6 +7,7 @@
     <a href="#guide" class="has-text-black is-size-5">Guide</a>
   </p>
 </nav>
+
 <section class="section">
   <% if isAdmin? && @trip.online == false %>
     <p class="has-text-centered has-text-danger">Cet itinéraire n'est pas en ligne. Vous le visionnez actuellement tel qu'il apparaîtrait s'il était publié.</p>
@@ -49,6 +50,7 @@
       <p class="has-text-black-bis"><%= sanitize @trip.description%></p>
     </div>
   </div>
+</section>
   <br>
 
   <% if !@trip.places.empty? %>
@@ -59,6 +61,8 @@
     </div>
   <% end %>
   <br>
+
+<section class="section">
   <% if isAdmin? %>
     <div class="buttons is-centered">
       <%= link_to "Éditer l'itinéraire", edit_admin_trip_path(@trip[:id]), class:"button is-info" %>
