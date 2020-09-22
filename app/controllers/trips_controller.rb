@@ -18,6 +18,10 @@ class TripsController < ApplicationController
     @trip.trip_waypoints.each do |r|
       gon.waypoints_rank.push(r.rank)
     end
+    gon.routingProfiles = []
+    Category.all.each do |c|
+      gon.routingProfiles << c.name
+    end
   end
 
   # GET /trips/new

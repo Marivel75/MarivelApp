@@ -52,9 +52,25 @@
   <br><br><br><br>
 </div>
 
+
 <div class="columns is-mobile is-centered">
   <div class="column is-three-quarters">
     <div class="container">
+      <div id="profileChoice">
+        <div class="tabs is-toggle">
+          <ul>
+            <li>
+              <a id="drivingProfile">Voiture</a>
+            </li>
+            <li>
+              <a id="walkingProfile">À pied</a>
+            </li>
+            <li>
+              <a id="cyclingProfile">À vélo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div id="tripMap"></div>
       <div id="datas" class="is-hidden-mobile"></div>
     </div>
@@ -165,11 +181,45 @@
   var language = new MapboxLanguage();
   map.addControl(language);
 
+  let routingProfilesFr = gon.routingProfiles;
+  let routingProfile = "<%= trip.category.name %>";
+  if (routingProfile === "Roadtrip") {
+    routingProfile = "driving";
+  } else if (routingProfile === "À pied") {
+    routingProfile = "walking";
+  } else if (routingProfile === "À vélo") {
+    routingProfile = "cycling";
+  } else {
+
+  };
+
+  let drivingProfile = document.getElementById('drivingProfile');
+  let walkingProfile = document.getElementById('walkingProfile');
+  let cyclingProfile = document.getElementById('cyclingProfile');
+  let routingProfileIcon = "<i class='fas fa-car fa-lg'></i>"
+
+  drivingProfile.addEventListener('click', function() {
+   routingProfile = "driving";
+   routingProfileIcon = "<i class='fas fa-car fa-lg'></i>";
+   fitMap(map, coords);
+  });
+  walkingProfile.addEventListener('click', function() {
+   routingProfile = "walking";
+   routingProfileIcon = "<i class='fas fa-walking fa-lg'></i>";
+   fitMap(map, coords);
+  });
+  cyclingProfile.addEventListener('click', function() {
+   routingProfile = "cycling";
+   routingProfileIcon = "<i class='fas fa-biking fa-lg'></i>";
+   fitMap(map, coords);
+  });
+
 
   function getRoute() {
-    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + listCoords + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/' + routingProfile + '/'  + listCoords + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
 
     console.log(url)
+    console.log(routingProfile)
 
     var req = new XMLHttpRequest();
     req.open('GET', url, true);
@@ -276,7 +326,7 @@
         tripDetails.push("<i class='fas fa-map-marker-alt fa-lg'></i> <span class='pl-3 has-text-weight-bold has-text-black is-size-6'>" + waypointsNames[i] + "</span><p class='has-text-right'>|</p><p class='has-text-right is-size-7 has-text-weight-bold has-text-black'>" + waypointsDistance[i] + " km</p><p class='has-text-right is-size-7 has-text-weight-bold has-text-black'>" + waypointsDuration[i] + "</p><p class='has-text-right'><i class='fas fa-angle-double-down'></i></p>");
       }
       // Affichage des datas du tripDuration
-      datasDiv.innerHTML = "<h4 class='title is-5 has-text-centered has-text-black'> Données globales </h4><p class='pl-3 is-size-7 has-text-centered'><i class='fas fa-lg fa-clock'></i> " + tripDuration + "<strong class='is-size-5'> | </strong><i class='fas fa-map-marker-alt fa-lg'></i> " + nbWaypoints + "<strong class='is-size-5'> | </strong> <i class='fas fa-lg fa-road'></i> " + tripDistance + "km</p><br><h4 class='title is-5 has-text-black has-text-centered'> Détails de l'itinéraire</h4><p class='has-text-centered'><i class='fas fa-lg fa-route'></i></p>" + tripDetails.join(" ") + "<i class='fas fa-map-marker-alt fa-lg'></i> <span class=' pl-3 has-text-weight-bold is-size-6 has-text-black'>" + waypointsNames.slice(-1)[0] + "</span><p class='has-text-centered'><i class='fas fa-lg fa-flag-checkered'></i></p>";
+      datasDiv.innerHTML = "<h4 class='title is-5 has-text-centered has-text-black'> Données globales </h4><p class='pl-3 is-size-7 has-text-centered'><i class='fas fa-lg fa-clock'></i> " + tripDuration + "<strong class='is-size-5'> | </strong><i class='fas fa-map-marker-alt fa-lg'></i> " + nbWaypoints + "<strong class='is-size-5'> | </strong> <i class='fas fa-lg fa-road'></i> " + tripDistance + "km</p><p class='pl-3 is-size-7'> Mode de transport : " + routingProfileIcon + "</p><br><h4 class='title is-5 has-text-black has-text-centered'> Détails de l'itinéraire</h4><p class='has-text-centered'><i class='fas fa-lg fa-route'></i></p>" + tripDetails.join(" ") + "<i class='fas fa-map-marker-alt fa-lg'></i> <span class=' pl-3 has-text-weight-bold is-size-6 has-text-black'>" + waypointsNames.slice(-1)[0] + "</span><p class='has-text-centered'><i class='fas fa-lg fa-flag-checkered'></i></p>";
 
     };
 
