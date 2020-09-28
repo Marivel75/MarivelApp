@@ -15,37 +15,28 @@
 
   <div class="navbar-menu" id="navMenu">
 
-  <% if user_signed_in? %>
-    <div class="navbar-start">
-      <div class="columns is-mobile">
-        <div class="column is-narrow">
 
-        </div>
-        <div class="column is-narrow">
-          <%= form_with url: '/search', method: "get", local: true do %>
-          <div class="navbar-item field has-addons">
-            <div class="control">
-              <%= text_field_tag :q, params[:q], class:"input" %>
-            </div>
-            <div class="control">
-              <%= button_tag :submit, class:"button is-black" do %>
-                <i class="fas fa-search-location"></i>
-              <% end %>
-            </div>
+  <div class="navbar-start">
+    <div class="columns is-mobile">
+      <div class="column is-narrow">
+      </div>
+      <div class="column is-narrow">
+        <%= form_with url: '/search', method: "get", local: true do %>
+        <div class="navbar-item field has-addons">
+          <div class="control">
+            <%= text_field_tag :q, params[:q], class:"input" %>
           </div>
-          <% end %>
-        </div>
-
-        <% if isAdmin? %>
-          <div class="column is-narrow">
-            <div class="navbar-item">
-              <%= link_to "Carto", map_path, class:'button is-rounded is-outlined is-info' %>
-            </div>
+          <div class="control">
+            <%= button_tag :submit, class:"button is-black" do %>
+              <i class="fas fa-search-location"></i>
+            <% end %>
           </div>
+        </div>
         <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
+
 
     <div class="navbar-end">
       <% if isTraveler? %>
