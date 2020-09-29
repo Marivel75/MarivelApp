@@ -181,6 +181,30 @@
   var language = new MapboxLanguage();
   map.addControl(language);
 
+  // function to call on map load to add markers to map
+  function addMarkers() {
+    waypoints.features.forEach(function(marker) {
+      // create a HTML element for each feature
+      let el = document.createElement('i');
+      el.className = 'numberCircle';
+      el.innerHTML = waypoints.features.indexOf(marker) + 1;
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+      el.addEventListener('click', (e) => createPopUp(marker));
+    });
+   };
+
+  function createPopUp(currentFeature) {
+    let popUps = document.getElementsByClassName('mapboxgl-popup');
+    if (popUps[0]) popUps[0].remove();
+    let popup = new mapboxgl.Popup({closeOnClick: false})
+     .setLngLat(currentFeature.geometry.coordinates)
+     .setHTML("<div class='is-inline-flex'><figure class='image is-48x48'><img src='https://bulma.io/images/placeholders/128x128.png'></figure><h3>" + currentFeature.properties.name + "</h3></div><h4>"+ currentFeature.properties.address + "</h4><a href=" + currentFeature.properties.website + " target=_blank class='is-pulled-right'>Détails<a>")
+     .addTo(map);
+  };
+
   let routingProfilesFr = gon.routingProfiles;
   let routingProfile = "<%= trip.category.name %>";
   let routingProfileIcon;
@@ -336,22 +360,6 @@
      req.send();
    };
 
-   // function to call on map load to add markers to map
-   function addMarkers() {
-     waypoints.features.forEach(function(marker) {
-       // create a HTML element for each feature
-       let el = document.createElement('i');
-       el.className = 'numberCircle';
-       el.innerHTML = waypoints.features.indexOf(marker) + 1;
-       let popup = new mapboxgl.Popup({ offset: 25 }).setHTML('<strong>' + marker.properties.name + '</strong><p>'+ marker.properties.address + '</p>' + '<strong>' + marker.properties.website + '<strong>');
-       // make a marker for each feature and add to the map
-       new mapboxgl.Marker(el)
-         .setLngLat(marker.geometry.coordinates)
-         .setPopup(popup) // add popups
-         .addTo(map);
-     });
-     //marker.togglePopup(); // toggle popup open or closed
-   };
 
    function fitMap() {
      var bounds = coords.reduce(function (bounds, coord) {
