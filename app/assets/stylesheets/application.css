@@ -11,8 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
 
- *= require bulma-customisation
  *= require mapboxMaps
+ *= require bulma-customisation
  *= require trix
  *= require mapbox-gl
  *= require mapbox-gl-directions

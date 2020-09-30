@@ -160,15 +160,12 @@
     waypoints.features.push(new_feature)
   });
 
-  var coords = []
+  var coords = [];
   gon.trip_waypoints.forEach(function(place) {
     var new_array = [place.longitude, place.latitude];
     coords.push(new_array)
   });
-
   var listCoords = coords.join(";");
-
-  console.log(coords);
 
   //on initialise notre map sur le div #tripMap
   var map = new mapboxgl.Map({
@@ -201,11 +198,11 @@
     if (popUps[0]) popUps[0].remove();
     let popup = new mapboxgl.Popup({closeOnClick: false})
      .setLngLat(currentFeature.geometry.coordinates)
-     .setHTML("<div class='is-inline-flex'><figure class='image is-48x48'><img src='https://bulma.io/images/placeholders/128x128.png'></figure><h3>" + currentFeature.properties.name + "</h3></div><h4>"+ currentFeature.properties.address + "</h4><a href=" + currentFeature.properties.website + " target=_blank class='is-pulled-right'>Détails<a>")
+     .setHTML("<h3>" + currentFeature.properties.name + "</h3><h4>"+ currentFeature.properties.address + "</h4><a href=" + currentFeature.properties.website + " target=_blank class='is-pulled-right'>Détails<a>")
      .addTo(map);
   };
 
-  let routingProfilesFr = gon.routingProfiles;
+
   let routingProfile = "<%= trip.category.name %>";
   let routingProfileIcon;
   if (routingProfile === "Roadtrip") {
@@ -246,7 +243,6 @@
     var url = 'https://api.mapbox.com/directions/v5/mapbox/' + routingProfile + '/'  + listCoords + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
 
     console.log(url)
-    console.log(routingProfile)
 
     var req = new XMLHttpRequest();
     req.open('GET', url, true);
@@ -329,7 +325,6 @@
         let distance = Math.round(leg.distance / 100) / 10;
         waypointsDistance.push(distance)
       });
-      console.log(waypointsDistance)
 
       // Récupération du temps de trajet entre chaque étape
       let waypointsDuration = [];
@@ -345,7 +340,6 @@
         let duration = hours +':'+ ('0'+minutes).slice(-2) +':'+ ('0'+seconds).slice(-2);
         waypointsDuration.push(duration)
       });
-      console.log(waypointsDuration)
 
       // Création des tripDetails
       let tripDetails = [];
