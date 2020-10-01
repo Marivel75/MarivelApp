@@ -205,17 +205,21 @@
 
   let routingProfile = "<%= trip.category.name %>";
   let routingProfileIcon;
-  if (routingProfile === "Roadtrip") {
+
+  switch(routingProfile) {
+  case "Roadtrip" :
     routingProfile = "driving";
     routingProfileIcon = "<i class='fas fa-car fa-lg'></i>";
-  } else if (routingProfile === "À pied") {
+    break;
+  case "À pied" :
     routingProfile = "walking";
     routingProfileIcon = "<i class='fas fa-walking fa-lg'></i>";
-  } else if (routingProfile === "À vélo") {
+    break;
+  case "À vélo" :
     routingProfile = "cycling";
     routingProfileIcon = "<i class='fas fa-biking fa-lg'></i>";
-  } else {
-
+    break;
+  default :
   };
 
   let drivingProfile = document.getElementById('drivingProfile');
